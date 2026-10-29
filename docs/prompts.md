@@ -19,7 +19,11 @@ Cole um prompt por sessão do Claude Code, na ordem. O CLAUDE.md carrega sozinho
 ```
 Leia docs/landing-spec.md (só "A sensação") e docs/imagens.md (só o mapa IMAGES).
 
-Monte a base conforme "Stack", "Estrutura" e "Design system" do CLAUDE.md:
+Monte a base conforme "Stack", "Estrutura" e "Design system" do CLAUDE.md.
+
+Atenção ao scaffold: o create-next-app recusa esta pasta porque ela já tem CLAUDE.md e .claude/. Gere o projeto numa pasta temporária fora do repositório e copie para cá só os arquivos do Next. Não apague, mova nem reescreva CLAUDE.md, docs/ e .claude/. Junte o .gitignore gerado ao que já existe, mantendo a linha .taste-skill/.
+
+Inclua:
 - Next.js + TypeScript strict + Tailwind + ESLint/Prettier
 - next/font com Newsreader (eixo opsz) e Caveat
 - tokens de cor como CSS variables, com os nomes da tabela do CLAUDE.md
@@ -33,9 +37,12 @@ Monte a base conforme "Stack", "Estrutura" e "Design system" do CLAUDE.md:
 
 Página inicial: só um placeholder com h1, as duas fontes, os tamanhos e as cores. Nenhuma seção.
 
+Neste prompt o gate serve só para provar que as ferramentas rodam. Num placeholder, o inspetor vai reprovar por falta de fotos, de movimento e de conteúdo (few-pictures, no-real-pictures, still-page, empty-screens e afins). NÃO corrija esses itens e não acrescente nada à página por causa deles. Corrija apenas o que for da base: fontes que não carregam, tokens, contraste, rolagem horizontal.
+
 Critério de aceite:
-- build e lint limpos
-- npm run taste:lint e npm run taste:inspect rodam (WARNs no placeholder são esperados; anote quais)
+- npm run build e npm run lint limpos
+- npm run taste:lint e npm run taste:inspect rodam até o fim sobre o build de produção (npm run start); liste os FAILs e WARNs que apareceram, separando os esperados no placeholder dos que são problema real
+- as duas fontes aparecem como carregadas no relatório do inspetor
 - commit "chore: base do projeto"
 ```
 
