@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+/* Tokens de cor — fonte: CLAUDE.md, "Design system > Cores" */
+:root {
+  --creme: #f5efe4;
+  --papel: #fffdf8;
+  --tinta: #26211d;
+  --tinta-2: #6e6259;
+  --floresta: #1f3d33;
+  --vinho: #6e2a2a;
+  --rosa-antigo: #c9a49a;
+  --nevoa: #a9c3cf;
+  --petroleo: #3f7a8c;
+  --dourado: #b08d57;
+
+  /* Grão de papel: ruído SVG com opacidade de 3,5% embutida */
+  --grao-papel: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.15 0 0 0 0 0.13 0 0 0 0 0.11 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+@theme inline {
+  --color-creme: var(--creme);
+  --color-papel: var(--papel);
+  --color-tinta: var(--tinta);
+  --color-tinta-2: var(--tinta-2);
+  --color-floresta: var(--floresta);
+  --color-vinho: var(--vinho);
+  --color-rosa-antigo: var(--rosa-antigo);
+  --color-nevoa: var(--nevoa);
+  --color-petroleo: var(--petroleo);
+  --color-dourado: var(--dourado);
+
+  --font-display: var(--font-newsreader), Georgia, serif;
+  --font-serif: var(--font-source-serif), Georgia, serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-hand: var(--font-caveat), cursive;
+}
+
+/* Escala tipográfica — fonte: CLAUDE.md, "Design system > Tipografia" */
+@utility text-h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+  line-height: 1.08;
+}
+
+@utility text-h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  line-height: 1.12;
+}
+
+@utility text-h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 1.25;
+}
+
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.78125rem; /* 12,5px */
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+@utility measure {
+  max-width: 62ch;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--creme);
+    background-image: var(--grao-papel);
+    background-repeat: repeat;
+    color: var(--tinta);
+    font-family: var(--font-serif);
+    font-size: 1.1875rem; /* 19px */
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1 {
+    @apply text-h1;
+  }
+
+  h2 {
+    @apply text-h2;
+  }
+
+  h3 {
+    @apply text-h3;
+  }
+}
