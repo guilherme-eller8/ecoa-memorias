@@ -105,7 +105,7 @@ const MOMENTOS: Momento[] = [
             {
               tipo: "texto",
               texto:
-                "A prova do livro está pronta 📄 Leia com calma e diga o que ajustar.",
+                "A prova do livro está pronta, em PDF. Leia com calma e diga o que ajustar.",
               hora: "10:30",
             },
             {

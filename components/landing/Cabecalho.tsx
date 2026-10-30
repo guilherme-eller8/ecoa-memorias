@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Logo } from "@/components/ui/Logo";
 import { CabecalhoTom } from "./CabecalhoTom";
@@ -37,14 +36,6 @@ export function Cabecalho() {
             ))}
           </ul>
         </nav>
-
-        <Button
-          href="#interesse"
-          data-cta="header"
-          className="text-pequeno! px-4! md:px-5!"
-        >
-          Tenho interesse
-        </Button>
 
         {/* No celular, os links vão para um menu simples: funciona sem JS */}
         <details className="group md:hidden">

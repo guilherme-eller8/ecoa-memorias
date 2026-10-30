@@ -33,5 +33,8 @@ Fonte: `docs/direcao.md` e o design system do `CLAUDE.md`. Vale para toda imagem
 - Texto legível dentro da foto (placas, jornais, legendas escritas na cópia).
 - Nomes de pessoas no `alt` ou ao redor da foto.
 
+## Exceção declarada (30/10/2026)
+- A faixa da seção "A surpresa" usa uma foto e um vídeo gerados por IA (Gemini) pelo fundador, por decisão dele, com a legenda "Imagem ilustrativa." na página. Trocar pela primeira foto real de uma prova do livro assim que ela existir.
+
 ## Referências aprovadas
 - `docs/direcao.md` (a página é o próprio livro)

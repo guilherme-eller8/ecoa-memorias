@@ -22,16 +22,20 @@ export function Interesse() {
         data-entra
         style={ordem(1)}
       >
-        <p className="text-display font-medium">{formatarPreco()}</p>
-        <p className="mt-3">por livro. Frete à parte.</p>
-
-        <p className="mt-6">
+        {/* A parcela é o número que pesa na decisão; o total vem logo abaixo, menor */}
+        <p className="text-display font-medium">
+          {PARCELAS_MAX}x de{" "}
+          <span className="whitespace-nowrap">{formatarParcela()}</span>
+        </p>
+        <p className="mt-3">
+          sem juros no cartão, ou{" "}
+          <span className="whitespace-nowrap">{formatarPreco()} no Pix</span>.
+          Frete à parte.
+        </p>
+        <p className="text-pequeno mt-4">
+          Exemplares extras:{" "}
           <span className="whitespace-nowrap">
-            Pix ou {PARCELAS_MAX}x de {formatarParcela()}
-          </span>{" "}
-          <span aria-hidden>·</span>{" "}
-          <span className="whitespace-nowrap">
-            Exemplares extras: {formatarPreco(PRECO_EXEMPLAR_EXTRA)}
+            {formatarPreco(PRECO_EXEMPLAR_EXTRA)} cada
           </span>
         </p>
 

@@ -42,6 +42,11 @@ export const IMAGES = {
 
 export type ImagemChave = keyof typeof IMAGES;
 
+// Loop mudo da faixa da surpresa (ilustrativo; a foto de mesmo nome é o pôster)
+export const VIDEOS = {
+  surpresa: "/video/surpresa.mp4",
+} as const;
+
 const MESES = [
   "janeiro",
   "fevereiro",
