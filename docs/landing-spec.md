@@ -116,7 +116,7 @@ Duas colunas no desktop (texto à esquerda em 5/12, capa ao vivo à direita em 7
 - Visual: LiveCover grande, entreaberta, com as cinco lombadas de cor logo abaixo dela. Fundo polen liso, com o grão de papel. Sem gradiente.
 
 ## 3. O que você recebe (#livro)
-- H2: "Um livro para segurar nas mãos. E vozes para ouvir sempre."
+- H2: "Um livro para segurar. E vozes para ouvir sempre." (corte aprovado: o original quebrava em 3 linhas em 390px)
 - Layout: à esquerda (5/12), uma BookCover floresta grande ("O que a vida me ensinou"); à direita (7/12), a **ficha técnica**: uma folha papel com bordas superior e inferior recortadas (`clip-path`), itens em `<dl>` com o nome à esquerda, o valor à direita e um pontilhado de pontos redondos de 4px entre eles. Sem ícones, sem checkmarks, sem linhas finas.
 
 | Item | Valor (à direita) |

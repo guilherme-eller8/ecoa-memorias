@@ -10,6 +10,9 @@ export const FORMATO_LIVRO = "21 × 21 cm"; // placeholder
 export const PAGINAS_LIVRO = 60; // placeholder
 export const WHATSAPP_NUMERO = "55XXXXXXXXXXX"; // placeholder
 export const EMAIL_CONTATO = "contato@ecoamemorias.com.br"; // placeholder
+export const SEMANAS_DE_PERGUNTAS = 4;
+export const HISTORIAS_MAX = 20;
+export const MENSAGENS_MAX = 10;
 
 export const IMAGES = {
   passo2: "/images/passo-2-gravando.webp",

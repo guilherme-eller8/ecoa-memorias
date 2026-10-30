@@ -1,0 +1,160 @@
+/*
+ * A ficha técnica: uma folha papel com o topo e o pé recortados em serrilha.
+ * Nome à esquerda, valor à direita e um pontilhado de pontos redondos de 4px entre eles.
+ * Sem ícones, sem marcas de checagem, sem linhas.
+ */
+
+.ficha {
+  display: grid;
+  gap: 22px;
+  margin: 0;
+  padding: 44px 24px 48px;
+  background: var(--papel);
+  clip-path: polygon(
+    0% 6px,
+    2.083% 0,
+    4.167% 6px,
+    6.25% 0,
+    8.333% 6px,
+    10.417% 0,
+    12.5% 6px,
+    14.583% 0,
+    16.667% 6px,
+    18.75% 0,
+    20.833% 6px,
+    22.917% 0,
+    25% 6px,
+    27.083% 0,
+    29.167% 6px,
+    31.25% 0,
+    33.333% 6px,
+    35.417% 0,
+    37.5% 6px,
+    39.583% 0,
+    41.667% 6px,
+    43.75% 0,
+    45.833% 6px,
+    47.917% 0,
+    50% 6px,
+    52.083% 0,
+    54.167% 6px,
+    56.25% 0,
+    58.333% 6px,
+    60.417% 0,
+    62.5% 6px,
+    64.583% 0,
+    66.667% 6px,
+    68.75% 0,
+    70.833% 6px,
+    72.917% 0,
+    75% 6px,
+    77.083% 0,
+    79.167% 6px,
+    81.25% 0,
+    83.333% 6px,
+    85.417% 0,
+    87.5% 6px,
+    89.583% 0,
+    91.667% 6px,
+    93.75% 0,
+    95.833% 6px,
+    97.917% 0,
+    100% 6px,
+    100% calc(100% - 6px),
+    97.917% 100%,
+    95.833% calc(100% - 6px),
+    93.75% 100%,
+    91.667% calc(100% - 6px),
+    89.583% 100%,
+    87.5% calc(100% - 6px),
+    85.417% 100%,
+    83.333% calc(100% - 6px),
+    81.25% 100%,
+    79.167% calc(100% - 6px),
+    77.083% 100%,
+    75% calc(100% - 6px),
+    72.917% 100%,
+    70.833% calc(100% - 6px),
+    68.75% 100%,
+    66.667% calc(100% - 6px),
+    64.583% 100%,
+    62.5% calc(100% - 6px),
+    60.417% 100%,
+    58.333% calc(100% - 6px),
+    56.25% 100%,
+    54.167% calc(100% - 6px),
+    52.083% 100%,
+    50% calc(100% - 6px),
+    47.917% 100%,
+    45.833% calc(100% - 6px),
+    43.75% 100%,
+    41.667% calc(100% - 6px),
+    39.583% 100%,
+    37.5% calc(100% - 6px),
+    35.417% 100%,
+    33.333% calc(100% - 6px),
+    31.25% 100%,
+    29.167% calc(100% - 6px),
+    27.083% 100%,
+    25% calc(100% - 6px),
+    22.917% 100%,
+    20.833% calc(100% - 6px),
+    18.75% 100%,
+    16.667% calc(100% - 6px),
+    14.583% 100%,
+    12.5% calc(100% - 6px),
+    10.417% 100%,
+    8.333% calc(100% - 6px),
+    6.25% 100%,
+    4.167% calc(100% - 6px),
+    2.083% 100%,
+    0% calc(100% - 6px)
+  );
+}
+
+@media (min-width: 768px) {
+  .ficha {
+    gap: 26px;
+    padding: 60px 48px 64px;
+  }
+}
+
+/* No celular, o nome ocupa a linha e os pontos levam ao valor na linha de baixo */
+.item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  column-gap: 12px;
+}
+
+.nome {
+  flex: 1 0 100%;
+}
+
+@media (min-width: 1024px) {
+  .item {
+    flex-wrap: nowrap;
+  }
+
+  .nome {
+    flex: 0 1 34ch;
+  }
+}
+
+.pontos {
+  flex: 1 1 32px;
+  min-width: 32px;
+  height: 4px;
+  margin-bottom: 0.5em;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='4'%3E%3Ccircle cx='2' cy='2' r='2' fill='%236E6259'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: left center;
+}
+
+.valor {
+  flex: none;
+  margin: 0;
+  font-weight: 500;
+  text-align: right;
+  white-space: nowrap;
+}

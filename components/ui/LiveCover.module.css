@@ -60,7 +60,7 @@
 
 .lombada {
   position: relative;
-  width: 44px;
+  width: 48px;
   height: 88px;
   background-color: var(--tecido);
   background-image: var(--grao);
@@ -86,6 +86,11 @@
 .lombada:focus-visible {
   outline: 2px solid var(--floresta);
   outline-offset: 3px;
+}
+
+/* Focar o campo ou uma lombada também entreabre a capa, como o mouse */
+.live:focus-within [data-live] {
+  --abre: -58deg;
 }
 
 .lombadaFilete {

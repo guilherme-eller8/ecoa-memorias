@@ -76,6 +76,8 @@
 /* ── Base ─────────────────────────────────────────────────────────────── */
 html {
   -webkit-text-size-adjust: 100%;
+  /* o cabeçalho fixo não cobre o título da seção ao seguir uma âncora */
+  scroll-padding-top: 88px;
 }
 
 body {
@@ -177,6 +179,14 @@ p {
   inset: 0;
   pointer-events: none;
   box-shadow: inset 0 0 1.4em rgb(38 33 29 / 0.28); /* taste-skill-ignore: vinheta interna da cópia impressa (inset, não é sombra) */
+}
+
+/* Lugar da foto enquanto a imagem não existe: sépia liso, com o mesmo grão */
+.photo-sepia {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: color-mix(in oklab, var(--dourado) 46%, var(--polen));
 }
 
 /* ── Movimento ────────────────────────────────────────────────────────── */
