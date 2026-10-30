@@ -1,0 +1,133 @@
+/*
+ * O celular desenhado em CSS: moldura fina, levemente inclinado.
+ * É um objeto e uma interface de outro app (data-ui): o canto arredondado é o do aparelho,
+ * não um raio da página. Sem sombra; ele se separa do livro pelo tom escuro da moldura.
+ */
+
+.celular {
+  --moldura: #1b1815;
+  --tela: #f7f3ec;
+  --texto: #1f1c19;
+  --apagado: #6e6259;
+  aspect-ratio: 9 / 18.6;
+  padding: 3.4%;
+  border-radius: 15% / 7.4%;
+  background-color: var(--moldura);
+  transform: rotate(-5deg);
+  container-type: inline-size;
+}
+
+.tela {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 26cqi 10cqi 12cqi;
+  border-radius: 12% / 5.8%;
+  background-color: var(--tela);
+  color: var(--texto);
+  overflow: hidden;
+}
+
+.ilha {
+  position: absolute;
+  top: 4cqi;
+  left: 50%;
+  width: 30cqi;
+  height: 8cqi;
+  margin-left: -15cqi;
+  border-radius: 99px;
+  background-color: var(--moldura);
+}
+
+/* A capa do livro em miniatura, como capa do álbum */
+.capa {
+  position: relative;
+  width: 62cqi;
+  aspect-ratio: 1;
+  border-radius: 2px;
+  background-color: var(--floresta);
+}
+
+.filete {
+  position: absolute;
+  left: 12%;
+  bottom: 22%;
+  width: 22%;
+  height: 2px;
+  background-color: var(--dourado);
+}
+
+.titulo {
+  margin-top: 10cqi;
+  width: 100%;
+  font-size: max(13px, 8.6cqi);
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: left;
+}
+
+.barra {
+  position: relative;
+  width: 100%;
+  height: 4px;
+  margin-top: 8cqi;
+  border-radius: 99px;
+  background-color: color-mix(in oklab, var(--texto) 16%, transparent);
+  overflow: hidden;
+}
+
+.preenchido {
+  position: absolute;
+  inset: 0;
+  background-color: var(--texto);
+  transform-origin: 0 50%;
+  transform: scaleX(var(--p, 0));
+  transition: transform 0.25s linear;
+}
+
+.tempos {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 3cqi;
+  font-size: 13px;
+  color: var(--apagado);
+  font-variant-numeric: tabular-nums;
+}
+
+.play {
+  display: grid;
+  place-items: center;
+  width: max(48px, 30cqi);
+  aspect-ratio: 1;
+  margin-top: auto;
+  border-radius: 50%;
+  background-color: var(--texto);
+  color: var(--tela);
+  transition:
+    transform 0.15s ease-out,
+    background-color 0.15s ease-out;
+}
+
+button.play {
+  cursor: pointer;
+}
+
+button.play:hover {
+  background-color: var(--floresta);
+}
+
+button.play:active {
+  transform: scale(0.94);
+}
+
+button.play:focus-visible {
+  outline: 2px solid var(--floresta);
+  outline-offset: 3px;
+}
+
+.icone {
+  width: 44%;
+}

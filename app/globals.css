@@ -1,0 +1,419 @@
+@import "tailwindcss";
+
+/* ── Tokens ───────────────────────────────────────────────────────────── */
+:root {
+  /* Um fundo, uma tinta, um acento. */
+  --polen: #f5efe4; /* papel pólen do miolo: fundo principal */
+  --papel: #fffdf8; /* superfícies um tom acima */
+  --tinta: #26211d; /* todo texto corrido */
+  --tinta-2: #6e6259; /* só notas secundárias */
+  --floresta: #1f3d33; /* o acento */
+
+  /* Só nas capas (os tecidos do livro) */
+  --vinho: #6e2a2a;
+  --rosa-antigo: #c9a49a;
+  --nevoa: #a9c3cf;
+  --petroleo: #3f7a8c;
+
+  /* Só no hot stamping e no logo */
+  --dourado: #b08d57;
+
+  /* Cinco tamanhos */
+  --t-display: clamp(2.4rem, 7vw, 6rem);
+  --t-h2: clamp(2rem, 4.2vw, 3.5rem);
+  --t-destaque: clamp(1.5rem, 2.4vw, 2rem);
+  --t-corpo: 19px;
+  --t-pequeno: 15px;
+
+  /* Um raio só: o canto da capa dura */
+  --raio: 2px;
+
+  /* Margens externas */
+  --margem: 20px;
+
+  /* Movimento (references/motion.md §4) */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
+  --t-press: 140ms;
+  --t-hover: 180ms;
+  --t-ui: 240ms;
+  --t-reveal: 800ms;
+  --t-open: 1200ms;
+
+  /* Grão de papel (SVG, sem gradiente) */
+  --grao: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .15 0 0 0 0 .13 0 0 0 0 .11 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+}
+
+@media (min-width: 768px) {
+  :root {
+    --margem: 32px;
+  }
+}
+
+/* Fontes em dois tempos: o romano da Newsreader primeiro (é o texto da primeira tela);
+ * o itálico (só nomes) e a Caveat (só bilhetes) entram depois do load. Sem JS, entram direto. */
+:root {
+  --italico: var(--font-newsreader-italico), Georgia, serif;
+  --mao: var(--font-caveat), cursive;
+}
+
+.js:not(.fontes-tardias) {
+  --italico: Georgia, serif;
+  --mao: cursive;
+}
+
+@theme inline {
+  --color-polen: var(--polen);
+  --color-papel: var(--papel);
+  --color-tinta: var(--tinta);
+  --color-tinta-2: var(--tinta-2);
+  --color-floresta: var(--floresta);
+  --color-vinho: var(--vinho);
+  --color-rosa-antigo: var(--rosa-antigo);
+  --color-nevoa: var(--nevoa);
+  --color-petroleo: var(--petroleo);
+  --color-dourado: var(--dourado);
+
+  --font-serif: var(--font-newsreader), Georgia, serif;
+  --font-italico: var(--italico);
+  --font-mao: var(--mao);
+  --font-ui: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --text-display: var(--t-display);
+  --text-display--line-height: 1;
+  --text-display--letter-spacing: -0.02em;
+  --text-h2: var(--t-h2);
+  --text-h2--line-height: 1.05;
+  --text-h2--letter-spacing: -0.015em;
+  --text-destaque: var(--t-destaque);
+  --text-destaque--line-height: 1.2;
+  --text-corpo: var(--t-corpo);
+  --text-corpo--line-height: 1.6;
+  --text-pequeno: var(--t-pequeno);
+  --text-pequeno--line-height: 1.45;
+
+  --radius-ed: var(--raio);
+}
+
+/* ── Base ─────────────────────────────────────────────────────────────── */
+html {
+  -webkit-text-size-adjust: 100%;
+  /* o cabeçalho fixo não cobre o título da seção ao seguir uma âncora */
+  scroll-padding-top: 88px;
+}
+
+body {
+  position: relative;
+  background-color: var(--polen);
+  color: var(--tinta);
+  font-family: var(--font-serif);
+  font-size: var(--t-corpo);
+  line-height: 1.6;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Grão do papel pólen, 3–4% */
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: var(--grao);
+  opacity: 0.035;
+}
+
+body > * {
+  position: relative;
+  z-index: 1;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 500;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+::selection {
+  background: var(--floresta);
+  color: var(--polen);
+}
+
+:focus-visible {
+  outline: 2px solid var(--floresta);
+  outline-offset: 3px;
+}
+
+/* Interfaces de outro app (WhatsApp, player): não são a voz da Ecoa */
+[data-ui] {
+  font-family: var(--font-ui);
+}
+
+/* ── Fotos ────────────────────────────────────────────────────────────── */
+.photo {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--raio);
+}
+
+.photo img {
+  filter: saturate(0.86) contrast(0.96) sepia(0.06);
+}
+
+.photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: var(--grao);
+  opacity: 0.06;
+}
+
+/* Cópia impressa colada na página: margem de papel e vinheta interna */
+.photo-antiga {
+  position: relative;
+  padding: 0.45em;
+  background: var(--papel);
+  border-radius: var(--raio);
+}
+
+.photo-antiga > .photo-antiga__img {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.photo-antiga img {
+  filter: saturate(0.86) contrast(0.96) sepia(0.06);
+}
+
+.photo-antiga > .photo-antiga__img::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 1.4em rgb(38 33 29 / 0.28); /* taste-skill-ignore: vinheta interna da cópia impressa (inset, não é sombra) */
+}
+
+/* Lugar da foto enquanto a imagem não existe: sépia liso, com o mesmo grão */
+.photo-sepia {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: color-mix(in oklab, var(--dourado) 46%, var(--polen));
+}
+
+/* ── Peças de papel ───────────────────────────────────────────────────── */
+/* Folha com o topo e o pé recortados à mão, como borda de papel artesanal (ficha técnica,
+ * colofão): irregular e baixa, para não ler como serrilha de cupom. Gerado uma vez, fixo. */
+.folha-recortada {
+  background: var(--papel);
+  clip-path: polygon(
+    0% 0,
+    1.65% 0.5px,
+    3.06% 2.5px,
+    5.18% 2.5px,
+    6.48% 2.5px,
+    8.43% 3.5px,
+    10.14% 3.5px,
+    11.42% 0.5px,
+    13.33% 0.5px,
+    14.58% 2px,
+    16.39% 3.5px,
+    17.69% 0.5px,
+    19.02% 0,
+    20.81% 2px,
+    23.17% 3.5px,
+    24.54% 2px,
+    26.05% 3px,
+    28.13% 2.5px,
+    30.66% 0,
+    32.67% 3.5px,
+    34.42% 2.5px,
+    36.99% 1px,
+    38.25% 0.5px,
+    40.66% 3.5px,
+    42.26% 0,
+    43.66% 1.5px,
+    45.03% 2px,
+    46.66% 1px,
+    49% 1.5px,
+    50.46% 3px,
+    52.47% 3px,
+    54.56% 3.5px,
+    56.29% 0.5px,
+    58.25% 1px,
+    59.54% 3.5px,
+    60.82% 3px,
+    62.31% 2px,
+    64.46% 1px,
+    66.26% 3px,
+    67.9% 2px,
+    69.92% 3px,
+    71.76% 2.5px,
+    73.38% 3px,
+    75.69% 1.5px,
+    77.87% 1px,
+    79.41% 0.5px,
+    81.41% 1px,
+    83.35% 1px,
+    85.77% 1.5px,
+    88% 1.5px,
+    89.6% 0,
+    92.17% 3.5px,
+    93.54% 1px,
+    95.32% 2px,
+    97.58% 2px,
+    98.99% 0,
+    100% 1px,
+    100% calc(100% - 2.5px),
+    99.41% calc(100% - 3.5px),
+    97.24% calc(100% - 1px),
+    94.83% calc(100% - 3.5px),
+    92.26% calc(100% - 1px),
+    90.32% 100%,
+    89.08% calc(100% - 1px),
+    87.12% calc(100% - 1px),
+    85.71% calc(100% - 1px),
+    83.77% calc(100% - 0.5px),
+    81.24% calc(100% - 3px),
+    80.01% calc(100% - 3.5px),
+    78.58% calc(100% - 3px),
+    76.22% calc(100% - 0.5px),
+    74.65% calc(100% - 2.5px),
+    72.97% calc(100% - 3px),
+    71.63% calc(100% - 1px),
+    70.31% calc(100% - 3.5px),
+    68.43% calc(100% - 1.5px),
+    66.58% calc(100% - 3px),
+    63.99% calc(100% - 0.5px),
+    61.6% calc(100% - 0.5px),
+    60.23% calc(100% - 2.5px),
+    58.52% calc(100% - 3.5px),
+    56.83% 100%,
+    55.28% calc(100% - 3.5px),
+    53.87% calc(100% - 1.5px),
+    51.81% calc(100% - 2.5px),
+    49.39% calc(100% - 1.5px),
+    48.15% calc(100% - 3.5px),
+    46.44% calc(100% - 1.5px),
+    45.1% calc(100% - 0.5px),
+    43.69% calc(100% - 1.5px),
+    42.49% calc(100% - 0.5px),
+    41.22% calc(100% - 2.5px),
+    39.54% calc(100% - 2.5px),
+    38.11% calc(100% - 3.5px),
+    36.62% calc(100% - 2.5px),
+    35.33% calc(100% - 1.5px),
+    34.04% calc(100% - 2px),
+    31.95% calc(100% - 3.5px),
+    30.61% calc(100% - 2px),
+    28.85% 100%,
+    27.1% 100%,
+    24.78% calc(100% - 2.5px),
+    22.36% calc(100% - 3.5px),
+    20.07% calc(100% - 1.5px),
+    17.61% calc(100% - 1.5px),
+    16.33% calc(100% - 3px),
+    14.18% calc(100% - 1.5px),
+    12.12% calc(100% - 1.5px),
+    10.2% calc(100% - 1.5px),
+    8.03% calc(100% - 2.5px),
+    5.5% calc(100% - 1.5px),
+    3.5% calc(100% - 2.5px),
+    1.79% calc(100% - 1px),
+    0% calc(100% - 2.5px)
+  );
+}
+
+/* Tecido da capa dura nos campos floresta: trama sutil em SVG, sem gradiente */
+.tecido {
+  position: relative;
+  isolation: isolate;
+}
+
+.tecido::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Cpath d='M0 0h3v1H0zM3 3h3v1H3z' fill='%23F5EFE4'/%3E%3Cpath d='M1 3h1v3H1zM4 0h1v3H4z' fill='%23000'/%3E%3C/svg%3E"),
+    var(--grao);
+  opacity: 0.05;
+}
+
+/* ── Movimento ────────────────────────────────────────────────────────── */
+/* Entrada por seção: components/ui/Entrada.tsx (Web Animations, só transform, opacity e clip-path).
+ * Assinatura: a capa se abre (BookCover.module.css) e a página vira na seção 5 (Entrada). */
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* No campo floresta, o foco aparece em polen */
+.bg-floresta :focus-visible {
+  outline-color: var(--polen);
+}
+
+/* A foto que respira: uma aproximação lenta, ida e volta, parada fora da tela */
+@media (prefers-reduced-motion: no-preference) {
+  .respira img,
+  .respira .photo-sepia {
+    animation: respira 16s var(--ease-soft) infinite alternate;
+    transform-origin: 38% 55%;
+  }
+
+  .js .respira:not([data-na-tela]) img,
+  .js .respira:not([data-na-tela]) .photo-sepia {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes respira {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.06);
+  }
+}
+
+/* O menu do celular abre a partir do botão */
+@keyframes abre-menu {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+/* Menos movimento, não nenhum: tira o deslocamento, mantém cor e opacidade */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-property:
+      color, background-color, text-decoration-color, outline-color, opacity,
+      visibility !important;
+    scroll-behavior: auto !important;
+  }
+
+  @keyframes abre-menu {
+    from {
+      opacity: 0;
+    }
+  }
+}

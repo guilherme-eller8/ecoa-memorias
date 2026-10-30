@@ -1,0 +1,318 @@
+/*
+ * BookCover: uma capa dura desenhada como objeto, não como cartão.
+ * Medidas em cqw (largura da capa), para o mesmo desenho servir do pé de página ao hero.
+ * Volume por degrau de tom chapado. Sem gradiente CSS; a única sombra é a de contato,
+ * desenhada em SVG como parte do objeto (exceção declarada em docs/direcao.md).
+ */
+
+.livro {
+  --w: 248px;
+  --tecido: var(--floresta);
+  --tinta-capa: var(--papel);
+  --e: 7.5cqw; /* espessura do livro */
+  --b: 0.9cqw; /* espessura do papelão da capa */
+  --recuo: 1.6cqw; /* quanto as páginas ficam para dentro das capas */
+  --giro: 28deg;
+  --incl: -8deg; /* olhar um pouco de cima */
+  --abre: 0deg;
+  --lombada: color-mix(in oklab, var(--tecido) 78%, #000);
+  --borda: color-mix(in oklab, var(--tecido) 88%, #fff);
+  --pagina: var(--polen);
+  --pagina-lado: color-mix(in oklab, var(--polen) 90%, var(--tinta));
+  --linhas-pagina: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='3' height='4'%3E%3Crect width='1' height='4' fill='%2326211D' fill-opacity='.09'/%3E%3C/svg%3E");
+  --linhas-topo: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='3'%3E%3Crect width='4' height='1' fill='%2326211D' fill-opacity='.07'/%3E%3C/svg%3E");
+  /* Trama de tecido: fios horizontais e verticais em ruído, multiplicados sobre a cor */
+  --trama: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='h'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.012 .9' numOctaves='2' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .62 0 0 0 -.24'/%3E%3C/filter%3E%3Cfilter id='v'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9 .012' numOctaves='2' seed='9'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .62 0 0 0 -.24'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23h)'/%3E%3Crect width='100%25' height='100%25' filter='url(%23v)'/%3E%3C/svg%3E");
+
+  position: relative;
+  margin: 0;
+  width: var(--w);
+  max-width: 100%;
+  container-type: inline-size;
+  /* espaço para a lombada que gira na direção de quem olha e para a sombra no chão.
+   * Em --w, não em cqw: no próprio padding, cqw mede o container de fora (a seção inteira) e
+   * zerava a capa pequena do formulário no desktop. */
+  padding: calc(var(--w) * 0.02) calc(var(--w) * 0.02) calc(var(--w) * 0.09)
+    calc(var(--w) * 0.07);
+}
+
+.livro[data-escura] {
+  --tinta-capa: var(--papel);
+}
+
+.livro:not([data-escura]) {
+  --tinta-capa: var(--tinta);
+  --trama-forca: 0.5;
+  --lombada: color-mix(in oklab, var(--tecido) 86%, #000);
+}
+
+.livro[data-size="sm"] {
+  --w: 176px;
+}
+.livro[data-size="md"] {
+  --w: 248px;
+}
+.livro[data-size="lg"] {
+  --w: 340px;
+}
+.livro[data-size="xl"] {
+  --w: clamp(300px, 38vw, 520px);
+}
+
+.livro[data-open] {
+  --giro: 15deg;
+  --incl: -10deg;
+  --abre: -42deg;
+}
+
+/* ── Palco e corpo ─────────────────────────────────────────────────── */
+.palco {
+  position: relative;
+  aspect-ratio: var(--proporcao, 1);
+  perspective: 380cqw;
+  perspective-origin: 70% -60%;
+}
+
+.corpo {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transform: translateZ(calc(var(--e) / 2)) rotateX(var(--incl))
+    rotateY(var(--giro)) translateZ(calc(var(--e) / -2));
+}
+
+.corpo > *,
+.capa > * {
+  position: absolute;
+}
+
+/* ── Partes ────────────────────────────────────────────────────────── */
+.contracapa {
+  inset: 0;
+  background: var(--lombada);
+  border-radius: var(--raio);
+  transform: translateZ(calc(var(--e) * -1));
+}
+
+/* Bloco de páginas: borda de cima, borda da frente e a primeira folha */
+.paginasTopo {
+  top: var(--recuo);
+  left: 0;
+  width: calc(100% - var(--recuo));
+  height: calc(var(--e) - var(--b) * 2);
+  background-color: var(--pagina);
+  background-image: var(--linhas-topo);
+  transform-origin: top center;
+  transform: translateZ(calc(var(--b) * -1)) rotateX(-90deg);
+}
+
+.paginasLado {
+  top: var(--recuo);
+  left: calc(100% - var(--recuo));
+  width: calc(var(--e) - var(--b) * 2);
+  height: calc(100% - var(--recuo) * 2);
+  background-color: var(--pagina-lado);
+  background-image: var(--linhas-pagina);
+  transform-origin: left center;
+  transform: translateZ(calc(var(--b) * -1)) rotateY(90deg);
+}
+
+.miolo {
+  top: var(--recuo);
+  left: 0;
+  width: calc(100% - var(--recuo));
+  height: calc(100% - var(--recuo) * 2);
+  background: var(--pagina);
+  transform: translateZ(calc(var(--b) * -1));
+}
+
+.lombada {
+  top: 0;
+  left: calc(var(--e) * -1);
+  width: var(--e);
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--lombada);
+  background-image: var(--trama);
+  background-size: 56cqw 56cqw;
+  background-blend-mode: multiply;
+  color: var(--tinta-capa);
+  transform-origin: right center;
+  transform: rotateY(-90deg);
+}
+
+/* A capa gira na dobradiça da lombada */
+.capa {
+  inset: 0;
+  transform-style: preserve-3d;
+  transform-origin: left center;
+  transform: rotateY(var(--abre));
+  transition: transform 700ms var(--ease-out);
+}
+
+.capaBordaTopo {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--b);
+  background: var(--borda);
+  transform-origin: top center;
+  transform: rotateX(-90deg);
+}
+
+.capaBordaLado {
+  top: 0;
+  left: 100%;
+  width: var(--b);
+  height: 100%;
+  background: var(--lombada);
+  transform-origin: left center;
+  transform: rotateY(90deg);
+}
+
+/* Guarda: o verso da capa, em papel */
+.verso {
+  inset: 0;
+  background: var(--papel);
+  border-radius: var(--raio);
+  backface-visibility: hidden;
+  transform: translateZ(calc(var(--b) * -1)) rotateY(180deg);
+}
+
+.frente {
+  inset: 0;
+  overflow: hidden;
+  background-color: var(--tecido);
+  border-radius: var(--raio);
+  backface-visibility: hidden;
+  color: var(--tinta-capa);
+}
+
+/* Trama do tecido: mais leve nas capas claras, para o letreiro em tinta não sumir */
+.frente::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--trama);
+  background-size: 56cqw 56cqw;
+  mix-blend-mode: multiply;
+  opacity: var(--trama-forca, 1);
+  pointer-events: none;
+}
+
+/* ── Composição da capa ───────────────────────────────────────────── */
+.foto {
+  position: absolute;
+  top: 8cqw;
+  right: 8cqw;
+  width: 36cqw;
+  aspect-ratio: 4 / 5;
+  padding: 1.5cqw;
+  background: var(--papel);
+  border-radius: var(--raio);
+}
+
+.fotoImg,
+.fotoSepia {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.fotoImg img {
+  object-fit: cover;
+  filter: saturate(0.86) contrast(0.96) sepia(0.06);
+}
+
+.fotoImg::after,
+.fotoSepia::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 3cqw rgb(38 33 29 / 0.3); /* taste-skill-ignore: vinheta interna da cópia impressa */
+}
+
+/* Lugar da foto enquanto a imagem não existe: sépia liso */
+.fotoSepia {
+  background: color-mix(in oklab, var(--dourado) 46%, var(--polen));
+}
+
+/* Letreiro (título, nome, selo, filete, monograma): desenhado em SVG, escala com a capa */
+.letreiro {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.tipo {
+  fill: currentColor;
+  font-family: var(--font-newsreader), Georgia, serif;
+}
+
+/* ── Sombra de contato: plano no chão, sob a base do livro ─────────── */
+.chao {
+  top: 100%;
+  left: -12cqw;
+  width: calc(100% + 30cqw);
+  height: 22cqw;
+  overflow: visible;
+  pointer-events: none;
+  transform-origin: top center;
+  /* deita o plano no chão sob a base: de 12cqw atrás a 10cqw à frente da capa */
+  transform: translateZ(-12cqw) rotateX(90deg);
+}
+
+/* A capa tem a própria sombra no chão: acompanha o giro quando abre */
+.chaoCapa {
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 14cqw;
+  overflow: visible;
+  pointer-events: none;
+  transform-origin: top center;
+  transform: translateZ(-2cqw) rotateX(90deg);
+}
+
+/* ── Movimento ─────────────────────────────────────────────────────── */
+/* No hero, a capa quase de frente e só entreaberta: lê-se como livro em pé, não como placa
+ * caindo. O hover e o foco abrem de verdade. */
+.livro[data-live] {
+  --giro: 11deg;
+  --incl: -6deg;
+  --abre: -22deg;
+  /* a capa aberta vem na direção de quem olha: espaço para ela antes dos controles */
+  padding-bottom: calc(var(--w) * 0.13);
+}
+
+.livro[data-live]:hover,
+.livro[data-live]:focus-within {
+  --abre: -46deg;
+}
+
+/*
+ * A assinatura: ao carregar, a capa do hero começa fechada e se abre na dobradiça até ficar
+ * entreaberta. Só preenche para trás: no fim vale de novo o --abre, e o hover volta a abrir mais.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  :global(.js) .livro[data-live] .capa {
+    animation: capa-abre 1100ms var(--ease-expo) 150ms backwards;
+  }
+}
+
+@keyframes capa-abre {
+  from {
+    transform: rotateY(0deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .capa {
+    transition: none;
+  }
+}

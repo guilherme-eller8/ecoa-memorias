@@ -1,0 +1,152 @@
+/*
+ * OpenBookSpread: o livro aberto. Duas folhas pólen sobre a capa floresta, com a pilha de
+ * páginas por degrau de tom. Medidas em cqi do livro aberto (uma folha = 50cqi), para o texto acompanhar a escala do objeto.
+ * Sem gradiente: a sombra da dobra e a de contato são SVG desfocado, parte do desenho.
+ */
+
+.livro {
+  --capa: var(--floresta);
+  --pagina: var(--polen);
+  --pagina-baixo: color-mix(in oklab, var(--polen) 88%, var(--tinta));
+  position: relative;
+  container-type: inline-size;
+  /* espaço para a capa e a pilha de páginas aparecerem por baixo das folhas */
+  padding: 0 1.2% 2.2%;
+}
+
+.chao {
+  position: absolute;
+  left: -2%;
+  right: -2%;
+  bottom: -4%;
+  width: 104%;
+  height: 12%;
+}
+
+/* A capa aberta por baixo, um pouco maior que as folhas */
+.capa {
+  position: absolute;
+  inset: 1.6% 0 0;
+  background-color: var(--capa);
+  border-radius: var(--raio);
+}
+
+/* A borda das páginas: dois degraus de tom entre a folha e a capa */
+.borda {
+  position: absolute;
+  inset: 1% 0.7% 1.2%;
+  background-color: var(--pagina-baixo);
+  border-radius: var(--raio);
+}
+
+.folhas {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  perspective: 2400px;
+}
+
+.pagina {
+  position: relative;
+  background-color: var(--pagina);
+  border-radius: var(--raio);
+}
+
+/* Curvatura sutil: cada folha desce um pouco em direção à dobra */
+.esquerda {
+  transform-origin: 100% 50%;
+  transform: rotateY(5deg);
+  /* estica até a altura da folha direita, que dita a linha */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5.5cqi 6cqi 7cqi;
+}
+
+.direita {
+  transform-origin: 0% 50%;
+  backface-visibility: hidden; /* ao virar, a folha só aparece depois de passar da dobra */
+  aspect-ratio: var(--proporcao, 1);
+  transform: rotateY(-3deg);
+  padding: 4cqi 4.5cqi 5.5cqi 5cqi;
+  font-size: max(13px, 1.75cqi);
+  line-height: 1.42;
+}
+
+.foto {
+  width: 76%;
+}
+
+.cabeca {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.numeral {
+  font-size: max(13px, 2.1cqi);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.qr {
+  display: block;
+  width: max(44px, 7cqi);
+  margin-top: -0.5cqi;
+  margin-right: -0.75cqi;
+}
+
+.qr svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.titulo {
+  margin-top: 1cqi;
+  font-size: max(19px, 3.5cqi);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.ano {
+  margin-top: 0.6cqi;
+  font-family: var(--font-italico);
+  font-style: italic;
+}
+
+.texto {
+  margin-top: 2cqi;
+}
+
+/* Parágrafos como num livro: recuo na primeira linha, sem espaço entre eles */
+.texto p + p {
+  text-indent: 1.4em;
+}
+
+.folio {
+  position: absolute;
+  bottom: 2.5cqi;
+  font-size: max(13px, 1.5cqi);
+  font-variant-numeric: oldstyle-nums;
+}
+
+.esquerda .folio {
+  left: 5cqi;
+}
+
+.direita .folio {
+  right: 4.5cqi;
+}
+
+.dobra {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 46%;
+  width: 8%;
+  height: 100%;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
