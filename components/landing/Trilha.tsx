@@ -9,7 +9,8 @@ type TrilhaProps = {
 
 /**
  * A barra de 6px "Dia 1 → Semana 4 → Natal" e a fileira dos quatro momentos.
- * No celular a fileira rola na horizontal e a barra mostra quanto já se viu.
+ * No celular a fileira rola na horizontal e a barra mostra quanto já se viu; do tablet para cima
+ * os momentos ficam em grade, sem nada cortado pela borda.
  * Sem JS, a barra fica parada num quarto, e a fileira rola do mesmo jeito.
  */
 export function Trilha({ marcas, children }: TrilhaProps) {
@@ -27,6 +28,8 @@ export function Trilha({ marcas, children }: TrilhaProps) {
         ? (el.scrollLeft + el.clientWidth) / el.scrollWidth
         : 1;
       barra.style.transform = `scaleX(${Math.min(1, visto)})`;
+      // Só é parada de Tab quando há o que rolar pelo teclado
+      el.tabIndex = el.scrollWidth > el.clientWidth ? 0 : -1;
     };
     const pedir = () => {
       if (!quadro) quadro = requestAnimationFrame(medir);
@@ -47,7 +50,7 @@ export function Trilha({ marcas, children }: TrilhaProps) {
         <span className="rounded-ed relative block h-1.5 overflow-hidden bg-[color-mix(in_oklab,var(--tinta)_12%,var(--polen))]">
           <span
             ref={preenchida}
-            className="bg-floresta absolute inset-0 origin-left lg:hidden"
+            className="bg-floresta absolute inset-0 origin-left md:hidden"
             style={{ transform: "scaleX(0.25)" }}
           />
         </span>
@@ -62,7 +65,7 @@ export function Trilha({ marcas, children }: TrilhaProps) {
         role="region"
         aria-label="Os quatro momentos"
         tabIndex={0}
-        className="col-span-12 mt-10 snap-x snap-mandatory [scrollbar-width:none] overflow-x-auto pb-12 md:mt-14 lg:overflow-visible lg:pb-0 [&::-webkit-scrollbar]:hidden"
+        className="col-span-12 mt-10 snap-x snap-mandatory [scrollbar-width:none] overflow-x-auto pb-12 md:mt-14 md:overflow-visible md:pb-0 [&::-webkit-scrollbar]:hidden"
       >
         {children}
       </div>

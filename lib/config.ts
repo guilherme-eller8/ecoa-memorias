@@ -12,6 +12,10 @@ export const WHATSAPP_NUMERO = "55XXXXXXXXXXX"; // placeholder
 export const EMAIL_CONTATO = "contato@ecoamemorias.com.br"; // placeholder
 export const CNPJ = "00.000.000/0001-00"; // placeholder
 export const CIDADE = "Belo Horizonte";
+
+// Enquanto o dado real não chega, o placeholder não aparece na página (nem link quebrado, nem CNPJ falso)
+export const WHATSAPP_PRONTO = /^55\d{10,11}$/.test(WHATSAPP_NUMERO);
+export const CNPJ_PRONTO = !CNPJ.startsWith("00.000.000");
 export const SEMANAS_DE_PERGUNTAS = 4;
 export const HISTORIAS_MAX = 20;
 export const MENSAGENS_MAX = 10;

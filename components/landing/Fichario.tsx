@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  useId,
   useState,
   useSyncExternalStore,
   type CSSProperties,
@@ -18,7 +17,7 @@ function Pagina({ item }: { item: Item }) {
       <QuestionCard
         pergunta={item.pergunta}
         rotate={-2}
-        className="w-full max-w-[420px] max-lg:text-[24px]! lg:w-[88%]"
+        className="w-full max-w-[420px] lg:w-[88%]"
       />
     );
   }
@@ -28,7 +27,7 @@ function Pagina({ item }: { item: Item }) {
       <QuestionCard
         pergunta={item.pergunta}
         rotate={-3}
-        className="absolute right-0 bottom-0 w-[96%] max-lg:text-[24px]! lg:w-[80%]"
+        className="absolute right-0 bottom-0 w-[96%] lg:w-[80%]"
       />
     </div>
   );
@@ -46,7 +45,6 @@ export function Fichario({ itens }: { itens: Item[] }) {
     () => true,
     () => false,
   );
-  const quadroId = useId();
 
   return (
     <>
@@ -60,8 +58,7 @@ export function Fichario({ itens }: { itens: Item[] }) {
           <li key={item.pergunta}>
             <button
               type="button"
-              aria-controls={quadroId}
-              aria-current={i === ativa || undefined}
+              aria-pressed={i === ativa}
               onMouseEnter={() => setAtiva(i)}
               onFocus={() => setAtiva(i)}
               onClick={() => setAtiva(i)}
@@ -87,16 +84,12 @@ export function Fichario({ itens }: { itens: Item[] }) {
         data-entra
         style={ordem(2)}
       >
-        <div
-          id={quadroId}
-          aria-live="polite"
-          className="relative min-h-[560px]"
-        >
-          <p className="sr-only">{itens[ativa].pergunta}</p>
+        {/* O quadro ilustra a pergunta escolhida, que o botão já anuncia com aria-pressed:
+            repeti-la numa região viva só faria o leitor de tela dizer tudo duas vezes */}
+        <div aria-hidden className="relative min-h-[560px]">
           {itens.map((item, i) => (
             <div
               key={item.pergunta}
-              aria-hidden
               className={[
                 "absolute inset-0 flex items-center transition-[opacity,visibility] duration-[240ms] ease-out",
                 i === ativa ? "visible opacity-100" : "invisible opacity-0",
@@ -126,8 +119,8 @@ export function Fichario({ itens }: { itens: Item[] }) {
                   "text-destaque rounded-ed block cursor-pointer list-none py-3 font-medium",
                   "[&::-webkit-details-marker]:hidden",
                   "transition-transform duration-150 ease-out active:translate-y-px",
-                  "before:rounded-ed before:bg-polen relative before:absolute before:top-[0.62em] before:-left-4 before:size-2 before:transition-opacity before:duration-200 md:before:-left-6",
-                  "before:opacity-0 group-open:before:opacity-100",
+                  // no celular a margem é estreita demais para o marcador: o cartão aberto já diz qual é
+                  "relative",
                   "focus-visible:outline-polen focus-visible:outline-2 focus-visible:outline-offset-2",
                 ].join(" ")}
               >

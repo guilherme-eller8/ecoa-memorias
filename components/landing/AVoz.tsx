@@ -43,7 +43,7 @@ export function AVoz() {
         style={ordem(2)}
       >
         <p
-          className="font-mao absolute top-0 right-[12%] z-10 m-0 text-[clamp(26px,2.2vw,32px)] leading-none md:right-[9%]"
+          className="font-mao text-destaque absolute top-0 right-[12%] z-10 m-0 leading-none md:right-[9%]"
           aria-hidden
         >
           aponte e ouça
@@ -80,7 +80,7 @@ export function AVoz() {
             titulo="A casa da Rua Bahia"
             duracao="2:14"
             src={src}
-            className="absolute top-[calc(100%-56px)] right-[-1%] w-[clamp(118px,20%,160px)] md:right-[-4%]"
+            className="absolute top-[calc(100%-56px)] right-[2%] w-[clamp(118px,20%,160px)]"
           />
         </div>
       </div>

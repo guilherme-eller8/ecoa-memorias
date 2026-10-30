@@ -1,8 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   cacheComponents: true,
+  // O CSS vai no HTML: o texto do hero pinta sem esperar duas folhas bloqueantes (LCP no celular)
+  experimental: { inlineCss: true },
   partialPrefetching: true,
   turbopack: {
     rules: {

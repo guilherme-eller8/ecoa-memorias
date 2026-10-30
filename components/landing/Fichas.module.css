@@ -120,15 +120,16 @@
   }
 }
 
-/* A resposta abre na altura real do texto e empurra as fichas de baixo */
+/* A resposta abre na altura real do texto e empurra as fichas de baixo.
+ * Sem JS, todas ficam abertas: só com JS as outras fecham. */
 .painel {
   display: grid;
-  grid-template-rows: 0fr;
+  grid-template-rows: 1fr;
   transition: grid-template-rows 360ms var(--ease-out);
 }
 
-.ficha[data-aberta] .painel {
-  grid-template-rows: 1fr;
+:global(.js) .ficha:not([data-aberta]) .painel {
+  grid-template-rows: 0fr;
 }
 
 .painelMiolo {
@@ -139,8 +140,11 @@
 .resposta {
   max-width: 52ch;
   padding: 14px 20px 8px;
-  opacity: 0;
   transition: opacity 200ms ease;
+}
+
+:global(.js) .ficha:not([data-aberta]) .resposta {
+  opacity: 0;
 }
 
 @media (min-width: 768px) {

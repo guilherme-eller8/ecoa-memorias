@@ -32,7 +32,8 @@ export function Foto({
   const caminho = fotoOuSepia(src);
   const miolo =
     caminho === "sepia" ? (
-      <span className="photo-sepia" role="img" aria-label={alt} />
+      // Sem a foto, a descrição não vale: o leitor de tela não ouve o que ninguém vê
+      <span className="photo-sepia" aria-hidden />
     ) : (
       <Image
         src={caminho}

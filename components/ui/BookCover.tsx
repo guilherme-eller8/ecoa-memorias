@@ -50,6 +50,11 @@ const AUTOR = 4.4;
 const SELO = 3.6;
 const LOMBADA = 2.9;
 
+/** Corpo que cabe na largura: nomes longos diminuem em vez de passar da margem. */
+function corpoQueCabe(base: number, texto: string, caracteres: number) {
+  return base * Math.min(1, caracteres / Math.max(texto.length, 1));
+}
+
 /** Quebra o título em até duas linhas equilibradas. */
 function linhasDoTitulo(titulo: string, max = 18): string[] {
   if (titulo.length <= max) return [titulo];
@@ -171,12 +176,16 @@ export function BookCover({
               <text
                 transform={`translate(${ESPESSURA / 2 - LOMBADA * 0.33} ${ALTURA / 2}) rotate(90)`}
                 textAnchor="middle"
-                fontSize={LOMBADA}
+                fontSize={corpoQueCabe(LOMBADA, `${title}  ${author}`, 46)}
                 className={s.tipo}
                 style={{ fontVariationSettings: '"opsz" 12' }}
               >
                 {title}
-                <tspan dx={LOMBADA * 0.9} fontStyle="italic">
+                <tspan
+                  dx="0.9em"
+                  fontStyle="italic"
+                  style={{ fontFamily: "var(--font-italico)" }}
+                >
                   {author}
                 </tspan>
               </text>
@@ -254,9 +263,12 @@ export function BookCover({
                   <text
                     x={M}
                     y={yAutor}
-                    fontSize={AUTOR}
+                    fontSize={corpoQueCabe(AUTOR, author, 30)}
                     fontStyle="italic"
-                    style={{ fontVariationSettings: '"opsz" 16' }}
+                    style={{
+                      fontFamily: "var(--font-italico)",
+                      fontVariationSettings: '"opsz" 16',
+                    }}
                   >
                     {author}
                   </text>

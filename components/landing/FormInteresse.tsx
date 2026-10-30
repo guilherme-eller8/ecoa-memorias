@@ -6,12 +6,10 @@ import { BookCover } from "@/components/ui/BookCover";
 import { Button } from "@/components/ui/Button";
 import { CAPA_PADRAO, CAPAS } from "@/components/ui/capas";
 import { useCapa } from "@/lib/capa";
-import {
-  leadSchema,
-  mascararWhatsApp,
-  PARA_QUEM,
-  submitLead,
-} from "@/lib/leads";
+import { mascararWhatsApp, PARA_QUEM, submitLead } from "@/lib/leads";
+
+// O zod só chega quando alguém começa a preencher: fora do bundle da primeira tela
+const carregarSchema = () => import("@/lib/lead-schema");
 
 type Campo = "nome" | "whatsapp" | "para_quem";
 type Erros = Partial<Record<Campo, string>>;
@@ -50,6 +48,7 @@ export function FormInteresse() {
   async function enviar(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const dados = Object.fromEntries(new FormData(e.currentTarget));
+    const { leadSchema } = await carregarSchema();
     const r = leadSchema.safeParse(dados);
     if (!r.success) {
       const novos: Erros = {};
@@ -128,6 +127,7 @@ export function FormInteresse() {
     <form
       ref={form}
       onSubmit={enviar}
+      onFocus={() => void carregarSchema()}
       noValidate
       aria-labelledby={`${id}-titulo`}
       className="relative"
@@ -195,16 +195,19 @@ export function FormInteresse() {
 
       {capa.usada ? (
         <div className="mt-7 flex items-center gap-4">
-          <BookCover
-            color={capa.cor}
-            title={CAPA_PADRAO.title}
-            author={autorCapa}
-            size="sm"
-            turn={18}
-            className="shrink-0 [--w:96px]!"
-          />
+          {/* O texto ao lado já diz nome e cor: a miniatura é só para os olhos */}
+          <div aria-hidden className="shrink-0">
+            <BookCover
+              color={capa.cor}
+              title={CAPA_PADRAO.title}
+              author={autorCapa}
+              size="sm"
+              turn={18}
+              className="[--w:96px]!"
+            />
+          </div>
           <p className="text-pequeno">
-            <span className="block italic">{autorCapa}</span>
+            <span className="font-italico block italic">{autorCapa}</span>
             <span className="block">capa {CAPAS[capa.cor].nome}</span>
           </p>
           <input type="hidden" name="capa_nome" value={capa.nome.trim()} />

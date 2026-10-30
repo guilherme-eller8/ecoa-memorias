@@ -118,11 +118,11 @@ export function ComoFunciona() {
   return (
     <Section id="como-funciona" title="Tudo acontece no WhatsApp." grid>
       <Trilha marcas={["Dia 1", `Semana ${SEMANAS_DE_PERGUNTAS}`, "Natal"]}>
-        <ol className="flex w-max gap-5 lg:grid lg:w-auto lg:grid-cols-4 lg:gap-8">
+        <ol className="flex w-max gap-5 md:grid md:w-auto md:grid-cols-2 md:gap-x-8 md:gap-y-16 lg:grid-cols-4 lg:gap-8">
           {MOMENTOS.map((m, i) => (
             <li
               key={m.titulo}
-              className="w-[78vw] max-w-[360px] shrink-0 snap-start lg:w-auto lg:max-w-none"
+              className="w-[78vw] max-w-[360px] shrink-0 snap-start md:w-auto md:max-w-none"
               data-entra
               style={ordem(1 + i)}
             >

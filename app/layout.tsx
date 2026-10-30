@@ -10,14 +10,25 @@ const newsreader = Newsreader({
   variable: "--font-newsreader",
   subsets: ["latin"],
   axes: ["opsz"],
-  style: ["normal", "italic"],
   display: "swap",
 });
 
+// O itálico (só nomes de pessoas) vem à parte e sem preload: são 147 KB a menos antes do LCP
+const newsreaderItalico = Newsreader({
+  variable: "--font-newsreader-italico",
+  subsets: ["latin"],
+  axes: ["opsz"],
+  style: "italic",
+  display: "swap",
+  preload: false,
+});
+
+// Só nos bilhetes, longe da primeira tela: não disputa o carregamento com a Newsreader
 const caveat = Caveat({
   variable: "--font-caveat",
   subsets: ["latin"],
   display: "swap",
+  preload: false,
 });
 
 const TITULO = `${MARCA} · Livro de memórias contado por áudio`;
@@ -51,14 +62,17 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="pt-BR"
-      className={`${newsreader.variable} ${caveat.variable}`}
+      className={`${newsreader.variable} ${newsreaderItalico.variable} ${caveat.variable}`}
       suppressHydrationWarning
     >
       <head>
-        {/* Com JS, o movimento pode esconder o que ainda vai entrar; sem JS, nada some */}
+        {/* Com JS, o movimento pode esconder o que ainda vai entrar; sem JS, nada some.
+            Depois do load, o itálico e a Caveat (ver globals.css) */}
         <script
           dangerouslySetInnerHTML={{
-            __html: "document.documentElement.classList.add('js')",
+            __html:
+              "var h=document.documentElement;h.classList.add('js');" +
+              "addEventListener('load',function(){h.classList.add('fontes-tardias')})",
           }}
         />
       </head>
@@ -66,7 +80,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         {children}
         <Entrada />
         <CliquesCta />
-        <Analytics />
+        {/* Fora da Vercel o script não existe e vira 404 no console */}
+        {process.env.VERCEL && <Analytics />}
       </body>
     </html>
   );

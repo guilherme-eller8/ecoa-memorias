@@ -20,7 +20,7 @@ export function QuestionCard({
     <p
       className={[
         "rounded-ed bg-papel text-tinta px-5 pt-4 pb-6 text-left font-medium",
-        "text-[clamp(26px,1.95vw,28px)] leading-[1.15] tracking-[-0.01em]",
+        "text-destaque leading-[1.15] tracking-[-0.01em]",
         className,
       ]
         .filter(Boolean)

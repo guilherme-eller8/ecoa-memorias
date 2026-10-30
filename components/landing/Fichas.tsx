@@ -1,6 +1,11 @@
 "use client";
 
-import { useId, useState, type CSSProperties } from "react";
+import {
+  useId,
+  useState,
+  useSyncExternalStore,
+  type CSSProperties,
+} from "react";
 import { CAPAS, type CorCapa } from "@/components/ui/capas";
 import { Section } from "@/components/ui/Section";
 import { formatarData } from "@/lib/config";
@@ -81,12 +86,20 @@ const RODIZIO: CorCapa[] = [
 // A aba de cada ficha anda um passo para a direita, como num fichário de verdade.
 const PASSOS_ABA = 5;
 
+const nada = () => () => {};
+
 /**
  * Perguntas frequentes como fichas de arquivo: cartões nas cores das capas, empilhados,
  * cada um com a aba recortada. Uma aberta por vez; a primeira já vem aberta do servidor.
+ * Sem JS, todas as respostas ficam à vista: só depois de montar as outras fecham.
  */
 export function Fichas() {
   const [aberta, setAberta] = useState<number | null>(0);
+  const montado = useSyncExternalStore(
+    nada,
+    () => true,
+    () => false,
+  );
   const id = useId();
 
   return (
@@ -104,6 +117,8 @@ export function Fichas() {
         {FICHAS.map((f, i) => {
           const cor = RODIZIO[i % RODIZIO.length];
           const aberto = aberta === i;
+          // Antes de montar (e sem JS) nenhuma resposta fica fora de alcance
+          const alcancavel = !montado || aberto;
           const botaoId = `${id}-b${i}`;
           const painelId = `${id}-p${i}`;
           return (
@@ -126,11 +141,14 @@ export function Fichas() {
                     id={botaoId}
                     type="button"
                     className={s.botao}
-                    aria-expanded={aberto}
+                    aria-expanded={alcancavel}
                     aria-controls={painelId}
                     onClick={() => setAberta(aberto ? null : i)}
                   >
-                    <span className={s.aba}>{f.aba}</span>
+                    {/* O tema é sinalização visual: o nome do botão é a pergunta */}
+                    <span className={s.aba} aria-hidden>
+                      {f.aba}
+                    </span>
                     <span className={s.pergunta}>{f.pergunta}</span>
                   </button>
                 </h3>
@@ -139,7 +157,7 @@ export function Fichas() {
                   role="region"
                   aria-labelledby={botaoId}
                   className={s.painel}
-                  inert={!aberto}
+                  inert={!alcancavel}
                 >
                   <div className={s.painelMiolo}>
                     <p className={s.resposta}>{f.resposta}</p>

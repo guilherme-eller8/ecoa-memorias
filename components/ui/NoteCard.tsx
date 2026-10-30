@@ -34,7 +34,7 @@ export function NoteCard({
     >
       <blockquote
         className={[
-          "font-mao m-0 text-[clamp(24px,2vw,30px)] leading-[1.15]",
+          "font-mao text-destaque m-0 leading-[1.15]",
           corte === "direita" && "w-[135%] whitespace-nowrap",
           corte === "baixo" && "max-h-[1.9em] overflow-hidden",
         ]

@@ -37,6 +37,7 @@
 
 .campo::placeholder {
   color: var(--tinta-2);
+  font-family: var(--font-italico);
   font-style: italic;
 }
 
@@ -90,7 +91,7 @@
 
 /* Focar o campo ou uma lombada também entreabre a capa, como o mouse */
 .live:focus-within [data-live] {
-  --abre: -58deg;
+  --abre: -46deg;
 }
 
 .lombadaFilete {

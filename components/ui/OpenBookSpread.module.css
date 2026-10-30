@@ -112,6 +112,7 @@
 
 .ano {
   margin-top: 0.6cqi;
+  font-family: var(--font-italico);
   font-style: italic;
 }
 

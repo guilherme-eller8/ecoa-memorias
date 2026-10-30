@@ -2,11 +2,13 @@
 
 import { useId, type CSSProperties } from "react";
 import { definirCor, definirNome, useCapa } from "@/lib/capa";
+import { NOME_CAPA_MAX } from "@/lib/lead-campos";
 import { BookCover } from "./BookCover";
 import { CAPA_PADRAO, CAPAS, CORES_CAPA } from "./capas";
 import s from "./LiveCover.module.css";
 
-export const NOME_MAX = 28;
+// Cabe um nome completo ("Maria Aparecida dos Santos Oliveira"): o letreiro se ajusta
+export const NOME_MAX = NOME_CAPA_MAX;
 
 type LiveCoverProps = {
   className?: string;

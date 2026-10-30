@@ -29,8 +29,11 @@
   width: var(--w);
   max-width: 100%;
   container-type: inline-size;
-  /* espaço para a lombada que gira na direção de quem olha e para a sombra no chão */
-  padding: 2cqw 2cqw 9cqw 7cqw;
+  /* espaço para a lombada que gira na direção de quem olha e para a sombra no chão.
+   * Em --w, não em cqw: no próprio padding, cqw mede o container de fora (a seção inteira) e
+   * zerava a capa pequena do formulário no desktop. */
+  padding: calc(var(--w) * 0.02) calc(var(--w) * 0.02) calc(var(--w) * 0.09)
+    calc(var(--w) * 0.07);
 }
 
 .livro[data-escura] {
@@ -53,7 +56,7 @@
   --w: 340px;
 }
 .livro[data-size="xl"] {
-  --w: clamp(300px, 42vw, 540px);
+  --w: clamp(300px, 38vw, 520px);
 }
 
 .livro[data-open] {
@@ -277,14 +280,19 @@
 }
 
 /* ── Movimento ─────────────────────────────────────────────────────── */
+/* No hero, a capa quase de frente e só entreaberta: lê-se como livro em pé, não como placa
+ * caindo. O hover e o foco abrem de verdade. */
 .livro[data-live] {
+  --giro: 11deg;
+  --incl: -6deg;
+  --abre: -22deg;
   /* a capa aberta vem na direção de quem olha: espaço para ela antes dos controles */
-  padding-bottom: 22cqw;
+  padding-bottom: calc(var(--w) * 0.13);
 }
 
 .livro[data-live]:hover,
 .livro[data-live]:focus-within {
-  --abre: -58deg;
+  --abre: -46deg;
 }
 
 /*

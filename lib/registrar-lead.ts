@@ -6,13 +6,12 @@ import { Resend } from "resend";
 import { CAPA_PADRAO, CAPAS } from "@/components/ui/capas";
 import { EDICAO, WHATSAPP_NUMERO } from "./config";
 // Ciclo com ./leads: os dois lados só usam o que importam dentro de funções, nunca no topo.
+import { entradaLeadSchema, type EntradaLead } from "./lead-schema";
 import {
-  entradaLeadSchema,
   linkWhatsApp,
   mascararWhatsApp,
   mensagemPrimeiroContato,
   mensagemWhatsApp,
-  type EntradaLead,
   type ResultadoLead,
 } from "./leads";
 import { supabaseServidor } from "./supabase";

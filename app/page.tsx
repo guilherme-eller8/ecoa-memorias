@@ -13,8 +13,15 @@ import { Rodape } from "@/components/landing/Rodape";
 export default function Home() {
   return (
     <div>
+      {/* Primeira parada de Tab: pula o cabeçalho e o menu */}
+      <a
+        href="#conteudo"
+        className="bg-papel rounded-ed sr-only z-50 px-4 focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:inline-flex focus:min-h-12 focus:items-center"
+      >
+        Pular para o conteúdo
+      </a>
       <Cabecalho />
-      <main>
+      <main id="conteudo" tabIndex={-1} className="focus:outline-none">
         <Hero />
         <OQueVoceRecebe />
         <ComoFunciona />

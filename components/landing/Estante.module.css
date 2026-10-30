@@ -62,6 +62,7 @@
   max-block-size: 100%;
   overflow: hidden;
   writing-mode: vertical-rl;
+  font-family: var(--font-italico);
   font-style: italic;
   font-size: 13px;
   line-height: 1;

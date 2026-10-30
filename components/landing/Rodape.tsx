@@ -3,10 +3,15 @@ import { Container } from "@/components/ui/Container";
 import {
   CIDADE,
   CNPJ,
+  CNPJ_PRONTO,
   EMAIL_CONTATO,
   MARCA,
   WHATSAPP_NUMERO,
+  WHATSAPP_PRONTO,
 } from "@/lib/config";
+
+// Links soltos, não no meio de texto: alvo de 48px
+const ALVO = "inline-flex! min-h-12 items-center";
 
 // A contracapa: o nome na largura toda, os contatos e os créditos.
 export function Rodape() {
@@ -26,30 +31,38 @@ export function Rodape() {
         </div>
         <div className="mt-10 grid gap-x-8 gap-y-6 md:mt-14 md:grid-cols-12">
           <ul className="grid md:col-span-7 md:flex md:flex-wrap md:gap-x-8 [&>li]:flex [&>li]:min-h-12 [&>li]:items-center">
+            {WHATSAPP_PRONTO && (
+              <li>
+                <Button
+                  variant="link"
+                  href={`https://wa.me/${WHATSAPP_NUMERO}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={ALVO}
+                >
+                  WhatsApp
+                </Button>
+              </li>
+            )}
             <li>
               <Button
                 variant="link"
-                href={`https://wa.me/${WHATSAPP_NUMERO}`}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={`mailto:${EMAIL_CONTATO}`}
+                className={ALVO}
               >
-                WhatsApp
-              </Button>
-            </li>
-            <li>
-              <Button variant="link" href={`mailto:${EMAIL_CONTATO}`}>
                 {EMAIL_CONTATO}
               </Button>
             </li>
             <li>
-              <Button variant="link" href="/privacidade">
+              <Button variant="link" href="/privacidade" className={ALVO}>
                 Privacidade
               </Button>
             </li>
           </ul>
           <div className="text-pequeno md:col-span-5 md:self-center md:text-right">
             <p>
-              {MARCA} · CNPJ {CNPJ}
+              {MARCA}
+              {CNPJ_PRONTO && ` · CNPJ ${CNPJ}`}
             </p>
             <p>Feito com cuidado em {CIDADE}.</p>
           </div>

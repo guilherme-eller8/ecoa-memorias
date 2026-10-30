@@ -1,22 +1,13 @@
-import { z } from "zod";
-import { CAPA_PADRAO, CAPAS, CORES_CAPA } from "@/components/ui/capas";
+import { CAPA_PADRAO, CAPAS } from "@/components/ui/capas";
 import { MARCA, WHATSAPP_NUMERO } from "./config";
+import type { ParaQuem } from "./lead-campos";
+import type { Lead } from "./lead-schema";
 import { registrarLead } from "./registrar-lead";
 
-// Sem "server-only": o formulário valida no cliente, e a Server Action reusa o mesmo schema.
+// O schema mora em ./lead-schema: o formulário o carrega só no envio.
 
-export const PARA_QUEM = [
-  "pai",
-  "mãe",
-  "avô",
-  "avó",
-  "tio",
-  "tia",
-  "amigo",
-  "outra pessoa",
-] as const;
-
-export type ParaQuem = (typeof PARA_QUEM)[number];
+export { NOME_CAPA_MAX, PARA_QUEM, type ParaQuem } from "./lead-campos";
+export type { EntradaLead, Lead } from "./lead-schema";
 
 const ARTIGO: Record<ParaQuem, string> = {
   pai: "meu pai",
@@ -40,49 +31,6 @@ const ARTIGO_SEU: Record<ParaQuem, string> = {
   amigo: "o seu amigo",
   "outra pessoa": "outra pessoa",
 };
-
-export const NOME_CAPA_MAX = 28;
-
-export const leadSchema = z.object({
-  nome: z
-    .string()
-    .trim()
-    .min(2, "Escreva o seu nome.")
-    .max(80, "Use até 80 caracteres."),
-  whatsapp: z
-    .string()
-    .transform((v) => v.replace(/\D/g, ""))
-    .pipe(
-      z
-        .string()
-        .regex(
-          /^\d{10,11}$/,
-          "Confira o número, com DDD. Ex.: (31) 99999-9999",
-        ),
-    ),
-  para_quem: z.enum(PARA_QUEM, "Escolha para quem seria o livro."),
-  capa_nome: z.string().trim().max(NOME_CAPA_MAX).optional(),
-  capa_cor: z.enum(CORES_CAPA).optional(),
-  // Honeypot: gente de verdade não vê o campo, então ele chega vazio.
-  site: z.string().max(0).optional(),
-});
-
-export type Lead = z.output<typeof leadSchema>;
-
-const utm = z.string().trim().max(200).optional();
-
-/**
- * O que a Server Action recebe. O honeypot aqui aceita texto, para a action poder descartar em
- * silêncio em vez de devolver erro de validação a um robô.
- */
-export const entradaLeadSchema = leadSchema.extend({
-  site: z.string().optional(),
-  utm_source: utm,
-  utm_medium: utm,
-  utm_campaign: utm,
-});
-
-export type EntradaLead = z.input<typeof entradaLeadSchema>;
 
 /** "31999998888" → "(31) 99999-8888", também durante a digitação. */
 export function mascararWhatsApp(valor: string): string {

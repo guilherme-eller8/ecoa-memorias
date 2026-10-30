@@ -44,15 +44,16 @@ export function Hero() {
           </ul>
         </div>
 
-        {/* No desktop, a capa vai à direita e o campo e as lombadas descem para a coluna do texto */}
-        <div className="col-span-12 lg:contents">
-          <LiveCover className="md:flex-row! md:items-end! md:gap-8! lg:contents! lg:[&>div]:col-span-6 lg:[&>div]:col-start-1 lg:[&>div]:row-start-4 lg:[&>div]:self-start lg:[&>div]:pt-10 lg:[&>figure]:col-span-6 lg:[&>figure]:col-start-7 lg:[&>figure]:row-[2/6] lg:[&>figure]:justify-self-end lg:[&>figure]:pt-4" />
-        </div>
-
+        {/* Antes da capa no DOM: no celular o botão fica na primeira tela, e o foco segue a ordem visual */}
         <div className="col-span-12 lg:col-span-6 lg:row-start-3 lg:pt-8">
           <Button href="#interesse" data-cta="hero">
             Tenho interesse
           </Button>
+        </div>
+
+        {/* No desktop, a capa vai à direita e o campo e as lombadas descem para a coluna do texto */}
+        <div className="col-span-12 lg:contents">
+          <LiveCover className="md:flex-row! md:items-end! md:gap-8! lg:contents! lg:[&>div]:col-span-6 lg:[&>div]:col-start-1 lg:[&>div]:row-start-4 lg:[&>div]:self-start lg:[&>div]:pt-10 lg:[&>figure]:col-span-6 lg:[&>figure]:col-start-7 lg:[&>figure]:row-[2/6] lg:[&>figure]:justify-self-end lg:[&>figure]:pt-4" />
         </div>
       </Container>
     </section>

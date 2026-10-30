@@ -41,7 +41,7 @@ export function Cabecalho() {
         <Button
           href="#interesse"
           data-cta="header"
-          className="text-pequeno! min-h-11! px-4! md:min-h-12! md:px-5!"
+          className="text-pequeno! px-4! md:px-5!"
         >
           Tenho interesse
         </Button>
