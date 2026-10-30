@@ -97,7 +97,7 @@ Cartão de papel branco com uma pergunta em Newsreader de 26–30px, alinhada à
 ## 1. Cabeçalho
 - Logo Ecoa à esquerda.
 - Links: "Como funciona", "O livro", "Perguntas", "Preço".
-- Botão principal pequeno (sólido, floresta): "Tenho interesse" (→ #interesse).
+- Sem botão no cabeçalho (30/10): os CTAs ficam no hero, no colofão e no fecho.
 - Fixo ao rolar: fundo muda de polen para papel (degrau de tom). Sem borda, sem blur, sem sombra.
 - No mobile: logo e botão; os links vão para um menu simples (`<details>` ou botão com `aria-expanded`).
 
@@ -137,7 +137,7 @@ Duas colunas no desktop: título na largura de 8/12; abaixo, texto à esquerda (
 |---|---|---|
 | "Você dá a notícia." | "Você convida quem vai contar as histórias a responder às perguntas por áudio, ou texto se preferir, no WhatsApp. Depois, mandamos as boas-vindas e só começamos quando a pessoa topar. As perguntas vêm da nossa seleção ou de você." | QuestionCard "Como era a casa onde o senhor cresceu?" sobre a foto `antiga-casa` (sem a foto, só o cartão) |
 | "A resposta é um áudio. A família ouve." | "Uma pergunta por dia útil, direto no WhatsApp, sem aplicativo nem senha. Cada história gravada chega no mesmo dia a um grupo só da família." | WhatsAppChat `grupo` "Histórias do Vô": áudio de 2:14, "Capítulo 6 · A casa da Rua Bahia", reações "não sabia disso" e "que saudade dessa casa" |
-| "Você revisa antes de imprimir." | "Editamos as histórias e mandamos a prova do livro em PDF. Você lê com calma, pede os ajustes, e só imprimimos com o seu ok." | WhatsAppChat `individual` "Ecoa Memórias": "A prova do livro está pronta 📄 Leia com calma e diga o que ajustar." e a resposta "Só corrige o nome da tia: é Lurdes, com U. O resto, pode imprimir!" |
+| "Você revisa antes de imprimir." | "Editamos as histórias e mandamos a prova do livro em PDF. Você lê com calma, pede os ajustes, e só imprimimos com o seu ok." | WhatsAppChat `individual` "Ecoa Memórias": "A prova do livro está pronta, em PDF. Leia com calma e diga o que ajustar." e a resposta "Só corrige o nome da tia: é Lurdes, com U. O resto, pode imprimir!" |
 | "O livro chega antes do Natal." | "Com as histórias, as fotos e as mensagens da família, que chegam como surpresa." | BookCover vinho "Caminhos que percorri", fechada |
 
 - Linha abaixo (Newsreader 19px, tinta):
@@ -163,11 +163,9 @@ Duas colunas no desktop: título na largura de 8/12; abaixo, texto à esquerda (
 ## 6. A surpresa
 - H2: "No final, quem contou recebe uma surpresa."
 - Texto: "Duas partes fazem o livro. Uma delas, quem conta só conhece no Natal: cada mensagem da família ganha uma página, com QR code para ouvir."
-- Esquema em três partes, "+" entre as duas primeiras e seta até a terceira (no celular, empilhado):
-  - "Quem conta" · dois áudios de WhatsApp · "Responde às perguntas por áudio, no próprio ritmo."
-  - "Filhos, netos e amigos" · dois bilhetes à mão · "Mandam mensagens em segredo, em áudio ou por escrito."
-  - "O livro" · capa vinho "Histórias da nossa casa" · "Tudo junto, entregue no Natal. Quem contou as histórias só descobre ao abrir."
-- Com a foto `surpresa-ceia`, ela entra como faixa larga (21:9) abaixo do esquema.
+- Layout espelhado em relação à seção 5 (vizinhas não repetem composição): o livro aberto à esquerda (7/12), título e texto à direita (5/12).
+- O livro aberto mostra as páginas "Mensagens da família": em cada página um bilhete escrito à mão (Caveat), assinado só com o papel ("sua neta", "sua filha"), e um QR pequeno com "ouça a mensagem".
+- Faixa larga (21:9; 4:5 no celular) com a família recebendo o livro: foto `surpresa-ceia` e, por cima, o loop mudo `video/surpresa.mp4` (3,9 s, só a cena da mesa). Legenda pequena: "Imagem ilustrativa." Com movimento reduzido ou sem JS, fica a foto.
 
 ## 7. Perguntas que abrem histórias (#perguntas)
 - Campo floresta com textura de tecido; textos em polen.
@@ -182,8 +180,8 @@ Duas colunas no desktop: título na largura de 8/12; abaixo, texto à esquerda (
 - H2: "Edição de Natal 2026"
 
 À esquerda, o **colofão** (folha papel, recortada como as outras peças, sem linhas e sem caixa colorida), enxuto:
-- "R$ 397" no tamanho display; abaixo, "por livro. Frete à parte."
-- Uma linha: "Pix ou 12x de R$ 33,08 · Exemplares extras: R$ 149" (parcela calculada de `PRECO_LIVRO` / `PARCELAS_MAX`)
+- "12x de R$ 33,08" no tamanho display (parcela de `PRECO_LIVRO` / `PARCELAS_MAX`); abaixo, "sem juros no cartão, ou R$ 397 no Pix. Frete à parte."
+- Em tamanho pequeno: "Exemplares extras: R$ 149 cada"
 - Em destaque, a escassez (dita só aqui): "Só 10 vagas nesta edição. Inscrições até 7 de novembro."
 - A garantia, no fim da folha: "Se a primeira história não emocionar a família, devolvemos 100%."
 
@@ -258,6 +256,6 @@ Política LGPD simples e clara:
 
 ## Analytics
 - Vercel Analytics.
-- Todos os botões de interesse com `data-cta` único (header, hero, hero-whatsapp, formulario, fecho).
+- Todos os botões de interesse com `data-cta` único (hero, hero-whatsapp, formulario, rodape-whatsapp, fecho).
 - Evento `capa_personalizada` (uma vez por visita, quando o visitante troca a cor), com a propriedade `cor`.
 - Evento `lead_enviado` no sucesso do formulário, com as propriedades `usou_capa` e `status` (`gravado` ou `fallback`).

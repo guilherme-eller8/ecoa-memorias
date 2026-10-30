@@ -166,3 +166,19 @@
     visibility: hidden;
   }
 }
+
+/* Miolo pronto (as mensagens da família): a folha esquerda lê de cima para baixo, como a direita */
+.mioloEsquerda {
+  display: block;
+  aspect-ratio: var(--proporcao, 1);
+  padding: 4cqi 4.5cqi 5.5cqi 5cqi;
+  font-size: max(13px, 1.75cqi);
+  line-height: 1.42;
+}
+
+/* No celular a folha esquerda fica quase toda fora da tela: o bilhete não aparece cortado */
+@media (max-width: 767px) {
+  .mioloEsquerda > :not(.folio) {
+    visibility: hidden;
+  }
+}
