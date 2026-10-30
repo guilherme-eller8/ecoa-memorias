@@ -65,7 +65,7 @@ export function OQueVoceRecebe() {
         data-entra
         style={ordem(1)}
       >
-        <dl className={s.ficha}>
+        <dl className={`folha-recortada ${s.ficha}`}>
           {ITENS.map((item) => (
             <div key={item.nome} className={s.item}>
               <dt className={s.nome}>{item.nome}</dt>

@@ -5,3 +5,8 @@ import { join } from "node:path";
 export function fotoOuSepia(src: string): string {
   return existsSync(join(process.cwd(), "public", src)) ? src : "sepia";
 }
+
+/** Se um arquivo existe em /public (ex.: o áudio de amostra). */
+export function existeEmPublic(src: string): boolean {
+  return existsSync(join(process.cwd(), "public", src));
+}
