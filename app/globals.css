@@ -1,0 +1,168 @@
+@import "tailwindcss";
+
+/* Tokens do design system (CLAUDE.md). A página é o próprio livro:
+   um fundo (pólen), uma tinta, um acento (floresta). */
+:root {
+  /* interface */
+  --polen: #f5efe4;
+  --papel: #fffdf8;
+  --tinta: #26211d;
+  --tinta-2: #6e6259;
+  --floresta: #1f3d33;
+
+  /* só nas capas (tecidos do livro) */
+  --vinho: #6e2a2a;
+  --rosa-antigo: #c9a49a;
+  --nevoa: #a9c3cf;
+  --petroleo: #3f7a8c;
+
+  /* só no hot stamping das capas e no logo */
+  --dourado: #b08d57;
+
+  /* forma: o canto da capa dura */
+  --raio: 2px;
+
+  /* escala tipográfica: cinco tamanhos, nada além */
+  --fs-display: clamp(2.4rem, 7vw, 6rem);
+  --fs-h2: clamp(2rem, 4.2vw, 3.5rem);
+  --fs-destaque: clamp(1.5rem, 2.4vw, 2rem);
+  --fs-corpo: 1.1875rem; /* 19px */
+  --fs-pequeno: 0.9375rem; /* 15px */
+
+  /* layout */
+  --margem: 20px;
+  --largura-max: 1280px;
+
+  /* grão do papel pólen, ~3,5% */
+  --grao-papel: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .15 0 0 0 0 .13 0 0 0 0 .11 1 0 0 0 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='.07'/%3E%3C/svg%3E");
+}
+
+@media (min-width: 768px) {
+  :root {
+    --margem: 32px;
+  }
+}
+
+/* Só os tokens da marca viram utilitários; as paletas e escalas padrão do
+   Tailwind saem para ninguém escorregar num azul, numa sombra ou num rounded-xl. */
+@theme inline {
+  --color-*: initial;
+  --color-polen: var(--polen);
+  --color-papel: var(--papel);
+  --color-tinta: var(--tinta);
+  --color-tinta-2: var(--tinta-2);
+  --color-floresta: var(--floresta);
+  --color-vinho: var(--vinho);
+  --color-rosa-antigo: var(--rosa-antigo);
+  --color-nevoa: var(--nevoa);
+  --color-petroleo: var(--petroleo);
+  --color-dourado: var(--dourado);
+
+  --font-*: initial;
+  --font-serif: var(--font-newsreader), Georgia, serif;
+  --font-bilhete: var(--font-caveat), cursive;
+  --font-ui:
+    system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    sans-serif;
+
+  --text-*: initial;
+  --text-display: var(--fs-display);
+  --text-display--line-height: 1;
+  --text-display--letter-spacing: -0.02em;
+  --text-h2: var(--fs-h2);
+  --text-h2--line-height: 1.05;
+  --text-h2--letter-spacing: -0.01em;
+  --text-destaque: var(--fs-destaque);
+  --text-destaque--line-height: 1.25;
+  --text-corpo: var(--fs-corpo);
+  --text-corpo--line-height: 1.6;
+  --text-pequeno: var(--fs-pequeno);
+  --text-pequeno--line-height: 1.5;
+
+  --radius-*: initial;
+  --radius-capa: var(--raio);
+
+  --shadow-*: initial;
+  --inset-shadow-*: initial;
+  --drop-shadow-*: initial; /* taste-skill-ignore: zera a escala, não aplica sombra */
+  --text-shadow-*: initial;
+}
+
+/* Moldura comum: margens externas iguais, largura máxima de 1280px. */
+@utility moldura {
+  width: min(100% - 2 * var(--margem), var(--largura-max));
+  margin-inline: auto;
+}
+
+/* Grid único de 12 colunas. */
+@utility grade {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--margem);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background: var(--polen) var(--grao-papel) repeat;
+    color: var(--tinta);
+    font-family: var(--font-serif);
+    font-size: var(--fs-corpo);
+    line-height: 1.6;
+    font-weight: 400;
+    font-optical-sizing: auto;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2 {
+    font-weight: 400;
+    text-wrap: balance;
+  }
+
+  h1 {
+    font-size: var(--fs-display);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  h2 {
+    font-size: var(--fs-h2);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--floresta);
+    color: var(--polen);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--floresta);
+    outline-offset: 3px;
+  }
+
+  /* Interfaces de outro app (WhatsApp, player) usam a pilha do sistema. */
+  [data-ui] {
+    font-family: var(--font-ui);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

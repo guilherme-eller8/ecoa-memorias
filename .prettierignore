@@ -1,0 +1,7 @@
+.claude/
+docs/
+CLAUDE.md
+.next/
+node_modules/
+package-lock.json
+.taste-skill/
