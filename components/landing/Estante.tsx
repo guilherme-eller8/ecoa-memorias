@@ -5,35 +5,15 @@ import { CAPA_PADRAO, CAPAS, type CorCapa } from "@/components/ui/capas";
 import { useCapa } from "@/lib/capa";
 import s from "./Estante.module.css";
 
-type Lombada = { nome: string; cor: CorCapa; altura: number };
+type Lombada = { titulo: string; cor: CorCapa; altura: number };
 
-// As capas de exemplo da spec, em pé (nomes fictícios). Altura em % da maior.
+// As capas de exemplo da spec, em pé, com o título na lombada. Altura em % da maior.
 const LOMBADAS: Lombada[] = [
-  {
-    nome: "Antônio Ferreira",
-    cor: "vinho",
-    altura: 92,
-  },
-  {
-    nome: "Lourdes Almeida",
-    cor: "nevoa",
-    altura: 100,
-  },
-  {
-    nome: "José Carlos Ribeiro",
-    cor: "floresta",
-    altura: 96,
-  },
-  {
-    nome: "Maria Helena Costa",
-    cor: "petroleo",
-    altura: 90,
-  },
-  {
-    nome: "Geraldo Souza",
-    cor: "rosa-antigo",
-    altura: 98,
-  },
+  { titulo: "Caminhos que percorri", cor: "vinho", altura: 92 },
+  { titulo: "Da roça à cidade", cor: "nevoa", altura: 100 },
+  { titulo: "O que a vida me ensinou", cor: "floresta", altura: 96 },
+  { titulo: "Histórias da nossa casa", cor: "petroleo", altura: 90 },
+  { titulo: "Memórias de estrada", cor: "rosa-antigo", altura: 98 },
 ];
 
 function LombadaEmPe({ l, sua }: { l: Lombada; sua?: boolean }) {
@@ -51,35 +31,25 @@ function LombadaEmPe({ l, sua }: { l: Lombada; sua?: boolean }) {
       }
     >
       <span className={s.filete} />
-      {/* Na lombada estreita cabe o nome: é ele que se procura na estante */}
-      <span className={s.letreiro}>{l.nome}</span>
+      <span className={s.letreiro}>{l.titulo}</span>
     </li>
   );
 }
 
 /**
- * As cinco capas como lombadas numa estante. Se a capa ao vivo do hero foi usada,
- * o livro de quem visita entra na fileira, no meio delas.
+ * As cinco capas como lombadas numa estante. Se a cor foi escolhida na capa do hero,
+ * esse livro sai um pouco da fileira, no meio dela.
  */
 export function Estante() {
   const capa = useCapa();
   const sua: Lombada | null = capa.usada
-    ? {
-        nome: capa.nome.trim() || CAPA_PADRAO.author,
-        cor: capa.cor,
-        altura: 96,
-      }
+    ? { titulo: CAPA_PADRAO.title, cor: capa.cor, altura: 96 }
     : null;
   const fileira = sua ? LOMBADAS.filter((l) => l.cor !== sua.cor) : LOMBADAS;
   const meio = Math.ceil(fileira.length / 2);
 
   return (
     <div className={s.estante}>
-      <p className="sr-only">
-        {sua
-          ? `Uma estante com livros de memórias, entre eles o de ${sua.nome}.`
-          : "Uma estante com cinco livros de memórias, um de cada cor."}
-      </p>
       <ul className={s.fileira} aria-hidden>
         {fileira.slice(0, meio).map((l) => (
           <LombadaEmPe key={l.cor} l={l} />
@@ -90,6 +60,9 @@ export function Estante() {
         ))}
       </ul>
       <div className={s.prateleira} aria-hidden />
+      <p className="text-pequeno mt-6">
+        Cinco cores de tecido. A próxima pode ser a da sua família.
+      </p>
     </div>
   );
 }

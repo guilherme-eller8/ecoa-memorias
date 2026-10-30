@@ -2,22 +2,15 @@ import type { CSSProperties } from "react";
 import { BookCover } from "@/components/ui/BookCover";
 import { CAPA_PADRAO, CORES_CAPA } from "@/components/ui/capas";
 import { Section } from "@/components/ui/Section";
-import {
-  FORMATO_LIVRO,
-  HISTORIAS_MAX,
-  MENSAGENS_MAX,
-  PAGINAS_LIVRO,
-} from "@/lib/config";
+import { FORMATO_LIVRO, IMAGES } from "@/lib/config";
+import { existeEmPublic } from "@/lib/imagens";
 import s from "./OQueVoceRecebe.module.css";
 
 const ITENS = [
+  { nome: "Livro de capa dura em papel encorpado", valor: FORMATO_LIVRO },
   {
-    nome: "Livro de capa dura em papel encorpado",
-    valor: `${FORMATO_LIVRO} · ${PAGINAS_LIVRO} páginas`,
-  },
-  {
-    nome: "Histórias contadas por áudio, editadas com cuidado para manter o jeito de falar",
-    valor: `até ${HISTORIAS_MAX}`,
+    nome: "Histórias contadas por áudio, editadas sem perder o jeito de falar",
+    valor: "no ritmo da família",
   },
   { nome: "Fotos da família ao longo dos capítulos", valor: "incluídas" },
   {
@@ -26,10 +19,10 @@ const ITENS = [
   },
   {
     nome: "Mensagens de filhos, netos e amigos, em áudio ou texto, reunidas em segredo",
-    valor: `até ${MENSAGENS_MAX}`,
+    valor: "de toda a família",
   },
   {
-    nome: "Capa com foto, título e cor à escolha",
+    nome: "Capa com foto e cor à escolha",
     valor: `${CORES_CAPA.length} cores`,
   },
   { nome: "Os áudios originais, entregues à família", valor: "para sempre" },
@@ -54,7 +47,11 @@ export function OQueVoceRecebe() {
         <BookCover
           color={CAPA_PADRAO.cor}
           title={CAPA_PADRAO.title}
-          author={CAPA_PADRAO.author}
+          photo={
+            existeEmPublic(IMAGES.antigaFlores)
+              ? IMAGES.antigaFlores
+              : undefined
+          }
           size="xl"
           turn={24}
         />

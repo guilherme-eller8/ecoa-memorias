@@ -34,7 +34,7 @@ export function Section({
     <section
       id={id}
       aria-labelledby={tituloId}
-      className={["py-[clamp(56px,6.6vw,96px)]", TONS[tone], className]
+      className={["py-[clamp(48px,5vw,72px)]", TONS[tone], className]
         .filter(Boolean)
         .join(" ")}
     >

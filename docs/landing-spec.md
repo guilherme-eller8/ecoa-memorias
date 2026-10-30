@@ -48,10 +48,11 @@ Títulos de exemplo (fictícios):
 
 ### LiveCover
 A BookCover do hero com controles (ver direcao.md, "O elemento interativo"):
-- Campo "De quem são as histórias?" (placeholder "Vó Lourdes", máx. 28 caracteres). Atualiza o nome na capa e na lombada a cada tecla.
-- Cinco lombadas clicáveis para a cor (`<button>` com `aria-pressed` e nome acessível "Capa vinho" etc.).
-- Guarda nome e cor em estado compartilhado; a seção 8 os usa para pré-preencher o formulário.
-- Sem JS: capa estática "O que a vida me ensinou · José Carlos Ribeiro", floresta.
+- Sem nome de pessoa: título "O que a vida me ensinou" e uma foto antiga ilustrativa na janela (`antiga-casamento`). Sem o arquivo, só o título.
+- Rótulo "Escolha a cor do tecido" e cinco lombadas clicáveis (`<button>` com `aria-pressed` e nome acessível "Capa vinho" etc.).
+- Guarda a cor em estado compartilhado; a seção 8 e a estante do fecho a usam.
+- Encostado na capa, um áudio de WhatsApp (2:14, ilustrativo, não toca).
+- Sem JS: capa estática "O que a vida me ensinou", floresta.
 
 ### OpenBookSpread
 Livro aberto em página dupla, com curvatura sutil no centro e sombra da dobra (desenhada dentro do objeto).
@@ -95,25 +96,21 @@ Cartão de papel branco com uma pergunta em Newsreader de 26–30px, alinhada à
 
 ## 1. Cabeçalho
 - Logo Ecoa à esquerda.
-- Links: "Como funciona", "O livro", "Perguntas", "Valor".
+- Links: "Como funciona", "O livro", "Perguntas", "Preço".
 - Botão principal pequeno (sólido, floresta): "Tenho interesse" (→ #interesse).
 - Fixo ao rolar: fundo muda de polen para papel (degrau de tom). Sem borda, sem blur, sem sombra.
 - No mobile: logo e botão; os links vão para um menu simples (`<details>` ou botão com `aria-expanded`).
 
 ## 2. Hero
-Duas colunas no desktop (texto à esquerda em 5/12, capa ao vivo à direita em 7/12, ocupando ≥ 45% da primeira tela); empilhado no mobile, com título, frase e fatos primeiro, depois a capa, depois o botão.
+Duas colunas no desktop: título na largura de 8/12; abaixo, texto à esquerda (6/12) e a capa ao vivo à direita (6/12). As lombadas de cor descem para a coluna do texto. No mobile: título, frase, botão, fatos, capa, lombadas.
 
-- H1 **[aprovar]**: "A voz de quem você ama, em capa dura."
-  - Alternativa, se preferir manter o original: "As histórias de quem você ama." (o "guardadas para sempre" passa para a frase abaixo).
-  - Motivo: o original tem 53 caracteres e quebra em 3–4 linhas em 390px; a regra é 2 linhas.
-- Frase de apoio **[aprovar]**, logo abaixo do título:
-  "Uma pergunta por dia útil no WhatsApp, respondida por áudio. Em quatro semanas, as histórias, as fotos e as mensagens da família viram um livro de capa dura, entregue antes do Natal."
-- Fatos, no tamanho de destaque (não em letra miúda), lado a lado no desktop e em grade 2×2 no mobile:
-  - "R$ 397" · abaixo, pequeno: "por livro, tudo incluído"
-  - "10 livros" · "Edição de Natal"
-  - "Até 7 de novembro" · "inscrições"
-- Botão: "Tenho interesse" → #interesse
-- Visual: LiveCover grande, entreaberta, com as cinco lombadas de cor logo abaixo dela. Fundo polen liso, com o grão de papel. Sem gradiente.
+- H1: "A voz de quem você ama, em capa dura."
+- Frase de apoio (aprovada em 30/10):
+  "Durante quatro semanas, quem você ama recebe uma pergunta por dia útil no WhatsApp e responde por áudio, do jeito que já faz. A família manda mensagens em segredo, e tudo vira um livro de capa dura com a voz original, entregue antes do Natal."
+- Botão: "Quero este livro" → #interesse. Ao lado, link secundário com o ícone do WhatsApp: "Ou chame a gente no WhatsApp" (wa.me com "Olá! Quero saber mais sobre o livro da Ecoa Memórias.").
+- Fatos, numa linha só em tamanho pequeno, abaixo do botão:
+  "R$ 397, pagamento único · Pix ou 12x sem juros · Só 10 famílias nesta edição · Inscrições até 7 de novembro"
+- Visual: LiveCover grande, entreaberta, com o áudio de WhatsApp encostado. Fundo polen liso, com o grão de papel. Sem gradiente.
 
 ## 3. O que você recebe (#livro)
 - H2: "Um livro para segurar. E vozes para ouvir sempre." (corte aprovado: o original quebrava em 3 linhas em 390px)
@@ -121,12 +118,12 @@ Duas colunas no desktop (texto à esquerda em 5/12, capa ao vivo à direita em 7
 
 | Item | Valor (à direita) |
 |---|---|
-| "Livro de capa dura em papel encorpado" | `FORMATO_LIVRO` · `PAGINAS_LIVRO` páginas |
-| "Histórias contadas por áudio, editadas com cuidado para manter o jeito de falar" | até 20 |
+| "Livro de capa dura em papel encorpado" | `FORMATO_LIVRO` (o número de páginas não aparece) |
+| "Histórias contadas por áudio, editadas sem perder o jeito de falar" | no ritmo da família |
 | "Fotos da família ao longo dos capítulos" | incluídas |
 | "Um QR code em cada história para ouvir a voz original" | em todas |
-| "Mensagens de filhos, netos e amigos, em áudio ou texto, reunidas em segredo" | até 10 |
-| "Capa com foto, título e cor à escolha" | 5 cores |
+| "Mensagens de filhos, netos e amigos, em áudio ou texto, reunidas em segredo" | de toda a família |
+| "Capa com foto e cor à escolha" | 5 cores |
 | "Os áudios originais, entregues à família" | para sempre |
 
 ## 4. Como funciona (#como-funciona)
@@ -138,10 +135,10 @@ Duas colunas no desktop (texto à esquerda em 5/12, capa ao vivo à direita em 7
 
 | Título | Texto | Visual |
 |---|---|---|
-| "Escolha as perguntas." | "Da nossa seleção ou escritas por você. Infância, casamento, trabalho, fé, a casa onde cresceu." | QuestionCard "Como era a casa onde o senhor cresceu?" sobre a foto `antiga-casa`, levemente rotacionado |
-| "A pergunta chega. A resposta é um áudio." | "Uma pergunta por dia útil, direto no WhatsApp. Sem aplicativo, sem senha, sem escrever nada." | foto `passo-2-gravando` |
-| "A família ouve no mesmo dia." | "Cada história gravada chega a um grupo só da família. Ouvir vira o melhor momento da semana." | WhatsAppChat `grupo` "Histórias do Vô": áudio de 2:14, "Capítulo 6 · A casa da Rua Bahia", reações "não sabia disso" e "que saudade dessa casa" |
-| "O livro chega antes do Natal." | "Com as histórias, as fotos e as mensagens da família, que chegam como surpresa." | foto `passo-4-livro` |
+| "Você dá a notícia." | "Do seu jeito. Depois, mandamos as boas-vindas e só começamos quando a pessoa topar. As perguntas vêm da nossa seleção ou de você." | QuestionCard "Como era a casa onde o senhor cresceu?" sobre a foto `antiga-casa` (sem a foto, só o cartão) |
+| "A pergunta chega. A resposta é um áudio." | "Uma pergunta por dia útil, direto no WhatsApp. Sem aplicativo, sem senha, sem escrever nada." | WhatsAppChat `individual` "Ecoa Memórias": a pergunta do dia e a resposta em áudio de 2:14 |
+| "A família ouve no mesmo dia." | "Cada história gravada chega no mesmo dia a um grupo só da família." | WhatsAppChat `grupo` "Histórias do Vô": áudio de 2:14, "Capítulo 6 · A casa da Rua Bahia", reações "não sabia disso" e "que saudade dessa casa" |
+| "O livro chega antes do Natal." | "Com as histórias, as fotos e as mensagens da família, que chegam como surpresa." | BookCover vinho "Caminhos que percorri", fechada |
 
 - Linha abaixo (Newsreader 19px, tinta):
   "Você escolhe as perguntas e conta a novidade. Os envios, os lembretes e a edição ficam com a gente."
@@ -167,7 +164,7 @@ Duas colunas no desktop (texto à esquerda em 5/12, capa ao vivo à direita em 7
 - H2: "No final, quem contou as histórias recebe uma surpresa."
 - Texto: "Enquanto as histórias são gravadas, filhos, netos e amigos enviam, em segredo, uma mensagem em áudio ou por escrito. Cada uma ganha uma página no livro, com QR code para quem quiser ouvir. Quem conta as histórias só descobre no Natal."
 - Visual:
-  - foto `surpresa-ceia` grande (4:5 no mobile, 3:2 no desktop), ocupando ao menos metade da largura
+  - foto `surpresa-ceia` grande (4:5 no mobile, 3:2 no desktop), ocupando ao menos metade da largura. Sem a foto, os bilhetes ficam espalhados sobre uma folha papel (5:4 no mobile, 2:1 no desktop)
   - sobre ela, em uma das bordas (nunca sobre o título), 3 NoteCards sobrepostos e cortados (sugerir, não revelar):
     - "Pai, obrigada por cada domingo..."
     - "Vô, até hoje eu lembro do..."
@@ -199,61 +196,66 @@ Duas colunas no desktop (texto à esquerda em 5/12, capa ao vivo à direita em 7
 - H2: "Edição de Natal 2026"
 
 À esquerda, o **colofão** (folha papel, recortada como as outras peças, sem linhas e sem caixa colorida):
-- "R$ 397" no tamanho display; abaixo, "por livro, com tudo incluído".
+- "R$ 397" no tamanho display; abaixo, "por livro. Frete à parte, para todo o Brasil."
 - Três linhas:
-  - "Pix ou cartão em até 12x"
-  - "Exemplares extras para a família: R$ 149 cada"
-  - "Pode ser um presente dos irmãos juntos"
-- Assentado como colofão de editora **[aprovar]**:
+  - "Pix ou 12x sem juros de R$ 33,08" (calculado de `PRECO_LIVRO` / `PARCELAS_MAX`)
+  - "Exemplares extras: R$ 149 cada"
+  - "Entre três irmãos, sai por menos de R$ 133 para cada."
+- Assentado como colofão de editora:
   "Tiragem: 10 livros. Inscrições até 7 de novembro."
   "Para que cada livro receba o cuidado que merece: quatro semanas de histórias e tempo de edição, impressão e entrega antes do Natal."
-- Depois de um espaço, menor:
-  "Depois do primeiro livro, quem quiser pode continuar contando histórias e criar um novo volume. É opcional, sem renovação automática."
+- A garantia, no fim da folha:
+  "Você recebe a primeira história editada. Se ela não emocionar a família, devolvemos 100%. E se a pessoa não topar participar, também."
 
 À direita, o formulário:
-- Título: "Tenho interesse"
+- Título: "Quero este livro"
 - Campos:
   - "Seu nome"
   - "Seu WhatsApp" (máscara brasileira)
   - "Para quem seria o livro?" (select: pai, mãe, avô, avó, tio, tia, amigo, outra pessoa)
-  - Se a LiveCover foi usada, mostrar acima do botão uma miniatura da capa escolhida, com o nome e a cor, e enviar os dois como campos ocultos `capa_nome` e `capa_cor`.
+  - Se a cor da LiveCover foi trocada, mostrar acima do botão uma miniatura da capa com "Capa {cor}" e enviar `capa_cor` como campo oculto.
   - Honeypot invisível contra spam.
-- Botão: "Tenho interesse"
-- Microcopy: "Sem compromisso. Respondemos pelo WhatsApp em até 24 horas com os próximos passos."
+- Botão: "Quero este livro"
+- Microcopy: "Nada é cobrado agora. Logo em seguida, falamos com você pelo WhatsApp para tirar dúvidas e garantir a sua vaga."
 - Sucesso: o formulário é substituído por "Recebemos. Em breve falamos com você pelo WhatsApp." e um link secundário "Prefere falar agora? Abrir WhatsApp" (wa.me com a mensagem pré-preenchida abaixo).
-- Mensagem wa.me: "Olá! Tenho interesse no livro da Ecoa Memórias para meu/minha [opção]. Meu nome é [nome]."
-
-Abaixo do painel, em uma linha:
-"Se a primeira história não emocionar a família, devolvemos o valor integral."
+- Mensagem wa.me: "Olá! Tenho interesse no livro da Ecoa Memórias para meu/minha [opção]. Meu nome é [nome]." (+ "Gostei da capa [cor]." quando houver)
 
 ## 9. Perguntas frequentes
 - H2: "Perguntas frequentes"
 - **Fichas de arquivo**: cartões preenchidos (cores das capas, em rodízio, texto com contraste ≥ 4.5:1), cada um com uma aba recortada em `clip-path`, empilhados e sobrepostos, mostrando 96px de cada (88px no mobile). A aba traz o tema em uma ou duas palavras; a faixa visível, a pergunta. Abrir uma ficha mostra a resposta e empurra as de baixo. Uma aberta por vez; a primeira aberta ao carregar. Implementação com `<details>`/`<summary>` ou botões com `aria-expanded`. Sem linhas, sem + / –.
 
+Ordem: as objeções mais fortes primeiro (pagamento, desistência, tempo).
+
 | Aba | Pergunta | Resposta |
 |---|---|---|
+| Pagamento | Quando e como eu pago? | Só depois de conversarmos pelo WhatsApp e você confirmar. O valor é pago de uma vez, no Pix ou no cartão em até 12x sem juros. |
+| Desistência | E se a pessoa não quiser participar? | Devolvemos o valor integral. E se a primeira história editada não emocionar a família, também. |
+| Tempo | Quanto tempo leva por dia? | Alguns minutos. Cada áudio costuma ter entre 2 e 5 minutos, e dá para responder quando quiser. |
 | WhatsApp | Quem conta as histórias precisa saber mexer no celular? | Se manda áudio no WhatsApp, já sabe tudo o que precisa. Se preferir, também é possível gravar por uma ligação. |
 | O presente | Como a pessoa fica sabendo do presente? | Quem dá a notícia é você, do seu jeito. Depois, enviamos uma mensagem de boas-vindas explicando como serão as próximas semanas, e começamos quando ela disser que topa. |
 | Seu trabalho | Vai dar trabalho para mim? | Não. Você escolhe as perguntas (ou deixa com a gente) e envia algumas fotos. Do resto cuidamos nós, inclusive de reunir as mensagens da família. |
+| Edição | Quem edita as histórias? | Uma pessoa da nossa equipe ouve e edita cada história, sem perder o jeito de falar de quem conta. A família lê tudo e pode pedir ajustes antes da impressão. |
+| Tamanho | Quantas histórias cabem no livro? | Em geral, de 10 a 20. Mas o livro se ajusta ao que a família quiser contar. |
 | O grupo | Quem conta as histórias participa do grupo da família? | Não. O grupo é só da família, para que o livro final continue sendo surpresa. |
 | Mensagens | Como são reunidas as mensagens da família? | Você nos passa os contatos e nós cuidamos dos convites e dos lembretes. |
-| Tempo | Quanto tempo leva por dia? | Alguns minutos. Cada áudio costuma ter entre 2 e 5 minutos, e dá para responder quando quiser. |
-| Aprovação | Posso ver o livro antes da impressão? | Sim. Você recebe o arquivo completo e aprova antes de imprimirmos. |
 | Prazo | Chega mesmo antes do Natal? | Sim, para inscrições até 7 de novembro. |
-| Desistência | E se a pessoa não quiser participar? | Devolvemos o valor integral. |
+| Frete | Entregam em todo o Brasil? O frete está incluso? | Entregamos em todo o Brasil. O frete é à parte e calculado para o seu CEP. |
 | Os áudios | Com quem ficam os áudios? | Com a família, para sempre. Usamos apenas para produzir o livro. |
+| QR codes | Os QR codes vão parar de funcionar? | Não. E os áudios originais ficam com a família desde o primeiro dia. |
+| Novo volume | E depois do primeiro livro? | Quem quiser pode continuar contando histórias e criar um novo volume. É opcional, sem renovação automática. |
 
 ## 10. Fecho
 - Seção curta em floresta. O único momento centralizado da página.
 - H2: "Algumas histórias só uma pessoa pode contar. Que elas continuem ecoando." (único uso do trocadilho)
   - Se passar de 2 linhas em 390px, reduzir a medida antes da fonte; se ainda assim quebrar, perguntar.
 - Botão polen com texto floresta: "Tenho interesse".
-- Abaixo, as 5 capas como lombadas, em pé numa estante (se a LiveCover foi usada, a capa do visitante entra na estante).
+- Abaixo, as 5 capas como lombadas, em pé numa estante, com o título na lombada (nunca nome de pessoa). Se a cor da LiveCover foi trocada, esse livro sai um pouco da fileira, no meio dela.
+- Legenda pequena abaixo da estante: "Cinco cores de tecido. A próxima pode ser a da sua família."
 
 ## 11. Rodapé
 - "Ecoa Memórias" em tamanho grande, na largura toda (a contracapa).
 - WhatsApp, e-mail, link "Privacidade", CNPJ (placeholder).
-- "Feito com cuidado em Belo Horizonte."
+- "Feito em Belo Horizonte."
 
 ## /privacidade
 Política LGPD simples e clara:
@@ -277,6 +279,6 @@ Política LGPD simples e clara:
 
 ## Analytics
 - Vercel Analytics.
-- Todos os botões "Tenho interesse" com `data-cta` único (header, hero, fecho).
-- Evento `capa_personalizada` (uma vez por visita, quando o visitante digita um nome ou troca a cor), com a propriedade `cor`. Nunca enviar o nome digitado.
+- Todos os botões de interesse com `data-cta` único (header, hero, hero-whatsapp, formulario, fecho).
+- Evento `capa_personalizada` (uma vez por visita, quando o visitante troca a cor), com a propriedade `cor`.
 - Evento `lead_enviado` no sucesso do formulário, com as propriedades `para_quem`, `usou_capa` e `status` (`gravado` ou `fallback`).

@@ -16,7 +16,7 @@ const ALVO = "inline-flex! min-h-12 items-center";
 // A contracapa: o nome na largura toda, os contatos e os créditos.
 export function Rodape() {
   return (
-    <footer className="bg-papel pt-[clamp(56px,6.6vw,96px)] pb-10 md:pb-12">
+    <footer className="bg-papel pt-[clamp(48px,5vw,72px)] pb-10 md:pb-12">
       <Container>
         <div className="[container-type:inline-size]">
           <p
@@ -64,7 +64,7 @@ export function Rodape() {
               {MARCA}
               {CNPJ_PRONTO && ` · CNPJ ${CNPJ}`}
             </p>
-            <p>Feito com cuidado em {CIDADE}.</p>
+            <p>Feito em {CIDADE}.</p>
           </div>
         </div>
       </Container>

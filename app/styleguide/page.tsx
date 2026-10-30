@@ -153,9 +153,8 @@ export default function Styleguide() {
 
       <Section title="A capa ao vivo do hero" grid>
         <p className="col-span-12 mt-6 max-w-[40ch] md:col-span-5" {...e(1)}>
-          Escreva o nome de quem vai contar e escolha o tecido. O nome muda na
-          capa e na lombada a cada tecla. Sem JavaScript, fica a capa floresta
-          de José Carlos Ribeiro.
+          Escolha o tecido nas cinco lombadas. A capa da página não leva nome:
+          só o título e a foto. Sem JavaScript, fica a capa floresta.
         </p>
         <div className="col-span-12 mt-10 md:col-span-7 md:mt-6" {...e(2)}>
           <LiveCover />

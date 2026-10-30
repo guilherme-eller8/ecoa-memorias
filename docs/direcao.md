@@ -22,13 +22,14 @@ Direção sorteada: **`page-is-the-object` — a página é o próprio objeto** 
 Teste do concorrente: um site de fotolivro genérico não tem a voz, o QR por capítulo, os bilhetes secretos nem a tiragem de 10. A frase só funciona para a Ecoa.
 
 ## O elemento interativo (obrigatório pela skill)
-**A capa com o nome de quem vai contar.** No hero, a capa grande é ao vivo:
-- Um campo "De quem são as histórias?" (ex.: "Vó Lourdes"). O título da capa e a lombada mudam enquanto se digita.
+**A capa com o tecido à escolha.** No hero, a capa grande é ao vivo:
+- A capa não leva nome de pessoa: só o título "O que a vida me ensinou" e uma foto antiga ilustrativa na janela (no livro de verdade, a foto de quem conta, como na referência do Remento). Sem o arquivo da foto, fica só o título.
+- Encostado na capa, um áudio de WhatsApp (2:14), que não toca: mostra que tudo começa num áudio, do jeito que quem conta já faz.
 - A escolha da cor é uma fileira de cinco lombadas (vinho, rosa-antigo, névoa, petróleo, floresta), botões de verdade.
-- O que foi escolhido vai pré-preenchido para o formulário da seção 8 e para a mensagem do wa.me.
-- Sem JS: a capa "O que a vida me ensinou · José Carlos Ribeiro" em floresta, estática. No celular, cabe no polegar; nada bloqueia a leitura.
+- A cor escolhida aparece no formulário da seção 8, na mensagem do wa.me e na estante do fecho.
+- Sem JS: a capa "O que a vida me ensinou" em floresta, estática. No celular, cabe no polegar; nada bloqueia a leitura.
 
-Ela substitui a expressão rotativa do H1. É a mesma intenção (cada visitante vê a pessoa dele), mas é ele quem escreve, sem animação, sem problema de leitor de tela e sem salto de layout.
+Até 30/10 a capa tinha um campo com o nome de quem conta. Saiu: o fundador prefere que a capa mostre a foto da pessoa, não o nome.
 
 ## Mapa seção → peça do livro
 | Seção | Peça | Composição |

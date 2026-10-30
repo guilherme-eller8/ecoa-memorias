@@ -1,9 +1,11 @@
 import type { CSSProperties, ReactNode } from "react";
+import { BookCover } from "@/components/ui/BookCover";
 import { Foto } from "@/components/ui/Foto";
 import { QuestionCard } from "@/components/ui/QuestionCard";
 import { Section } from "@/components/ui/Section";
 import { WhatsAppChat } from "@/components/ui/WhatsAppChat";
 import { IMAGES, SEMANAS_DE_PERGUNTAS } from "@/lib/config";
+import { existeEmPublic } from "@/lib/imagens";
 import { Trilha } from "./Trilha";
 
 const SIZES = "(min-width: 1024px) 300px, 78vw";
@@ -17,13 +19,17 @@ type Momento = {
   visual: ReactNode;
 };
 
+// Sem o arquivo, o momento fica só com o objeto desenhado: nunca um quadro vazio
+const temCasa = existeEmPublic(IMAGES.antigaCasa);
+const temFotoLivro = existeEmPublic(IMAGES.antigaFazenda);
+
 const MOMENTOS: Momento[] = [
   {
-    titulo: "Escolha as perguntas.",
+    titulo: "Você dá a notícia.",
     texto:
-      "Da nossa seleção ou escritas por você. Infância, casamento, trabalho, fé, a casa onde cresceu.",
+      "Do seu jeito. Depois, mandamos as boas-vindas e só começamos quando a pessoa topar. As perguntas vêm da nossa seleção ou de você.",
     respiro: "lg:h-20",
-    visual: (
+    visual: temCasa ? (
       <div className="relative" style={{ aspectRatio: PROPORCAO }}>
         <Foto
           src={IMAGES.antigaCasa}
@@ -40,6 +46,12 @@ const MOMENTOS: Momento[] = [
           className="absolute right-[-3%] bottom-[-14%] w-[94%]"
         />
       </div>
+    ) : (
+      <QuestionCard
+        pergunta="Como era a casa onde o senhor cresceu?"
+        rotate={-3}
+        className="w-[94%]"
+      />
     ),
   },
   {
@@ -48,20 +60,27 @@ const MOMENTOS: Momento[] = [
       "Uma pergunta por dia útil, direto no WhatsApp. Sem aplicativo, sem senha, sem escrever nada.",
     respiro: "lg:h-[140px]",
     visual: (
-      <Foto
-        src={IMAGES.passo2}
-        tipo="cena"
-        proporcao={PROPORCAO}
-        objectPosition="45% 38%"
-        sizes={SIZES}
-        alt="Senhor de cabelos grisalhos, sentado à mesa da cozinha, grava um áudio no celular e sorri ao lembrar de algo"
-      />
+      <div>
+        <WhatsAppChat
+          variant="individual"
+          titulo="Ecoa Memórias"
+          subtitulo="online"
+          mensagens={[
+            {
+              tipo: "texto",
+              texto:
+                "Bom dia! A pergunta de hoje: como era a casa onde o senhor cresceu?",
+              hora: "09:00",
+            },
+            { tipo: "audio", minha: true, duracao: "2:14", hora: "10:12" },
+          ]}
+        />
+      </div>
     ),
   },
   {
     titulo: "A família ouve no mesmo dia.",
-    texto:
-      "Cada história gravada chega a um grupo só da família. Ouvir vira o melhor momento da semana.",
+    texto: "Cada história gravada chega no mesmo dia a um grupo só da família.",
     respiro: "lg:h-[100px]",
     visual: (
       <div>
@@ -100,14 +119,15 @@ const MOMENTOS: Momento[] = [
       "Com as histórias, as fotos e as mensagens da família, que chegam como surpresa.",
     respiro: "lg:h-[120px]",
     visual: (
-      <Foto
-        src={IMAGES.passo4}
-        tipo="cena"
-        proporcao={PROPORCAO}
-        objectPosition="50% 58%"
-        sizes={SIZES}
-        alt="Mãos de uma senhora seguram, no colo, um livro de capa dura verde-escura com um filete dourado"
-      />
+      <div className="pt-2 pl-[6%]">
+        <BookCover
+          color="vinho"
+          title="Caminhos que percorri"
+          photo={temFotoLivro ? IMAGES.antigaFazenda : undefined}
+          size="md"
+          turn={22}
+        />
+      </div>
     ),
   },
 ];

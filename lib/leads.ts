@@ -1,4 +1,4 @@
-import { CAPA_PADRAO, CAPAS } from "@/components/ui/capas";
+import { CAPAS } from "@/components/ui/capas";
 import { MARCA, WHATSAPP_NUMERO } from "./config";
 import type { ParaQuem } from "./lead-campos";
 import type { Lead } from "./lead-schema";
@@ -6,7 +6,7 @@ import { registrarLead } from "./registrar-lead";
 
 // O schema mora em ./lead-schema: o formulário o carrega só no envio.
 
-export { NOME_CAPA_MAX, PARA_QUEM, type ParaQuem } from "./lead-campos";
+export { PARA_QUEM, type ParaQuem } from "./lead-campos";
 export type { EntradaLead, Lead } from "./lead-schema";
 
 const ARTIGO: Record<ParaQuem, string> = {
@@ -44,13 +44,10 @@ export function mascararWhatsApp(valor: string): string {
 }
 
 export function mensagemWhatsApp(
-  lead: Pick<Lead, "nome" | "para_quem" | "capa_nome" | "capa_cor">,
+  lead: Pick<Lead, "nome" | "para_quem" | "capa_cor">,
 ): string {
   let texto = `Olá! Tenho interesse no livro da ${MARCA} para ${ARTIGO[lead.para_quem]}. Meu nome é ${lead.nome}.`;
-  if (lead.capa_cor) {
-    const autor = lead.capa_nome || CAPA_PADRAO.author;
-    texto += ` A capa seria “${CAPA_PADRAO.title} · ${autor}”, em ${CAPAS[lead.capa_cor].nome}.`;
-  }
+  if (lead.capa_cor) texto += ` Gostei da capa ${CAPAS[lead.capa_cor].nome}.`;
   return texto;
 }
 
@@ -61,6 +58,9 @@ export function mensagemPrimeiroContato(
   const primeiroNome = lead.nome.split(/\s+/)[0];
   return `Olá, ${primeiroNome}! Aqui é da ${MARCA}. Recebemos o seu interesse no livro para ${ARTIGO_SEU[lead.para_quem]}. Posso te contar como funciona?`;
 }
+
+/** Para quem prefere chamar direto, sem o formulário. */
+export const MENSAGEM_CONVERSA = `Olá! Quero saber mais sobre o livro da ${MARCA}.`;
 
 export function linkWhatsApp(
   texto: string,

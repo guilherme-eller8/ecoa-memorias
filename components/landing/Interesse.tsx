@@ -2,10 +2,12 @@ import type { CSSProperties } from "react";
 import { Section } from "@/components/ui/Section";
 import {
   formatarData,
+  formatarParcela,
   formatarPreco,
   LIVROS_NA_EDICAO,
   PARCELAS_MAX,
   PRECO_EXEMPLAR_EXTRA,
+  PRECO_LIVRO,
 } from "@/lib/config";
 import { FormInteresse } from "./FormInteresse";
 
@@ -22,17 +24,26 @@ export function Interesse() {
         style={ordem(1)}
       >
         <p className="text-display font-medium">{formatarPreco()}</p>
-        <p className="mt-3">por livro, com tudo incluído</p>
+        <p className="mt-3">por livro. Frete à parte, para todo o Brasil.</p>
 
         <ul className="mt-8">
-          <li>Pix ou cartão em até {PARCELAS_MAX}x</li>
           <li>
-            Exemplares extras para a família:{" "}
+            Pix ou {PARCELAS_MAX}x sem juros de{" "}
+            <span className="whitespace-nowrap">{formatarParcela()}</span>
+          </li>
+          <li>
+            Exemplares extras:{" "}
             <span className="whitespace-nowrap">
               {formatarPreco(PRECO_EXEMPLAR_EXTRA)} cada
             </span>
           </li>
-          <li>Pode ser um presente dos irmãos juntos</li>
+          <li>
+            Entre três irmãos, sai por menos de{" "}
+            <span className="whitespace-nowrap">
+              {formatarPreco(Math.ceil(PRECO_LIVRO / 3))}
+            </span>{" "}
+            para cada.
+          </li>
         </ul>
 
         <div className="mt-12 max-w-[46ch]">
@@ -46,10 +57,9 @@ export function Interesse() {
           </p>
         </div>
 
-        <p className="text-pequeno mt-12 max-w-[52ch]">
-          Depois do primeiro livro, quem quiser pode continuar contando
-          histórias e criar um novo volume. É opcional, sem renovação
-          automática.
+        <p className="mt-12 max-w-[46ch]">
+          Você recebe a primeira história editada. Se ela não emocionar a
+          família, devolvemos 100%. E se a pessoa não topar participar, também.
         </p>
       </div>
 
@@ -60,11 +70,6 @@ export function Interesse() {
       >
         <FormInteresse />
       </div>
-
-      <p className="col-span-12 mt-12 max-w-[62ch] md:mt-16" data-entra>
-        Se a primeira história não emocionar a família, devolvemos o valor
-        integral.
-      </p>
     </Section>
   );
 }

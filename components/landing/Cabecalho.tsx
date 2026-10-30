@@ -7,7 +7,7 @@ const LINKS = [
   { href: "#como-funciona", rotulo: "Como funciona" },
   { href: "#livro", rotulo: "O livro" },
   { href: "#perguntas", rotulo: "Perguntas" },
-  { href: "#interesse", rotulo: "Valor" },
+  { href: "#interesse", rotulo: "Preço" },
 ] as const;
 
 const LINK =

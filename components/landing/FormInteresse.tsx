@@ -43,8 +43,6 @@ export function FormInteresse() {
   const [erros, setErros] = useState<Erros>({});
   const [estado, setEstado] = useState<Estado>({ fase: "form" });
 
-  const autorCapa = capa.nome.trim() || CAPA_PADRAO.author;
-
   async function enviar(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const dados = Object.fromEntries(new FormData(e.currentTarget));
@@ -133,7 +131,7 @@ export function FormInteresse() {
       className="relative"
     >
       <h3 id={`${id}-titulo`} className="text-destaque">
-        Tenho interesse
+        Quero este livro
       </h3>
 
       <div className="mt-6">
@@ -200,17 +198,12 @@ export function FormInteresse() {
             <BookCover
               color={capa.cor}
               title={CAPA_PADRAO.title}
-              author={autorCapa}
               size="sm"
               turn={18}
               className="[--w:96px]!"
             />
           </div>
-          <p className="text-pequeno">
-            <span className="font-italico block italic">{autorCapa}</span>
-            <span className="block">capa {CAPAS[capa.cor].nome}</span>
-          </p>
-          <input type="hidden" name="capa_nome" value={capa.nome.trim()} />
+          <p className="text-pequeno">Capa {CAPAS[capa.cor].nome}</p>
           <input type="hidden" name="capa_cor" value={capa.cor} />
         </div>
       ) : null}
@@ -236,11 +229,11 @@ export function FormInteresse() {
         data-cta="formulario"
         disabled={estado.fase === "enviando"}
       >
-        Tenho interesse
+        Quero este livro
       </Button>
       <p className="text-pequeno mt-4 max-w-[44ch]">
-        Sem compromisso. Respondemos pelo WhatsApp em até 24 horas com os
-        próximos passos.
+        Nada é cobrado agora. Logo em seguida, falamos com você pelo WhatsApp
+        para tirar dúvidas e garantir a sua vaga.
       </p>
     </form>
   );

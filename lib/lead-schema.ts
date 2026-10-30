@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { CORES_CAPA } from "@/components/ui/capas";
-import { NOME_CAPA_MAX, PARA_QUEM } from "./lead-campos";
+import { PARA_QUEM } from "./lead-campos";
 
 // Sem "server-only": o formulário valida no cliente, e a Server Action reusa o mesmo schema.
 
@@ -22,7 +22,6 @@ export const leadSchema = z.object({
         ),
     ),
   para_quem: z.enum(PARA_QUEM, "Escolha para quem seria o livro."),
-  capa_nome: z.string().trim().max(NOME_CAPA_MAX).optional(),
   capa_cor: z.enum(CORES_CAPA).optional(),
   // Honeypot: gente de verdade não vê o campo, então ele chega vazio.
   site: z.string().max(0).optional(),

@@ -8,12 +8,30 @@ import {
 } from "react";
 import { CAPAS, type CorCapa } from "@/components/ui/capas";
 import { Section } from "@/components/ui/Section";
-import { formatarData } from "@/lib/config";
+import { formatarData, PARCELAS_MAX } from "@/lib/config";
 import s from "./Fichas.module.css";
 
 type Ficha = { aba: string; pergunta: string; resposta: string };
 
+// As objeções mais fortes primeiro: pagamento, desistência e tempo.
 const FICHAS: Ficha[] = [
+  {
+    aba: "Pagamento",
+    pergunta: "Quando e como eu pago?",
+    resposta: `Só depois de conversarmos pelo WhatsApp e você confirmar. O valor é pago de uma vez, no Pix ou no cartão em até ${PARCELAS_MAX}x sem juros.`,
+  },
+  {
+    aba: "Desistência",
+    pergunta: "E se a pessoa não quiser participar?",
+    resposta:
+      "Devolvemos o valor integral. E se a primeira história editada não emocionar a família, também.",
+  },
+  {
+    aba: "Tempo",
+    pergunta: "Quanto tempo leva por dia?",
+    resposta:
+      "Alguns minutos. Cada áudio costuma ter entre 2 e 5 minutos, e dá para responder quando quiser.",
+  },
   {
     aba: "WhatsApp",
     pergunta: "Quem conta as histórias precisa saber mexer no celular?",
@@ -33,6 +51,18 @@ const FICHAS: Ficha[] = [
       "Não. Você escolhe as perguntas (ou deixa com a gente) e envia algumas fotos. Do resto cuidamos nós, inclusive de reunir as mensagens da família.",
   },
   {
+    aba: "Edição",
+    pergunta: "Quem edita as histórias?",
+    resposta:
+      "Uma pessoa da nossa equipe ouve e edita cada história, sem perder o jeito de falar de quem conta. A família lê tudo e pode pedir ajustes antes da impressão.",
+  },
+  {
+    aba: "Tamanho",
+    pergunta: "Quantas histórias cabem no livro?",
+    resposta:
+      "Em geral, de 10 a 20. Mas o livro se ajusta ao que a família quiser contar.",
+  },
+  {
     aba: "O grupo",
     pergunta: "Quem conta as histórias participa do grupo da família?",
     resposta:
@@ -45,32 +75,33 @@ const FICHAS: Ficha[] = [
       "Você nos passa os contatos e nós cuidamos dos convites e dos lembretes.",
   },
   {
-    aba: "Tempo",
-    pergunta: "Quanto tempo leva por dia?",
-    resposta:
-      "Alguns minutos. Cada áudio costuma ter entre 2 e 5 minutos, e dá para responder quando quiser.",
-  },
-  {
-    aba: "Aprovação",
-    pergunta: "Posso ver o livro antes da impressão?",
-    resposta:
-      "Sim. Você recebe o arquivo completo e aprova antes de imprimirmos.",
-  },
-  {
     aba: "Prazo",
     pergunta: "Chega mesmo antes do Natal?",
     resposta: `Sim, para inscrições até ${formatarData()}.`,
   },
   {
-    aba: "Desistência",
-    pergunta: "E se a pessoa não quiser participar?",
-    resposta: "Devolvemos o valor integral.",
+    aba: "Frete",
+    pergunta: "Entregam em todo o Brasil? O frete está incluso?",
+    resposta:
+      "Entregamos em todo o Brasil. O frete é à parte e calculado para o seu CEP.",
   },
   {
     aba: "Os áudios",
     pergunta: "Com quem ficam os áudios?",
     resposta:
       "Com a família, para sempre. Usamos apenas para produzir o livro.",
+  },
+  {
+    aba: "QR codes",
+    pergunta: "Os QR codes vão parar de funcionar?",
+    resposta:
+      "Não. E os áudios originais ficam com a família desde o primeiro dia.",
+  },
+  {
+    aba: "Novo volume",
+    pergunta: "E depois do primeiro livro?",
+    resposta:
+      "Quem quiser pode continuar contando histórias e criar um novo volume. É opcional, sem renovação automática.",
   },
 ];
 

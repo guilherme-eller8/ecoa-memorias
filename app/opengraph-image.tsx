@@ -86,16 +86,6 @@ export default function Image() {
                 background: DOURADO,
               }}
             />
-            <div
-              style={{
-                marginTop: 14,
-                fontSize: 22,
-                fontStyle: "italic",
-                fontWeight: 400,
-              }}
-            >
-              {CAPA_PADRAO.author}
-            </div>
           </div>
         </div>
       </div>

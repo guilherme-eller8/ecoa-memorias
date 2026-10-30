@@ -1,6 +1,7 @@
 import { Foto } from "@/components/ui/Foto";
 import { Section } from "@/components/ui/Section";
 import { IMAGES, type ImagemChave } from "@/lib/config";
+import { existeEmPublic } from "@/lib/imagens";
 import { Fichario } from "./Fichario";
 
 const PERGUNTAS: { pergunta: string; foto?: ImagemChave; alt?: string }[] = [
@@ -44,16 +45,17 @@ const PERGUNTAS: { pergunta: string; foto?: ImagemChave; alt?: string }[] = [
 export function Perguntas() {
   const itens = PERGUNTAS.map(({ pergunta, foto, alt }) => ({
     pergunta,
-    foto: foto ? (
-      <Foto
-        src={IMAGES[foto]}
-        alt={alt ?? ""}
-        tipo="antiga"
-        proporcao="4 / 5"
-        sizes="(min-width: 1024px) 340px, 70vw"
-        className="w-full"
-      />
-    ) : undefined,
+    foto:
+      foto && existeEmPublic(IMAGES[foto]) ? (
+        <Foto
+          src={IMAGES[foto]}
+          alt={alt ?? ""}
+          tipo="antiga"
+          proporcao="4 / 5"
+          sizes="(min-width: 1024px) 340px, 70vw"
+          className="w-full"
+        />
+      ) : undefined,
   }));
 
   return (

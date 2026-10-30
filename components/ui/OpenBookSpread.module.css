@@ -77,6 +77,15 @@
   width: 76%;
 }
 
+/* Sem foto, a página da esquerda abre o capítulo com a pergunta que o originou */
+.pergunta {
+  max-width: 13ch;
+  margin: 0;
+  font-size: max(15px, 3.4cqi);
+  line-height: 1.2;
+  font-variation-settings: "opsz" 36;
+}
+
 .cabeca {
   display: flex;
   align-items: flex-start;
@@ -149,4 +158,11 @@
   height: 100%;
   pointer-events: none;
   mix-blend-mode: multiply;
+}
+
+/* No celular a folha esquerda fica quase toda fora da tela: a pergunta não aparece cortada */
+@media (max-width: 767px) {
+  .pergunta {
+    visibility: hidden;
+  }
 }

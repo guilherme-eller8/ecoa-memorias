@@ -24,8 +24,8 @@ export const CAPAS: Record<
   floresta: { nome: "floresta", tecido: "var(--floresta)", escura: true },
 };
 
+// A capa da página: só o título e a foto. O nome de quem conta fica para o livro de cada família.
 export const CAPA_PADRAO = {
   cor: "floresta" as CorCapa,
   title: "O que a vida me ensinou",
-  author: "José Carlos Ribeiro",
 };

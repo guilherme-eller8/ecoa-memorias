@@ -4,11 +4,14 @@ import { NoteCard } from "@/components/ui/NoteCard";
 import { QrCode } from "@/components/ui/QrCode";
 import { Section } from "@/components/ui/Section";
 import { IMAGES } from "@/lib/config";
+import { existeEmPublic } from "@/lib/imagens";
 
 const ordem = (n: number) => ({ "--ordem": n }) as CSSProperties;
 
 // Os bilhetes escondidos: a foto da ceia e as mensagens da família saindo pela borda.
 export function ASurpresa() {
+  // Sem a foto, os bilhetes se espalham pela folha inteira em vez de ficar no pé dela
+  const temFoto = existeEmPublic(IMAGES.surpresa);
   return (
     <Section
       title="No final, quem contou recebe uma surpresa."
@@ -20,15 +23,20 @@ export function ASurpresa() {
         data-entra="foto"
         style={ordem(2)}
       >
-        <Foto
-          src={IMAGES.surpresa}
-          tipo="cena"
-          proporcao="3 / 2"
-          objectPosition="40% 50%"
-          sizes="(min-width: 1024px) 58vw, 100vw"
-          alt="Noite de Natal em casa: uma avó no sofá, emocionada, com a mão no peito, segura um livro de capa dura aberto; a filha a abraça e os netos se inclinam para ver"
-          className="respira max-md:aspect-[4/5]!"
-        />
+        {temFoto ? (
+          <Foto
+            src={IMAGES.surpresa}
+            tipo="cena"
+            proporcao="3 / 2"
+            objectPosition="40% 50%"
+            sizes="(min-width: 1024px) 58vw, 100vw"
+            alt="Noite de Natal em casa: uma avó no sofá, emocionada, com a mão no peito, segura um livro de capa dura aberto; a filha a abraça e os netos se inclinam para ver"
+            className="respira max-md:aspect-[4/5]!"
+          />
+        ) : (
+          // Sem a foto, os bilhetes ficam sobre uma folha de papel, um tom acima do fundo
+          <span className="bg-papel block aspect-[2/1] max-md:aspect-[5/4]" />
+        )}
 
         {/* Os bilhetes ficam presos na foto e cortados pelas bordas dela: sugerem, não revelam */}
         <div
@@ -40,12 +48,12 @@ export function ASurpresa() {
           <NoteCard
             texto="Tio, foi o senhor que me ensinou..."
             rotate={-3}
-            className="absolute top-[40%] right-[-14%] w-[60%] pr-[16%]! lg:top-[40%] lg:w-[44%] lg:pr-[12%]!"
+            className={`absolute right-[-14%] w-[60%] pr-[16%]! lg:w-[44%] lg:pr-[12%]! ${temFoto ? "top-[40%]" : "top-[10%]"}`}
           />
           <NoteCard
             texto="Pai, obrigada por cada domingo..."
             rotate={-5}
-            className="absolute bottom-[5%] left-[4%] w-[60%] md:w-[46%] lg:w-[44%]"
+            className={`absolute left-[4%] md:w-[46%] lg:w-[44%] ${temFoto ? "bottom-[5%] w-[60%]" : "bottom-[30%] w-[50%]"}`}
           >
             <QrCode className="mt-2 w-11" />
           </NoteCard>

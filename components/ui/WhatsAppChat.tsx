@@ -134,3 +134,45 @@ export function WhatsAppChat({
     </figure>
   );
 }
+
+/**
+ * Um áudio de WhatsApp solto, fora da conversa: o jeito de contar que quem conta já conhece.
+ * Só ilustra (não toca). Interface de outro app: raiz com data-ui.
+ */
+export function BalaoAudio({
+  duracao,
+  hora,
+  className,
+}: {
+  duracao: string;
+  hora: string;
+  className?: string;
+}) {
+  return (
+    <div
+      data-ui
+      className={[s.avulso, className].filter(Boolean).join(" ")}
+      role="img"
+      aria-label={`Áudio de WhatsApp de ${duracao}`}
+    >
+      <span className={s.audio} aria-hidden>
+        <span className={s.microfone}>
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 14a3 3 0 0 0 3-3V5a3 3 0 1 0-6 0v6a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.9V21h2v-3.1a7 7 0 0 0 6-6.9z"
+              fill="currentColor"
+            />
+          </svg>
+        </span>
+        <span className={s.play} />
+        <span className={s.trilha}>
+          <Onda />
+          <span className={s.meta}>
+            <span>{duracao}</span>
+            <span>{hora}</span>
+          </span>
+        </span>
+      </span>
+    </div>
+  );
+}
