@@ -68,7 +68,7 @@ export function AVoz() {
               existeEmPublic(IMAGES.antigaCasa)
                 ? {
                     src: IMAGES.antigaCasa,
-                    alt: "Foto antiga em preto e branco de uma família de cinco pessoas diante de uma casa pequena com portão e uma mangueira, no interior de Minas",
+                    alt: "Foto antiga em preto e branco de uma família numerosa reunida no quintal, ao lado de uma casa pequena e de uma árvore grande",
                     objectPosition: "50% 62%",
                   }
                 : undefined

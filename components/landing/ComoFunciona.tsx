@@ -37,7 +37,7 @@ const MOMENTOS: Momento[] = [
           proporcao={PROPORCAO}
           objectPosition="50% 62%"
           sizes={SIZES}
-          alt="Foto antiga em preto e branco de uma família diante de uma casa pequena com portão e uma mangueira, numa cidade do interior de Minas"
+          alt="Foto antiga em preto e branco de uma família numerosa reunida no quintal, ao lado de uma casa pequena e de uma árvore grande"
           className="h-full w-full"
         />
         <QuestionCard

@@ -15,12 +15,12 @@ export function OValor() {
       title="Para os netos dos seus netos."
       tone="papel"
       grid
-      titleClassName="text-display! lg:col-span-8! max-w-[16ch]!"
+      titleClassName={`text-display! max-w-[16ch]! ${temFoto ? "lg:col-span-6! lg:row-start-1" : "lg:col-span-8!"}`}
     >
       <p
         className={`text-destaque col-span-12 mt-8 max-w-[34ch] md:mt-10 ${
           temFoto
-            ? "lg:col-span-6 lg:col-start-1"
+            ? "lg:col-span-6 lg:col-start-1 lg:row-start-2"
             : "lg:col-span-7 lg:col-start-6"
         }`}
         data-entra
@@ -32,7 +32,7 @@ export function OValor() {
       <p
         className={`col-span-12 mt-6 max-w-[46ch] ${
           temFoto
-            ? "lg:col-span-6 lg:col-start-1"
+            ? "lg:col-span-6 lg:col-start-1 lg:row-start-3"
             : "lg:col-span-7 lg:col-start-6"
         }`}
         data-entra
@@ -43,7 +43,7 @@ export function OValor() {
       </p>
       {temFoto ? (
         <div
-          className="col-span-12 mt-10 md:col-span-8 lg:col-span-5 lg:col-start-8 lg:row-span-3 lg:row-start-1 lg:mt-0 lg:self-center"
+          className="col-span-12 mt-10 md:col-span-8 lg:col-span-5 lg:col-start-8 lg:row-span-3 lg:row-start-1 lg:mt-0 lg:w-full lg:max-w-[calc((100svh-220px)*0.8)] lg:self-center lg:justify-self-end"
           data-entra
           style={ordem(3)}
         >
@@ -52,7 +52,7 @@ export function OValor() {
             tipo="antiga"
             proporcao="4 / 5"
             sizes="(min-width: 1024px) 420px, 80vw"
-            alt="Foto antiga desbotada de uma família na praia: o pai segura uma criança pequena e a mãe está sob um guarda-sol listrado"
+            alt="Foto antiga em sépia, gasta pelo tempo, de uma família de várias gerações reunida para o retrato"
             className="rotate-[2deg]"
           />
         </div>

@@ -5,7 +5,8 @@ import { Rodape } from "@/components/landing/Rodape";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Logo } from "@/components/ui/Logo";
-import { EMAIL_CONTATO, MARCA } from "@/lib/config";
+import { MARCA } from "@/lib/config";
+import { linkWhatsApp } from "@/lib/leads";
 
 export const metadata: Metadata = {
   title: `Privacidade · ${MARCA}`,
@@ -119,11 +120,27 @@ export default function Privacidade() {
               </p>
             </Bloco>
 
+            <Bloco titulo="Fotos da página">
+              <p>
+                As fotos antigas da página são ilustrativas e não mostram
+                clientes. Vêm de acervos familiares e públicos em domínio
+                público, publicados no Wikimedia Commons.
+              </p>
+            </Bloco>
+
             <Bloco titulo="Contato">
               <p>
-                Para qualquer pedido ou dúvida sobre os seus dados, escreva para{" "}
-                <Button variant="link" href={`mailto:${EMAIL_CONTATO}`}>
-                  {EMAIL_CONTATO}
+                Para qualquer pedido ou dúvida sobre os seus dados, fale com a
+                gente pelo{" "}
+                <Button
+                  variant="link"
+                  href={linkWhatsApp(
+                    `Olá! Tenho um pedido sobre os meus dados na ${MARCA}.`,
+                  )}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  WhatsApp
                 </Button>
                 .
               </p>
