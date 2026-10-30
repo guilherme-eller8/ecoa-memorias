@@ -12,7 +12,9 @@ type Base = {
 
 export type MensagemChat =
   | (Base & { tipo: "texto"; texto: string })
-  | (Base & { tipo: "audio"; duracao: string; legenda?: string });
+  | (Base & { tipo: "audio"; duracao: string; legenda?: string })
+  /** Separador de data no meio da conversa ("Segunda", "Terça"…). */
+  | { tipo: "dia"; dia: string };
 
 type WhatsAppChatProps = {
   /** individual: Ecoa ↔ quem conta. grupo: o grupo só da família. */
@@ -23,6 +25,10 @@ type WhatsAppChatProps = {
   subtitulo?: string;
   mensagens: MensagemChat[];
   className?: string;
+  /** Liga a chegada animada das mensagens novas (a conversa ao vivo). */
+  aoVivo?: boolean;
+  /** Esconde do leitor de tela quando o conteúdo já está dito em outro lugar. */
+  decorativo?: boolean;
 };
 
 // Forma de onda determinística: o mesmo desenho no servidor e no cliente.
@@ -64,14 +70,18 @@ export function WhatsAppChat({
   subtitulo,
   mensagens,
   className,
+  aoVivo,
+  decorativo,
 }: WhatsAppChatProps) {
   const inicial = titulo.trim().charAt(0).toUpperCase();
   return (
     <figure
       data-ui
       data-variant={variant}
+      data-ao-vivo={aoVivo || undefined}
       className={[s.chat, className].filter(Boolean).join(" ")}
-      aria-label={`Conversa no WhatsApp: ${titulo}`}
+      aria-label={decorativo ? undefined : `Conversa no WhatsApp: ${titulo}`}
+      aria-hidden={decorativo || undefined}
     >
       <div className={s.topo}>
         <span className={s.avatar} aria-hidden>
@@ -84,52 +94,58 @@ export function WhatsAppChat({
       </div>
 
       <ol className={s.conversa}>
-        {mensagens.map((m, i) => (
-          <li
-            key={i}
-            className={s.linha}
-            data-minha={m.minha || undefined}
-            data-reacao={m.reacao ? true : undefined}
-          >
-            <div className={s.balao}>
-              {variant === "grupo" && !m.minha && m.autor ? (
-                <span className={s.autor}>{m.autor}</span>
-              ) : null}
+        {mensagens.map((m, i) =>
+          m.tipo === "dia" ? (
+            <li key={i} className={s.dia}>
+              <span>{m.dia}</span>
+            </li>
+          ) : (
+            <li
+              key={i}
+              className={s.linha}
+              data-minha={m.minha || undefined}
+              data-reacao={m.reacao ? true : undefined}
+            >
+              <div className={s.balao}>
+                {variant === "grupo" && !m.minha && m.autor ? (
+                  <span className={s.autor}>{m.autor}</span>
+                ) : null}
 
-              {m.tipo === "audio" ? (
-                <>
-                  <span className={s.audio}>
-                    <span className={s.play} aria-hidden />
-                    <span className={s.trilha}>
-                      <Onda />
-                      <span className={s.meta}>
-                        <span>
-                          <span className="sr-only">Áudio de </span>
-                          {m.duracao}
+                {m.tipo === "audio" ? (
+                  <>
+                    <span className={s.audio}>
+                      <span className={s.play} aria-hidden />
+                      <span className={s.trilha}>
+                        <Onda />
+                        <span className={s.meta}>
+                          <span>
+                            <span className="sr-only">Áudio de </span>
+                            {m.duracao}
+                          </span>
+                          <span>{m.hora}</span>
                         </span>
-                        <span>{m.hora}</span>
                       </span>
                     </span>
+                    {m.legenda ? (
+                      <span className={s.legenda}>{m.legenda}</span>
+                    ) : null}
+                  </>
+                ) : (
+                  <span className={s.texto}>
+                    {m.texto}
+                    <span className={s.hora}>{m.hora}</span>
                   </span>
-                  {m.legenda ? (
-                    <span className={s.legenda}>{m.legenda}</span>
-                  ) : null}
-                </>
-              ) : (
-                <span className={s.texto}>
-                  {m.texto}
-                  <span className={s.hora}>{m.hora}</span>
-                </span>
-              )}
+                )}
 
-              {m.reacao ? (
-                <span className={s.reacao} aria-label={`Reação ${m.reacao}`}>
-                  {m.reacao}
-                </span>
-              ) : null}
-            </div>
-          </li>
-        ))}
+                {m.reacao ? (
+                  <span className={s.reacao} aria-label={`Reação ${m.reacao}`}>
+                    {m.reacao}
+                  </span>
+                ) : null}
+              </div>
+            </li>
+          ),
+        )}
       </ol>
     </figure>
   );

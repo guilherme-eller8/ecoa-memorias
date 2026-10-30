@@ -145,7 +145,7 @@ Duas colunas no desktop: título na largura de 8/12; abaixo, texto à esquerda (
 
 ## 5. A voz em cada página
 - Fundo papel (um degrau mais claro que o polen).
-- Layout: texto à esquerda (5/12), composição à direita (7/12).
+- Layout: título e texto juntos à esquerda (5/12); composição à direita (7/12), começando na altura do título e limitada pela altura da tela, para o livro aberto aparecer inteiro junto com o título.
 - H2: "As histórias no papel. A voz, a um toque."
 - Texto: "Cada capítulo traz um QR code. Basta apontar o celular para ouvir a história contada por quem viveu, com o riso, as pausas e o sotaque de sempre."
 - Composição:
@@ -171,37 +171,33 @@ Duas colunas no desktop: título na largura de 8/12; abaixo, texto à esquerda (
 
 ## 7. Perguntas que abrem histórias (#perguntas)
 - Campo floresta com textura de tecido; textos em polen.
-- H2: "As perguntas certas abrem histórias." · Subtítulo: "Use as nossas, adapte ou escreva as suas."
-- Oito perguntas em lista simples, duas colunas no desktop, no corpo de 19px. Com a foto `antiga-casamento`, ela fica à direita.
+- H2: "As perguntas certas abrem histórias." · Subtítulo: "Use as nossas, adapte ou escreva as suas." Os dois à esquerda (6/12).
+- À direita, uma conversa de WhatsApp (Ecoa Memórias ↔ quem conta, no celular de quem conta): a cada dia útil ("Segunda", "Terça"…), a Ecoa manda uma das oito perguntas e quem conta responde em áudio.
+- A conversa anda sozinha: quando a seção entra na tela, as mensagens chegam uma a uma ("digitando…" no cabeçalho), o histórico sobe e ela para no oitavo dia. Passar o mouse pausa.
+- Sem JS e com movimento reduzido: os três primeiros dias, parados. As oito perguntas ficam numa lista só para leitor de tela; o chat é ilustração.
+- Sem foto nesta seção.
 
 ## 8. Valor e interesse (#interesse)
 - Duas colunas no desktop: o colofão à esquerda, o formulário à direita.
 - H2: "Edição de Natal 2026"
 
-À esquerda, o **colofão** (folha papel, recortada como as outras peças, sem linhas e sem caixa colorida):
-- "R$ 397" no tamanho display; abaixo, "por livro. Frete à parte, para todo o Brasil."
-- Três linhas:
-  - "Pix ou 12x sem juros de R$ 33,08" (calculado de `PRECO_LIVRO` / `PARCELAS_MAX`)
-  - "Exemplares extras: R$ 149 cada"
-  - "Entre três irmãos, sai por menos de R$ 133 para cada."
-- Assentado como colofão de editora:
-  "Tiragem: 10 livros. Inscrições até 7 de novembro."
-  "Para que cada livro receba o cuidado que merece: quatro semanas de histórias e tempo de edição, impressão e entrega antes do Natal."
-- A garantia, no fim da folha:
-  "Você recebe a primeira história editada. Se ela não emocionar a família, devolvemos 100%. E se a pessoa não topar participar, também."
+À esquerda, o **colofão** (folha papel, recortada como as outras peças, sem linhas e sem caixa colorida), enxuto:
+- "R$ 397" no tamanho display; abaixo, "por livro. Frete à parte."
+- Uma linha: "Pix ou 12x de R$ 33,08 · Exemplares extras: R$ 149" (parcela calculada de `PRECO_LIVRO` / `PARCELAS_MAX`)
+- Em destaque, a escassez (dita só aqui): "Só 10 vagas nesta edição. Inscrições até 7 de novembro."
+- A garantia, no fim da folha: "Se a primeira história não emocionar a família, devolvemos 100%."
 
 À direita, o formulário:
 - Título: "Quero este livro"
 - Campos:
   - "Seu nome"
   - "Seu WhatsApp" (máscara brasileira)
-  - "Para quem seria o livro?" (select: pai, mãe, avô, avó, tio, tia, amigo, outra pessoa)
   - Se a cor da LiveCover foi trocada, enviar `capa_cor` como campo oculto (sem miniatura).
   - Honeypot invisível contra spam.
 - Botão: "Quero este livro"
 - Microcopy: "Nada é cobrado agora. Logo em seguida, falamos com você pelo WhatsApp para tirar dúvidas e garantir a sua vaga."
 - Sucesso: o formulário é substituído por "Recebemos. Em breve falamos com você pelo WhatsApp." e um link secundário "Prefere falar agora? Abrir WhatsApp" (wa.me com a mensagem pré-preenchida abaixo).
-- Mensagem wa.me: "Olá! Tenho interesse no livro da Ecoa Memórias para meu/minha [opção]. Meu nome é [nome]." (+ "Gostei da capa [cor]." quando houver)
+- Mensagem wa.me: "Olá! Tenho interesse no livro da Ecoa Memórias. Meu nome é [nome]." (+ "Gostei da capa [cor]." quando houver)
 
 ## 9. Perguntas frequentes
 - H2: "Perguntas frequentes"
@@ -264,4 +260,4 @@ Política LGPD simples e clara:
 - Vercel Analytics.
 - Todos os botões de interesse com `data-cta` único (header, hero, hero-whatsapp, formulario, fecho).
 - Evento `capa_personalizada` (uma vez por visita, quando o visitante troca a cor), com a propriedade `cor`.
-- Evento `lead_enviado` no sucesso do formulário, com as propriedades `para_quem`, `usou_capa` e `status` (`gravado` ou `fallback`).
+- Evento `lead_enviado` no sucesso do formulário, com as propriedades `usou_capa` e `status` (`gravado` ou `fallback`).

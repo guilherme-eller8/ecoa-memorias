@@ -82,10 +82,42 @@
   margin: 0;
   padding: 14px 12px 14px;
   list-style: none;
+  /* O histórico que sobe some sob o cabeçalho, como no app */
+  overflow: hidden;
 }
 
 .linha {
   display: flex;
+}
+
+/* Separador de data, centralizado como no app */
+.dia {
+  display: flex;
+  justify-content: center;
+  padding: 6px 0 2px;
+}
+
+.dia span {
+  padding: 3px 10px;
+  background: color-mix(in oklab, var(--papel) 70%, var(--wa-fundo));
+  border-radius: 7px;
+  color: var(--tinta-2);
+  font-size: 13px;
+}
+
+/* Conversa ao vivo: cada mensagem nova sobe do pé do quadro */
+@media (prefers-reduced-motion: no-preference) {
+  .chat[data-ao-vivo] .linha,
+  .chat[data-ao-vivo] .dia {
+    animation: chega 420ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)) both;
+  }
+}
+
+@keyframes chega {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
 }
 
 .linha[data-minha] {

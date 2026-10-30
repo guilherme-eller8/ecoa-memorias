@@ -10,9 +10,10 @@
   position: relative;
 }
 
+/* Abaixo do título da capa, para não cobrir o nome do livro quando a capa encolhe */
 .aparte {
   position: absolute;
-  bottom: 14%;
+  bottom: 1%;
   left: -4%;
   z-index: 2;
   width: min(260px, 64%);
