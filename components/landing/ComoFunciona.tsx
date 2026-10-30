@@ -55,33 +55,10 @@ const MOMENTOS: Momento[] = [
     ),
   },
   {
-    titulo: "A pergunta chega. A resposta é um áudio.",
+    titulo: "A resposta é um áudio. A família ouve.",
     texto:
-      "Uma pergunta por dia útil, direto no WhatsApp. Sem aplicativo, sem senha, sem escrever nada.",
+      "Uma pergunta por dia útil, direto no WhatsApp, sem aplicativo nem senha. Cada história gravada chega no mesmo dia a um grupo só da família.",
     respiro: "lg:h-[140px]",
-    visual: (
-      <div>
-        <WhatsAppChat
-          variant="individual"
-          titulo="Ecoa Memórias"
-          subtitulo="online"
-          mensagens={[
-            {
-              tipo: "texto",
-              texto:
-                "Bom dia! A pergunta de hoje: como era a casa onde o senhor cresceu?",
-              hora: "09:00",
-            },
-            { tipo: "audio", minha: true, duracao: "2:14", hora: "10:12" },
-          ]}
-        />
-      </div>
-    ),
-  },
-  {
-    titulo: "A família ouve no mesmo dia.",
-    texto: "Cada história gravada chega no mesmo dia a um grupo só da família.",
-    respiro: "lg:h-[100px]",
     visual: (
       <div>
         <WhatsAppChat
@@ -107,6 +84,36 @@ const MOMENTOS: Momento[] = [
               minha: true,
               texto: "que saudade dessa casa",
               hora: "19:14",
+            },
+          ]}
+        />
+      </div>
+    ),
+  },
+  {
+    titulo: "Você revisa antes de imprimir.",
+    texto:
+      "Editamos as histórias e mandamos a prova do livro em PDF. Você lê com calma, pede os ajustes, e só imprimimos com o seu ok.",
+    respiro: "lg:h-[100px]",
+    visual: (
+      <div>
+        <WhatsAppChat
+          variant="individual"
+          titulo="Ecoa Memórias"
+          subtitulo="online"
+          mensagens={[
+            {
+              tipo: "texto",
+              texto:
+                "A prova do livro está pronta 📄 Leia com calma e diga o que ajustar.",
+              hora: "10:30",
+            },
+            {
+              tipo: "texto",
+              minha: true,
+              texto:
+                "Só corrige o nome da tia: é Lurdes, com U. O resto, pode imprimir!",
+              hora: "21:47",
             },
           ]}
         />
