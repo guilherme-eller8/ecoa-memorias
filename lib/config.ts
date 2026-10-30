@@ -12,6 +12,9 @@ export const WHATSAPP_NUMERO = "5531971454494";
 export const EMAIL_CONTATO = "contato@ecoa-memorias.com.br"; // placeholder: a caixa ainda não existe
 export const CNPJ = "00.000.000/0001-00"; // placeholder
 export const CIDADE = "Belo Horizonte";
+export const RESPONSAVEL = "Guilherme Rocha Eller Miranda";
+export const LINKEDIN_URL =
+  "https://www.linkedin.com/in/guilherme-eller-940ab583/";
 
 // Endereço público do site (preview no WhatsApp e QR codes). Ordem: a variável que você define na
 // Vercel; senão, o domínio de produção que a própria Vercel informa no build; senão, o local.
