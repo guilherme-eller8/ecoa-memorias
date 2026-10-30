@@ -70,10 +70,12 @@ export function FormInteresse() {
     setErros({});
     setEstado({ fase: "enviando" });
     const resultado = await submitLead(r.data);
-    // Sem o nome nem o número: só para quem é e se a capa ao vivo foi usada
+    // Sem o nome nem o número: para quem é, se a capa ao vivo foi usada e se o lead foi
+    // gravado ou caiu no wa.me
     track("lead_enviado", {
       para_quem: r.data.para_quem,
       usou_capa: capa.usada,
+      status: resultado.status,
     });
     if (resultado.status === "fallback") abrirWhatsApp(resultado.url);
     setEstado({ fase: resultado.status, url: resultado.url });

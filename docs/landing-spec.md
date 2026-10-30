@@ -279,4 +279,4 @@ Política LGPD simples e clara:
 - Vercel Analytics.
 - Todos os botões "Tenho interesse" com `data-cta` único (header, hero, fecho).
 - Evento `capa_personalizada` (uma vez por visita, quando o visitante digita um nome ou troca a cor), com a propriedade `cor`. Nunca enviar o nome digitado.
-- Evento `lead_enviado` no sucesso do formulário, com as propriedades `para_quem` e `usou_capa`.
+- Evento `lead_enviado` no sucesso do formulário, com as propriedades `para_quem`, `usou_capa` e `status` (`gravado` ou `fallback`).

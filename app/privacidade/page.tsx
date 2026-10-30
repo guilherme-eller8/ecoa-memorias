@@ -58,7 +58,10 @@ export default function Privacidade() {
               <p>
                 Quando você demonstra interesse: o seu nome, o seu WhatsApp,
                 para quem seria o livro e, se você usou a capa da página, o nome
-                e a cor escolhidos.
+                e a cor escolhidos. Guardamos também a origem da visita (por
+                exemplo, de qual anúncio você veio) e uma assinatura do seu
+                endereço de rede, que não permite saber qual é o endereço,
+                usada só para barrar envios automáticos.
               </p>
               <p>
                 Depois da compra: os dados de quem compra (nome, contato e os
