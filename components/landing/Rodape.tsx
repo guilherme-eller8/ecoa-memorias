@@ -4,16 +4,17 @@ import {
   CIDADE,
   CNPJ,
   CNPJ_PRONTO,
-  EMAIL_CONTATO,
+  LINKEDIN_URL,
   MARCA,
-  WHATSAPP_NUMERO,
+  RESPONSAVEL,
   WHATSAPP_PRONTO,
 } from "@/lib/config";
+import { linkWhatsApp, MENSAGEM_CONVERSA } from "@/lib/leads";
 
 // Links soltos, não no meio de texto: alvo de 48px
 const ALVO = "inline-flex! min-h-12 items-center";
 
-// A contracapa: o nome na largura toda, os contatos e os créditos.
+// A contracapa: o nome na largura toda, o WhatsApp e quem faz.
 export function Rodape() {
   return (
     <footer className="bg-papel pt-[clamp(48px,5vw,72px)] pb-10 md:pb-12">
@@ -35,24 +36,16 @@ export function Rodape() {
               <li>
                 <Button
                   variant="link"
-                  href={`https://wa.me/${WHATSAPP_NUMERO}`}
+                  href={linkWhatsApp(MENSAGEM_CONVERSA)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={ALVO}
+                  data-cta="rodape-whatsapp"
                 >
                   WhatsApp
                 </Button>
               </li>
             )}
-            <li>
-              <Button
-                variant="link"
-                href={`mailto:${EMAIL_CONTATO}`}
-                className={ALVO}
-              >
-                {EMAIL_CONTATO}
-              </Button>
-            </li>
             <li>
               <Button variant="link" href="/privacidade" className={ALVO}>
                 Privacidade
@@ -64,7 +57,19 @@ export function Rodape() {
               {MARCA}
               {CNPJ_PRONTO && ` · CNPJ ${CNPJ}`}
             </p>
-            <p>Feito em {CIDADE}.</p>
+            {/* Quem está por trás: quem paga por Pix, sem checkout, quer saber com quem fala */}
+            <p>
+              Feito por{" "}
+              <Button
+                variant="link"
+                href={LINKEDIN_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {RESPONSAVEL}
+              </Button>
+              , em {CIDADE}.
+            </p>
           </div>
         </div>
       </Container>
