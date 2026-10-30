@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Caveat, Newsreader } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { Entrada } from "@/components/ui/Entrada";
 import "./globals.css";
 
 const newsreader = Newsreader({
@@ -32,6 +33,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="pt-BR" className={`${newsreader.variable} ${caveat.variable}`}>
       <body>
         {children}
+        <Entrada />
         <Analytics />
       </body>
     </html>

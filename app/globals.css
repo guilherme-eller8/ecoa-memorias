@@ -93,7 +93,7 @@ body {
 /* Grão do papel pólen, 3–4% */
 body::before {
   content: "";
-  position: fixed;
+  position: absolute;
   inset: 0;
   z-index: 0;
   pointer-events: none;
@@ -180,6 +180,8 @@ p {
 }
 
 /* ── Movimento ────────────────────────────────────────────────────────── */
+/* Entrada por seção: components/ui/Entrada.tsx (Web Animations, só transform e opacity) */
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
