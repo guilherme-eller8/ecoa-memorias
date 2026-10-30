@@ -1,36 +1,11 @@
 import { CAPAS } from "@/components/ui/capas";
 import { MARCA, WHATSAPP_NUMERO } from "./config";
-import type { ParaQuem } from "./lead-campos";
 import type { Lead } from "./lead-schema";
 import { registrarLead } from "./registrar-lead";
 
 // O schema mora em ./lead-schema: o formulário o carrega só no envio.
 
-export { PARA_QUEM, type ParaQuem } from "./lead-campos";
 export type { EntradaLead, Lead } from "./lead-schema";
-
-const ARTIGO: Record<ParaQuem, string> = {
-  pai: "meu pai",
-  mãe: "minha mãe",
-  avô: "meu avô",
-  avó: "minha avó",
-  tio: "meu tio",
-  tia: "minha tia",
-  amigo: "meu amigo",
-  "outra pessoa": "outra pessoa",
-};
-
-// Na voz da Ecoa, falando com quem deixou o interesse.
-const ARTIGO_SEU: Record<ParaQuem, string> = {
-  pai: "o seu pai",
-  mãe: "a sua mãe",
-  avô: "o seu avô",
-  avó: "a sua avó",
-  tio: "o seu tio",
-  tia: "a sua tia",
-  amigo: "o seu amigo",
-  "outra pessoa": "outra pessoa",
-};
 
 /** "31999998888" → "(31) 99999-8888", também durante a digitação. */
 export function mascararWhatsApp(valor: string): string {
@@ -44,19 +19,17 @@ export function mascararWhatsApp(valor: string): string {
 }
 
 export function mensagemWhatsApp(
-  lead: Pick<Lead, "nome" | "para_quem" | "capa_cor">,
+  lead: Pick<Lead, "nome" | "capa_cor">,
 ): string {
-  let texto = `Olá! Tenho interesse no livro da ${MARCA} para ${ARTIGO[lead.para_quem]}. Meu nome é ${lead.nome}.`;
+  let texto = `Olá! Tenho interesse no livro da ${MARCA}. Meu nome é ${lead.nome}.`;
   if (lead.capa_cor) texto += ` Gostei da capa ${CAPAS[lead.capa_cor].nome}.`;
   return texto;
 }
 
 /** Primeira mensagem da Ecoa para o lead, pré-preenchida no link do e-mail interno. */
-export function mensagemPrimeiroContato(
-  lead: Pick<Lead, "nome" | "para_quem">,
-): string {
+export function mensagemPrimeiroContato(lead: Pick<Lead, "nome">): string {
   const primeiroNome = lead.nome.split(/\s+/)[0];
-  return `Olá, ${primeiroNome}! Aqui é da ${MARCA}. Recebemos o seu interesse no livro para ${ARTIGO_SEU[lead.para_quem]}. Posso te contar como funciona?`;
+  return `Olá, ${primeiroNome}! Aqui é da ${MARCA}. Recebemos o seu interesse no livro. Posso te contar como funciona?`;
 }
 
 /** Para quem prefere chamar direto, sem o formulário. */

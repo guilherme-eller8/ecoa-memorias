@@ -4,12 +4,12 @@ import { track } from "@vercel/analytics";
 import { useId, useRef, useState, type FormEvent } from "react";
 import { Button } from "@/components/ui/Button";
 import { useCapa } from "@/lib/capa";
-import { mascararWhatsApp, PARA_QUEM, submitLead } from "@/lib/leads";
+import { mascararWhatsApp, submitLead } from "@/lib/leads";
 
 // O zod só chega quando alguém começa a preencher: fora do bundle da primeira tela
 const carregarSchema = () => import("@/lib/lead-schema");
 
-type Campo = "nome" | "whatsapp" | "para_quem";
+type Campo = "nome" | "whatsapp";
 type Erros = Partial<Record<Campo, string>>;
 type Estado =
   | { fase: "form" }
@@ -17,7 +17,7 @@ type Estado =
   | { fase: "fallback"; url: string }
   | { fase: "gravado"; url: string };
 
-const CAMPOS: Campo[] = ["nome", "whatsapp", "para_quem"];
+const CAMPOS: Campo[] = ["nome", "whatsapp"];
 
 const CAMPO =
   "rounded-ed bg-papel text-tinta mt-2 block min-h-12 w-full px-4 py-2.5 text-corpo leading-snug " +
@@ -65,10 +65,8 @@ export function FormInteresse() {
     setErros({});
     setEstado({ fase: "enviando" });
     const resultado = await submitLead(r.data);
-    // Sem o nome nem o número: para quem é, se a capa ao vivo foi usada e se o lead foi
-    // gravado ou caiu no wa.me
+    // Sem o nome nem o número: se a capa ao vivo foi usada e se o lead foi gravado ou caiu no wa.me
     track("lead_enviado", {
-      para_quem: r.data.para_quem,
       usou_capa: capa.usada,
       status: resultado.status,
     });
@@ -164,29 +162,6 @@ export function FormInteresse() {
           {...aria("whatsapp")}
         />
         {erro("whatsapp")}
-      </div>
-
-      <div className="mt-5">
-        <label htmlFor={`${id}-para`} className="text-pequeno font-medium">
-          Para quem seria o livro?
-        </label>
-        <select
-          id={`${id}-para`}
-          name="para_quem"
-          defaultValue=""
-          className={`${CAMPO} cursor-pointer appearance-none bg-[url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='14'%20height='9'%3E%3Cpath%20d='M1%201l6%206%206-6'%20fill='none'%20stroke='%2326211D'%20stroke-width='2'/%3E%3C/svg%3E")] bg-[position:right_16px_center] bg-no-repeat pr-11`}
-          {...aria("para_quem")}
-        >
-          <option value="" disabled>
-            Escolha
-          </option>
-          {PARA_QUEM.map((p) => (
-            <option key={p} value={p}>
-              {p}
-            </option>
-          ))}
-        </select>
-        {erro("para_quem")}
       </div>
 
       {/* A cor escolhida na capa do hero vai junto, sem pedir nada a mais */}

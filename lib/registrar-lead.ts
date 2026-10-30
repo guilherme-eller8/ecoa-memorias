@@ -84,7 +84,6 @@ export async function registrarLead(
     const gravacao = await db.from("leads").insert({
       name: lead.nome,
       whatsapp: lead.whatsapp,
-      for_whom: lead.para_quem,
       capa_cor: lead.capa_cor ?? null,
       utm_source: lead.utm_source || null,
       utm_medium: lead.utm_medium || null,
@@ -131,7 +130,6 @@ async function avisarPorEmail(
     const linhas: [string, string][] = [
       ["Nome", lead.nome],
       ["WhatsApp", mascararWhatsApp(lead.whatsapp)],
-      ["Para quem", lead.para_quem],
     ];
     if (lead.capa_cor) linhas.push(["Capa", CAPAS[lead.capa_cor].nome]);
     const origem = [lead.utm_source, lead.utm_medium, lead.utm_campaign]
@@ -142,7 +140,7 @@ async function avisarPorEmail(
     const envio = await new Resend(RESEND_API_KEY).emails.send({
       from: RESEND_FROM,
       to: ADMIN_EMAIL,
-      subject: `Novo interesse: ${lead.nome} · ${lead.para_quem}`,
+      subject: `Novo interesse: ${lead.nome}`,
       text: [
         `Novo interesse na edição ${EDICAO}.`,
         "",

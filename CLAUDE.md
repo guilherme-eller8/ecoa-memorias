@@ -95,6 +95,7 @@ Um fundo, uma tinta, um acento. As cores de capa existem dentro do objeto, não 
 ### Espaço e layout
 - Um grid de 12 colunas, margens externas iguais (20px no mobile, 32px no desktop), largura máxima de 1280px.
 - Seções separadas por 120–200px no desktop; nenhum trecho vazio maior que meia tela.
+- O título e o conteúdo principal de cada seção cabem juntos numa tela (1440×900, notebook baixo de 1300×640 e 390×844): ninguém rola para descobrir do que a parte trata. Objetos grandes (capa, livro aberto) se limitam também pela altura da tela.
 - Toda seção abre com um título que diz o que ela é.
 - Vizinhas nunca repetem composição. Texto à esquerda por padrão; centralizar no máximo um momento (o fecho).
 
@@ -140,7 +141,7 @@ Leia a tabela "House rules" em `.claude/skills/design-taste-frontend/SKILL.md`. 
 
 ### Obrigatório
 - Tipografia grande como protagonista, conteúdo completo em cada seção.
-- Escassez dita uma única vez, com serenidade, no colofão (seção 8): "Tiragem: 10 livros. Inscrições até 7 de novembro."
+- Escassez dita uma única vez, com serenidade, no colofão (seção 8): "Só 10 vagas nesta edição. Inscrições até 7 de novembro."
 - Parecer o site de uma pequena editora cuidadosa, não uma página de vendas.
 
 ## Copy

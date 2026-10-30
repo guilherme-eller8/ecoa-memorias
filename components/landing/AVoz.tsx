@@ -26,9 +26,10 @@ export function AVoz() {
       tone="papel"
       grid
       className="overflow-x-clip"
+      titleClassName="xl:col-span-5 xl:row-start-1"
     >
       <p
-        className="col-span-12 mt-6 max-w-[40ch] md:mt-8 xl:col-span-5 xl:mt-0 xl:self-center"
+        className="col-span-12 mt-6 max-w-[40ch] md:mt-8 xl:col-span-5 xl:row-start-2 xl:self-start"
         data-entra
         style={ordem(1)}
       >
@@ -38,7 +39,7 @@ export function AVoz() {
       </p>
 
       <div
-        className="relative col-span-12 mt-6 pt-[76px] pb-[200px] md:mt-10 md:pb-[290px] xl:col-span-7 xl:col-start-6 xl:mt-10 xl:pb-[270px]"
+        className="relative col-span-12 mt-6 pt-[64px] pb-[150px] md:mt-10 md:pb-[170px] xl:col-span-7 xl:col-start-6 xl:row-span-3 xl:row-start-1 xl:mt-0 xl:w-full xl:max-w-[max(600px,calc((100svh-290px)*1.38))] xl:justify-self-end xl:pt-[52px] xl:pb-[70px]"
         data-entra="pagina"
         style={ordem(2)}
       >
@@ -85,7 +86,7 @@ export function AVoz() {
             titulo="A casa da Rua Bahia"
             duracao="2:14"
             src={src}
-            className="absolute top-[calc(100%-56px)] right-[2%] w-[clamp(118px,20%,160px)]"
+            className="absolute top-[calc(100%-110px)] right-[2%] w-[clamp(118px,18%,140px)] xl:top-[calc(100%-150px)]"
           />
         </div>
       </div>

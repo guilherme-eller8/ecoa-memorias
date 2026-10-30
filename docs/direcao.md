@@ -40,7 +40,7 @@ Até 30/10 a capa tinha um campo com o nome de quem conta. Saiu: o fundador pref
 | 5 A voz em cada página | Uma página dupla | O livro aberto em escala grande, com o celular em primeiro plano |
 | 6 A surpresa | Os bilhetes escondidos | Foto grande, bilhetes cortados pela borda |
 | 7 Perguntas | O fichário | Índice: lista das 10 perguntas em tipo grande; ao apontar (ou tocar) uma pergunta, o quadro fixo mostra a página que ela virou |
-| 8 Valor e interesse | O colofão | Folha de papel com a tiragem, o preço e as condições assentados como colofão; formulário ao lado |
+| 8 Valor e interesse | O colofão | Folha de papel com o preço, as condições e as vagas assentados como colofão; formulário ao lado |
 | 9 FAQ | Fichas de arquivo | Cartões preenchidos com aba recortada, empilhados e sobrepostos, alternando as cores das capas |
 | 10 Fecho | A estante | Campo floresta, título centralizado (o único momento centralizado), as cinco capas como lombadas numa estante |
 | 11 Rodapé | A contracapa | "Ecoa Memórias" grande na largura toda, contatos, privacidade, CNPJ, créditos |
