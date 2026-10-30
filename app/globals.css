@@ -1,0 +1,192 @@
+@import "tailwindcss";
+
+/* ── Tokens ───────────────────────────────────────────────────────────── */
+:root {
+  /* Um fundo, uma tinta, um acento. */
+  --polen: #f5efe4; /* papel pólen do miolo: fundo principal */
+  --papel: #fffdf8; /* superfícies um tom acima */
+  --tinta: #26211d; /* todo texto corrido */
+  --tinta-2: #6e6259; /* só notas secundárias */
+  --floresta: #1f3d33; /* o acento */
+
+  /* Só nas capas (os tecidos do livro) */
+  --vinho: #6e2a2a;
+  --rosa-antigo: #c9a49a;
+  --nevoa: #a9c3cf;
+  --petroleo: #3f7a8c;
+
+  /* Só no hot stamping e no logo */
+  --dourado: #b08d57;
+
+  /* Cinco tamanhos */
+  --t-display: clamp(2.4rem, 7vw, 6rem);
+  --t-h2: clamp(2rem, 4.2vw, 3.5rem);
+  --t-destaque: clamp(1.5rem, 2.4vw, 2rem);
+  --t-corpo: 19px;
+  --t-pequeno: 15px;
+
+  /* Um raio só: o canto da capa dura */
+  --raio: 2px;
+
+  /* Margens externas */
+  --margem: 20px;
+
+  /* Grão de papel (SVG, sem gradiente) */
+  --grao: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .15 0 0 0 0 .13 0 0 0 0 .11 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+}
+
+@media (min-width: 768px) {
+  :root {
+    --margem: 32px;
+  }
+}
+
+@theme inline {
+  --color-polen: var(--polen);
+  --color-papel: var(--papel);
+  --color-tinta: var(--tinta);
+  --color-tinta-2: var(--tinta-2);
+  --color-floresta: var(--floresta);
+  --color-vinho: var(--vinho);
+  --color-rosa-antigo: var(--rosa-antigo);
+  --color-nevoa: var(--nevoa);
+  --color-petroleo: var(--petroleo);
+  --color-dourado: var(--dourado);
+
+  --font-serif: var(--font-newsreader), Georgia, serif;
+  --font-mao: var(--font-caveat), cursive;
+  --font-ui: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --text-display: var(--t-display);
+  --text-display--line-height: 1;
+  --text-display--letter-spacing: -0.02em;
+  --text-h2: var(--t-h2);
+  --text-h2--line-height: 1.05;
+  --text-h2--letter-spacing: -0.015em;
+  --text-destaque: var(--t-destaque);
+  --text-destaque--line-height: 1.2;
+  --text-corpo: var(--t-corpo);
+  --text-corpo--line-height: 1.6;
+  --text-pequeno: var(--t-pequeno);
+  --text-pequeno--line-height: 1.45;
+
+  --radius-ed: var(--raio);
+}
+
+/* ── Base ─────────────────────────────────────────────────────────────── */
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  position: relative;
+  background-color: var(--polen);
+  color: var(--tinta);
+  font-family: var(--font-serif);
+  font-size: var(--t-corpo);
+  line-height: 1.6;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Grão do papel pólen, 3–4% */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: var(--grao);
+  opacity: 0.035;
+}
+
+body > * {
+  position: relative;
+  z-index: 1;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 500;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+::selection {
+  background: var(--floresta);
+  color: var(--polen);
+}
+
+:focus-visible {
+  outline: 2px solid var(--floresta);
+  outline-offset: 3px;
+}
+
+/* Interfaces de outro app (WhatsApp, player): não são a voz da Ecoa */
+[data-ui] {
+  font-family: var(--font-ui);
+}
+
+/* ── Fotos ────────────────────────────────────────────────────────────── */
+.photo {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--raio);
+}
+
+.photo img {
+  filter: saturate(0.86) contrast(0.96) sepia(0.06);
+}
+
+.photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: var(--grao);
+  opacity: 0.06;
+}
+
+/* Cópia impressa colada na página: margem de papel e vinheta interna */
+.photo-antiga {
+  position: relative;
+  padding: 0.45em;
+  background: var(--papel);
+  border-radius: var(--raio);
+}
+
+.photo-antiga > .photo-antiga__img {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.photo-antiga img {
+  filter: saturate(0.86) contrast(0.96) sepia(0.06);
+}
+
+.photo-antiga > .photo-antiga__img::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 1.4em rgb(38 33 29 / 0.28); /* taste-skill-ignore: vinheta interna da cópia impressa (inset, não é sombra) */
+}
+
+/* ── Movimento ────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
