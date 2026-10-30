@@ -136,8 +136,8 @@ Duas colunas no desktop: título na largura de 8/12; abaixo, texto à esquerda (
 | Título | Texto | Visual |
 |---|---|---|
 | "Você dá a notícia." | "Você convida quem vai contar as histórias a responder às perguntas por áudio, ou texto se preferir, no WhatsApp. Depois, mandamos as boas-vindas e só começamos quando a pessoa topar. As perguntas vêm da nossa seleção ou de você." | QuestionCard "Como era a casa onde o senhor cresceu?" sobre a foto `antiga-casa` (sem a foto, só o cartão) |
-| "A pergunta chega. A resposta é um áudio." | "Uma pergunta por dia útil, direto no WhatsApp. Sem aplicativo, sem senha, sem escrever nada." | WhatsAppChat `individual` "Ecoa Memórias": a pergunta do dia e a resposta em áudio de 2:14 |
-| "A família ouve no mesmo dia." | "Cada história gravada chega no mesmo dia a um grupo só da família." | WhatsAppChat `grupo` "Histórias do Vô": áudio de 2:14, "Capítulo 6 · A casa da Rua Bahia", reações "não sabia disso" e "que saudade dessa casa" |
+| "A resposta é um áudio. A família ouve." | "Uma pergunta por dia útil, direto no WhatsApp, sem aplicativo nem senha. Cada história gravada chega no mesmo dia a um grupo só da família." | WhatsAppChat `grupo` "Histórias do Vô": áudio de 2:14, "Capítulo 6 · A casa da Rua Bahia", reações "não sabia disso" e "que saudade dessa casa" |
+| "Você revisa antes de imprimir." | "Editamos as histórias e mandamos a prova do livro em PDF. Você lê com calma, pede os ajustes, e só imprimimos com o seu ok." | WhatsAppChat `individual` "Ecoa Memórias": "A prova do livro está pronta 📄 Leia com calma e diga o que ajustar." e a resposta "Só corrige o nome da tia: é Lurdes, com U. O resto, pode imprimir!" |
 | "O livro chega antes do Natal." | "Com as histórias, as fotos e as mensagens da família, que chegam como surpresa." | BookCover vinho "Caminhos que percorri", fechada |
 
 - Linha abaixo (Newsreader 19px, tinta):
