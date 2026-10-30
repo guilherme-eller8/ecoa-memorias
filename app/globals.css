@@ -19,9 +19,9 @@
   --dourado: #b08d57;
 
   /* Cinco tamanhos */
-  --t-display: clamp(2.4rem, 7vw, 6rem);
-  --t-h2: clamp(2rem, 4.2vw, 3.5rem);
-  --t-destaque: clamp(1.5rem, 2.4vw, 2rem);
+  --t-display: clamp(2.2rem, 5vw, 4.25rem);
+  --t-h2: clamp(1.75rem, 3.2vw, 2.75rem);
+  --t-destaque: clamp(1.3rem, 2vw, 1.625rem);
   --t-corpo: 19px;
   --t-pequeno: 15px;
 

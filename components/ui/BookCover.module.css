@@ -56,7 +56,7 @@
   --w: 340px;
 }
 .livro[data-size="xl"] {
-  --w: clamp(300px, 38vw, 520px);
+  --w: clamp(260px, 28vw, 400px);
 }
 
 .livro[data-open] {

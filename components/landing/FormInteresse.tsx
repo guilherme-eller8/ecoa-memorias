@@ -2,9 +2,7 @@
 
 import { track } from "@vercel/analytics";
 import { useId, useRef, useState, type FormEvent } from "react";
-import { BookCover } from "@/components/ui/BookCover";
 import { Button } from "@/components/ui/Button";
-import { CAPA_PADRAO, CAPAS } from "@/components/ui/capas";
 import { useCapa } from "@/lib/capa";
 import { mascararWhatsApp, PARA_QUEM, submitLead } from "@/lib/leads";
 
@@ -42,8 +40,6 @@ export function FormInteresse() {
   const [whatsapp, setWhatsapp] = useState("");
   const [erros, setErros] = useState<Erros>({});
   const [estado, setEstado] = useState<Estado>({ fase: "form" });
-
-  const autorCapa = capa.nome.trim() || CAPA_PADRAO.author;
 
   async function enviar(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -133,7 +129,7 @@ export function FormInteresse() {
       className="relative"
     >
       <h3 id={`${id}-titulo`} className="text-destaque">
-        Tenho interesse
+        Quero este livro
       </h3>
 
       <div className="mt-6">
@@ -193,26 +189,9 @@ export function FormInteresse() {
         {erro("para_quem")}
       </div>
 
+      {/* A cor escolhida na capa do hero vai junto, sem pedir nada a mais */}
       {capa.usada ? (
-        <div className="mt-7 flex items-center gap-4">
-          {/* O texto ao lado já diz nome e cor: a miniatura é só para os olhos */}
-          <div aria-hidden className="shrink-0">
-            <BookCover
-              color={capa.cor}
-              title={CAPA_PADRAO.title}
-              author={autorCapa}
-              size="sm"
-              turn={18}
-              className="[--w:96px]!"
-            />
-          </div>
-          <p className="text-pequeno">
-            <span className="font-italico block italic">{autorCapa}</span>
-            <span className="block">capa {CAPAS[capa.cor].nome}</span>
-          </p>
-          <input type="hidden" name="capa_nome" value={capa.nome.trim()} />
-          <input type="hidden" name="capa_cor" value={capa.cor} />
-        </div>
+        <input type="hidden" name="capa_cor" value={capa.cor} />
       ) : null}
 
       {/* Honeypot: invisível e fora da ordem de foco */}
@@ -236,11 +215,11 @@ export function FormInteresse() {
         data-cta="formulario"
         disabled={estado.fase === "enviando"}
       >
-        Tenho interesse
+        Quero este livro
       </Button>
       <p className="text-pequeno mt-4 max-w-[44ch]">
-        Sem compromisso. Respondemos pelo WhatsApp em até 24 horas com os
-        próximos passos.
+        Nada é cobrado agora. Logo em seguida, falamos com você pelo WhatsApp
+        para tirar dúvidas e garantir a sua vaga.
       </p>
     </form>
   );

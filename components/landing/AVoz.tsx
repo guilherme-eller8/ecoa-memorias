@@ -63,11 +63,16 @@ export function AVoz() {
 
         <div className="relative w-[152%] -translate-x-[34%] md:w-full md:translate-x-0">
           <OpenBookSpread
-            foto={{
-              src: IMAGES.antigaCasa,
-              alt: "Foto antiga em preto e branco de uma família de cinco pessoas diante de uma casa pequena com portão e uma mangueira, no interior de Minas",
-              objectPosition: "50% 62%",
-            }}
+            foto={
+              existeEmPublic(IMAGES.antigaCasa)
+                ? {
+                    src: IMAGES.antigaCasa,
+                    alt: "Foto antiga em preto e branco de uma família de cinco pessoas diante de uma casa pequena com portão e uma mangueira, no interior de Minas",
+                    objectPosition: "50% 62%",
+                  }
+                : undefined
+            }
+            pergunta="Como era a casa onde o senhor cresceu?"
             numeral="VI"
             titulo="A casa da Rua Bahia"
             ano="1958"

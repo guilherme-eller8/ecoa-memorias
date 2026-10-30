@@ -7,6 +7,7 @@ import { Fichas } from "@/components/landing/Fichas";
 import { Hero } from "@/components/landing/Hero";
 import { Interesse } from "@/components/landing/Interesse";
 import { OQueVoceRecebe } from "@/components/landing/OQueVoceRecebe";
+import { OValor } from "@/components/landing/OValor";
 import { Perguntas } from "@/components/landing/Perguntas";
 import { Rodape } from "@/components/landing/Rodape";
 
@@ -23,6 +24,7 @@ export default function Home() {
       <Cabecalho />
       <main id="conteudo" tabIndex={-1} className="focus:outline-none">
         <Hero />
+        <OValor />
         <OQueVoceRecebe />
         <ComoFunciona />
         <AVoz />

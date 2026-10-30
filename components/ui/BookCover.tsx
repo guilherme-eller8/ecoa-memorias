@@ -15,7 +15,8 @@ export type FotoCapa = string;
 export type BookCoverProps = {
   color: CorCapa;
   title: string;
-  author: string;
+  /** Nome de quem conta. Opcional: a capa da página mostra só o título e a foto. */
+  author?: string;
   /** Foto antiga na janela da capa (decorativa: a capa inteira já tem nome acessível). */
   photo?: FotoCapa;
   /** Entreaberta: a capa gira na dobradiça e mostra a borda das páginas. */
@@ -94,10 +95,10 @@ export function BookCover({
     ...(turn !== undefined ? { "--giro": `${turn}deg` } : {}),
   } as CSSProperties;
 
-  // Composição de baixo para cima: nome, filete, título
+  // Composição de baixo para cima: nome, filete, título. Sem nome, o filete desce ao lugar dele.
   const linhas = linhasDoTitulo(title);
   const yAutor = ALTURA - 16;
-  const yFilete = yAutor - AUTOR * 0.72 - 2.9;
+  const yFilete = author ? yAutor - AUTOR * 0.72 - 2.9 : yAutor - 1.4;
   const yUltimaLinha = yFilete - 4.2;
 
   return (
@@ -109,7 +110,7 @@ export function BookCover({
       data-escura={capa.escura || undefined}
       style={estilo}
       role="img"
-      aria-label={`Livro de capa dura ${capa.nome}: “${title}”, de ${author}`}
+      aria-label={`Livro de capa dura ${capa.nome}: “${title}”${author ? `, de ${author}` : ""}`}
     >
       <div className={s.palco}>
         <div className={s.corpo}>
@@ -176,18 +177,24 @@ export function BookCover({
               <text
                 transform={`translate(${ESPESSURA / 2 - LOMBADA * 0.33} ${ALTURA / 2}) rotate(90)`}
                 textAnchor="middle"
-                fontSize={corpoQueCabe(LOMBADA, `${title}  ${author}`, 46)}
+                fontSize={corpoQueCabe(
+                  LOMBADA,
+                  `${title}  ${author ?? ""}`,
+                  46,
+                )}
                 className={s.tipo}
                 style={{ fontVariationSettings: '"opsz" 12' }}
               >
                 {title}
-                <tspan
-                  dx="0.9em"
-                  fontStyle="italic"
-                  style={{ fontFamily: "var(--font-italico)" }}
-                >
-                  {author}
-                </tspan>
+                {author ? (
+                  <tspan
+                    dx="0.9em"
+                    fontStyle="italic"
+                    style={{ fontFamily: "var(--font-italico)" }}
+                  >
+                    {author}
+                  </tspan>
+                ) : null}
               </text>
             </svg>
           </div>
@@ -260,18 +267,20 @@ export function BookCover({
                       </tspan>
                     ))}
                   </text>
-                  <text
-                    x={M}
-                    y={yAutor}
-                    fontSize={corpoQueCabe(AUTOR, author, 30)}
-                    fontStyle="italic"
-                    style={{
-                      fontFamily: "var(--font-italico)",
-                      fontVariationSettings: '"opsz" 16',
-                    }}
-                  >
-                    {author}
-                  </text>
+                  {author ? (
+                    <text
+                      x={M}
+                      y={yAutor}
+                      fontSize={corpoQueCabe(AUTOR, author, 30)}
+                      fontStyle="italic"
+                      style={{
+                        fontFamily: "var(--font-italico)",
+                        fontVariationSettings: '"opsz" 16',
+                      }}
+                    >
+                      {author}
+                    </text>
+                  ) : null}
                 </g>
                 {/* Hot stamping: um único filete curto, forma preenchida */}
                 <rect

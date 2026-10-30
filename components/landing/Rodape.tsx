@@ -16,11 +16,11 @@ const ALVO = "inline-flex! min-h-12 items-center";
 // A contracapa: o nome na largura toda, os contatos e os créditos.
 export function Rodape() {
   return (
-    <footer className="bg-papel pt-[clamp(56px,6.6vw,96px)] pb-10 md:pb-12">
+    <footer className="bg-papel pt-[clamp(48px,5vw,72px)] pb-10 md:pb-12">
       <Container>
         <div className="[container-type:inline-size]">
           <p
-            className="text-[14.7cqi] leading-[0.9] font-medium tracking-[-0.03em]"
+            className="text-[10cqi] leading-[0.9] font-medium tracking-[-0.03em]"
             // inline: a regra global de <p> (text-wrap) fica fora das camadas e venceria a classe
             style={{ textWrap: "nowrap", fontVariationSettings: '"opsz" 72' }}
             aria-hidden
@@ -64,7 +64,7 @@ export function Rodape() {
               {MARCA}
               {CNPJ_PRONTO && ` · CNPJ ${CNPJ}`}
             </p>
-            <p>Feito com cuidado em {CIDADE}.</p>
+            <p>Feito em {CIDADE}.</p>
           </div>
         </div>
       </Container>

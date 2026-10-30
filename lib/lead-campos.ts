@@ -12,5 +12,3 @@ export const PARA_QUEM = [
 ] as const;
 
 export type ParaQuem = (typeof PARA_QUEM)[number];
-
-export const NOME_CAPA_MAX = 40;

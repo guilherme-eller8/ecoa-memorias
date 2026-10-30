@@ -83,9 +83,9 @@ Um fundo, uma tinta, um acento. As cores de capa existem dentro do objeto, não 
 ### Tipografia
 - Uma família faz o trabalho: Newsreader (400–500). Itálico só para nomes de pessoas na capa e na assinatura das histórias.
 - Cinco tamanhos no máximo, bem afastados:
-  - display (h1) `clamp(2.4rem, 7vw, 6rem)`, line-height 1.0, tracking -0.02em
-  - h2 `clamp(2rem, 4.2vw, 3.5rem)`, line-height 1.05
-  - fatos e destaques `clamp(1.5rem, 2.4vw, 2rem)`
+  - display (h1) `clamp(2.2rem, 5vw, 4.25rem)`, line-height 1.0, tracking -0.02em
+  - h2 `clamp(1.75rem, 3.2vw, 2.75rem)`, line-height 1.05
+  - fatos e destaques `clamp(1.3rem, 2vw, 1.625rem)`
   - corpo 19px, line-height 1.6, máximo 62ch
   - pequeno 15px (nunca abaixo de 13px)
 - Todo título com no máximo **2 linhas em 390px e em 1440px**. Se quebrar em 3, corte palavras antes de reduzir a fonte.

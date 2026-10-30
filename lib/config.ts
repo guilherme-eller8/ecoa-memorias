@@ -7,9 +7,9 @@ export const PRECO_LIVRO = 397; // exibir como "R$ 397"
 export const PRECO_EXEMPLAR_EXTRA = 149;
 export const PARCELAS_MAX = 12;
 export const FORMATO_LIVRO = "21 × 21 cm"; // placeholder
-export const PAGINAS_LIVRO = 60; // placeholder
+export const PAGINAS_LIVRO = 80; // máximo, com fotos e histórias; referência interna, não aparece na página
 export const WHATSAPP_NUMERO = "5531971454494";
-export const EMAIL_CONTATO = "contato@ecoamemorias.com.br"; // placeholder
+export const EMAIL_CONTATO = "contato@ecoa-memorias.com.br"; // placeholder: a caixa ainda não existe
 export const CNPJ = "00.000.000/0001-00"; // placeholder
 export const CIDADE = "Belo Horizonte";
 
@@ -26,12 +26,8 @@ export const SITE_URL =
 export const WHATSAPP_PRONTO = /^55\d{10,11}$/.test(WHATSAPP_NUMERO);
 export const CNPJ_PRONTO = !CNPJ.startsWith("00.000.000");
 export const SEMANAS_DE_PERGUNTAS = 4;
-export const HISTORIAS_MAX = 20;
-export const MENSAGENS_MAX = 10;
 
 export const IMAGES = {
-  passo2: "/images/passo-2-gravando.webp",
-  passo4: "/images/passo-4-livro.webp",
   surpresa: "/images/surpresa-ceia.webp",
   antigaCasa: "/images/antiga-casa.webp",
   antigaCasamento: "/images/antiga-casamento.webp",
@@ -67,4 +63,15 @@ export function formatarData(iso: string = DATA_LIMITE): string {
 /** 397 → "R$ 397" */
 export function formatarPreco(valor: number = PRECO_LIVRO): string {
   return `R$ ${valor.toLocaleString("pt-BR")}`;
+}
+
+/** 397 / 12 → "R$ 33,08" (parcelas sem juros) */
+export function formatarParcela(
+  valor: number = PRECO_LIVRO,
+  parcelas: number = PARCELAS_MAX,
+): string {
+  return (valor / parcelas).toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  });
 }

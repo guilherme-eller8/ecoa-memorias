@@ -1,5 +1,9 @@
 # Ecoa Memórias — imagens a gerar
 
+> **Atualização 30/10:** `passo-2-gravando` e `passo-4-livro` saíram da página. Os passos 2 e 4 do "Como funciona" agora são objetos desenhados em código (a conversa no WhatsApp e a capa do livro), que mostram o mecanismo melhor que uma foto. Faltam 7 imagens. Enquanto um arquivo não existe, a página esconde o quadro dele (nunca mostra um bloco vazio).
+>
+> Onde cada uma aparece: `antiga-casamento` na capa do hero · `antiga-flores` na capa da ficha técnica · `antiga-fazenda` na capa do passo 4 · `antiga-casa` no passo 1 e no livro aberto · `surpresa-ceia` na seção da surpresa · todas as antigas no fichário de perguntas.
+
 A maior parte do visual é feita em código (capas, livro aberto, celular, WhatsApp, bilhetes, cartões de pergunta, imagem de OG). São só **9 imagens** geradas.
 
 ## Como gerar
@@ -77,8 +81,6 @@ Faded color photograph from the 1970s: a Brazilian family at the beach, father h
 ## Mapa para `IMAGES` em lib/config.ts
 ```ts
 IMAGES = {
-  passo2: "/images/passo-2-gravando.webp",
-  passo4: "/images/passo-4-livro.webp",
   surpresa: "/images/surpresa-ceia.webp",
   antigaCasa: "/images/antiga-casa.webp",
   antigaCasamento: "/images/antiga-casamento.webp",

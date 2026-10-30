@@ -3,7 +3,7 @@
 import { createHmac } from "node:crypto";
 import { headers } from "next/headers";
 import { Resend } from "resend";
-import { CAPA_PADRAO, CAPAS } from "@/components/ui/capas";
+import { CAPAS } from "@/components/ui/capas";
 import { EDICAO, WHATSAPP_NUMERO } from "./config";
 // Ciclo com ./leads: os dois lados só usam o que importam dentro de funções, nunca no topo.
 import { entradaLeadSchema, type EntradaLead } from "./lead-schema";
@@ -85,7 +85,6 @@ export async function registrarLead(
       name: lead.nome,
       whatsapp: lead.whatsapp,
       for_whom: lead.para_quem,
-      capa_nome: lead.capa_nome || null,
       capa_cor: lead.capa_cor ?? null,
       utm_source: lead.utm_source || null,
       utm_medium: lead.utm_medium || null,
@@ -134,10 +133,7 @@ async function avisarPorEmail(
       ["WhatsApp", mascararWhatsApp(lead.whatsapp)],
       ["Para quem", lead.para_quem],
     ];
-    if (lead.capa_cor) {
-      const autor = lead.capa_nome || CAPA_PADRAO.author;
-      linhas.push(["Capa", `${autor}, em ${CAPAS[lead.capa_cor].nome}`]);
-    }
+    if (lead.capa_cor) linhas.push(["Capa", CAPAS[lead.capa_cor].nome]);
     const origem = [lead.utm_source, lead.utm_medium, lead.utm_campaign]
       .filter(Boolean)
       .join(" / ");

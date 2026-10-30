@@ -61,9 +61,9 @@ export function Entrada() {
       ocultas.set(el, anims);
     }
 
-    const chegar = (el: Element, de: Keyframe, atraso: number, ms = 800) =>
+    const chegar = (el: Element, de: Keyframe, atraso: number, ms = 560) =>
       el.animate([de, { opacity: 1, transform: "none", clipPath: "none" }], {
-        duration: reduzido ? 420 : ms,
+        duration: reduzido ? 320 : ms,
         delay: atraso,
         easing: EXPO,
         fill: "backwards",
@@ -93,7 +93,7 @@ export function Entrada() {
             el.animate(
               [{ clipPath: "inset(0 0 100% 0)" }, { clipPath: "inset(0)" }],
               {
-                duration: 1100,
+                duration: 800,
                 delay: atraso,
                 easing: IN_OUT,
                 fill: "backwards",
@@ -123,7 +123,8 @@ export function Entrada() {
           }
         }
       },
-      { rootMargin: "0px 0px -10% 0px" },
+      // Começa um pouco antes de a parte aparecer: no scroll rápido, nada chega desbotado
+      { rootMargin: "0px 0px 15% 0px" },
     );
     ocultas.forEach((_, el) => observador.observe(el));
 

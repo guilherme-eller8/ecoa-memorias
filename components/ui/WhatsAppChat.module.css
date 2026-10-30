@@ -3,7 +3,8 @@
  * Sem filetes e sem sombra; os balões se separam do fundo pelo tom.
  */
 
-.chat {
+.chat,
+.avulso {
   --wa-topo: color-mix(in oklab, var(--floresta) 86%, var(--nevoa));
   --wa-fundo: color-mix(in oklab, var(--polen) 82%, var(--nevoa));
   --wa-recebida: var(--papel);
@@ -11,7 +12,9 @@
   --wa-autor: color-mix(in oklab, var(--petroleo) 80%, var(--tinta));
   --wa-onda: color-mix(in oklab, var(--tinta) 38%, var(--papel));
   --wa-ouvida: color-mix(in oklab, var(--floresta) 70%, #5c9e7a);
+}
 
+.chat {
   display: flex;
   flex-direction: column;
   margin: 0;
@@ -183,4 +186,32 @@
   border-radius: 10px;
   font-size: 13px;
   line-height: 1.3;
+}
+
+/* ── Áudio solto (hero): o balão enviado, fora da conversa ─────────── */
+.avulso {
+  width: 260px;
+  max-width: 100%;
+  padding: 8px 11px 6px;
+  background: var(--wa-enviada);
+  border-radius: 7px 7px 0 7px;
+  color: var(--tinta);
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.microfone {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--wa-ouvida);
+  color: var(--papel);
+}
+
+.microfone svg {
+  width: 20px;
+  height: 20px;
 }

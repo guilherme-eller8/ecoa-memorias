@@ -4,8 +4,10 @@ import { Foto } from "./Foto";
 import s from "./OpenBookSpread.module.css";
 
 type OpenBookSpreadProps = {
-  /** Foto antiga da página esquerda. */
-  foto: { src: string; alt: string; objectPosition?: string };
+  /** Foto antiga da página esquerda. Sem ela, a página abre o capítulo com a pergunta. */
+  foto?: { src: string; alt: string; objectPosition?: string };
+  /** A pergunta que deu origem ao capítulo. */
+  pergunta: string;
   /** Numeral romano do capítulo (é do livro, não da página). */
   numeral: string;
   titulo: string;
@@ -28,6 +30,7 @@ const [larguraCm, alturaCm] = (
  */
 export function OpenBookSpread({
   foto,
+  pergunta,
   numeral,
   titulo,
   ano,
@@ -80,15 +83,19 @@ export function OpenBookSpread({
 
       <div className={s.folhas}>
         <div className={`${s.pagina} ${s.esquerda}`}>
-          <Foto
-            src={foto.src}
-            alt={foto.alt}
-            tipo="antiga"
-            proporcao="4 / 5"
-            objectPosition={foto.objectPosition}
-            sizes="(min-width: 1280px) 300px, 70vw"
-            className={s.foto}
-          />
+          {foto ? (
+            <Foto
+              src={foto.src}
+              alt={foto.alt}
+              tipo="antiga"
+              proporcao="4 / 5"
+              objectPosition={foto.objectPosition}
+              sizes="(min-width: 1280px) 300px, 70vw"
+              className={s.foto}
+            />
+          ) : (
+            <p className={s.pergunta}>{pergunta}</p>
+          )}
           <span className={s.folio} aria-hidden>
             {pagina - 1}
           </span>
