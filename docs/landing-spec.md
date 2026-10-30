@@ -108,23 +108,23 @@ Duas colunas no desktop: título na largura de 8/12; abaixo, texto à esquerda (
 - Frase de apoio (aprovada em 30/10):
   "Durante quatro semanas, quem você ama recebe uma pergunta por dia útil no WhatsApp e responde por áudio, do jeito que já faz. A família manda mensagens em segredo, e tudo vira um livro de capa dura com a voz original, entregue antes do Natal."
 - Botão: "Quero este livro" → #interesse. Ao lado, link secundário com o ícone do WhatsApp: "Ou chame a gente no WhatsApp" (wa.me com "Olá! Quero saber mais sobre o livro da Ecoa Memórias.").
-- Fatos, numa linha só em tamanho pequeno, abaixo do botão:
-  "R$ 397, pagamento único · Pix ou 12x sem juros · Só 10 famílias nesta edição · Inscrições até 7 de novembro"
+- Fatos, numa linha só em tamanho pequeno, abaixo do botão: "Edição de Natal · Inscrições até 7 de novembro". O preço fica só no colofão (seção 8).
 - Visual: LiveCover grande, entreaberta, com o áudio de WhatsApp encostado. Fundo polen liso, com o grão de papel. Sem gradiente.
 
-## 3. O que você recebe (#livro)
-- H2: "Um livro para segurar. E vozes para ouvir sempre." (corte aprovado: o original quebrava em 3 linhas em 390px)
-- Layout: à esquerda (5/12), uma BookCover floresta grande ("O que a vida me ensinou"); à direita (7/12), a **ficha técnica**: uma folha papel com bordas superior e inferior recortadas (`clip-path`), itens em `<dl>` com o nome à esquerda, o valor à direita e um pontilhado de pontos redondos de 4px entre eles. Sem ícones, sem checkmarks, sem linhas finas.
+## 2b. O valor (#valor)
+- Fundo papel. Título no tamanho display: "Para os netos dos seus netos."
+- Destaque: "Daqui a cinquenta anos, alguém vai abrir este livro e ouvir a voz de um bisavô que nunca conheceu."
+- Corpo: "As histórias que a família pede para repetir no almoço de domingo ficam no papel. E a voz de quem contou continua ali, para quem vier depois."
+- Com a foto `antiga-praia`, ela entra à direita como cópia impressa; sem ela, o texto desce em diagonal para a direita.
 
-| Item | Valor (à direita) |
-|---|---|
-| "Livro de capa dura em papel encorpado" | `FORMATO_LIVRO` (o número de páginas não aparece) |
-| "Histórias contadas por áudio, editadas sem perder o jeito de falar" | no ritmo da família |
-| "Fotos da família ao longo dos capítulos" | incluídas |
-| "Um QR code em cada história para ouvir a voz original" | em todas |
-| "Mensagens de filhos, netos e amigos, em áudio ou texto, reunidas em segredo" | de toda a família |
-| "Capa com foto e cor à escolha" | 5 cores |
-| "Os áudios originais, entregues à família" | para sempre |
+## 3. O que você recebe (#livro)
+- H2: "Um livro para segurar. E vozes para ouvir sempre."
+- A capa ao centro, com quatro anotações em volta (duas de cada lado, com setas desenhadas à mão apontando para ela); no celular, a capa e a lista abaixo.
+  - "Capa dura com a foto de quem conta" · "Numa das cinco cores, com o título que a família escolher."
+  - "As histórias, sem perder o jeito de falar" · "Editadas com as fotos da família ao longo dos capítulos."
+  - "Um QR code em cada história" · "Aponte o celular e ouça a voz original."
+  - "No fim, as mensagens da família" · "Filhos, netos e amigos, em áudio ou por escrito, guardadas em segredo."
+- Linha pequena no pé: "Formato 21 × 21 cm. Os áudios originais ficam com a família, para sempre."
 
 ## 4. Como funciona (#como-funciona)
 - H2: "Tudo acontece no WhatsApp."
@@ -135,7 +135,7 @@ Duas colunas no desktop: título na largura de 8/12; abaixo, texto à esquerda (
 
 | Título | Texto | Visual |
 |---|---|---|
-| "Você dá a notícia." | "Do seu jeito. Depois, mandamos as boas-vindas e só começamos quando a pessoa topar. As perguntas vêm da nossa seleção ou de você." | QuestionCard "Como era a casa onde o senhor cresceu?" sobre a foto `antiga-casa` (sem a foto, só o cartão) |
+| "Você dá a notícia." | "Você convida quem vai contar as histórias a responder às perguntas por áudio, ou texto se preferir, no WhatsApp. Depois, mandamos as boas-vindas e só começamos quando a pessoa topar. As perguntas vêm da nossa seleção ou de você." | QuestionCard "Como era a casa onde o senhor cresceu?" sobre a foto `antiga-casa` (sem a foto, só o cartão) |
 | "A pergunta chega. A resposta é um áudio." | "Uma pergunta por dia útil, direto no WhatsApp. Sem aplicativo, sem senha, sem escrever nada." | WhatsAppChat `individual` "Ecoa Memórias": a pergunta do dia e a resposta em áudio de 2:14 |
 | "A família ouve no mesmo dia." | "Cada história gravada chega no mesmo dia a um grupo só da família." | WhatsAppChat `grupo` "Histórias do Vô": áudio de 2:14, "Capítulo 6 · A casa da Rua Bahia", reações "não sabia disso" e "que saudade dessa casa" |
 | "O livro chega antes do Natal." | "Com as histórias, as fotos e as mensagens da família, que chegam como surpresa." | BookCover vinho "Caminhos que percorri", fechada |
@@ -161,35 +161,18 @@ Duas colunas no desktop: título na largura de 8/12; abaixo, texto à esquerda (
 - Mostrar só esta dupla. Nada de flipbook, sumário ou páginas adicionais.
 
 ## 6. A surpresa
-- H2: "No final, quem contou as histórias recebe uma surpresa."
-- Texto: "Enquanto as histórias são gravadas, filhos, netos e amigos enviam, em segredo, uma mensagem em áudio ou por escrito. Cada uma ganha uma página no livro, com QR code para quem quiser ouvir. Quem conta as histórias só descobre no Natal."
-- Visual:
-  - foto `surpresa-ceia` grande (4:5 no mobile, 3:2 no desktop), ocupando ao menos metade da largura. Sem a foto, os bilhetes ficam espalhados sobre uma folha papel (5:4 no mobile, 2:1 no desktop)
-  - sobre ela, em uma das bordas (nunca sobre o título), 3 NoteCards sobrepostos e cortados (sugerir, não revelar):
-    - "Pai, obrigada por cada domingo..."
-    - "Vô, até hoje eu lembro do..."
-    - "Tio, foi o senhor que me ensinou..."
-  - Um QR pequeno estilizado em um dos bilhetes.
+- H2: "No final, quem contou recebe uma surpresa."
+- Texto: "Duas partes fazem o livro. Uma delas, quem conta só conhece no Natal: cada mensagem da família ganha uma página, com QR code para ouvir."
+- Esquema em três partes, "+" entre as duas primeiras e seta até a terceira (no celular, empilhado):
+  - "Quem conta" · dois áudios de WhatsApp · "Responde às perguntas por áudio, no próprio ritmo."
+  - "Filhos, netos e amigos" · dois bilhetes à mão · "Mandam mensagens em segredo, em áudio ou por escrito."
+  - "O livro" · capa vinho "Histórias da nossa casa" · "Tudo junto, entregue no Natal. Quem contou as histórias só descobre ao abrir."
+- Com a foto `surpresa-ceia`, ela entra como faixa larga (21:9) abaixo do esquema.
 
 ## 7. Perguntas que abrem histórias (#perguntas)
 - Campo floresta com textura de tecido; textos em polen.
-- H2: "As perguntas certas abrem histórias que ninguém tinha ouvido."
-- Subtítulo: "Use as nossas, adapte ou escreva as suas."
-- **Fichário** (substitui o carrossel): as 10 perguntas em lista, em tipo grande (tamanho de destaque), uma por linha, à esquerda (7/12). À direita (5/12), um quadro fixo mostra o QuestionCard da pergunta apontada; para as perguntas que têm foto, a foto antiga aparece atrás do cartão.
-  - Apontar ou focar uma pergunta troca o quadro (crossfade de ~240ms). As outras perguntas continuam em tinta cheia (sem esmaecer).
-  - Cada pergunta é um `<button>` com `aria-controls` para o quadro; o quadro tem `aria-live="polite"`.
-  - Mobile: sem quadro fixo; tocar uma pergunta abre o cartão logo abaixo dela (`<details>`), uma aberta por vez.
-- Perguntas (e a foto do quadro, quando houver):
-  1. "Como era a casa onde você cresceu?" · `antiga-casa`
-  2. "Como você conheceu o grande amor da sua vida?" · `antiga-casamento`
-  3. "Qual foi o primeiro trabalho que você teve?" · `antiga-trabalho`
-  4. "Que cheiro ainda te leva de volta à infância?" · `antiga-fazenda`
-  5. "Qual foi o dia mais feliz da sua vida?" · `antiga-praia`
-  6. "O que sua mãe sempre dizia?"
-  7. "Que receita da família não pode se perder?" · `antiga-flores`
-  8. "Qual foi a maior coragem que você já teve?"
-  9. "O que você gostaria que seus netos soubessem sobre você?"
-  10. "Que conselho você daria para quem está começando a vida?"
+- H2: "As perguntas certas abrem histórias." · Subtítulo: "Use as nossas, adapte ou escreva as suas."
+- Oito perguntas em lista simples, duas colunas no desktop, no corpo de 19px. Com a foto `antiga-casamento`, ela fica à direita.
 
 ## 8. Valor e interesse (#interesse)
 - Duas colunas no desktop: o colofão à esquerda, o formulário à direita.
@@ -213,7 +196,7 @@ Duas colunas no desktop: título na largura de 8/12; abaixo, texto à esquerda (
   - "Seu nome"
   - "Seu WhatsApp" (máscara brasileira)
   - "Para quem seria o livro?" (select: pai, mãe, avô, avó, tio, tia, amigo, outra pessoa)
-  - Se a cor da LiveCover foi trocada, mostrar acima do botão uma miniatura da capa com "Capa {cor}" e enviar `capa_cor` como campo oculto.
+  - Se a cor da LiveCover foi trocada, enviar `capa_cor` como campo oculto (sem miniatura).
   - Honeypot invisível contra spam.
 - Botão: "Quero este livro"
 - Microcopy: "Nada é cobrado agora. Logo em seguida, falamos com você pelo WhatsApp para tirar dúvidas e garantir a sua vaga."
@@ -222,7 +205,7 @@ Duas colunas no desktop: título na largura de 8/12; abaixo, texto à esquerda (
 
 ## 9. Perguntas frequentes
 - H2: "Perguntas frequentes"
-- **Fichas de arquivo**: cartões preenchidos (cores das capas, em rodízio, texto com contraste ≥ 4.5:1), cada um com uma aba recortada em `clip-path`, empilhados e sobrepostos, mostrando 96px de cada (88px no mobile). A aba traz o tema em uma ou duas palavras; a faixa visível, a pergunta. Abrir uma ficha mostra a resposta e empurra as de baixo. Uma aberta por vez; a primeira aberta ao carregar. Implementação com `<details>`/`<summary>` ou botões com `aria-expanded`. Sem linhas, sem + / –.
+- Lista simples, duas colunas no desktop: a pergunta é um botão com uma seta pequena; a aberta sobe um degrau de tom (papel). Uma aberta por vez; a primeira aberta ao carregar. Sem linhas, sem cores de capa. (A coluna "Aba" abaixo é só a chave interna.)
 
 Ordem: as objeções mais fortes primeiro (pagamento, desistência, tempo).
 

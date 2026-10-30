@@ -20,7 +20,7 @@ export function Rodape() {
       <Container>
         <div className="[container-type:inline-size]">
           <p
-            className="text-[14.7cqi] leading-[0.9] font-medium tracking-[-0.03em]"
+            className="text-[10cqi] leading-[0.9] font-medium tracking-[-0.03em]"
             // inline: a regra global de <p> (text-wrap) fica fora das camadas e venceria a classe
             style={{ textWrap: "nowrap", fontVariationSettings: '"opsz" 72' }}
             aria-hidden

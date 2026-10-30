@@ -45,6 +45,8 @@ Até 30/10 a capa tinha um campo com o nome de quem conta. Saiu: o fundador pref
 | 10 Fecho | A estante | Campo floresta, título centralizado (o único momento centralizado), as cinco capas como lombadas numa estante |
 | 11 Rodapé | A contracapa | "Ecoa Memórias" grande na largura toda, contatos, privacidade, CNPJ, créditos |
 
+Atualização de 30/10 (rodada 3, feedback do fundador): a ficha técnica virou a capa anotada (seção 3); a surpresa virou um esquema "quem conta + família → livro" (seção 6); o fichário virou uma lista curta em duas colunas (seção 7); as fichas de arquivo viraram uma lista simples sem cores (seção 9); entrou a seção de valor "Para os netos dos seus netos." logo depois do hero. Tipos e capa grande ficaram menores (ver CLAUDE.md).
+
 ## Imagens
 - Ordem de preferência (skill §6.4): as 9 geradas (docs/imagens.md) → objetos desenhados em código (capas, livro aberto, celular, WhatsApp, bilhetes) → tipo e cor.
 - Piso do inspetor: ≥ 4 fotos reais na página (as geradas contam; SVG não conta). O plano usa 8.

@@ -2,9 +2,7 @@
 
 import { track } from "@vercel/analytics";
 import { useId, useRef, useState, type FormEvent } from "react";
-import { BookCover } from "@/components/ui/BookCover";
 import { Button } from "@/components/ui/Button";
-import { CAPA_PADRAO, CAPAS } from "@/components/ui/capas";
 import { useCapa } from "@/lib/capa";
 import { mascararWhatsApp, PARA_QUEM, submitLead } from "@/lib/leads";
 
@@ -191,21 +189,9 @@ export function FormInteresse() {
         {erro("para_quem")}
       </div>
 
+      {/* A cor escolhida na capa do hero vai junto, sem pedir nada a mais */}
       {capa.usada ? (
-        <div className="mt-7 flex items-center gap-4">
-          {/* O texto ao lado já diz nome e cor: a miniatura é só para os olhos */}
-          <div aria-hidden className="shrink-0">
-            <BookCover
-              color={capa.cor}
-              title={CAPA_PADRAO.title}
-              size="sm"
-              turn={18}
-              className="[--w:96px]!"
-            />
-          </div>
-          <p className="text-pequeno">Capa {CAPAS[capa.cor].nome}</p>
-          <input type="hidden" name="capa_cor" value={capa.cor} />
-        </div>
+        <input type="hidden" name="capa_cor" value={capa.cor} />
       ) : null}
 
       {/* Honeypot: invisível e fora da ordem de foco */}

@@ -2,14 +2,7 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { LiveCover } from "@/components/ui/LiveCover";
 import { BalaoAudio } from "@/components/ui/WhatsAppChat";
-import {
-  formatarData,
-  formatarPreco,
-  IMAGES,
-  LIVROS_NA_EDICAO,
-  PARCELAS_MAX,
-  WHATSAPP_PRONTO,
-} from "@/lib/config";
+import { formatarData, IMAGES, WHATSAPP_PRONTO } from "@/lib/config";
 import { existeEmPublic } from "@/lib/imagens";
 import { linkWhatsApp, MENSAGEM_CONVERSA } from "@/lib/leads";
 
@@ -17,12 +10,8 @@ import { linkWhatsApp, MENSAGEM_CONVERSA } from "@/lib/leads";
 const FOTO_CAPA = IMAGES.antigaCasamento;
 
 export function Hero() {
-  const fatos = [
-    `${formatarPreco()}, pagamento único`,
-    `Pix ou ${PARCELAS_MAX}x sem juros`,
-    `Só ${LIVROS_NA_EDICAO} famílias nesta edição`,
-    `Inscrições até ${formatarData()}`,
-  ];
+  // O preço fica para o colofão, perto do fim: aqui só a edição e o prazo
+  const fatos = ["Edição de Natal", `Inscrições até ${formatarData()}`];
 
   return (
     <section id="topo" aria-labelledby="hero-titulo">

@@ -6,7 +6,6 @@ import {
   useSyncExternalStore,
   type CSSProperties,
 } from "react";
-import { CAPAS, type CorCapa } from "@/components/ui/capas";
 import { Section } from "@/components/ui/Section";
 import { formatarData, PARCELAS_MAX } from "@/lib/config";
 import s from "./Fichas.module.css";
@@ -105,23 +104,11 @@ const FICHAS: Ficha[] = [
   },
 ];
 
-// Os tecidos das capas em rodízio; vizinhas nunca repetem a cor.
-const RODIZIO: CorCapa[] = [
-  "vinho",
-  "nevoa",
-  "floresta",
-  "rosa-antigo",
-  "petroleo",
-];
-
-// A aba de cada ficha anda um passo para a direita, como num fichário de verdade.
-const PASSOS_ABA = 5;
-
 const nada = () => () => {};
 
 /**
- * Perguntas frequentes como fichas de arquivo: cartões nas cores das capas, empilhados,
- * cada um com a aba recortada. Uma aberta por vez; a primeira já vem aberta do servidor.
+ * Perguntas frequentes numa lista simples, em duas colunas no desktop. Uma aberta por vez;
+ * a primeira já vem aberta do servidor. A aberta sobe um degrau de tom (papel), sem linhas.
  * Sem JS, todas as respostas ficam à vista: só depois de montar as outras fecham.
  */
 export function Fichas() {
@@ -132,42 +119,33 @@ export function Fichas() {
     () => false,
   );
   const id = useId();
+  const meio = Math.ceil(FICHAS.length / 2);
+  const colunas = [FICHAS.slice(0, meio), FICHAS.slice(meio)];
 
   return (
-    <Section
-      id="perguntas-frequentes"
-      title="Perguntas frequentes"
-      grid
-      className="overflow-x-clip"
-    >
-      <ol
-        className={`${s.fichas} col-span-12 mt-12 md:mt-16 lg:col-span-10`}
-        data-entra="lista"
-        style={{ "--ordem": 1 } as CSSProperties}
-      >
-        {FICHAS.map((f, i) => {
-          const cor = RODIZIO[i % RODIZIO.length];
-          const aberto = aberta === i;
-          // Antes de montar (e sem JS) nenhuma resposta fica fora de alcance
-          const alcancavel = !montado || aberto;
-          const botaoId = `${id}-b${i}`;
-          const painelId = `${id}-p${i}`;
-          return (
-            <li
-              key={f.aba}
-              className={s.ficha}
-              data-escura={CAPAS[cor].escura || undefined}
-              data-aberta={aberto || undefined}
-              data-entra-item
-              style={
-                {
-                  "--tecido": CAPAS[cor].tecido,
-                  "--passo": i % PASSOS_ABA,
-                } as CSSProperties
-              }
-            >
-              <div className={s.corpo}>
-                <h3 className={s.cabeca}>
+    <Section id="perguntas-frequentes" title="Perguntas frequentes" grid>
+      {colunas.map((coluna, c) => (
+        <ul
+          key={c}
+          className={`col-span-12 grid gap-1 lg:col-span-6 ${c === 0 ? "mt-10 md:mt-12" : "mt-1 lg:mt-12"}`}
+          data-entra="lista"
+          style={{ "--ordem": 1 + c } as CSSProperties}
+        >
+          {coluna.map((f, j) => {
+            const i = c * meio + j;
+            const aberto = aberta === i;
+            // Antes de montar (e sem JS) nenhuma resposta fica fora de alcance
+            const alcancavel = !montado || aberto;
+            const botaoId = `${id}-b${i}`;
+            const painelId = `${id}-p${i}`;
+            return (
+              <li
+                key={f.aba}
+                className={s.item}
+                data-aberta={alcancavel || undefined}
+                data-entra-item
+              >
+                <h3 className="m-0">
                   <button
                     id={botaoId}
                     type="button"
@@ -176,11 +154,15 @@ export function Fichas() {
                     aria-controls={painelId}
                     onClick={() => setAberta(aberto ? null : i)}
                   >
-                    {/* O tema é sinalização visual: o nome do botão é a pergunta */}
-                    <span className={s.aba} aria-hidden>
-                      {f.aba}
-                    </span>
-                    <span className={s.pergunta}>{f.pergunta}</span>
+                    <span>{f.pergunta}</span>
+                    <svg viewBox="0 0 14 9" className={s.seta} aria-hidden>
+                      <path
+                        d="M1 1l6 6 6-6"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      />
+                    </svg>
                   </button>
                 </h3>
                 <div
@@ -190,15 +172,13 @@ export function Fichas() {
                   className={s.painel}
                   inert={!alcancavel}
                 >
-                  <div className={s.painelMiolo}>
-                    <p className={s.resposta}>{f.resposta}</p>
-                  </div>
+                  <p className={s.resposta}>{f.resposta}</p>
                 </div>
-              </div>
-            </li>
-          );
-        })}
-      </ol>
+              </li>
+            );
+          })}
+        </ul>
+      ))}
     </Section>
   );
 }

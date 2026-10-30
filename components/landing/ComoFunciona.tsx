@@ -27,7 +27,7 @@ const MOMENTOS: Momento[] = [
   {
     titulo: "Você dá a notícia.",
     texto:
-      "Do seu jeito. Depois, mandamos as boas-vindas e só começamos quando a pessoa topar. As perguntas vêm da nossa seleção ou de você.",
+      "Você convida quem vai contar as histórias a responder às perguntas por áudio, ou texto se preferir, no WhatsApp. Depois, mandamos as boas-vindas e só começamos quando a pessoa topar. As perguntas vêm da nossa seleção ou de você.",
     respiro: "lg:h-20",
     visual: temCasa ? (
       <div className="relative" style={{ aspectRatio: PROPORCAO }}>
