@@ -107,7 +107,7 @@ Duas colunas no desktop (texto à esquerda em 5/12, capa ao vivo à direita em 7
   - Alternativa, se preferir manter o original: "As histórias de quem você ama." (o "guardadas para sempre" passa para a frase abaixo).
   - Motivo: o original tem 53 caracteres e quebra em 3–4 linhas em 390px; a regra é 2 linhas.
 - Frase de apoio **[aprovar]**, logo abaixo do título:
-  "Uma pergunta por dia no WhatsApp, respondida por áudio. Em quatro semanas, as histórias, as fotos e as mensagens da família viram um livro de capa dura, entregue antes do Natal."
+  "Uma pergunta por dia útil no WhatsApp, respondida por áudio. Em quatro semanas, as histórias, as fotos e as mensagens da família viram um livro de capa dura, entregue antes do Natal."
 - Fatos, no tamanho de destaque (não em letra miúda), lado a lado no desktop e em grade 2×2 no mobile:
   - "R$ 397" · abaixo, pequeno: "por livro, tudo incluído"
   - "10 livros" · "Edição de Natal"
@@ -139,7 +139,7 @@ Duas colunas no desktop (texto à esquerda em 5/12, capa ao vivo à direita em 7
 | Título | Texto | Visual |
 |---|---|---|
 | "Escolha as perguntas." | "Da nossa seleção ou escritas por você. Infância, casamento, trabalho, fé, a casa onde cresceu." | QuestionCard "Como era a casa onde o senhor cresceu?" sobre a foto `antiga-casa`, levemente rotacionado |
-| "A pergunta chega. A resposta é um áudio." | "Uma pergunta por dia, direto no WhatsApp. Sem aplicativo, sem senha, sem escrever nada." | foto `passo-2-gravando` |
+| "A pergunta chega. A resposta é um áudio." | "Uma pergunta por dia útil, direto no WhatsApp. Sem aplicativo, sem senha, sem escrever nada." | foto `passo-2-gravando` |
 | "A família ouve no mesmo dia." | "Cada história gravada chega a um grupo só da família. Ouvir vira o melhor momento da semana." | WhatsAppChat `grupo` "Histórias do Vô": áudio de 2:14, "Capítulo 6 · A casa da Rua Bahia", reações "não sabia disso" e "que saudade dessa casa" |
 | "O livro chega antes do Natal." | "Com as histórias, as fotos e as mensagens da família, que chegam como surpresa." | foto `passo-4-livro` |
 
@@ -206,7 +206,7 @@ Duas colunas no desktop (texto à esquerda em 5/12, capa ao vivo à direita em 7
   - "Pode ser um presente dos irmãos juntos"
 - Assentado como colofão de editora **[aprovar]**:
   "Tiragem: 10 livros. Inscrições até 7 de novembro."
-  "Para que cada livro receba o cuidado que merece, esta edição terá 10 livros. As inscrições vão até 7 de novembro, para garantir quatro semanas de histórias e tempo de edição, impressão e entrega antes do Natal."
+  "Para que cada livro receba o cuidado que merece: quatro semanas de histórias e tempo de edição, impressão e entrega antes do Natal."
 - Depois de um espaço, menor:
   "Depois do primeiro livro, quem quiser pode continuar contando histórias e criar um novo volume. É opcional, sem renovação automática."
 
@@ -218,7 +218,7 @@ Duas colunas no desktop (texto à esquerda em 5/12, capa ao vivo à direita em 7
   - "Para quem seria o livro?" (select: pai, mãe, avô, avó, tio, tia, amigo, outra pessoa)
   - Se a LiveCover foi usada, mostrar acima do botão uma miniatura da capa escolhida, com o nome e a cor, e enviar os dois como campos ocultos `capa_nome` e `capa_cor`.
   - Honeypot invisível contra spam.
-- Botão: "Quero garantir um livro"
+- Botão: "Tenho interesse"
 - Microcopy: "Sem compromisso. Respondemos pelo WhatsApp em até 24 horas com os próximos passos."
 - Sucesso: o formulário é substituído por "Recebemos. Em breve falamos com você pelo WhatsApp." e um link secundário "Prefere falar agora? Abrir WhatsApp" (wa.me com a mensagem pré-preenchida abaixo).
 - Mensagem wa.me: "Olá! Tenho interesse no livro da Ecoa Memórias para meu/minha [opção]. Meu nome é [nome]."
@@ -232,9 +232,9 @@ Abaixo do painel, em uma linha:
 
 | Aba | Pergunta | Resposta |
 |---|---|---|
-| Tecnologia | Quem conta as histórias precisa saber usar tecnologia? | Se manda áudio no WhatsApp, já sabe tudo o que precisa. Se preferir, também é possível gravar por uma ligação. |
-| O presente | Como a pessoa fica sabendo do presente? | Você conta a novidade do seu jeito. Depois, enviamos uma mensagem de boas-vindas explicando como serão as próximas semanas, e começamos quando ela disser que topa. |
-| Seu trabalho | Vai dar trabalho para mim? | Não. Você escolhe as perguntas (ou deixa com a gente) e envia algumas fotos. Os envios, os lembretes, a edição e as mensagens da família ficam com a gente. |
+| WhatsApp | Quem conta as histórias precisa saber mexer no celular? | Se manda áudio no WhatsApp, já sabe tudo o que precisa. Se preferir, também é possível gravar por uma ligação. |
+| O presente | Como a pessoa fica sabendo do presente? | Quem dá a notícia é você, do seu jeito. Depois, enviamos uma mensagem de boas-vindas explicando como serão as próximas semanas, e começamos quando ela disser que topa. |
+| Seu trabalho | Vai dar trabalho para mim? | Não. Você escolhe as perguntas (ou deixa com a gente) e envia algumas fotos. Do resto cuidamos nós, inclusive de reunir as mensagens da família. |
 | O grupo | Quem conta as histórias participa do grupo da família? | Não. O grupo é só da família, para que o livro final continue sendo surpresa. |
 | Mensagens | Como são reunidas as mensagens da família? | Você nos passa os contatos e nós cuidamos dos convites e dos lembretes. |
 | Tempo | Quanto tempo leva por dia? | Alguns minutos. Cada áudio costuma ter entre 2 e 5 minutos, e dá para responder quando quiser. |

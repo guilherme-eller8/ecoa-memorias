@@ -3,7 +3,7 @@ import { Caveat, Newsreader } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { CliquesCta } from "@/components/ui/CliquesCta";
 import { Entrada } from "@/components/ui/Entrada";
-import { MARCA } from "@/lib/config";
+import { MARCA, SITE_URL } from "@/lib/config";
 import "./globals.css";
 
 const newsreader = Newsreader({
@@ -34,12 +34,10 @@ const caveat = Caveat({
 const TITULO = `${MARCA} · Livro de memórias contado por áudio`;
 // A frase de apoio do hero
 const DESCRICAO =
-  "Uma pergunta por dia no WhatsApp, respondida por áudio. Em quatro semanas, as histórias, as fotos e as mensagens da família viram um livro de capa dura, entregue antes do Natal.";
+  "Uma pergunta por dia útil no WhatsApp, respondida por áudio. Em quatro semanas, as histórias, as fotos e as mensagens da família viram um livro de capa dura, entregue antes do Natal.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
-  ),
+  metadataBase: new URL(SITE_URL),
   title: TITULO,
   description: DESCRICAO,
   alternates: { canonical: "/" },

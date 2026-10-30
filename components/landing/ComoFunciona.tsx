@@ -45,7 +45,7 @@ const MOMENTOS: Momento[] = [
   {
     titulo: "A pergunta chega. A resposta é um áudio.",
     texto:
-      "Uma pergunta por dia, direto no WhatsApp. Sem aplicativo, sem senha, sem escrever nada.",
+      "Uma pergunta por dia útil, direto no WhatsApp. Sem aplicativo, sem senha, sem escrever nada.",
     respiro: "lg:h-[140px]",
     visual: (
       <Foto

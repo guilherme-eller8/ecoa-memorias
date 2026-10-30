@@ -7,6 +7,7 @@ import { CAPA_PADRAO, CAPAS } from "@/components/ui/capas";
 import { EDICAO, WHATSAPP_NUMERO } from "./config";
 // Ciclo com ./leads: os dois lados só usam o que importam dentro de funções, nunca no topo.
 import { entradaLeadSchema, type EntradaLead } from "./lead-schema";
+import type { z } from "zod";
 import {
   linkWhatsApp,
   mascararWhatsApp,
@@ -59,8 +60,9 @@ export async function registrarLead(
   const { RESEND_API_KEY, RESEND_FROM, ADMIN_EMAIL } = process.env;
   // A service role key é o segredo do hash: já existe só no servidor e não exige outra variável.
   const segredo = process.env.SUPABASE_SERVICE_ROLE_KEY;
-  if (!db || !segredo || !RESEND_API_KEY || !RESEND_FROM || !ADMIN_EMAIL) {
-    console.error("[lead] variáveis de ambiente ausentes; fallback wa.me");
+  // Sem banco não há onde gravar: só aí cai no wa.me. O e-mail é aviso, não condição.
+  if (!db || !segredo) {
+    console.error("[lead] Supabase não configurado; fallback wa.me");
     return fallback;
   }
 
@@ -92,6 +94,37 @@ export async function registrarLead(
     });
     if (gravacao.error) throw gravacao.error;
 
+    // Daqui em diante o lead já está salvo: falha no e-mail não muda o que o visitante vê.
+    await avisarPorEmail(lead, { RESEND_API_KEY, RESEND_FROM, ADMIN_EMAIL });
+
+    return { status: "gravado", url: fallback.url };
+  } catch (erro) {
+    console.error(
+      "[lead] falhou; fallback wa.me:",
+      erro instanceof Error ? erro.message : erro,
+    );
+    return fallback;
+  }
+}
+
+type VariaveisEmail = {
+  RESEND_API_KEY?: string;
+  RESEND_FROM?: string;
+  ADMIN_EMAIL?: string;
+};
+
+/** Avisa por e-mail. Nunca lança: sem variáveis ou com erro no Resend, só registra no log. */
+async function avisarPorEmail(
+  lead: z.output<typeof entradaLeadSchema>,
+  { RESEND_API_KEY, RESEND_FROM, ADMIN_EMAIL }: VariaveisEmail,
+): Promise<void> {
+  if (!RESEND_API_KEY || !RESEND_FROM || !ADMIN_EMAIL) {
+    console.warn(
+      "[lead] gravado, mas o Resend não está configurado; sem e-mail",
+    );
+    return;
+  }
+  try {
     const responder = linkWhatsApp(
       mensagemPrimeiroContato(lead),
       `55${lead.whatsapp}`,
@@ -131,13 +164,10 @@ export async function registrarLead(
       ].join(""),
     });
     if (envio.error) throw new Error(envio.error.message);
-
-    return { status: "gravado", url: fallback.url };
   } catch (erro) {
     console.error(
-      "[lead] falhou; fallback wa.me:",
+      "[lead] gravado, mas o e-mail falhou:",
       erro instanceof Error ? erro.message : erro,
     );
-    return fallback;
   }
 }

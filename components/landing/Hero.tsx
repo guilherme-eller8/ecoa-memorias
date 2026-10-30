@@ -25,9 +25,9 @@ export function Hero() {
 
         <div className="col-span-12 lg:col-span-6 lg:row-start-2 lg:pt-10">
           <p className="max-w-[46ch]">
-            Uma pergunta por dia no WhatsApp, respondida por áudio. Em quatro
-            semanas, as histórias, as fotos e as mensagens da família viram um
-            livro de capa dura, entregue antes do Natal.
+            Uma pergunta por dia útil no WhatsApp, respondida por áudio. Em
+            quatro semanas, as histórias, as fotos e as mensagens da família
+            viram um livro de capa dura, entregue antes do Natal.
           </p>
           <ul className="mt-8 grid grid-cols-2 gap-x-5 gap-y-5 md:mt-8 md:flex md:flex-wrap md:gap-x-10">
             {fatos.map((f, i) => (

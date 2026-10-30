@@ -15,8 +15,8 @@ type Ficha = { aba: string; pergunta: string; resposta: string };
 
 const FICHAS: Ficha[] = [
   {
-    aba: "Tecnologia",
-    pergunta: "Quem conta as histórias precisa saber usar tecnologia?",
+    aba: "WhatsApp",
+    pergunta: "Quem conta as histórias precisa saber mexer no celular?",
     resposta:
       "Se manda áudio no WhatsApp, já sabe tudo o que precisa. Se preferir, também é possível gravar por uma ligação.",
   },
@@ -24,13 +24,13 @@ const FICHAS: Ficha[] = [
     aba: "O presente",
     pergunta: "Como a pessoa fica sabendo do presente?",
     resposta:
-      "Você conta a novidade do seu jeito. Depois, enviamos uma mensagem de boas-vindas explicando como serão as próximas semanas, e começamos quando ela disser que topa.",
+      "Quem dá a notícia é você, do seu jeito. Depois, enviamos uma mensagem de boas-vindas explicando como serão as próximas semanas, e começamos quando ela disser que topa.",
   },
   {
     aba: "Seu trabalho",
     pergunta: "Vai dar trabalho para mim?",
     resposta:
-      "Não. Você escolhe as perguntas (ou deixa com a gente) e envia algumas fotos. Os envios, os lembretes, a edição e as mensagens da família ficam com a gente.",
+      "Não. Você escolhe as perguntas (ou deixa com a gente) e envia algumas fotos. Do resto cuidamos nós, inclusive de reunir as mensagens da família.",
   },
   {
     aba: "O grupo",

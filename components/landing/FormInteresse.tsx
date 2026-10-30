@@ -236,7 +236,7 @@ export function FormInteresse() {
         data-cta="formulario"
         disabled={estado.fase === "enviando"}
       >
-        Quero garantir um livro
+        Tenho interesse
       </Button>
       <p className="text-pequeno mt-4 max-w-[44ch]">
         Sem compromisso. Respondemos pelo WhatsApp em até 24 horas com os

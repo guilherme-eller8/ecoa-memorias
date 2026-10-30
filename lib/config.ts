@@ -13,6 +13,15 @@ export const EMAIL_CONTATO = "contato@ecoamemorias.com.br"; // placeholder
 export const CNPJ = "00.000.000/0001-00"; // placeholder
 export const CIDADE = "Belo Horizonte";
 
+// Endereço público do site (preview no WhatsApp e QR codes). Ordem: a variável que você define na
+// Vercel; senão, o domínio de produção que a própria Vercel informa no build; senão, o local.
+const URL_VERCEL =
+  process.env.VERCEL_PROJECT_PRODUCTION_URL ||
+  process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL;
+export const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (URL_VERCEL ? `https://${URL_VERCEL}` : "http://localhost:3000");
+
 // Enquanto o dado real não chega, o placeholder não aparece na página (nem link quebrado, nem CNPJ falso)
 export const WHATSAPP_PRONTO = /^55\d{10,11}$/.test(WHATSAPP_NUMERO);
 export const CNPJ_PRONTO = !CNPJ.startsWith("00.000.000");

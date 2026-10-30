@@ -41,10 +41,8 @@ export function Interesse() {
             <span className="whitespace-nowrap">{data}</span>.
           </p>
           <p className="mt-4">
-            Para que cada livro receba o cuidado que merece, esta edição terá{" "}
-            {LIVROS_NA_EDICAO} livros. As inscrições vão até {data}, para
-            garantir quatro semanas de histórias e tempo de edição, impressão e
-            entrega antes do Natal.
+            Para que cada livro receba o cuidado que merece: quatro semanas de
+            histórias e tempo de edição, impressão e entrega antes do Natal.
           </p>
         </div>
 

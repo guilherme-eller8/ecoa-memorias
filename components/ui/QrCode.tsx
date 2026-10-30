@@ -1,6 +1,5 @@
 import QRCode from "qrcode";
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+import { SITE_URL } from "@/lib/config";
 
 type QrCodeProps = {
   /** Endereço codificado. Por padrão, o site. */
