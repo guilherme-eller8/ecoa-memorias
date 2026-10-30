@@ -12,11 +12,14 @@
     "taste:inspect": "node .claude/skills/design-taste-frontend/scripts/inspect.mjs --allow palette-cream http://localhost:3000"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.118.0",
     "@vercel/analytics": "^2.0.1",
     "next": "16.4.3",
     "qrcode": "^1.5.4",
     "react": "19.3.0",
     "react-dom": "19.3.0",
+    "resend": "^6.35.0",
+    "server-only": "^0.0.1",
     "zod": "^4.6.7"
   },
   "devDependencies": {
