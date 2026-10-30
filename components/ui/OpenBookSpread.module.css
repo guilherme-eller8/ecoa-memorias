@@ -65,6 +65,7 @@
 
 .direita {
   transform-origin: 0% 50%;
+  backface-visibility: hidden; /* ao virar, a folha só aparece depois de passar da dobra */
   aspect-ratio: var(--proporcao, 1);
   transform: rotateY(-3deg);
   padding: 4cqi 4.5cqi 5.5cqi 5cqi;

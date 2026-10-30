@@ -96,6 +96,7 @@ export function OpenBookSpread({
 
         <article
           className={`${s.pagina} ${s.direita}`}
+          data-vira
           aria-label={`Capítulo ${numeral}: ${titulo}`}
         >
           <header className={s.cabeca}>

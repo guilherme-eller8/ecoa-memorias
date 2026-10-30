@@ -1,0 +1,101 @@
+/*
+ * A estante do fecho: lombadas em pé sobre uma prateleira.
+ * Tecido com grão, o filete dourado do hot stamping e o letreiro na vertical, como na BookCover.
+ * A prateleira é um degrau de tom do campo floresta, não um filete.
+ */
+
+.estante {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.fileira {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 4px;
+  height: clamp(220px, 27vw, 380px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lombada {
+  --tinta-lombada: var(--tinta);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: clamp(42px, 4.8vw, 68px);
+  height: var(--altura);
+  padding: 30px 0 14px;
+  overflow: hidden;
+  background-color: var(--tecido);
+  background-image: var(--grao);
+  background-blend-mode: multiply;
+  border-radius: var(--raio) var(--raio) 0 0;
+  color: var(--tinta-lombada);
+}
+
+.lombada[data-escura] {
+  --tinta-lombada: var(--papel);
+}
+
+/* No campo floresta, a lombada floresta pega luz: um tom acima, para não sumir no fundo */
+.lombada[data-cor="floresta"] {
+  background-color: color-mix(in oklab, var(--floresta) 84%, var(--polen));
+}
+
+.filete {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  width: 46%;
+  height: 2px;
+  transform: translateX(-50%);
+  background: var(--dourado);
+  border-radius: 1px;
+}
+
+.letreiro {
+  max-block-size: 100%;
+  overflow: hidden;
+  writing-mode: vertical-rl;
+  font-style: italic;
+  font-size: 13px;
+  line-height: 1;
+  white-space: nowrap;
+  font-variation-settings: "opsz" 12;
+}
+
+@media (min-width: 768px) {
+  .letreiro {
+    font-size: var(--t-pequeno);
+  }
+}
+
+.prateleira {
+  width: min(100%, 580px);
+  height: 14px;
+  background-color: color-mix(in oklab, var(--floresta) 62%, #000);
+  border-radius: var(--raio);
+}
+
+/* O livro de quem visita desce para a estante quando ela entra na tela, preso à rolagem */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .lombada[data-sua] {
+      animation: chega linear both;
+      animation-timeline: view();
+      animation-range: entry 20% cover 40%;
+    }
+  }
+}
+
+@keyframes chega {
+  from {
+    opacity: 0;
+    transform: translateY(-36px);
+  }
+}

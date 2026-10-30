@@ -52,7 +52,7 @@ export function Cabecalho() {
             <span className="sr-only">Menu</span>
             <svg
               viewBox="0 0 24 24"
-              className="h-6 w-6 transition-transform duration-200 group-open:rotate-90"
+              className="h-6 w-6 transition-transform duration-(--t-ui) ease-(--ease-out) group-open:rotate-90"
               aria-hidden
             >
               <path
@@ -65,7 +65,7 @@ export function Cabecalho() {
           </summary>
           <nav
             aria-label="Seções"
-            className="bg-papel absolute inset-x-0 top-full hidden px-(--margem) pt-2 pb-6 group-open:block"
+            className="bg-papel absolute inset-x-0 top-full hidden origin-top px-(--margem) pt-2 pb-6 group-open:block group-open:animate-[abre-menu_var(--t-ui)_var(--ease-out)]"
           >
             <ul className="grid">
               {LINKS.map((l) => (

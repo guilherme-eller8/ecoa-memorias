@@ -1,5 +1,6 @@
 "use client";
 
+import { track } from "@vercel/analytics";
 import { useId, useRef, useState, type FormEvent } from "react";
 import { BookCover } from "@/components/ui/BookCover";
 import { Button } from "@/components/ui/Button";
@@ -69,6 +70,11 @@ export function FormInteresse() {
     setErros({});
     setEstado({ fase: "enviando" });
     const resultado = await submitLead(r.data);
+    // Sem o nome nem o número: só para quem é e se a capa ao vivo foi usada
+    track("lead_enviado", {
+      para_quem: r.data.para_quem,
+      usou_capa: capa.usada,
+    });
     if (resultado.status === "fallback") abrirWhatsApp(resultado.url);
     setEstado({ fase: resultado.status, url: resultado.url });
     requestAnimationFrame(() => aviso.current?.focus());
@@ -204,9 +210,9 @@ export function FormInteresse() {
         </div>
       ) : null}
 
-      {/* Honeypot: fora da tela e fora da ordem de foco */}
+      {/* Honeypot: invisível e fora da ordem de foco */}
       <div
-        className="absolute -left-[9999px] size-0 overflow-hidden"
+        className="pointer-events-none absolute top-0 left-0 size-px overflow-hidden opacity-0"
         aria-hidden
       >
         <label htmlFor={`${id}-site`}>Não preencha este campo</label>

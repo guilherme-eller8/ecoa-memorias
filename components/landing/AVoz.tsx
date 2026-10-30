@@ -39,7 +39,7 @@ export function AVoz() {
 
       <div
         className="relative col-span-12 mt-6 pt-[76px] pb-[200px] md:mt-10 md:pb-[290px] xl:col-span-7 xl:col-start-6 xl:mt-10 xl:pb-[270px]"
-        data-entra
+        data-entra="pagina"
         style={ordem(2)}
       >
         <p

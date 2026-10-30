@@ -17,7 +17,7 @@ export function ASurpresa() {
     >
       <div
         className="rounded-ed relative col-span-12 mt-10 overflow-hidden md:mt-14 lg:col-span-7 lg:mt-16"
-        data-entra
+        data-entra="foto"
         style={ordem(2)}
       >
         <Foto
@@ -27,7 +27,7 @@ export function ASurpresa() {
           objectPosition="40% 50%"
           sizes="(min-width: 1024px) 58vw, 100vw"
           alt="Noite de Natal em casa: uma avó no sofá, emocionada, com a mão no peito, segura um livro de capa dura aberto; a filha a abraça e os netos se inclinam para ver"
-          className="max-md:aspect-[4/5]!"
+          className="respira max-md:aspect-[4/5]!"
         />
 
         {/* Os bilhetes ficam presos na foto e cortados pelas bordas dela: sugerem, não revelam */}

@@ -31,6 +31,17 @@
   /* Margens externas */
   --margem: 20px;
 
+  /* Movimento (references/motion.md §4) */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
+  --t-press: 140ms;
+  --t-hover: 180ms;
+  --t-ui: 240ms;
+  --t-reveal: 800ms;
+  --t-open: 1200ms;
+
   /* Grão de papel (SVG, sem gradiente) */
   --grao: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .15 0 0 0 0 .13 0 0 0 0 .11 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
 }
@@ -314,15 +325,65 @@ p {
 }
 
 /* ── Movimento ────────────────────────────────────────────────────────── */
-/* Entrada por seção: components/ui/Entrada.tsx (Web Animations, só transform e opacity) */
+/* Entrada por seção: components/ui/Entrada.tsx (Web Animations, só transform, opacity e clip-path).
+ * Assinatura: a capa se abre (BookCover.module.css) e a página vira na seção 5 (Entrada). */
 
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* No campo floresta, o foco aparece em polen */
+.bg-floresta :focus-visible {
+  outline-color: var(--polen);
+}
+
+/* A foto que respira: uma aproximação lenta, ida e volta, parada fora da tela */
+@media (prefers-reduced-motion: no-preference) {
+  .respira img,
+  .respira .photo-sepia {
+    animation: respira 16s var(--ease-soft) infinite alternate;
+    transform-origin: 38% 55%;
+  }
+
+  .js .respira:not([data-na-tela]) img,
+  .js .respira:not([data-na-tela]) .photo-sepia {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes respira {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.06);
+  }
+}
+
+/* O menu do celular abre a partir do botão */
+@keyframes abre-menu {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+/* Menos movimento, não nenhum: tira o deslocamento, mantém cor e opacidade */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    transition-property:
+      color, background-color, text-decoration-color, outline-color, opacity,
+      visibility !important;
     scroll-behavior: auto !important;
+  }
+
+  @keyframes abre-menu {
+    from {
+      opacity: 0;
+    }
   }
 }

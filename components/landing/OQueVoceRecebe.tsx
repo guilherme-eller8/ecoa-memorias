@@ -62,12 +62,12 @@ export function OQueVoceRecebe() {
 
       <div
         className="col-span-12 mt-8 md:col-span-7 md:mt-16"
-        data-entra
+        data-entra="lista"
         style={ordem(1)}
       >
         <dl className={`folha-recortada ${s.ficha}`}>
           {ITENS.map((item) => (
-            <div key={item.nome} className={s.item}>
+            <div key={item.nome} className={s.item} data-entra-item>
               <dt className={s.nome}>{item.nome}</dt>
               <span className={s.pontos} aria-hidden />
               <dd className={s.valor}>{item.valor}</dd>

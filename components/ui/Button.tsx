@@ -25,14 +25,14 @@ type ComoBotao = Comum & { href?: undefined } & Omit<
 
 const BASE_SOLIDO =
   "inline-flex min-h-12 items-center justify-center rounded-ed px-6 py-2 text-corpo leading-tight font-medium " +
-  "transition-[transform,background-color] duration-150 ease-out active:translate-y-px " +
+  "transition-[transform,background-color] duration-(--t-press) ease-(--ease-out) active:scale-[.97] " +
   "focus-visible:outline-2 focus-visible:outline-offset-3";
 
 const VARIANTES: Record<Variante, string> = {
   primario: `${BASE_SOLIDO} bg-floresta text-polen hover:bg-[color-mix(in_oklab,var(--floresta)_88%,var(--polen))] focus-visible:outline-floresta`,
   invertido: `${BASE_SOLIDO} bg-polen text-floresta hover:bg-papel focus-visible:outline-polen`,
   link:
-    "inline underline decoration-1 underline-offset-4 transition-[text-decoration-thickness] duration-150 " +
+    "inline underline decoration-1 underline-offset-4 transition-[text-decoration-thickness,opacity] duration-(--t-hover) " +
     "hover:decoration-2 active:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-4",
 };
 
