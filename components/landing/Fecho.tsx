@@ -1,5 +1,5 @@
 import type { CSSProperties } from "react";
-import { Button } from "@/components/ui/Button";
+import { BotaoInteresse } from "@/components/ui/BotaoInteresse";
 import { Section } from "@/components/ui/Section";
 import { Estante } from "./Estante";
 
@@ -18,9 +18,7 @@ export function Fecho() {
         Que elas continuem ecoando.
       </p>
       <div className="mt-10 md:mt-12" data-entra style={ordem(2)}>
-        <Button href="#interesse" variant="invertido" data-cta="fecho">
-          Tenho interesse
-        </Button>
+        <BotaoInteresse posicao="final" variant="invertido" />
       </div>
       <div className="mt-16 md:mt-24" data-entra style={ordem(3)}>
         <Estante />

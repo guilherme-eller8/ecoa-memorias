@@ -1,0 +1,37 @@
+/* Só a palavra ativa ocupa espaço: "conta." encosta nela. As outras ficam por cima, invisíveis. */
+.pilha {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.palavra {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 420ms var(--ease-out);
+}
+
+.palavra[data-ativa] {
+  position: static;
+  opacity: 1;
+}
+
+/* Com movimento permitido, a que sai sobe e a que entra vem de baixo */
+@media (prefers-reduced-motion: no-preference) {
+  .palavra {
+    transform: translateY(0.4em);
+    transition:
+      opacity 420ms var(--ease-out),
+      transform 520ms var(--ease-out);
+  }
+
+  .palavra[data-ativa] {
+    transform: none;
+  }
+
+  .palavra[data-saiu] {
+    transform: translateY(-0.4em);
+  }
+}

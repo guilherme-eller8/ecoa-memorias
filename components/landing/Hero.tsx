@@ -1,10 +1,10 @@
-import { Button } from "@/components/ui/Button";
+import { BotaoInteresse } from "@/components/ui/BotaoInteresse";
 import { Container } from "@/components/ui/Container";
 import { LiveCover } from "@/components/ui/LiveCover";
 import { BalaoAudio } from "@/components/ui/WhatsAppChat";
-import { formatarData, IMAGES, WHATSAPP_PRONTO } from "@/lib/config";
+import { formatarData, IMAGES } from "@/lib/config";
 import { existeEmPublic } from "@/lib/imagens";
-import { linkWhatsApp, MENSAGEM_CONVERSA } from "@/lib/leads";
+import { QuemConta } from "./QuemConta";
 
 // Foto ilustrativa da capa: sem nome, como toda foto da página. Sem o arquivo, a capa fica só com o título.
 const FOTO_CAPA = IMAGES.antigaCasamento;
@@ -23,34 +23,19 @@ export function Hero() {
           id="hero-titulo"
           className="text-display col-span-12 lg:col-span-7 lg:col-start-1 lg:row-start-1"
         >
-          A voz de quem você ama, em capa dura.
+          As histórias da sua família num livro, com fotos e a voz de quem
+          viveu.
         </h1>
 
         <div className="col-span-12 lg:col-span-6 lg:col-start-1 lg:row-start-2 lg:pt-10">
+          {/* "conta." fecha a linha: a troca da pessoa não reflui o resto da frase */}
           <p className="max-w-[46ch]">
-            Durante quatro semanas, quem você ama recebe uma pergunta por dia
-            útil no WhatsApp e responde por áudio, do jeito que já faz. A
-            família manda mensagens em segredo, e tudo vira um livro de capa
-            dura com a voz original, entregue antes do Natal.
+            <QuemConta /> conta.
+            <br />A Ecoa cuida do resto. Um presente pronto para entregar.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-x-7 gap-y-4">
-            <Button href="#interesse" data-cta="hero">
-              Quero este livro
-            </Button>
-            {WHATSAPP_PRONTO && (
-              <Button
-                variant="link"
-                href={linkWhatsApp(MENSAGEM_CONVERSA)}
-                target="_blank"
-                rel="noopener noreferrer"
-                data-cta="hero-whatsapp"
-                className="inline-flex! min-h-12 items-center gap-2"
-              >
-                <IconeWhatsApp />
-                Ou chame a gente no WhatsApp
-              </Button>
-            )}
+            <BotaoInteresse posicao="hero" />
           </div>
 
           <ul className="text-pequeno mt-7 flex flex-wrap gap-x-2 gap-y-1">
@@ -78,16 +63,5 @@ export function Hero() {
         </div>
       </Container>
     </section>
-  );
-}
-
-function IconeWhatsApp() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden className="h-5 w-5 shrink-0">
-      <path
-        fill="currentColor"
-        d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.7a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"
-      />
-    </svg>
   );
 }

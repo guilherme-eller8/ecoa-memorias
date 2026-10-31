@@ -102,10 +102,9 @@ Cartão de papel branco com uma pergunta em Newsreader de 26–30px, alinhada à
 ## 2. Hero
 Duas colunas no desktop: título e texto à esquerda, a capa à direita já na altura do título, limitada pela altura da tela. No mobile: título, frase, botão, fatos, capa.
 
-- H1: "A voz de quem você ama, em capa dura."
-- Frase de apoio (aprovada em 30/10):
-  "Durante quatro semanas, quem você ama recebe uma pergunta por dia útil no WhatsApp e responde por áudio, do jeito que já faz. A família manda mensagens em segredo, e tudo vira um livro de capa dura com a voz original, entregue antes do Natal."
-- Botão: "Quero este livro" → #interesse. Ao lado, link secundário com o ícone do WhatsApp: "Ou chame a gente no WhatsApp" (wa.me com "Olá! Quero saber mais sobre o livro da Ecoa Memórias.").
+- H1 (31/10): "As histórias da sua família num livro, com fotos e a voz de quem viveu." (quebra em 4 linhas em 390px e 1440px: exceção consciente à regra das 2 linhas, decidida pelo fundador)
+- Frase de apoio (31/10): "[Seu pai] conta. A Ecoa cuida do resto. Um presente pronto para entregar." A pessoa alterna: Seu pai, Sua mãe, Seu tio, Sua tia, Sua avó, Seu avô (troca a cada 2,2 s, duas voltas e para em "Seu pai"; leitor de tela ouve a lista inteira; sem JS fica "Seu pai"; com movimento reduzido, só o esmaecer, sem deslocamento).
+- Botão: "Tenho interesse" → wa.me em nova aba com "Oi! Vi o site da Ecoa e tenho interesse no livro." (sem link secundário: o botão já abre o WhatsApp).
 - Fatos, numa linha só em tamanho pequeno, abaixo do botão: "Edição de Natal · Inscrições até 7 de novembro". O preço fica só no colofão (seção 8).
 - Visual: LiveCover grande, entreaberta, com o áudio de WhatsApp encostado. Fundo polen liso, com o grão de papel. Sem gradiente.
 
@@ -222,7 +221,7 @@ Ordem: as objeções mais fortes primeiro (pagamento, desistência, tempo).
 - Seção curta em floresta. O único momento centralizado da página.
 - H2: "Algumas histórias só uma pessoa pode contar. Que elas continuem ecoando." (único uso do trocadilho)
   - Se passar de 2 linhas em 390px, reduzir a medida antes da fonte; se ainda assim quebrar, perguntar.
-- Botão polen com texto floresta: "Tenho interesse".
+- Botão polen com texto floresta: "Tenho interesse" → wa.me em nova aba com "Oi! Tenho interesse no livro da Ecoa, pode me contar mais?".
 - Abaixo, as 5 capas como lombadas, em pé numa estante, com o título na lombada (nunca nome de pessoa).
 - Legenda pequena abaixo da estante: "Cinco cores de tecido. A próxima pode ser a da sua família."
 
@@ -253,5 +252,7 @@ Política LGPD simples e clara:
 
 ## Analytics
 - Vercel Analytics.
-- Todos os botões de interesse com `data-cta` único (hero, hero-whatsapp, formulario, rodape-whatsapp, fecho).
+- Todos os botões de interesse com `data-cta` único (hero, final, formulario, rodape-whatsapp).
+- Os botões "Tenho interesse" que abrem o WhatsApp (`data-posicao`: hero | final) disparam `cta_interesse` com a propriedade `posicao`, no lugar de `cta_clicado`.
+- Mensagens por posição e número: `MENSAGENS_INTERESSE` em `lib/leads.ts` e `WHATSAPP_NUMERO` em `lib/config.ts`.
 - Evento `lead_enviado` no sucesso do formulário, com a propriedade `status` (`gravado` ou `fallback`).
