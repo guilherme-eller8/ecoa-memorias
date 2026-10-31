@@ -67,13 +67,11 @@ export function Hero() {
           </ul>
         </div>
 
-        {/* No desktop, a capa vai à direita, já na altura do título, e as lombadas de cor descem
-            para a coluna do texto */}
+        {/* No desktop, a capa vai à direita, já na altura do título */}
         <div className="col-span-12 mt-6 lg:contents">
           <LiveCover
             className="lg:contents!"
             objetoClassName="lg:col-span-5 lg:col-start-8 lg:row-span-3 lg:row-start-1 lg:justify-self-end lg:self-start lg:pt-2"
-            controlesClassName="lg:col-span-6 lg:col-start-1 lg:row-start-3 lg:self-start lg:pt-12"
             foto={existeEmPublic(FOTO_CAPA) ? FOTO_CAPA : undefined}
             aparte={<BalaoAudio duracao="2:14" hora="19:02" />}
           />
