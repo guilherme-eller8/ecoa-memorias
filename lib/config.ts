@@ -38,6 +38,9 @@ export const IMAGES = {
   antigaTrabalho: "/images/antiga-trabalho.webp",
   antigaFlores: "/images/antiga-flores.webp",
   antigaPraia: "/images/antiga-praia.webp",
+  // Fotos das páginas "Mensagens da família" (ilustrativas)
+  mensagemNeta: "/images/mensagem-neta.webp",
+  mensagemFilho: "/images/mensagem-filho.webp",
 } as const;
 
 export type ImagemChave = keyof typeof IMAGES;

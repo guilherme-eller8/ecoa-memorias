@@ -162,7 +162,7 @@ Duas colunas no desktop: título e texto à esquerda, a capa à direita já na a
 - H2: "No final, quem contou recebe uma surpresa."
 - Texto: "Duas partes fazem o livro. Uma delas, quem conta só conhece no Natal: cada mensagem da família ganha uma página, com QR code para ouvir."
 - Layout espelhado em relação à seção 5 (vizinhas não repetem composição): o livro aberto à esquerda (7/12), título e texto à direita (5/12).
-- O livro aberto mostra as páginas "Mensagens da família": em cada página um bilhete escrito à mão (Caveat), assinado só com o papel ("sua neta", "sua filha"), e um QR pequeno com "ouça a mensagem".
+- O livro aberto mostra as páginas "Mensagens da família". Em cada página: a foto de quem escreveu com quem é homenageado (`mensagem-neta`: avô e neta na oficina; `mensagem-filho`: pai e filho no macarrão), o bilhete escrito à mão (Caveat), assinado só com o papel ("sua neta", "seu filho"), e um QR pequeno com "ouça a mensagem".
 - Faixa larga (21:9; 4:5 no celular) com a família recebendo o livro: foto `surpresa-ceia` e, por cima, o loop mudo `video/surpresa.mp4` (3,9 s, só a cena da mesa). Legenda pequena: "Imagem ilustrativa." Com movimento reduzido ou sem JS, fica a foto.
 
 ## 7. Perguntas que abrem histórias (#perguntas)

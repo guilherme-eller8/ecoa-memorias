@@ -1,4 +1,4 @@
-"""Gera o logo da Ecoa com o texto convertido em path.
+"""Gera o logo da Ecoa (opção 03: "ecoa" em caixa-baixa com uma árvore nascendo do "o") com o texto em path.
 
 Uso (precisa de rede para baixar a Newsreader do Google Fonts):
     python -m venv .venv && .venv/bin/pip install fonttools uharfbuzz
@@ -8,8 +8,8 @@ Saídas:
     components/ui/logo-paths.ts      path data usado pelo componente <Logo>
     public/logo/ecoa-logo-polen.svg  para fundo polen (texto tinta)
     public/logo/ecoa-logo-floresta.svg  para fundo floresta (texto polen)
-    public/logo/ecoa-monograma.svg   só os arcos (pé da capa)
-    app/icon.svg                     favicon vetorial (arcos dourados em floresta)
+    public/logo/ecoa-monograma.svg   só a árvore (pé da capa)
+    app/icon.svg                     favicon vetorial (árvore dourada em floresta)
 """
 
 from __future__ import annotations
@@ -34,11 +34,12 @@ POLEN = "#F5EFE4"
 FLORESTA = "#1F3D33"
 DOURADO = "#B08D57"
 
-# Unidades do desenho: "Ecoa" tem corpo 100.
+# Unidades do desenho: "ecoa" tem corpo 100.
 CORPO_ECOA = 100
-CORPO_MEMORIAS = 40
-ENTRELINHA = 19  # do pé de "Ecoa" ao topo do "M"
-TRACO = 6  # arcos: ≈ 2,3px quando o logo tem 48px de altura
+CORPO_MEMORIAS = 26
+ESPACO_MEMORIAS = 0.2  # entreletra de "MEMÓRIAS", em em
+ENTRELINHA = 14  # do pé de "ecoa" ao topo do "M"
+TRACO = 3.4  # a árvore: um traço da espessura das serifas
 
 
 def baixar(opsz: int, wght: int, texto: str) -> Path:
@@ -59,7 +60,9 @@ def baixar(opsz: int, wght: int, texto: str) -> Path:
     return destino
 
 
-def compor(caminho: Path, texto: str, corpo: float, x0: float, linha_base: float) -> tuple[str, tuple[float, float, float, float]]:
+def compor(
+    caminho: Path, texto: str, corpo: float, x0: float, linha_base: float, entreletra: float = 0.0
+) -> tuple[str, tuple[float, float, float, float]]:
     """Compõe o texto com HarfBuzz (kerning incluído) e devolve o path SVG e a caixa."""
     dados = caminho.read_bytes()
     fonte_hb = hb.Font(hb.Face(dados))
@@ -82,78 +85,112 @@ def compor(caminho: Path, texto: str, corpo: float, x0: float, linha_base: float
         m = (escala, 0, 0, -escala, x0 + (x + pos.x_offset) * escala, linha_base - pos.y_offset * escala)
         glifos[nome].draw(TransformPen(pen, m))
         glifos[nome].draw(TransformPen(limites, m))
-        x += pos.x_advance
+        x += pos.x_advance + entreletra * tt["head"].unitsPerEm
     return pen.getCommands(), limites.bounds
 
 
-def arco(cx: float, cy: float, r: float, abertura: float) -> str:
-    """Arco de circunferência aberto para a direita, de -abertura a +abertura graus."""
-    a = math.radians(abertura)
-    x = cx + r * math.cos(a)
-    y1 = cy - r * math.sin(a)
-    y2 = cy + r * math.sin(a)
-    return f"M{x:.2f} {y1:.2f}A{r:g} {r:g} 0 0 1 {x:.2f} {y2:.2f}"
+def arvore(cx: float, base: float, raio: float) -> list[str]:
+    """A árvore que nasce do "o": tronco, três galhos e a copa aberta embaixo, por onde o tronco entra.
+
+    `base` é o y onde o tronco toca o topo do "o"; a copa fica acima (y menor)."""
+    tronco_alto = raio * 0.75
+    cy = base - tronco_alto - raio * 0.92
+    abertura = 26  # graus, metade da fresta da copa embaixo
+    a1 = math.radians(90 + abertura)
+    a2 = math.radians(90 - abertura)
+    # Copa: arco grande no sentido horário, do lado esquerdo da fresta até o direito.
+    x1, y1 = cx + raio * math.cos(a1), cy + raio * math.sin(a1)
+    x2, y2 = cx + raio * math.cos(a2), cy + raio * math.sin(a2)
+    copa = f"M{x1:.2f} {y1:.2f}A{raio:g} {raio:g} 0 1 1 {x2:.2f} {y2:.2f}"
+    garfo = cy + raio * 0.28  # onde o tronco se abre em galhos
+    tronco = f"M{cx:.2f} {base:.2f}V{cy - raio * 0.55:.2f}"
+    esquerdo = f"M{cx:.2f} {garfo:.2f}L{cx - raio * 0.5:.2f} {cy - raio * 0.32:.2f}"
+    direito = f"M{cx:.2f} {garfo:.2f}L{cx + raio * 0.5:.2f} {cy - raio * 0.32:.2f}"
+    return [copa, tronco, esquerdo, direito]
+
+
+def caixa_arvore(cx: float, base: float, raio: float, traco: float) -> tuple[float, float, float, float]:
+    cy = base - raio * 0.75 - raio * 0.92
+    return (cx - raio - traco / 2, cy - raio - traco / 2, cx + raio + traco / 2, base)
 
 
 def main() -> None:
-    ecoa_ttf = baixar(72, 500, "Ecoa")
-    memorias_ttf = baixar(16, 500, "Memórias")
+    ecoa_ttf = baixar(72, 560, "ecoa")
+    memorias_ttf = baixar(16, 500, "MEMÓRIAS")
 
-    ecoa_d, (ex0, ey0, ex1, ey1) = compor(ecoa_ttf, "Ecoa", CORPO_ECOA, 0, 0)
-    # Alinha a haste do E na margem esquerda e o topo da caixa-alta em y=0.
-    ecoa_d, (ex0, ey0, ex1, ey1) = compor(ecoa_ttf, "Ecoa", CORPO_ECOA, -ex0, -ey0)
-    altura_ecoa = ey1 - ey0  # caixa-alta, sem descendentes
+    # Caixa-baixa: o topo do "o" (altura-x) fica em y=0 e o desenho cresce para cima com a árvore.
+    _, (ex0, ey0, ex1, ey1) = compor(ecoa_ttf, "ecoa", CORPO_ECOA, 0, 0)
+    _, (_, oy0, _, oy1) = compor(ecoa_ttf, "o", CORPO_ECOA, 0, 0)
+    xh = oy1 - oy0  # altura do "o", ≈ altura-x
+    ecoa_d, (ex0, ey0, ex1, ey1) = compor(ecoa_ttf, "ecoa", CORPO_ECOA, -ex0, xh)
+    # Onde está o "o": entre o fim de "ec" e o fim de "eco".
+    _, (_, _, ec1, _) = compor(ecoa_ttf, "ec", CORPO_ECOA, -ex0, xh)
+    _, (_, _, eco1, _) = compor(ecoa_ttf, "eco", CORPO_ECOA, -ex0, xh)
+    _, (o0, _, o1, _) = compor(ecoa_ttf, "o", CORPO_ECOA, 0, xh)
+    largura_o = o1 - o0
+    ocx = eco1 - largura_o / 2
 
-    memorias_d, (mx0, my0, mx1, my1) = compor(memorias_ttf, "Memórias", CORPO_MEMORIAS, 0, 0)
-    topo_m = altura_ecoa + ENTRELINHA
+    raio = largura_o * 0.5
+    galhos = arvore(ocx, 1.2, raio)
+    ax0, ay0, ax1, _ = caixa_arvore(ocx, 1.2, raio, TRACO)
+
     memorias_d, (mx0, my0, mx1, my1) = compor(
-        memorias_ttf, "Memórias", CORPO_MEMORIAS, -mx0 + 1.2, topo_m - my0
+        memorias_ttf, "MEMÓRIAS", CORPO_MEMORIAS, 0, 0, ESPACO_MEMORIAS
+    )
+    largura_m = mx1 - mx0
+    largura_e = ex1 - ex0
+    topo_m = ey1 + ENTRELINHA  # ey1 é o pé de "ecoa"
+    memorias_d, (mx0, my0, mx1, my1) = compor(
+        memorias_ttf,
+        "MEMÓRIAS",
+        CORPO_MEMORIAS,
+        -mx0 + (largura_e - largura_m) / 2,
+        topo_m - my0,
+        ESPACO_MEMORIAS,
     )
 
-    # Três arcos concêntricos depois de "Ecoa": a palavra ecoa.
-    # Centro entre o meio da caixa-alta e o meio da caixa-baixa do "a".
-    cy = altura_ecoa * 0.6
-    cx = ex1 + 4
-    raios = (16, 28, 40)
-    abertura = 52
-    arcos = [arco(cx, cy, r, abertura) for r in raios]
-    topo = min(0.0, cy - raios[-1] * math.sin(math.radians(abertura)) - TRACO / 2)
-    largura = max(cx + raios[-1] + TRACO / 2, mx1) + 1
-    caixa = f"0 {topo:.2f} {largura:.2f} {my1 + 1 - topo:.2f}"
+    topo = min(ay0, ey0) - 1
+    esquerda = min(0.0, mx0) - 1
+    direita = max(ex1, mx1) + 1
+    caixa = f"{esquerda:.2f} {topo:.2f} {direita - esquerda:.2f} {my1 + 1 - topo:.2f}"
 
-    # Monograma: os mesmos arcos, centrados num quadrado.
-    m_raios = (12, 24, 36)
-    m_abertura = 52
+    # Monograma: só a árvore, centrada num quadrado (pé da capa e favicon).
     m_lado = 72
-    m_cx = (m_lado - (m_raios[-1] - m_raios[0] * math.cos(math.radians(m_abertura)))) / 2 - m_raios[0] * math.cos(math.radians(m_abertura))
-    m_arcos = [arco(m_cx, m_lado / 2, r, m_abertura) for r in m_raios]
-    m_traco = 7
+    m_raio = 22
+    m_base = m_lado / 2 + (m_raio * 0.75 + m_raio * 0.92 + m_raio) / 2
+    m_galhos = arvore(m_lado / 2, m_base, m_raio)
+    m_traco = 5.5
 
-    # Favicon: traço mais grosso para ler em 16px.
-    i_raios = (6, 11.5, 17)
-    i_abertura = 50
-    i_cx = (32 - (i_raios[-1] - i_raios[0] * math.cos(math.radians(i_abertura)))) / 2 - i_raios[0] * math.cos(math.radians(i_abertura)) - 0.5
-    i_arcos = [arco(i_cx, 16, r, i_abertura) for r in i_raios]
+    i_raio = 9.2
+    i_base = 16 + (i_raio * 0.75 + i_raio * 0.92 + i_raio) / 2
+    i_galhos = arvore(16, i_base, i_raio)
 
     ts = f"""// Gerado por scripts/gerar-logo.py. Não editar à mão.
 export const LOGO_VIEWBOX = "{caixa}";
 export const LOGO_ECOA = "{ecoa_d}";
 export const LOGO_MEMORIAS = "{memorias_d}";
-export const LOGO_ARCOS = {arcos!r};
+export const LOGO_ARVORE = {galhos!r};
 export const LOGO_TRACO = {TRACO};
 
 export const MONOGRAMA_VIEWBOX = "0 0 {m_lado} {m_lado}";
-export const MONOGRAMA_ARCOS = {m_arcos!r};
+export const MONOGRAMA_ARVORE = {m_galhos!r};
 export const MONOGRAMA_TRACO = {m_traco};
 """
     (RAIZ / "components" / "ui" / "logo-paths.ts").write_text(ts.replace("'", '"'))
 
+    def traco_svg(ds: list[str], cor: str, largura: float) -> str:
+        return (
+            f'<g fill="none" stroke="{cor}" stroke-width="{largura}" stroke-linecap="round" stroke-linejoin="round">'
+            + "".join(f'<path d="{d}"/>' for d in ds)
+            + "</g>"
+        )
+
     def logo_svg(texto: str) -> str:
-        arcos_svg = "".join(f'<path d="{d}"/>' for d in arcos)
         return (
             f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{caixa}" role="img" aria-label="Ecoa Memórias">'
             f'<path fill="{texto}" d="{ecoa_d}"/><path fill="{texto}" d="{memorias_d}"/>'
-            f'<g fill="none" stroke="{DOURADO}" stroke-width="{TRACO}" stroke-linecap="round">{arcos_svg}</g></svg>\n'
+            + traco_svg(galhos, texto, TRACO)
+            + "</svg>\n"
         )
 
     pasta = RAIZ / "public" / "logo"
@@ -162,16 +199,14 @@ export const MONOGRAMA_TRACO = {m_traco};
     (pasta / "ecoa-logo-floresta.svg").write_text(logo_svg(POLEN))
     (pasta / "ecoa-monograma.svg").write_text(
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {m_lado} {m_lado}" role="img" aria-label="Ecoa Memórias">'
-        f'<g fill="none" stroke="{DOURADO}" stroke-width="{m_traco}" stroke-linecap="round">'
-        + "".join(f'<path d="{d}"/>' for d in m_arcos)
-        + "</g></svg>\n"
+        + traco_svg(m_galhos, DOURADO, m_traco)
+        + "</svg>\n"
     )
     (RAIZ / "app" / "icon.svg").write_text(
         '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">'
         f'<rect width="32" height="32" rx="1.5" fill="{FLORESTA}"/>'
-        f'<g fill="none" stroke="{DOURADO}" stroke-width="3.2" stroke-linecap="round">'
-        + "".join(f'<path d="{d}"/>' for d in i_arcos)
-        + "</g></svg>\n"
+        + traco_svg(i_galhos, DOURADO, 2.6)
+        + "</svg>\n"
     )
     print("logo gerado:", caixa)
 
