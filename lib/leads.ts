@@ -35,6 +35,14 @@ export function mensagemPrimeiroContato(lead: Pick<Lead, "nome">): string {
 /** Para quem prefere chamar direto, sem o formulário. */
 export const MENSAGEM_CONVERSA = `Olá! Quero saber mais sobre o livro da ${MARCA}.`;
 
+/** Uma mensagem por posição do botão "Tenho interesse": diz de onde veio o lead. */
+export const MENSAGENS_INTERESSE = {
+  hero: "Oi! Vi o site da Ecoa e tenho interesse no livro.",
+  final: "Oi! Tenho interesse no livro da Ecoa, pode me contar mais?",
+} as const;
+
+export type PosicaoInteresse = keyof typeof MENSAGENS_INTERESSE;
+
 export function linkWhatsApp(
   texto: string,
   numero: string = WHATSAPP_NUMERO,
