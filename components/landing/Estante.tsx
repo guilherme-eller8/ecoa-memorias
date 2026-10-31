@@ -1,8 +1,5 @@
-"use client";
-
 import type { CSSProperties } from "react";
-import { CAPA_PADRAO, CAPAS, type CorCapa } from "@/components/ui/capas";
-import { useCapa } from "@/lib/capa";
+import { CAPAS, type CorCapa } from "@/components/ui/capas";
 import s from "./Estante.module.css";
 
 type Lombada = { titulo: string; cor: CorCapa; altura: number };
@@ -16,13 +13,12 @@ const LOMBADAS: Lombada[] = [
   { titulo: "Memórias de estrada", cor: "rosa-antigo", altura: 98 },
 ];
 
-function LombadaEmPe({ l, sua }: { l: Lombada; sua?: boolean }) {
+function LombadaEmPe({ l }: { l: Lombada }) {
   return (
     <li
       className={s.lombada}
       data-escura={CAPAS[l.cor].escura || undefined}
       data-cor={l.cor}
-      data-sua={sua || undefined}
       style={
         {
           "--tecido": CAPAS[l.cor].tecido,
@@ -36,26 +32,12 @@ function LombadaEmPe({ l, sua }: { l: Lombada; sua?: boolean }) {
   );
 }
 
-/**
- * As cinco capas como lombadas numa estante. Se a cor foi escolhida na capa do hero,
- * esse livro sai um pouco da fileira, no meio dela.
- */
+/** As cinco capas como lombadas numa estante. */
 export function Estante() {
-  const capa = useCapa();
-  const sua: Lombada | null = capa.usada
-    ? { titulo: CAPA_PADRAO.title, cor: capa.cor, altura: 96 }
-    : null;
-  const fileira = sua ? LOMBADAS.filter((l) => l.cor !== sua.cor) : LOMBADAS;
-  const meio = Math.ceil(fileira.length / 2);
-
   return (
     <div className={s.estante}>
       <ul className={s.fileira} aria-hidden>
-        {fileira.slice(0, meio).map((l) => (
-          <LombadaEmPe key={l.cor} l={l} />
-        ))}
-        {sua ? <LombadaEmPe key={`sua-${sua.cor}`} l={sua} sua /> : null}
-        {fileira.slice(meio).map((l) => (
+        {LOMBADAS.map((l) => (
           <LombadaEmPe key={l.cor} l={l} />
         ))}
       </ul>

@@ -3,7 +3,6 @@
 import { track } from "@vercel/analytics";
 import { useId, useRef, useState, type FormEvent } from "react";
 import { Button } from "@/components/ui/Button";
-import { useCapa } from "@/lib/capa";
 import { mascararWhatsApp, submitLead } from "@/lib/leads";
 
 // O zod só chega quando alguém começa a preencher: fora do bundle da primeira tela
@@ -33,7 +32,6 @@ function abrirWhatsApp(url: string) {
 }
 
 export function FormInteresse() {
-  const capa = useCapa();
   const id = useId();
   const form = useRef<HTMLFormElement>(null);
   const aviso = useRef<HTMLDivElement>(null);
@@ -65,11 +63,8 @@ export function FormInteresse() {
     setErros({});
     setEstado({ fase: "enviando" });
     const resultado = await submitLead(r.data);
-    // Sem o nome nem o número: se a capa ao vivo foi usada e se o lead foi gravado ou caiu no wa.me
-    track("lead_enviado", {
-      usou_capa: capa.usada,
-      status: resultado.status,
-    });
+    // Sem o nome nem o número: só se o lead foi gravado ou caiu no wa.me
+    track("lead_enviado", { status: resultado.status });
     if (resultado.status === "fallback") abrirWhatsApp(resultado.url);
     setEstado({ fase: resultado.status, url: resultado.url });
     requestAnimationFrame(() => aviso.current?.focus());
@@ -163,11 +158,6 @@ export function FormInteresse() {
         />
         {erro("whatsapp")}
       </div>
-
-      {/* A cor escolhida na capa do hero vai junto, sem pedir nada a mais */}
-      {capa.usada ? (
-        <input type="hidden" name="capa_cor" value={capa.cor} />
-      ) : null}
 
       {/* Honeypot: invisível e fora da ordem de foco */}
       <div

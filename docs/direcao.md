@@ -22,12 +22,10 @@ Direção sorteada: **`page-is-the-object` — a página é o próprio objeto** 
 Teste do concorrente: um site de fotolivro genérico não tem a voz, o QR por capítulo, os bilhetes secretos nem a tiragem de 10. A frase só funciona para a Ecoa.
 
 ## O elemento interativo (obrigatório pela skill)
-**A capa com o tecido à escolha.** No hero, a capa grande é ao vivo:
+**A capa que se abre.** No hero, a capa grande entreabre ao passar o mouse; mais adiante, a conversa de WhatsApp das perguntas anda sozinha:
 - A capa não leva nome de pessoa: só o título "O que a vida me ensinou" e uma foto antiga ilustrativa na janela (no livro de verdade, a foto de quem conta, como na referência do Remento). Sem o arquivo da foto, fica só o título.
 - Encostado na capa, um áudio de WhatsApp (2:14), que não toca: mostra que tudo começa num áudio, do jeito que quem conta já faz.
-- A escolha da cor é uma fileira de cinco lombadas (vinho, rosa-antigo, névoa, petróleo, floresta), botões de verdade.
-- A cor escolhida aparece no formulário da seção 8, na mensagem do wa.me e na estante do fecho.
-- Sem JS: a capa "O que a vida me ensinou" em floresta, estática. No celular, cabe no polegar; nada bloqueia a leitura.
+- A escolha da cor saiu em 31/10: a capa fica em floresta. As cinco cores aparecem só na estante do fecho.
 
 Até 30/10 a capa tinha um campo com o nome de quem conta. Saiu: o fundador prefere que a capa mostre a foto da pessoa, não o nome.
 

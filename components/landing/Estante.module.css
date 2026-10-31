@@ -82,21 +82,3 @@
   background-color: color-mix(in oklab, var(--floresta) 62%, #000);
   border-radius: var(--raio);
 }
-
-/* O livro de quem visita desce para a estante quando ela entra na tela, preso à rolagem */
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .lombada[data-sua] {
-      animation: chega linear both;
-      animation-timeline: view();
-      animation-range: entry 20% cover 40%;
-    }
-  }
-}
-
-@keyframes chega {
-  from {
-    opacity: 0;
-    transform: translateY(-36px);
-  }
-}

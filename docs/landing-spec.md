@@ -47,12 +47,10 @@ Títulos de exemplo (fictícios):
 | Memórias de um caixeiro-viajante | Geraldo Souza | rosa-antigo | antiga-casamento |
 
 ### LiveCover
-A BookCover do hero com controles (ver direcao.md, "O elemento interativo"):
+A BookCover do hero, fixa em floresta (a escolha de cor saiu em 31/10):
 - Sem nome de pessoa: título "O que a vida me ensinou" e uma foto antiga ilustrativa na janela (`antiga-casamento`). Sem o arquivo, só o título.
-- Rótulo "Escolha a cor do tecido" e cinco lombadas clicáveis (`<button>` com `aria-pressed` e nome acessível "Capa vinho" etc.).
-- Guarda a cor em estado compartilhado; a seção 8 e a estante do fecho a usam.
+- Entreabre ao passar o mouse e mostra a borda das páginas.
 - Encostado na capa, um áudio de WhatsApp (2:14, ilustrativo, não toca).
-- Sem JS: capa estática "O que a vida me ensinou", floresta.
 
 ### OpenBookSpread
 Livro aberto em página dupla, com curvatura sutil no centro e sombra da dobra (desenhada dentro do objeto).
@@ -102,7 +100,7 @@ Cartão de papel branco com uma pergunta em Newsreader de 26–30px, alinhada à
 - No mobile: logo e botão; os links vão para um menu simples (`<details>` ou botão com `aria-expanded`).
 
 ## 2. Hero
-Duas colunas no desktop: título na largura de 8/12; abaixo, texto à esquerda (6/12) e a capa ao vivo à direita (6/12). As lombadas de cor descem para a coluna do texto. No mobile: título, frase, botão, fatos, capa, lombadas.
+Duas colunas no desktop: título e texto à esquerda, a capa à direita já na altura do título, limitada pela altura da tela. No mobile: título, frase, botão, fatos, capa.
 
 - H1: "A voz de quem você ama, em capa dura."
 - Frase de apoio (aprovada em 30/10):
@@ -190,12 +188,11 @@ Duas colunas no desktop: título na largura de 8/12; abaixo, texto à esquerda (
 - Campos:
   - "Seu nome"
   - "Seu WhatsApp" (máscara brasileira)
-  - Se a cor da LiveCover foi trocada, enviar `capa_cor` como campo oculto (sem miniatura).
   - Honeypot invisível contra spam.
 - Botão: "Quero este livro"
 - Microcopy: "Nada é cobrado agora. Logo em seguida, falamos com você pelo WhatsApp para tirar dúvidas e garantir a sua vaga."
 - Sucesso: o formulário é substituído por "Recebemos. Em breve falamos com você pelo WhatsApp." e um link secundário "Prefere falar agora? Abrir WhatsApp" (wa.me com a mensagem pré-preenchida abaixo).
-- Mensagem wa.me: "Olá! Tenho interesse no livro da Ecoa Memórias. Meu nome é [nome]." (+ "Gostei da capa [cor]." quando houver)
+- Mensagem wa.me: "Olá! Tenho interesse no livro da Ecoa Memórias. Meu nome é [nome]."
 
 ## 9. Perguntas frequentes
 - H2: "Perguntas frequentes"
@@ -226,7 +223,7 @@ Ordem: as objeções mais fortes primeiro (pagamento, desistência, tempo).
 - H2: "Algumas histórias só uma pessoa pode contar. Que elas continuem ecoando." (único uso do trocadilho)
   - Se passar de 2 linhas em 390px, reduzir a medida antes da fonte; se ainda assim quebrar, perguntar.
 - Botão polen com texto floresta: "Tenho interesse".
-- Abaixo, as 5 capas como lombadas, em pé numa estante, com o título na lombada (nunca nome de pessoa). Se a cor da LiveCover foi trocada, esse livro sai um pouco da fileira, no meio dela.
+- Abaixo, as 5 capas como lombadas, em pé numa estante, com o título na lombada (nunca nome de pessoa).
 - Legenda pequena abaixo da estante: "Cinco cores de tecido. A próxima pode ser a da sua família."
 
 ## 11. Rodapé
@@ -257,5 +254,4 @@ Política LGPD simples e clara:
 ## Analytics
 - Vercel Analytics.
 - Todos os botões de interesse com `data-cta` único (hero, hero-whatsapp, formulario, rodape-whatsapp, fecho).
-- Evento `capa_personalizada` (uma vez por visita, quando o visitante troca a cor), com a propriedade `cor`.
-- Evento `lead_enviado` no sucesso do formulário, com as propriedades `usou_capa` e `status` (`gravado` ou `fallback`).
+- Evento `lead_enviado` no sucesso do formulário, com a propriedade `status` (`gravado` ou `fallback`).
