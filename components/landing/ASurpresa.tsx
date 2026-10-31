@@ -9,35 +9,45 @@ import { existeEmPublic } from "@/lib/imagens";
 
 const ordem = (n: number) => ({ "--ordem": n }) as CSSProperties;
 
-/** Uma mensagem da família, escrita à mão na página, com o QR que toca o áudio dela. */
+type FotoMensagem = { src: string; alt: string; objectPosition?: string };
+
+/**
+ * Uma mensagem da família numa página do livro: a foto de quem escreveu com quem é
+ * homenageado, o bilhete à mão e o QR que toca o áudio dela.
+ */
 function Mensagem({
+  foto,
   texto,
   assinatura,
-  children,
 }: {
+  foto?: FotoMensagem;
   texto: string;
   assinatura: string;
-  children?: ReactNode;
 }) {
   return (
     <figure className="m-0">
-      <blockquote className="font-mao m-0 text-[max(18px,3.8cqi)] leading-[1.12]">
+      {foto && existeEmPublic(foto.src) ? (
+        <Foto
+          src={foto.src}
+          alt={foto.alt}
+          tipo="antiga"
+          proporcao="3 / 2"
+          objectPosition={foto.objectPosition}
+          sizes="(min-width: 1280px) 260px, 45vw"
+          className="w-[74%] rotate-[-1.5deg]"
+        />
+      ) : null}
+      <blockquote className="font-mao m-0 mt-[3cqi] text-[max(15px,3.2cqi)] leading-[1.1]">
         {texto}
       </blockquote>
-      <figcaption className="font-mao mt-[1.6cqi] text-[max(16px,3cqi)]">
-        {assinatura}
+      <figcaption className="mt-[2cqi] flex items-center justify-between gap-[2cqi]">
+        <span className="font-mao text-[max(14px,2.9cqi)]">{assinatura}</span>
+        <span className="flex items-center gap-[1.2cqi] text-[max(13px,1.5cqi)] whitespace-nowrap">
+          ouça a mensagem
+          <QrCode className="block w-[max(30px,5.6cqi)]" />
+        </span>
       </figcaption>
-      {children}
     </figure>
-  );
-}
-
-function OucaAMensagem() {
-  return (
-    <p className="mt-[3.5cqi] flex items-center gap-[1.6cqi] text-[max(13px,1.75cqi)]">
-      <QrCode className="block w-[max(44px,7.5cqi)]" />
-      ouça a mensagem
-    </p>
   );
 }
 
@@ -49,24 +59,30 @@ const MIOLO = {
       <p className="text-[max(13px,2.1cqi)] font-medium tracking-[0.02em]">
         Mensagens da família
       </p>
-      <div className="mt-[4cqi]">
+      <div className="mt-[2.5cqi]">
         <Mensagem
+          foto={{
+            src: IMAGES.mensagemNeta,
+            alt: "Foto de 1998: um avô e a neta pequena, sentados na oficina de marcenaria, assobiando juntos",
+            objectPosition: "50% 40%",
+          }}
           texto="Vô, até hoje eu lembro do cheiro da oficina e de você me ensinando a assobiar."
           assinatura="sua neta"
-        >
-          <OucaAMensagem />
-        </Mensagem>
+        />
       </div>
     </>
   ),
   direita: (
-    <div className="pt-[7cqi]">
+    <div className="pt-[5.5cqi]">
       <Mensagem
-        texto="Pai, obrigada por cada domingo de macarronada. Você fez da nossa casa o lugar mais feliz do mundo."
-        assinatura="sua filha"
-      >
-        <OucaAMensagem />
-      </Mensagem>
+        foto={{
+          src: IMAGES.mensagemFilho,
+          alt: "Foto de 1998: um pai ri ao lado do filho pequeno, que come macarrão com o rosto todo sujo de molho",
+          objectPosition: "50% 40%",
+        }}
+        texto="Pai, obrigado por cada domingo de macarronada. Você fez da nossa casa o lugar mais feliz do mundo."
+        assinatura="seu filho"
+      />
     </div>
   ),
 };

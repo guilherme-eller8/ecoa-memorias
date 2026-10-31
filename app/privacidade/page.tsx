@@ -34,7 +34,7 @@ export default function Privacidade() {
             className="inline-flex min-h-12 items-center"
             aria-label={`${MARCA}, página inicial`}
           >
-            <Logo decorativo className="h-10 w-auto md:h-11" />
+            <Logo decorativo className="h-12 w-auto md:h-[58px]" />
           </Link>
         </Container>
       </header>

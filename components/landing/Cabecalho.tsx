@@ -22,7 +22,7 @@ export function Cabecalho() {
           className="mr-auto inline-flex min-h-12 items-center"
           aria-label="Ecoa Memórias, início"
         >
-          <Logo decorativo className="h-10 w-auto md:h-11" />
+          <Logo decorativo className="h-12 w-auto md:h-[58px]" />
         </a>
 
         <nav aria-label="Seções" className="hidden md:block">

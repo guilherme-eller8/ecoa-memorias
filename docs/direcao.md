@@ -54,3 +54,5 @@ Atualização de 30/10 (rodada 3, feedback do fundador): a ficha técnica virou 
 ## Exceções declaradas ao inspetor
 - `palette-cream`: o fundo é o papel pólen do miolo do livro. Passado com `--allow palette-cream`.
 - Sombra de contato da capa: faz parte do desenho do objeto. Se o inspetor marcar `shadow`, desenhe a sombra dentro do SVG/pseudo-elemento da capa antes de pedir exceção.
+
+Atualização de 31/10: logo novo (opção 03 do fundador): "ecoa" em caixa-baixa, com uma árvore nascendo do "o", e "MEMÓRIAS" espaçado embaixo, numa cor só. A árvore sozinha, em dourado, é o monograma (pé da capa e favicon). Gerado por `scripts/gerar-logo.py`.

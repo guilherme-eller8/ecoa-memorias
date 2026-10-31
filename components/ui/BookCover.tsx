@@ -3,7 +3,7 @@ import { useId, type CSSProperties } from "react";
 import { FORMATO_LIVRO } from "@/lib/config";
 import { CAPAS, type CorCapa } from "./capas";
 import {
-  MONOGRAMA_ARCOS,
+  MONOGRAMA_ARVORE,
   MONOGRAMA_TRACO,
   MONOGRAMA_VIEWBOX,
 } from "./logo-paths";
@@ -303,8 +303,9 @@ export function BookCover({
                     stroke="var(--dourado)"
                     strokeWidth={MONOGRAMA_TRACO}
                     strokeLinecap="round"
+                    strokeLinejoin="round"
                   >
-                    {MONOGRAMA_ARCOS.map((d) => (
+                    {MONOGRAMA_ARVORE.map((d) => (
                       <path key={d} d={d} />
                     ))}
                   </g>

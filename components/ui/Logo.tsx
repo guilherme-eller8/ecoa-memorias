@@ -1,18 +1,18 @@
 import {
-  LOGO_ARCOS,
+  LOGO_ARVORE,
   LOGO_ECOA,
   LOGO_MEMORIAS,
   LOGO_TRACO,
   LOGO_VIEWBOX,
-  MONOGRAMA_ARCOS,
+  MONOGRAMA_ARVORE,
   MONOGRAMA_TRACO,
   MONOGRAMA_VIEWBOX,
 } from "./logo-paths";
 
 type LogoProps = {
-  /** Fundo onde o logo assenta: muda a cor do texto; os arcos são sempre dourados. */
+  /** Fundo onde o logo assenta: muda a cor do texto e da árvore. */
   variant?: "polen" | "floresta";
-  /** Só o símbolo (favicon, pé da capa). */
+  /** Só a árvore (favicon, pé da capa), em dourado. */
   monograma?: boolean;
   className?: string;
   /** Decorativo quando o nome já está escrito ao lado. */
@@ -37,8 +37,9 @@ export function Logo({
           stroke="var(--dourado)"
           strokeWidth={MONOGRAMA_TRACO}
           strokeLinecap="round"
+          strokeLinejoin="round"
         >
-          {MONOGRAMA_ARCOS.map((d) => (
+          {MONOGRAMA_ARVORE.map((d) => (
             <path key={d} d={d} />
           ))}
         </g>
@@ -53,11 +54,12 @@ export function Logo({
       <path fill={texto} d={LOGO_MEMORIAS} />
       <g
         fill="none"
-        stroke="var(--dourado)"
+        stroke={texto}
         strokeWidth={LOGO_TRACO}
         strokeLinecap="round"
+        strokeLinejoin="round"
       >
-        {LOGO_ARCOS.map((d) => (
+        {LOGO_ARVORE.map((d) => (
           <path key={d} d={d} />
         ))}
       </g>
