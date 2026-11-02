@@ -45,7 +45,11 @@ export function Interesse() {
         </p>
 
         <p className="mt-8 max-w-[46ch]">
-          Se a primeira história não emocionar a família, devolvemos 100%.
+          Começa sem pagar nada. Você só paga se gostar da primeira história.
+        </p>
+        <p className="text-pequeno mt-3 max-w-[46ch]">
+          Depois de pagar, ainda tem 7 dias para desistir, com devolução
+          integral.
         </p>
       </div>
 

@@ -7,7 +7,12 @@ import {
   type CSSProperties,
 } from "react";
 import { Section } from "@/components/ui/Section";
-import { formatarData, PARCELAS_MAX } from "@/lib/config";
+import {
+  DEVOLUCAO_SEM_IMPRESSAO,
+  formatarData,
+  formatarPreco,
+  PARCELAS_MAX,
+} from "@/lib/config";
 import s from "./Fichas.module.css";
 
 type Ficha = { aba: string; pergunta: string; resposta: string };
@@ -17,13 +22,12 @@ const FICHAS: Ficha[] = [
   {
     aba: "Pagamento",
     pergunta: "Quando e como eu pago?",
-    resposta: `Só depois de conversarmos pelo WhatsApp e você confirmar. O valor é pago de uma vez, no Pix ou no cartão em até ${PARCELAS_MAX}x sem juros.`,
+    resposta: `Começamos sem cobrar nada. Quando a primeira história editada chegar, você decide: se gostar, paga de uma vez, no Pix ou no cartão em até ${PARCELAS_MAX}x sem juros. Depois de pagar, ainda tem 7 dias para desistir, com devolução integral.`,
   },
   {
     aba: "Desistência",
-    pergunta: "E se a pessoa não quiser participar?",
-    resposta:
-      "Devolvemos o valor integral. E se a primeira história editada não emocionar a família, também.",
+    pergunta: "E se a pessoa não quiser participar, ou parar no meio?",
+    resposta: `Se não quiser participar, você não paga nada. Se parar no meio, o livro sai com as histórias já gravadas. Se preferir não imprimir, você recebe o livro em PDF, com os áudios, e devolvemos ${formatarPreco(DEVOLUCAO_SEM_IMPRESSAO)}.`,
   },
   {
     aba: "Tempo",
@@ -88,13 +92,13 @@ const FICHAS: Ficha[] = [
     aba: "Os áudios",
     pergunta: "Com quem ficam os áudios?",
     resposta:
-      "Com a família, para sempre. Usamos apenas para produzir o livro.",
+      "Com a família, para sempre. Usamos apenas para produzir o livro e para tocar nos QR codes.",
   },
   {
     aba: "QR codes",
     pergunta: "Os QR codes vão parar de funcionar?",
     resposta:
-      "Não. E os áudios originais ficam com a família desde o primeiro dia.",
+      "Não. Guardamos os áudios do livro enquanto a família quiser, só para os QR codes tocarem. E os originais ficam com a família desde o primeiro dia.",
   },
   {
     aba: "Novo volume",

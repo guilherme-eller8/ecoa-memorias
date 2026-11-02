@@ -8,7 +8,7 @@ import { mascararWhatsApp, submitLead } from "@/lib/leads";
 // O zod só chega quando alguém começa a preencher: fora do bundle da primeira tela
 const carregarSchema = () => import("@/lib/lead-schema");
 
-type Campo = "nome" | "whatsapp";
+type Campo = "nome" | "whatsapp" | "aceite";
 type Erros = Partial<Record<Campo, string>>;
 type Estado =
   | { fase: "form" }
@@ -16,7 +16,7 @@ type Estado =
   | { fase: "fallback"; url: string }
   | { fase: "gravado"; url: string };
 
-const CAMPOS: Campo[] = ["nome", "whatsapp"];
+const CAMPOS: Campo[] = ["nome", "whatsapp", "aceite"];
 
 const CAMPO =
   "rounded-ed bg-papel text-tinta mt-2 block min-h-12 w-full px-4 py-2.5 text-corpo leading-snug " +
@@ -174,17 +174,55 @@ export function FormInteresse() {
         />
       </div>
 
+      <div className="mt-6">
+        {/* O label inteiro é o alvo de toque; os links abrem em outra aba para não perder o que foi digitado */}
+        <label
+          htmlFor={`${id}-aceite`}
+          className="text-pequeno flex min-h-12 cursor-pointer items-start gap-3 py-1"
+        >
+          <input
+            id={`${id}-aceite`}
+            name="aceite"
+            type="checkbox"
+            className="accent-floresta focus-visible:outline-floresta mt-0.5 size-5 shrink-0 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2"
+            {...aria("aceite")}
+          />
+          <span>
+            Li e aceito os{" "}
+            <Button
+              variant="link"
+              href="/termos"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Termos de Uso
+            </Button>{" "}
+            e a{" "}
+            <Button
+              variant="link"
+              href="/privacidade"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Política de Privacidade
+            </Button>
+            .
+          </span>
+        </label>
+        {erro("aceite")}
+      </div>
+
       <Button
         type="submit"
-        className="mt-8 w-full md:w-auto"
+        className="mt-6 w-full md:w-auto"
         data-cta="formulario"
         disabled={estado.fase === "enviando"}
       >
         Quero este livro
       </Button>
       <p className="text-pequeno mt-4 max-w-[44ch]">
-        Nada é cobrado agora. Logo em seguida, falamos com você pelo WhatsApp
-        para tirar dúvidas e garantir a sua vaga.
+        Nada é cobrado agora. Falamos com você só pelo WhatsApp, e você só paga
+        se gostar da primeira história.
       </p>
     </form>
   );

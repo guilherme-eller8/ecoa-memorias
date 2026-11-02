@@ -4,7 +4,7 @@ import { createHmac } from "node:crypto";
 import { headers } from "next/headers";
 import { Resend } from "resend";
 import { CAPAS } from "@/components/ui/capas";
-import { EDICAO, WHATSAPP_NUMERO } from "./config";
+import { EDICAO, TERMOS_VERSAO, WHATSAPP_NUMERO } from "./config";
 // Ciclo com ./leads: os dois lados só usam o que importam dentro de funções, nunca no topo.
 import { entradaLeadSchema, type EntradaLead } from "./lead-schema";
 import type { z } from "zod";
@@ -89,6 +89,9 @@ export async function registrarLead(
       utm_medium: lead.utm_medium || null,
       utm_campaign: lead.utm_campaign || null,
       ip_hash: ipHash,
+      // O schema só deixa passar com a caixa marcada: aqui é o registro de qual versão foi aceita
+      termos_versao: TERMOS_VERSAO,
+      aceite_em: new Date().toISOString(),
     });
     if (gravacao.error) throw gravacao.error;
 
