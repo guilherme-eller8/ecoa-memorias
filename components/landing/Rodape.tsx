@@ -51,6 +51,11 @@ export function Rodape() {
                 Privacidade
               </Button>
             </li>
+            <li>
+              <Button variant="link" href="/termos" className={ALVO}>
+                Termos
+              </Button>
+            </li>
           </ul>
           <div className="text-pequeno md:col-span-5 md:self-center md:text-right">
             <p>

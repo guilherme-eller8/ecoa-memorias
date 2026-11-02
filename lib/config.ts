@@ -5,6 +5,8 @@ export const LIVROS_NA_EDICAO = 10;
 export const DATA_LIMITE = "2026-11-07"; // exibir como "7 de novembro"
 export const PRECO_LIVRO = 397; // exibir como "R$ 397"
 export const PRECO_EXEMPLAR_EXTRA = 149;
+// Devolvido quando quem conta para no meio e a família prefere o livro em PDF, sem impressão
+export const DEVOLUCAO_SEM_IMPRESSAO = 149;
 export const PARCELAS_MAX = 12;
 export const FORMATO_LIVRO = "21 × 21 cm"; // placeholder
 export const PAGINAS_LIVRO = 80; // máximo, com fotos e histórias; referência interna, não aparece na página
@@ -29,6 +31,8 @@ export const SITE_URL =
 export const WHATSAPP_PRONTO = /^55\d{10,11}$/.test(WHATSAPP_NUMERO);
 export const CNPJ_PRONTO = !CNPJ.startsWith("00.000.000");
 export const SEMANAS_DE_PERGUNTAS = 4;
+// Versão dos Termos de Uso aceitos no formulário (gravada no lead). Mudou o texto, muda a data.
+export const TERMOS_VERSAO = "2026-11-02";
 
 export const IMAGES = {
   surpresa: "/images/surpresa-ceia.webp",
@@ -69,6 +73,12 @@ const MESES = [
 export function formatarData(iso: string = DATA_LIMITE): string {
   const [, mes, dia] = iso.split("-").map(Number);
   return `${dia} de ${MESES[mes - 1]}`;
+}
+
+/** "2026-11-02" → "2 de novembro de 2026" */
+export function formatarDataComAno(iso: string): string {
+  const [ano] = iso.split("-");
+  return `${formatarData(iso)} de ${ano}`;
 }
 
 /** 397 → "R$ 397" */

@@ -31,7 +31,9 @@ export function Hero() {
           {/* "conta." fecha a linha: a troca da pessoa não reflui o resto da frase */}
           <p className="max-w-[46ch]">
             <QuemConta /> conta.
-            <br />A Ecoa cuida do resto. Um presente pronto para entregar.
+            <br />
+            Só responde por áudio no WhatsApp, do jeito que fala. Sem escrever,
+            sem instalar nada. A Ecoa cuida do resto.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-x-7 gap-y-4">

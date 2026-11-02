@@ -21,6 +21,10 @@ export const leadSchema = z.object({
         ),
     ),
   capa_cor: z.enum(CORES_CAPA).optional(),
+  // A caixa de aceite chega como "on" quando marcada; desmarcada, nem vem no FormData.
+  aceite: z.literal("on", {
+    error: "Para continuar, aceite os Termos e a Política de Privacidade.",
+  }),
   // Honeypot: gente de verdade não vê o campo, então ele chega vazio.
   site: z.string().max(0).optional(),
 });

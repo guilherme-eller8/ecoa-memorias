@@ -36,7 +36,7 @@ Edição de Natal 2026:
 
 ## Estrutura
 ```
-/app                 page.tsx, privacidade/, opengraph-image.tsx, styleguide/ (só dev)
+/app                 page.tsx, privacidade/, termos/, opengraph-image.tsx, styleguide/ (só dev)
 /components/ui       primitivos do design system
 /components/landing  seções da landing
 /lib                 config.ts, supabase.ts, leads.ts
@@ -171,6 +171,7 @@ Leia a tabela "House rules" em `.claude/skills/design-taste-frontend/SKILL.md`. 
 ## Rotas
 - `/`: landing
 - `/privacidade`: política de privacidade (LGPD)
+- `/termos`: Termos de Uso do site e da contratação (versão em `TERMOS_VERSAO`)
 - `/styleguide`: vitrine de componentes (só em dev; `notFound()` em produção)
 
 ## Variáveis de ambiente

@@ -103,7 +103,7 @@ Cartão de papel branco com uma pergunta em Newsreader de 26–30px, alinhada à
 Duas colunas no desktop: título e texto à esquerda, a capa à direita já na altura do título, limitada pela altura da tela. No mobile: título, frase, botão, fatos, capa.
 
 - H1 (31/10): "As histórias da sua família num livro, com fotos e a voz de quem viveu." (quebra em 4 linhas em 390px e 1440px: exceção consciente à regra das 2 linhas, decidida pelo fundador)
-- Frase de apoio (31/10): "[Seu pai] conta. A Ecoa cuida do resto. Um presente pronto para entregar." A pessoa alterna: Seu pai, Sua mãe, Seu tio, Sua tia, Sua avó, Seu avô (troca a cada 2,2 s, duas voltas e para em "Seu pai"; leitor de tela ouve a lista inteira; sem JS fica "Seu pai"; com movimento reduzido, só o esmaecer, sem deslocamento).
+- Frase de apoio (2/11): "[Seu pai] conta. Só responde por áudio no WhatsApp, do jeito que fala. Sem escrever, sem instalar nada. A Ecoa cuida do resto." (quebra de linha depois de "conta.") A pessoa alterna: Seu pai, Sua mãe, Seu tio, Sua tia, Sua avó, Seu avô (troca a cada 2,2 s, duas voltas e para em "Seu pai"; leitor de tela ouve a lista inteira; sem JS fica "Seu pai"; com movimento reduzido, só o esmaecer, sem deslocamento).
 - Botão: "Tenho interesse" → wa.me em nova aba com "Oi! Vi o site da Ecoa e tenho interesse no livro." (sem link secundário: o botão já abre o WhatsApp).
 - Fatos, numa linha só em tamanho pequeno, abaixo do botão: "Edição de Natal · Inscrições até 7 de novembro". O preço fica só no colofão (seção 8).
 - Visual: LiveCover grande, entreaberta, com o áudio de WhatsApp encostado. Fundo polen liso, com o grão de papel. Sem gradiente.
@@ -180,16 +180,17 @@ Duas colunas no desktop: título e texto à esquerda, a capa à direita já na a
 - "12x de R$ 33,08" no tamanho display (parcela de `PRECO_LIVRO` / `PARCELAS_MAX`); abaixo, "sem juros no cartão, ou R$ 397 no Pix. Frete à parte."
 - Em tamanho pequeno: "Exemplares extras: R$ 149 cada"
 - Em destaque, a escassez (dita só aqui): "Só 10 vagas nesta edição. Inscrições até 7 de novembro."
-- A garantia, no fim da folha: "Se a primeira história não emocionar a família, devolvemos 100%."
+- A garantia, no fim da folha (2/11): "Começa sem pagar nada. Você só paga se gostar da primeira história." Abaixo, em tamanho pequeno: "Depois de pagar, ainda tem 7 dias para desistir, com devolução integral."
 
 À direita, o formulário:
 - Título: "Quero este livro"
 - Campos:
   - "Seu nome"
   - "Seu WhatsApp" (máscara brasileira)
+  - Caixa de aceite obrigatória (2/11): "Li e aceito os Termos de Uso e a Política de Privacidade." (links para /termos e /privacidade em nova aba). Erro: "Para continuar, aceite os Termos e a Política de Privacidade." O lead grava a versão dos Termos (`TERMOS_VERSAO`) e a hora do aceite.
   - Honeypot invisível contra spam.
 - Botão: "Quero este livro"
-- Microcopy: "Nada é cobrado agora. Logo em seguida, falamos com você pelo WhatsApp para tirar dúvidas e garantir a sua vaga."
+- Microcopy (2/11): "Nada é cobrado agora. Falamos com você só pelo WhatsApp, e você só paga se gostar da primeira história."
 - Sucesso: o formulário é substituído por "Recebemos. Em breve falamos com você pelo WhatsApp." e um link secundário "Prefere falar agora? Abrir WhatsApp" (wa.me com a mensagem pré-preenchida abaixo).
 - Mensagem wa.me: "Olá! Tenho interesse no livro da Ecoa Memórias. Meu nome é [nome]."
 
@@ -201,8 +202,8 @@ Ordem: as objeções mais fortes primeiro (pagamento, desistência, tempo).
 
 | Aba | Pergunta | Resposta |
 |---|---|---|
-| Pagamento | Quando e como eu pago? | Só depois de conversarmos pelo WhatsApp e você confirmar. O valor é pago de uma vez, no Pix ou no cartão em até 12x sem juros. |
-| Desistência | E se a pessoa não quiser participar? | Devolvemos o valor integral. E se a primeira história editada não emocionar a família, também. |
+| Pagamento | Quando e como eu pago? | Começamos sem cobrar nada. Quando a primeira história editada chegar, você decide: se gostar, paga de uma vez, no Pix ou no cartão em até 12x sem juros. Depois de pagar, ainda tem 7 dias para desistir, com devolução integral. |
+| Desistência | E se a pessoa não quiser participar, ou parar no meio? | Se não quiser participar, você não paga nada. Se parar no meio, o livro sai com as histórias já gravadas. Se preferir não imprimir, você recebe o livro em PDF, com os áudios, e devolvemos R$ 149 (`DEVOLUCAO_SEM_IMPRESSAO`). |
 | Tempo | Quanto tempo leva por dia? | Alguns minutos. Cada áudio costuma ter entre 2 e 5 minutos, e dá para responder quando quiser. |
 | WhatsApp | Quem conta as histórias precisa saber mexer no celular? | Se manda áudio no WhatsApp, já sabe tudo o que precisa. Se preferir, também é possível gravar por uma ligação. |
 | O presente | Como a pessoa fica sabendo do presente? | Quem dá a notícia é você, do seu jeito. Depois, enviamos uma mensagem de boas-vindas explicando como serão as próximas semanas, e começamos quando ela disser que topa. |
@@ -213,8 +214,8 @@ Ordem: as objeções mais fortes primeiro (pagamento, desistência, tempo).
 | Mensagens | Como são reunidas as mensagens da família? | Você nos passa os contatos e nós cuidamos dos convites e dos lembretes. |
 | Prazo | Chega mesmo antes do Natal? | Sim, para inscrições até 7 de novembro. |
 | Frete | Entregam em todo o Brasil? O frete está incluso? | Entregamos em todo o Brasil. O frete é à parte e calculado para o seu CEP. |
-| Os áudios | Com quem ficam os áudios? | Com a família, para sempre. Usamos apenas para produzir o livro. |
-| QR codes | Os QR codes vão parar de funcionar? | Não. E os áudios originais ficam com a família desde o primeiro dia. |
+| Os áudios | Com quem ficam os áudios? | Com a família, para sempre. Usamos apenas para produzir o livro e para tocar nos QR codes. |
+| QR codes | Os QR codes vão parar de funcionar? | Não. Guardamos os áudios do livro enquanto a família quiser, só para os QR codes tocarem. E os originais ficam com a família desde o primeiro dia. |
 | Novo volume | E depois do primeiro livro? | Quem quiser pode continuar contando histórias e criar um novo volume. É opcional, sem renovação automática. |
 
 ## 10. Fecho
