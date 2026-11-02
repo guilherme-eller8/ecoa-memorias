@@ -17,7 +17,7 @@ Edição de Natal 2026:
 - Inscrições até 07/11/2026.
 - 4 semanas de perguntas.
 - Entrega antes do Natal.
-- R$ 397 por livro; exemplares extras a R$ 149.
+- R$ 467 por livro. Exemplares extras: a família encomenda direto com a gráfica, sem cobrança da Ecoa.
 
 ## Fase atual: captação de interesse
 - NÃO existe checkout.
@@ -52,8 +52,8 @@ MARCA = "Ecoa Memórias"
 EDICAO = "natal-2026"
 LIVROS_NA_EDICAO = 10
 DATA_LIMITE = "2026-11-07"         // exibir como "7 de novembro"
-PRECO_LIVRO = 397                  // exibir como "R$ 397"
-PRECO_EXEMPLAR_EXTRA = 149
+PRECO_LIVRO = 467                  // exibir como "R$ 467"
+DEVOLUCAO_SEM_IMPRESSAO = 149      // quem conta parou e a família preferiu o PDF
 PARCELAS_MAX = 12
 FORMATO_LIVRO = "21 × 21 cm"       // placeholder
 PAGINAS_LIVRO = 60                 // placeholder

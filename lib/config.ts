@@ -3,8 +3,7 @@ export const MARCA = "Ecoa Memórias";
 export const EDICAO = "natal-2026";
 export const LIVROS_NA_EDICAO = 10;
 export const DATA_LIMITE = "2026-11-07"; // exibir como "7 de novembro"
-export const PRECO_LIVRO = 397; // exibir como "R$ 397"
-export const PRECO_EXEMPLAR_EXTRA = 149;
+export const PRECO_LIVRO = 467; // exibir como "R$ 467"
 // Devolvido quando quem conta para no meio e a família prefere o livro em PDF, sem impressão
 export const DEVOLUCAO_SEM_IMPRESSAO = 149;
 export const PARCELAS_MAX = 12;
@@ -81,12 +80,12 @@ export function formatarDataComAno(iso: string): string {
   return `${formatarData(iso)} de ${ano}`;
 }
 
-/** 397 → "R$ 397" */
+/** 467 → "R$ 467" */
 export function formatarPreco(valor: number = PRECO_LIVRO): string {
   return `R$ ${valor.toLocaleString("pt-BR")}`;
 }
 
-/** 397 / 12 → "R$ 33,08" (parcelas sem juros) */
+/** 467 / 12 → "R$ 38,92" (parcelas sem juros) */
 export function formatarParcela(
   valor: number = PRECO_LIVRO,
   parcelas: number = PARCELAS_MAX,

@@ -12,7 +12,7 @@ Direção sorteada: **`page-is-the-object` — a página é o próprio objeto** 
 5. O papel pólen do miolo (o creme do fundo).
 6. Os bilhetes secretos da família, escritos à mão, que quem conta só vê no Natal.
 7. Os cartões de pergunta: uma por dia útil, durante quatro semanas.
-8. Os números: 10 livros, R$ 397, 7 de novembro, 4 semanas, até 20 histórias, até 10 mensagens.
+8. Os números: 10 livros, R$ 467, 7 de novembro, 4 semanas, até 20 histórias, até 10 mensagens.
 9. As peças impressas do mundo do livro: folha de rosto, sumário, ficha técnica, colofão (onde editoras anunciam a tiragem), fichário.
 10. Belo Horizonte, a Rua Bahia da história de exemplo, a casa com mangueira de Minas.
 

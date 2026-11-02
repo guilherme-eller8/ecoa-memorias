@@ -10,7 +10,7 @@ O visitante sai com três certezas:
 2. É leve para quem presenteia: a Ecoa cuida das perguntas, dos lembretes e da edição.
 3. O resultado é um objeto bonito, que a família inteira vai guardar.
 
-**Teste dos 5 segundos (celular, primeira tela):** é um livro de capa dura; tudo acontece pelo WhatsApp; custa R$ 397; são 10 livros até 7 de novembro; o botão está à vista.
+**Teste dos 5 segundos (celular, primeira tela):** é um livro de capa dura; tudo acontece pelo WhatsApp; custa R$ 467; são 10 livros até 7 de novembro; o botão está à vista.
 
 ---
 
@@ -177,19 +177,19 @@ Duas colunas no desktop: título e texto à esquerda, a capa à direita já na a
 - H2: "Edição de Natal 2026"
 
 À esquerda, o **colofão** (folha papel, recortada como as outras peças, sem linhas e sem caixa colorida), enxuto:
-- "12x de R$ 33,08" no tamanho display (parcela de `PRECO_LIVRO` / `PARCELAS_MAX`); abaixo, "sem juros no cartão, ou R$ 397 no Pix. Frete à parte."
-- Em tamanho pequeno: "Exemplares extras: R$ 149 cada"
+- "12x de R$ 38,92" no tamanho display (parcela de `PRECO_LIVRO` / `PARCELAS_MAX`); abaixo, "sem juros no cartão, ou R$ 467 no Pix. Frete à parte."
+- (2/11) Sem linha de exemplares extras: quem pedir recebe o contato da gráfica e encomenda direto, sem cobrança da Ecoa.
 - Em destaque, a escassez (dita só aqui): "Só 10 vagas nesta edição. Inscrições até 7 de novembro."
 - A garantia, no fim da folha (2/11): "Começa sem pagar nada. Você só paga se gostar da primeira história." Abaixo, em tamanho pequeno: "Depois de pagar, ainda tem 7 dias para desistir, com devolução integral."
 
 À direita, o formulário:
-- Título: "Quero este livro"
+- Título (2/11): "Vamos conversar"
 - Campos:
   - "Seu nome"
   - "Seu WhatsApp" (máscara brasileira)
   - Caixa de aceite obrigatória (2/11): "Li e aceito os Termos de Uso e a Política de Privacidade." (links para /termos e /privacidade em nova aba). Erro: "Para continuar, aceite os Termos e a Política de Privacidade." O lead grava a versão dos Termos (`TERMOS_VERSAO`) e a hora do aceite.
   - Honeypot invisível contra spam.
-- Botão: "Quero este livro"
+- Botão (2/11): "Tenho interesse"
 - Microcopy (2/11): "Nada é cobrado agora. Falamos com você só pelo WhatsApp, e você só paga se gostar da primeira história."
 - Sucesso: o formulário é substituído por "Recebemos. Em breve falamos com você pelo WhatsApp." e um link secundário "Prefere falar agora? Abrir WhatsApp" (wa.me com a mensagem pré-preenchida abaixo).
 - Mensagem wa.me: "Olá! Tenho interesse no livro da Ecoa Memórias. Meu nome é [nome]."

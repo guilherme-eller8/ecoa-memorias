@@ -79,7 +79,7 @@ Leia docs/direcao.md e, em docs/landing-spec.md, as seções 1 a 4 e os componen
    - Fotos com next/image, sizes corretos, priority só no hero, .photo nas cenas e .photo-antiga nas antigas, alt descritivo em português, object-position conferido em 390 e 1440.
    - LiveCover funcionando no teclado e no polegar, com o fallback estático sem JS.
 
-Gate de UI do CLAUDE.md. Além da crítica, responda: no celular, em 5 segundos, a primeira tela diz livro de capa dura, WhatsApp, R$ 397, 10 livros até 7/11 e onde clicar?
+Gate de UI do CLAUDE.md. Além da crítica, responda: no celular, em 5 segundos, a primeira tela diz livro de capa dura, WhatsApp, R$ 467, 10 livros até 7/11 e onde clicar?
 
 Commit "feat: landing secoes 1-4".
 ```

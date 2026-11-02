@@ -122,7 +122,7 @@ export function FormInteresse() {
       className="relative"
     >
       <h3 id={`${id}-titulo`} className="text-destaque">
-        Quero este livro
+        Vamos conversar
       </h3>
 
       <div className="mt-6">
@@ -218,7 +218,7 @@ export function FormInteresse() {
         data-cta="formulario"
         disabled={estado.fase === "enviando"}
       >
-        Quero este livro
+        Tenho interesse
       </Button>
       <p className="text-pequeno mt-4 max-w-[44ch]">
         Nada é cobrado agora. Falamos com você só pelo WhatsApp, e você só paga

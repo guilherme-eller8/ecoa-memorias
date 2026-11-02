@@ -13,7 +13,6 @@ import {
   LIVROS_NA_EDICAO,
   MARCA,
   PARCELAS_MAX,
-  PRECO_EXEMPLAR_EXTRA,
   RESPONSAVEL,
   SEMANAS_DE_PERGUNTAS,
   TERMOS_VERSAO,
@@ -91,9 +90,12 @@ export default function Termos() {
       <Bloco titulo="Preço e pagamento">
         <p>
           O livro custa {formatarPreco()} no Pix ou {PARCELAS_MAX}x de{" "}
-          {formatarParcela()} sem juros no cartão. Cada exemplar extra custa{" "}
-          {formatarPreco(PRECO_EXEMPLAR_EXTRA)}. O frete é à parte e calculado
+          {formatarParcela()} sem juros no cartão. O frete é à parte e calculado
           para o seu CEP.
+        </p>
+        <p>
+          Quem quiser mais exemplares encomenda direto com a gráfica que imprime
+          o livro: passamos o contato, e a {MARCA} não cobra nada por isso.
         </p>
         <p>
           Você só paga depois de receber a primeira história editada, e só se
