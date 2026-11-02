@@ -6,7 +6,6 @@ import {
   formatarPreco,
   LIVROS_NA_EDICAO,
   PARCELAS_MAX,
-  PRECO_EXEMPLAR_EXTRA,
 } from "@/lib/config";
 import { FormInteresse } from "./FormInteresse";
 
@@ -31,12 +30,6 @@ export function Interesse() {
           sem juros no cartão, ou{" "}
           <span className="whitespace-nowrap">{formatarPreco()} no Pix</span>.
           Frete à parte.
-        </p>
-        <p className="text-pequeno mt-4">
-          Exemplares extras:{" "}
-          <span className="whitespace-nowrap">
-            {formatarPreco(PRECO_EXEMPLAR_EXTRA)} cada
-          </span>
         </p>
 
         <p className="text-destaque mt-8 max-w-[24ch] font-medium text-balance">

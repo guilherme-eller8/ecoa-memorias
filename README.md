@@ -21,7 +21,7 @@ Tudo fica em `lib/config.ts`. Nenhum componente tem esses valores escritos.
 | O quê | Constante |
 |---|---|
 | Preço do livro | `PRECO_LIVRO` |
-| Exemplar extra | `PRECO_EXEMPLAR_EXTRA` |
+| Devolução quando a família prefere o PDF | `DEVOLUCAO_SEM_IMPRESSAO` |
 | Número de livros da edição | `LIVROS_NA_EDICAO` |
 | Data limite (formato `AAAA-MM-DD`) | `DATA_LIMITE` |
 | WhatsApp de fechamento (`55` + DDD + número, só dígitos) | `WHATSAPP_NUMERO` |
