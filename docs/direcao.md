@@ -10,9 +10,9 @@ Direção sorteada: **`page-is-the-object` — a página é o próprio objeto** 
 3. O áudio de WhatsApp: forma de onda, duração (2:14), o grupo "Histórias do Vô".
 4. A capa dura em tecido nas cinco cores, com o filete dourado em hot stamping e a lombada com título e nome.
 5. O papel pólen do miolo (o creme do fundo).
-6. Os bilhetes secretos da família, escritos à mão, que quem conta só vê no Natal.
+6. Os bilhetes secretos da família, escritos à mão, que quem conta só vê quando o livro chega.
 7. Os cartões de pergunta: uma por dia útil, durante quatro semanas.
-8. Os números: 10 livros, R$ 467, 7 de novembro, 4 semanas, até 20 histórias, até 10 mensagens.
+8. Os números: 10 livros, R$ 467, 3 perguntas antes da ceia, a primeira página no dia 26 de dezembro, 4 semanas, até 20 histórias, até 10 mensagens.
 9. As peças impressas do mundo do livro: folha de rosto, sumário, ficha técnica, colofão (onde editoras anunciam a tiragem), fichário.
 10. Belo Horizonte, a Rua Bahia da história de exemplo, a casa com mangueira de Minas.
 
@@ -34,7 +34,7 @@ Até 30/10 a capa tinha um campo com o nome de quem conta. Saiu: o fundador pref
 |---|---|---|
 | 2 Hero | A capa | Capa grande ao vivo como objeto principal (≥ 45% da primeira tela no desktop), título e fatos à esquerda |
 | 3 O que você recebe | A ficha técnica | Folha de papel com borda superior e inferior recortadas; itens com valor à direita e pontilhado de pontos redondos de 4px entre nome e valor |
-| 4 Como funciona | As quatro semanas | Uma fileira de quatro momentos em `<ol>`; espaço variável entre texto e imagem, de modo que as imagens sobem e descem; uma barra de 6px "Dia 1 → Semana 4 → Natal" embaixo do título |
+| 4 Como funciona | O começo na ceia | Uma fileira de quatro momentos em `<ol>`; espaço variável entre texto e imagem, de modo que as imagens sobem e descem; uma barra de 6px "Antes do Natal → 26 de dezembro → O livro" embaixo do título |
 | 5 A voz em cada página | Uma página dupla | O livro aberto em escala grande, com o celular em primeiro plano |
 | 6 A surpresa | Os bilhetes escondidos | Foto grande, bilhetes cortados pela borda |
 | 7 Perguntas | O fichário | Índice: lista das 10 perguntas em tipo grande; ao apontar (ou tocar) uma pergunta, o quadro fixo mostra a página que ela virou |

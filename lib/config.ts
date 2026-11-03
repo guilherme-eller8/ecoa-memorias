@@ -2,7 +2,11 @@
 export const MARCA = "Ecoa Memórias";
 export const EDICAO = "natal-2026";
 export const LIVROS_NA_EDICAO = 10;
-export const DATA_LIMITE = "2026-11-07"; // exibir como "7 de novembro"
+// O começo acontece na ceia: perguntas antes do Natal e a primeira página, grátis, no dia 26
+export const PERGUNTAS_DE_NATAL = 3; // exibir por extenso: "três perguntas"
+export const DATA_PRIMEIRA_PAGINA = "2026-12-26"; // exibir como "26 de dezembro"
+// Do "gostei" da primeira página ao livro pronto (perguntas, edição, prova, gráfica e frete)
+export const PRAZO_LIVRO = "cerca de 2 meses";
 export const PRECO_LIVRO = 467; // exibir como "R$ 467"
 // Devolvido quando quem conta para no meio e a família prefere o livro em PDF, sem impressão
 export const DEVOLUCAO_SEM_IMPRESSAO = 149;
@@ -31,7 +35,7 @@ export const WHATSAPP_PRONTO = /^55\d{10,11}$/.test(WHATSAPP_NUMERO);
 export const CNPJ_PRONTO = !CNPJ.startsWith("00.000.000");
 export const SEMANAS_DE_PERGUNTAS = 4;
 // Versão dos Termos de Uso aceitos no formulário (gravada no lead). Mudou o texto, muda a data.
-export const TERMOS_VERSAO = "2026-11-02";
+export const TERMOS_VERSAO = "2026-11-03";
 
 export const IMAGES = {
   surpresa: "/images/surpresa-ceia.webp",
@@ -68,10 +72,29 @@ const MESES = [
   "dezembro",
 ];
 
-/** "2026-11-07" → "7 de novembro" */
-export function formatarData(iso: string = DATA_LIMITE): string {
+/** "2026-12-26" → "26 de dezembro" */
+export function formatarData(iso: string): string {
   const [, mes, dia] = iso.split("-").map(Number);
   return `${dia} de ${MESES[mes - 1]}`;
+}
+
+const POR_EXTENSO = [
+  "zero",
+  "uma",
+  "duas",
+  "três",
+  "quatro",
+  "cinco",
+  "seis",
+  "sete",
+  "oito",
+  "nove",
+  "dez",
+];
+
+/** 3 → "três" (feminino, para "perguntas"; até dez) */
+export function porExtenso(n: number): string {
+  return POR_EXTENSO[n] ?? String(n);
 }
 
 /** "2026-11-02" → "2 de novembro de 2026" */

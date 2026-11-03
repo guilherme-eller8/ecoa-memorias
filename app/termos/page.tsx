@@ -5,6 +5,7 @@ import {
   CIDADE,
   CNPJ,
   CNPJ_PRONTO,
+  DATA_PRIMEIRA_PAGINA,
   DEVOLUCAO_SEM_IMPRESSAO,
   formatarData,
   formatarDataComAno,
@@ -13,6 +14,9 @@ import {
   LIVROS_NA_EDICAO,
   MARCA,
   PARCELAS_MAX,
+  PERGUNTAS_DE_NATAL,
+  porExtenso,
+  PRAZO_LIVRO,
   RESPONSAVEL,
   SEMANAS_DE_PERGUNTAS,
   TERMOS_VERSAO,
@@ -28,7 +32,8 @@ export const metadata: Metadata = {
 
 // Termos do site e da contratação. Texto próprio; preço, datas e valores saem de lib/config.ts.
 export default function Termos() {
-  const dataLimite = formatarData();
+  const primeiraPagina = formatarData(DATA_PRIMEIRA_PAGINA);
+  const perguntas = porExtenso(PERGUNTAS_DE_NATAL);
   return (
     <DocumentoLegal
       titulo="Termos de Uso"
@@ -66,24 +71,28 @@ export default function Termos() {
         <p>
           O formulário do site só pede o seu nome e o seu WhatsApp para que a
           gente fale com você. Ele não cria pedido, não gera cobrança e não
-          reserva vaga. A vaga é confirmada no pagamento.
+          reserva vaga. A vaga é confirmada quando combinamos o começo pelo
+          WhatsApp.
         </p>
         <p>
-          Cada edição tem {LIVROS_NA_EDICAO} vagas. Na edição de Natal, as
-          inscrições vão até {dataLimite}.
+          Cada edição tem {LIVROS_NA_EDICAO} vagas. Quando acabam, a edição
+          fecha.
         </p>
       </Bloco>
 
       <Bloco titulo="Como funciona">
         <p>
-          Depois da conversa pelo WhatsApp, você conta a novidade a quem vai
-          contar as histórias. Nós mandamos as boas-vindas e só começamos quando
-          a pessoa disser que topa. A partir daí, enviamos uma pergunta por dia
-          útil, durante {SEMANAS_DE_PERGUNTAS} semanas, e ela responde por áudio
-          quando puder.
+          O começo é na ceia de Natal. Antes dela, você recebe {perguntas}{" "}
+          perguntas no WhatsApp. Na ceia, alguém da família faz as perguntas e
+          grava as respostas no celular, ou quem conta responde por áudio no
+          WhatsApp. No dia {primeiraPagina}, mandamos para você a primeira
+          página do livro, em PDF, editada e com o QR code que toca a voz.
         </p>
         <p>
-          Assim que a primeira história estiver editada, mandamos para você.
+          Se vocês decidirem seguir, mandamos as boas-vindas a quem conta e só
+          continuamos quando a pessoa disser que topa. A partir daí, enviamos
+          uma pergunta por dia útil, durante {SEMANAS_DE_PERGUNTAS} semanas, e
+          ela responde por áudio quando puder.
         </p>
       </Bloco>
 
@@ -98,8 +107,9 @@ export default function Termos() {
           o livro: passamos o contato, e a {MARCA} não cobra nada por isso.
         </p>
         <p>
-          Você só paga depois de receber a primeira história editada, e só se
-          quiser seguir. Se não quiser, nada é cobrado e o processo para ali.
+          O começo é por nossa conta. Você só paga depois de receber a primeira
+          página, e só se quiser seguir. Se não quiser, nada é cobrado, o
+          processo para ali e a primeira página fica com vocês.
         </p>
       </Bloco>
 
@@ -124,9 +134,10 @@ export default function Termos() {
       <Bloco titulo="O consentimento de quem conta">
         <p>
           Quem contrata não inscreve ninguém sem que a pessoa saiba que vai
-          gravar. Só começamos depois que quem conta aceita participar, e esse
-          aceite fica registrado na conversa. Quem conta pode parar quando
-          quiser.
+          gravar. Quem grava na ceia só nos envia a gravação com o conhecimento
+          de quem conta. O livro só segue depois que quem conta aceita
+          participar, e esse aceite fica registrado na conversa. Quem conta pode
+          parar quando quiser.
         </p>
       </Bloco>
 
@@ -156,9 +167,11 @@ export default function Termos() {
 
       <Bloco titulo="Prazo e entrega">
         <p>
-          Na edição de Natal, o livro chega antes do Natal para inscrições até{" "}
-          {dataLimite}. Entregamos em todo o Brasil. Se a transportadora
-          atrasar, acompanhamos até a entrega e mantemos você informado.
+          A primeira página chega no dia {primeiraPagina}. Se as respostas
+          chegarem depois da ceia, ela chega logo depois delas. Se vocês
+          decidirem seguir, o livro fica pronto {PRAZO_LIVRO} depois. Entregamos
+          em todo o Brasil. Se a transportadora atrasar, acompanhamos até a
+          entrega e mantemos você informado.
         </p>
       </Bloco>
 

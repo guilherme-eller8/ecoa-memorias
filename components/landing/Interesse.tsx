@@ -1,7 +1,6 @@
 import type { CSSProperties } from "react";
 import { Section } from "@/components/ui/Section";
 import {
-  formatarData,
   formatarParcela,
   formatarPreco,
   LIVROS_NA_EDICAO,
@@ -13,7 +12,6 @@ const ordem = (n: number) => ({ "--ordem": n }) as CSSProperties;
 
 // O colofão da edição, com o preço e as vagas, e o formulário de interesse ao lado.
 export function Interesse() {
-  const data = formatarData();
   return (
     <Section id="interesse" title="Edição de Natal 2026" grid>
       <div
@@ -32,13 +30,17 @@ export function Interesse() {
           Frete à parte.
         </p>
 
-        <p className="text-destaque mt-8 max-w-[24ch] font-medium text-balance">
-          Só {LIVROS_NA_EDICAO} vagas nesta edição. Inscrições até{" "}
-          <span className="whitespace-nowrap">{data}</span>.
+        {/* Uma frase por linha: as vagas, depois o que acontece quando acabam */}
+        <p className="text-destaque mt-8 font-medium">
+          <span className="block">
+            Só {LIVROS_NA_EDICAO} vagas nesta edição.
+          </span>
+          <span className="block">Quando acabarem, a edição fecha.</span>
         </p>
 
         <p className="mt-8 max-w-[46ch]">
-          Começa sem pagar nada. Você só paga se gostar da primeira história.
+          O começo é por nossa conta. Você só paga se gostar da primeira página.
+          Se não gostar, ela fica com vocês.
         </p>
         <p className="text-pequeno mt-3 max-w-[46ch]">
           Depois de pagar, ainda tem 7 dias para desistir, com devolução

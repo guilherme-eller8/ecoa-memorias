@@ -13,10 +13,10 @@ A Ecoa Memórias produz livros de memórias de capa dura a partir de histórias 
 6. Tudo vira um livro com as histórias, fotos, as mensagens da família e QR codes que tocam as vozes.
 
 Edição de Natal 2026:
-- 10 livros.
-- Inscrições até 07/11/2026.
-- 4 semanas de perguntas.
-- Entrega antes do Natal.
+- 10 livros. Inscrições abertas enquanto houver vaga.
+- Começa na ceia: 3 perguntas no WhatsApp antes do Natal; quem conta responde na ceia (alguém da mesa grava, ou a própria pessoa pelo WhatsApp).
+- No dia 26 de dezembro, a primeira página do livro em PDF, com o QR que toca a voz. É grátis; se a família não gostar, não paga e a página fica com ela.
+- Se seguir: 4 semanas de perguntas, uma por dia útil, e o livro pronto cerca de 2 meses depois.
 - R$ 467 por livro. Exemplares extras: a família encomenda direto com a gráfica, sem cobrança da Ecoa.
 
 ## Fase atual: captação de interesse
@@ -51,7 +51,9 @@ Edição de Natal 2026:
 MARCA = "Ecoa Memórias"
 EDICAO = "natal-2026"
 LIVROS_NA_EDICAO = 10
-DATA_LIMITE = "2026-11-07"         // exibir como "7 de novembro"
+PERGUNTAS_DE_NATAL = 3            // exibir por extenso: "três perguntas"
+DATA_PRIMEIRA_PAGINA = "2026-12-26" // exibir como "26 de dezembro"
+PRAZO_LIVRO = "cerca de 2 meses"   // do "gostei" ao livro pronto
 PRECO_LIVRO = 467                  // exibir como "R$ 467"
 DEVOLUCAO_SEM_IMPRESSAO = 149      // quem conta parou e a família preferiu o PDF
 PARCELAS_MAX = 12
@@ -141,7 +143,7 @@ Leia a tabela "House rules" em `.claude/skills/design-taste-frontend/SKILL.md`. 
 
 ### Obrigatório
 - Tipografia grande como protagonista, conteúdo completo em cada seção.
-- Escassez dita uma única vez, com serenidade, no colofão (seção 8): "Só 10 vagas nesta edição. Inscrições até 7 de novembro."
+- Escassez dita uma única vez, com serenidade, no colofão (seção 8): "Só 10 vagas nesta edição. Quando acabarem, a edição fecha."
 - Parecer o site de uma pequena editora cuidadosa, não uma página de vendas.
 
 ## Copy

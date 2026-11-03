@@ -2,7 +2,7 @@ import { BotaoInteresse } from "@/components/ui/BotaoInteresse";
 import { Container } from "@/components/ui/Container";
 import { LiveCover } from "@/components/ui/LiveCover";
 import { BalaoAudio } from "@/components/ui/WhatsAppChat";
-import { formatarData, IMAGES } from "@/lib/config";
+import { IMAGES } from "@/lib/config";
 import { existeEmPublic } from "@/lib/imagens";
 import { QuemConta } from "./QuemConta";
 
@@ -10,8 +10,8 @@ import { QuemConta } from "./QuemConta";
 const FOTO_CAPA = IMAGES.antigaCasamento;
 
 export function Hero() {
-  // O preço fica para o colofão, perto do fim: aqui só a edição e o prazo
-  const fatos = ["Edição de Natal", `Inscrições até ${formatarData()}`];
+  // O preço e as vagas ficam para o colofão, perto do fim: aqui só quando começa e o que é grátis
+  const fatos = ["Começa neste Natal", "A primeira página é por nossa conta"];
 
   return (
     <section id="topo" aria-labelledby="hero-titulo">
