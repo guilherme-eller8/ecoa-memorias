@@ -9,9 +9,11 @@ import {
 import { Section } from "@/components/ui/Section";
 import {
   DEVOLUCAO_SEM_IMPRESSAO,
+  DATA_PRIMEIRA_PAGINA,
   formatarData,
   formatarPreco,
   PARCELAS_MAX,
+  PRAZO_LIVRO,
 } from "@/lib/config";
 import s from "./Fichas.module.css";
 
@@ -22,7 +24,7 @@ const FICHAS: Ficha[] = [
   {
     aba: "Pagamento",
     pergunta: "Quando e como eu pago?",
-    resposta: `Começamos sem cobrar nada. Quando a primeira história editada chegar, você decide: se gostar, paga de uma vez, no Pix ou no cartão em até ${PARCELAS_MAX}x sem juros. Depois de pagar, ainda tem 7 dias para desistir, com devolução integral.`,
+    resposta: `O começo é por nossa conta. No dia ${formatarData(DATA_PRIMEIRA_PAGINA)}, você recebe a primeira página do livro. Se gostar, paga de uma vez, no Pix ou no cartão em até ${PARCELAS_MAX}x sem juros, e o livro continua. Se não gostar, não paga nada, e a página fica com vocês. Depois de pagar, ainda tem 7 dias para desistir, com devolução integral.`,
   },
   {
     aba: "Desistência",
@@ -79,8 +81,8 @@ const FICHAS: Ficha[] = [
   },
   {
     aba: "Prazo",
-    pergunta: "Chega mesmo antes do Natal?",
-    resposta: `Sim, para inscrições até ${formatarData()}.`,
+    pergunta: "Quando o livro fica pronto?",
+    resposta: `A primeira página chega no dia ${formatarData(DATA_PRIMEIRA_PAGINA)}. Se vocês decidirem seguir, o livro inteiro fica pronto ${PRAZO_LIVRO} depois.`,
   },
   {
     aba: "Frete",

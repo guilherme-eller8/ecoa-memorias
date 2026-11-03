@@ -8,7 +8,7 @@ type TrilhaProps = {
 };
 
 /**
- * A barra de 6px "Dia 1 → Semana 4 → Natal" e a fileira dos quatro momentos.
+ * A barra de 6px "Antes do Natal → 26 de dezembro → O livro" e a fileira dos quatro momentos.
  * No celular a fileira rola na horizontal e a barra mostra quanto já se viu; do tablet para cima
  * os momentos ficam em grade, sem nada cortado pela borda.
  * Sem JS, a barra fica parada num quarto, e a fileira rola do mesmo jeito.
@@ -54,7 +54,8 @@ export function Trilha({ marcas, children }: TrilhaProps) {
             style={{ transform: "scaleX(0.25)" }}
           />
         </span>
-        <span className="mt-3 flex justify-between">
+        {/* No celular as marcas descem ao tamanho pequeno: as três cabem em 390px sem cortar */}
+        <span className="text-pequeno md:text-corpo mt-3 flex justify-between gap-4">
           {marcas.map((m) => (
             <span key={m}>{m}</span>
           ))}

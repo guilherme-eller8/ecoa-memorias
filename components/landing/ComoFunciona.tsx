@@ -4,7 +4,15 @@ import { Foto } from "@/components/ui/Foto";
 import { QuestionCard } from "@/components/ui/QuestionCard";
 import { Section } from "@/components/ui/Section";
 import { WhatsAppChat } from "@/components/ui/WhatsAppChat";
-import { IMAGES, SEMANAS_DE_PERGUNTAS } from "@/lib/config";
+import {
+  DATA_PRIMEIRA_PAGINA,
+  formatarData,
+  IMAGES,
+  PERGUNTAS_DE_NATAL,
+  porExtenso,
+  PRAZO_LIVRO,
+  SEMANAS_DE_PERGUNTAS,
+} from "@/lib/config";
 import { existeEmPublic } from "@/lib/imagens";
 import { Trilha } from "./Trilha";
 
@@ -23,11 +31,16 @@ type Momento = {
 const temCasa = existeEmPublic(IMAGES.antigaCasa);
 const temFotoLivro = existeEmPublic(IMAGES.antigaFazenda);
 
+const PRIMEIRA_PAGINA = formatarData(DATA_PRIMEIRA_PAGINA);
+const PERGUNTAS = porExtenso(PERGUNTAS_DE_NATAL);
+// "26 de dezembro" → "26": o título fala do dia, a trilha diz o mês
+const DIA_PRIMEIRA_PAGINA = PRIMEIRA_PAGINA.split(" ")[0];
+
+// O começo é na ceia: as perguntas antes do Natal, a gravação na mesa, a primeira página no dia 26
 const MOMENTOS: Momento[] = [
   {
-    titulo: "Você dá a notícia.",
-    texto:
-      "Você convida quem vai contar as histórias a responder às perguntas por áudio, ou texto se preferir, no WhatsApp. Depois, mandamos as boas-vindas e só começamos quando a pessoa topar. As perguntas vêm da nossa seleção ou de você.",
+    titulo: `Antes do Natal, ${PERGUNTAS} perguntas.`,
+    texto: `Você nos conta quem vai contar as histórias. Antes da ceia, você recebe ${PERGUNTAS} perguntas simples no WhatsApp, da nossa seleção ou suas.`,
     respiro: "lg:h-20",
     visual: temCasa ? (
       <div className="relative" style={{ aspectRatio: PROPORCAO }}>
@@ -55,35 +68,24 @@ const MOMENTOS: Momento[] = [
     ),
   },
   {
-    titulo: "A resposta é um áudio. A família ouve.",
+    titulo: "Na ceia, a primeira história.",
     texto:
-      "Uma pergunta por dia útil, direto no WhatsApp, sem aplicativo nem senha. Cada história gravada chega no mesmo dia a um grupo só da família.",
+      "Alguém da mesa faz uma das perguntas. Quem conta responde e puxa os causos que quiser. Quem estiver ao lado grava no celular e manda para a gente, ou a própria pessoa responde por áudio no WhatsApp.",
     respiro: "lg:h-[140px]",
     visual: (
       <div>
         <WhatsAppChat
-          variant="grupo"
-          titulo="Histórias do Vô"
-          subtitulo="Ana, Pedro, Júlia, você"
+          variant="individual"
+          titulo="Ecoa Memórias"
+          subtitulo="online"
           mensagens={[
-            {
-              tipo: "audio",
-              autor: "Ecoa Memórias",
-              duracao: "2:14",
-              legenda: "Capítulo 6 · A casa da Rua Bahia",
-              hora: "19:02",
-            },
-            {
-              tipo: "texto",
-              autor: "Ana",
-              texto: "não sabia disso",
-              hora: "19:10",
-            },
+            { tipo: "dia", dia: "24 de dezembro" },
+            { tipo: "audio", minha: true, duracao: "4:07", hora: "23:41" },
             {
               tipo: "texto",
               minha: true,
-              texto: "que saudade dessa casa",
-              hora: "19:14",
+              texto: "gravei o vô contando como conheceu a vó",
+              hora: "23:42",
             },
           ]}
         />
@@ -91,9 +93,9 @@ const MOMENTOS: Momento[] = [
     ),
   },
   {
-    titulo: "Você revisa antes de imprimir.",
+    titulo: `No dia ${DIA_PRIMEIRA_PAGINA}, a primeira página.`,
     texto:
-      "Editamos as histórias e mandamos a prova do livro em PDF. Você lê com calma, pede os ajustes, e só imprimimos com o seu ok.",
+      "Editada por uma pessoa, com foto e o QR code que toca a voz de quem contou. Chega no seu WhatsApp, em PDF, com a família ainda junta. É por nossa conta.",
     respiro: "lg:h-[100px]",
     visual: (
       <div>
@@ -102,18 +104,18 @@ const MOMENTOS: Momento[] = [
           titulo="Ecoa Memórias"
           subtitulo="online"
           mensagens={[
+            { tipo: "dia", dia: PRIMEIRA_PAGINA },
             {
               tipo: "texto",
               texto:
-                "A prova do livro está pronta, em PDF. Leia com calma e diga o que ajustar.",
-              hora: "10:30",
+                "Bom dia! A primeira página do livro está pronta. Aponte a câmera para o QR e ouçam juntos.",
+              hora: "09:30",
             },
             {
               tipo: "texto",
               minha: true,
-              texto:
-                "Só corrige o nome da tia: é Lurdes, com U. O resto, pode imprimir!",
-              hora: "21:47",
+              texto: "ouvimos todos na mesa do café. pode seguir!",
+              hora: "10:12",
             },
           ]}
         />
@@ -121,9 +123,8 @@ const MOMENTOS: Momento[] = [
     ),
   },
   {
-    titulo: "O livro chega antes do Natal.",
-    texto:
-      "Com as histórias, as fotos e as mensagens da família, que chegam como surpresa.",
+    titulo: "Gostou? O livro continua.",
+    texto: `Aí vem uma pergunta por dia útil, por ${SEMANAS_DE_PERGUNTAS} semanas, no ritmo de quem conta. Cada história chega a um grupo só da família, e você revisa a prova antes de imprimir. O livro fica pronto ${PRAZO_LIVRO} depois.`,
     respiro: "lg:h-[120px]",
     visual: (
       <div className="pt-2 pl-[6%]">
@@ -143,8 +144,8 @@ const ordem = (n: number) => ({ "--ordem": n }) as CSSProperties;
 
 export function ComoFunciona() {
   return (
-    <Section id="como-funciona" title="Tudo acontece no WhatsApp." grid>
-      <Trilha marcas={["Dia 1", `Semana ${SEMANAS_DE_PERGUNTAS}`, "Natal"]}>
+    <Section id="como-funciona" title="Começa na ceia de Natal." grid>
+      <Trilha marcas={["Antes do Natal", PRIMEIRA_PAGINA, "O livro"]}>
         <ol className="flex w-max gap-5 md:grid md:w-auto md:grid-cols-2 md:gap-x-8 md:gap-y-16 lg:grid-cols-4 lg:gap-8">
           {MOMENTOS.map((m, i) => (
             <li

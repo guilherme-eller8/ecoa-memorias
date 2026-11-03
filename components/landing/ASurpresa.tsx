@@ -51,7 +51,7 @@ function Mensagem({
   );
 }
 
-// As páginas que quem conta só vê no Natal: as mensagens da família, cada uma com a voz.
+// As páginas que quem conta só vê quando o livro chega: as mensagens da família, cada uma com a voz.
 const MIOLO = {
   rotulo: "Mensagens da família",
   esquerda: (
@@ -102,8 +102,9 @@ export function ASurpresa() {
         data-entra
         style={ordem(1)}
       >
-        Duas partes fazem o livro. Uma delas, quem conta só conhece no Natal:
-        cada mensagem da família ganha uma página, com QR code para ouvir.
+        Duas partes fazem o livro. Uma delas, quem conta só conhece quando o
+        livro chega: cada mensagem da família ganha uma página, com QR code para
+        ouvir.
       </p>
 
       {/* Do outro lado da página, em relação ao livro aberto da seção anterior */}

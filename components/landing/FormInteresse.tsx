@@ -222,7 +222,7 @@ export function FormInteresse() {
       </Button>
       <p className="text-pequeno mt-4 max-w-[44ch]">
         Nada é cobrado agora. Falamos com você só pelo WhatsApp, e você só paga
-        se gostar da primeira história.
+        se gostar da primeira página.
       </p>
     </form>
   );
