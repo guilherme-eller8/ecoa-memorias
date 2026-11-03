@@ -15,7 +15,7 @@ export default function Privacidade() {
   return (
     <DocumentoLegal
       titulo="Política de privacidade"
-      data="Atualizada em 2 de novembro de 2026."
+      data="Atualizada em 3 de novembro de 2026."
     >
       <p className="mt-8">
         A {MARCA} faz livros de memórias a partir de histórias contadas por
@@ -79,9 +79,10 @@ export default function Privacidade() {
         <p>
           Áudios, fotos e mensagens: a família recebe os originais, que são dela
           para sempre. Da nossa cópia, guardamos só os áudios que tocam nos QR
-          codes do livro, enquanto a família quiser. Se pedir para apagar,
-          apagamos, e os QR codes param de tocar. Todo o resto é apagado 90 dias
-          depois da entrega.
+          codes do livro, enquanto a taxa anual estiver em dia (o primeiro ano
+          vem com o livro). Sem renovação, ou se a família pedir, apagamos, e os
+          QR codes param de tocar. Todo o resto é apagado 90 dias depois da
+          entrega.
         </p>
       </Bloco>
 

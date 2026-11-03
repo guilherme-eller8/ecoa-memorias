@@ -8,12 +8,14 @@ import {
 } from "react";
 import { Section } from "@/components/ui/Section";
 import {
+  AVISO_RENOVACAO_DIAS,
   DEVOLUCAO_SEM_IMPRESSAO,
   DATA_PRIMEIRA_PAGINA,
   formatarData,
   formatarPreco,
   PARCELAS_MAX,
   PRAZO_LIVRO,
+  TAXA_ANUAL,
 } from "@/lib/config";
 import s from "./Fichas.module.css";
 
@@ -99,14 +101,13 @@ const FICHAS: Ficha[] = [
   {
     aba: "QR codes",
     pergunta: "Os QR codes vão parar de funcionar?",
-    resposta:
-      "Não. Guardamos os áudios do livro enquanto a família quiser, só para os QR codes tocarem. E os originais ficam com a família desde o primeiro dia.",
+    resposta: `O primeiro ano vem com o livro: os QR codes tocam e vocês podem acrescentar capítulos novos. Depois, ${formatarPreco(TAXA_ANUAL)} por ano. Se não renovar, os QR codes param de tocar, mas os áudios originais e o PDF ficam com a família, para sempre. Avisamos ${AVISO_RENOVACAO_DIAS} dias antes.`,
   },
   {
-    aba: "Novo volume",
+    aba: "Novo capítulo",
     pergunta: "E depois do primeiro livro?",
     resposta:
-      "Quem quiser pode continuar contando histórias e criar um novo volume. É opcional, sem renovação automática.",
+      "Quem conta pode seguir contando. Com a taxa anual, cada capítulo novo é editado e entra no livro. Uma nova impressão é à parte, direto com a gráfica. A renovação não é automática.",
   },
 ];
 

@@ -10,6 +10,10 @@ export const PRAZO_LIVRO = "cerca de 2 meses";
 export const PRECO_LIVRO = 467; // exibir como "R$ 467"
 // Devolvido quando quem conta para no meio e a família prefere o livro em PDF, sem impressão
 export const DEVOLUCAO_SEM_IMPRESSAO = 149;
+// Mantém os áudios dos QR codes no ar e a edição de capítulos novos. O 1º ano vem com o livro;
+// sem renovação, os QR param de tocar e a família fica com os originais e o PDF. Impressão à parte.
+export const TAXA_ANUAL = 97; // exibir como "R$ 97 por ano"
+export const AVISO_RENOVACAO_DIAS = 30;
 export const PARCELAS_MAX = 12;
 export const FORMATO_LIVRO = "21 × 21 cm"; // placeholder
 export const PAGINAS_LIVRO = 80; // máximo, com fotos e histórias; referência interna, não aparece na página
@@ -34,8 +38,9 @@ export const SITE_URL =
 export const WHATSAPP_PRONTO = /^55\d{10,11}$/.test(WHATSAPP_NUMERO);
 export const CNPJ_PRONTO = !CNPJ.startsWith("00.000.000");
 export const SEMANAS_DE_PERGUNTAS = 4;
-// Versão dos Termos de Uso aceitos no formulário (gravada no lead). Mudou o texto, muda a data.
-export const TERMOS_VERSAO = "2026-11-03";
+// Versão dos Termos de Uso aceitos no formulário (gravada no lead). Mudou o texto, muda a data
+// (ou a revisão, depois do ponto, quando muda no mesmo dia).
+export const TERMOS_VERSAO = "2026-11-03.2";
 
 export const IMAGES = {
   surpresa: "/images/surpresa-ceia.webp",

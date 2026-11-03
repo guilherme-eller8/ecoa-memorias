@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Button } from "@/components/ui/Button";
 import { Bloco, DocumentoLegal } from "@/components/ui/DocumentoLegal";
 import {
+  AVISO_RENOVACAO_DIAS,
   CIDADE,
   CNPJ,
   CNPJ_PRONTO,
@@ -19,6 +20,7 @@ import {
   PRAZO_LIVRO,
   RESPONSAVEL,
   SEMANAS_DE_PERGUNTAS,
+  TAXA_ANUAL,
   TERMOS_VERSAO,
   WHATSAPP_PRONTO,
 } from "@/lib/config";
@@ -34,10 +36,11 @@ export const metadata: Metadata = {
 export default function Termos() {
   const primeiraPagina = formatarData(DATA_PRIMEIRA_PAGINA);
   const perguntas = porExtenso(PERGUNTAS_DE_NATAL);
+  const revisao = TERMOS_VERSAO.split(".")[1];
   return (
     <DocumentoLegal
       titulo="Termos de Uso"
-      data={`Versão de ${formatarDataComAno(TERMOS_VERSAO)}.`}
+      data={`Versão de ${formatarDataComAno(TERMOS_VERSAO.slice(0, 10))}${revisao ? `, revisão ${revisao}` : ""}.`}
     >
       <p className="mt-8">
         Aqui estão as regras para usar este site e para contratar um livro da{" "}
@@ -177,9 +180,18 @@ export default function Termos() {
 
       <Bloco titulo="Os áudios dos QR codes">
         <p>
-          Guardamos os áudios que tocam nos QR codes enquanto a família quiser.
-          Se pedir para apagar, apagamos, e os QR codes param de tocar. O resto
-          da nossa cópia é apagado 90 dias depois da entrega, como explica a{" "}
+          O primeiro ano vem com o livro: os QR codes tocam e vocês podem
+          acrescentar capítulos novos, que editamos e incluímos no livro. Depois,
+          a taxa é de {formatarPreco(TAXA_ANUAL)} por ano, e só renova se a
+          família quiser: avisamos {AVISO_RENOVACAO_DIAS} dias antes do
+          vencimento. Uma nova impressão do livro é à parte, contratada pela
+          família direto com a gráfica.
+        </p>
+        <p>
+          Sem renovação, os QR codes param de tocar. Os áudios originais e o
+          livro em PDF continuam com a família, para sempre. Se pedir para
+          apagar, apagamos. O resto da nossa cópia é apagado 90 dias depois da
+          entrega, como explica a{" "}
           <Button variant="link" href="/privacidade">
             Política de privacidade
           </Button>

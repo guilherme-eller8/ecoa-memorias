@@ -215,8 +215,8 @@ Ordem: as objeções mais fortes primeiro (pagamento, desistência, tempo).
 | Prazo | Quando o livro fica pronto? | A primeira página chega no dia 26 de dezembro. Se vocês decidirem seguir, o livro inteiro fica pronto cerca de 2 meses depois. |
 | Frete | Entregam em todo o Brasil? O frete está incluso? | Entregamos em todo o Brasil. O frete é à parte e calculado para o seu CEP. |
 | Os áudios | Com quem ficam os áudios? | Com a família, para sempre. Usamos apenas para produzir o livro e para tocar nos QR codes. |
-| QR codes | Os QR codes vão parar de funcionar? | Não. Guardamos os áudios do livro enquanto a família quiser, só para os QR codes tocarem. E os originais ficam com a família desde o primeiro dia. |
-| Novo volume | E depois do primeiro livro? | Quem quiser pode continuar contando histórias e criar um novo volume. É opcional, sem renovação automática. |
+| QR codes | Os QR codes vão parar de funcionar? | O primeiro ano vem com o livro: os QR codes tocam e vocês podem acrescentar capítulos novos. Depois, R$ 97 por ano (`TAXA_ANUAL`). Se não renovar, os QR codes param de tocar, mas os áudios originais e o PDF ficam com a família, para sempre. Avisamos 30 dias antes (`AVISO_RENOVACAO_DIAS`). |
+| Novo capítulo | E depois do primeiro livro? | Quem conta pode seguir contando. Com a taxa anual, cada capítulo novo é editado e entra no livro. Uma nova impressão é à parte, direto com a gráfica. A renovação não é automática. |
 
 ## 10. Fecho
 - Seção curta em floresta. O único momento centralizado da página.
