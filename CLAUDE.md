@@ -174,6 +174,7 @@ Leia a tabela "House rules" em `.claude/skills/design-taste-frontend/SKILL.md`. 
 - `/`: landing
 - `/privacidade`: política de privacidade (LGPD)
 - `/termos`: Termos de Uso do site e da contratação (versão em `TERMOS_VERSAO`)
+- `/residenciais`: versão B2B para residenciais sênior, white label, sem preço; `noindex`, sem link a partir do B2C; `?casa=` personaliza a capa (ver `docs/residenciais.md`)
 - `/styleguide`: vitrine de componentes (só em dev; `notFound()` em produção)
 
 ## Variáveis de ambiente

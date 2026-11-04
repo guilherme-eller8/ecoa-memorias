@@ -34,6 +34,8 @@ export const SITE_URL =
 export const WHATSAPP_PRONTO = /^55\d{10,11}$/.test(WHATSAPP_NUMERO);
 export const CNPJ_PRONTO = !CNPJ.startsWith("00.000.000");
 export const SEMANAS_DE_PERGUNTAS = 4;
+// Residenciais (/residenciais): o piloto proposto na conversa presencial. Sem preço na página.
+export const PILOTO_MORADORES = { min: 3, max: 5 } as const;
 // Versão dos Termos de Uso aceitos no formulário (gravada no lead). Mudou o texto, muda a data.
 export const TERMOS_VERSAO = "2026-11-03";
 

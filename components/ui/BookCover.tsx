@@ -26,6 +26,8 @@ export type BookCoverProps = {
   live?: boolean;
   /** Giro do livro sobre a mesa, em graus (lombada à vista). */
   turn?: number;
+  /** White label: o nome da casa em dourado no pé da capa, no lugar do monograma da Ecoa. */
+  marca?: string;
   className?: string;
 };
 
@@ -50,6 +52,7 @@ const ENTRELINHA = 8.8;
 const AUTOR = 4.4;
 const SELO = 3.6;
 const LOMBADA = 2.9;
+const MARCA_CASA = 3.4;
 
 /** Corpo que cabe na largura: nomes longos diminuem em vez de passar da margem. */
 function corpoQueCabe(base: number, texto: string, caracteres: number) {
@@ -85,6 +88,7 @@ export function BookCover({
   size = "md",
   live = false,
   turn,
+  marca,
   className,
 }: BookCoverProps) {
   const capa = CAPAS[color];
@@ -110,7 +114,7 @@ export function BookCover({
       data-escura={capa.escura || undefined}
       style={estilo}
       role="img"
-      aria-label={`Livro de capa dura ${capa.nome}: “${title}”${author ? `, de ${author}` : ""}`}
+      aria-label={`Livro de capa dura ${capa.nome}: “${title}”${author ? `, de ${author}` : ""}${marca ? `, com a marca de ${marca}` : ""}`}
     >
       <div className={s.palco}>
         <div className={s.corpo}>
@@ -291,25 +295,39 @@ export function BookCover({
                   rx={0.15}
                   fill="var(--dourado)"
                 />
-                <svg
-                  x={100 - 7 - 6}
-                  y={ALTURA - 6.4 - 6}
-                  width={6}
-                  height={6}
-                  viewBox={MONOGRAMA_VIEWBOX}
-                >
-                  <g
-                    fill="none"
-                    stroke="var(--dourado)"
-                    strokeWidth={MONOGRAMA_TRACO}
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
+                {marca ? (
+                  <text
+                    x={100 - 7}
+                    y={ALTURA - 7.6}
+                    textAnchor="end"
+                    fontSize={corpoQueCabe(MARCA_CASA, marca, 24)}
+                    fill="var(--dourado)"
+                    style={{ fontVariationSettings: '"opsz" 12' }}
+                    className={s.marca}
                   >
-                    {MONOGRAMA_ARVORE.map((d) => (
-                      <path key={d} d={d} />
-                    ))}
-                  </g>
-                </svg>
+                    {marca}
+                  </text>
+                ) : (
+                  <svg
+                    x={100 - 7 - 6}
+                    y={ALTURA - 6.4 - 6}
+                    width={6}
+                    height={6}
+                    viewBox={MONOGRAMA_VIEWBOX}
+                  >
+                    <g
+                      fill="none"
+                      stroke="var(--dourado)"
+                      strokeWidth={MONOGRAMA_TRACO}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      {MONOGRAMA_ARVORE.map((d) => (
+                        <path key={d} d={d} />
+                      ))}
+                    </g>
+                  </svg>
+                )}
               </svg>
             </div>
           </div>
