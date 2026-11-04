@@ -28,6 +28,12 @@ export type BookCoverProps = {
   turn?: number;
   /** White label: o nome da casa em dourado no pé da capa, no lugar do monograma da Ecoa. */
   marca?: string;
+  /** White label com a logo real da casa no pé da capa (vence `marca`). Dimensões do arquivo. */
+  logo?: { src: string; width: number; height: number };
+  /** Linha pequena do alto da capa; padrão "Livro de memórias". */
+  assinatura?: string;
+  /** Cor do filete sob o título; padrão o dourado do hot stamping. */
+  filete?: string;
   className?: string;
 };
 
@@ -53,6 +59,12 @@ const AUTOR = 4.4;
 const SELO = 3.6;
 const LOMBADA = 2.9;
 const MARCA_CASA = 3.4;
+const LOGO_LARGURA = 27; // logo da casa no pé da capa, em % da largura
+
+/** A logo vai pelo otimizador de imagens: o PNG original (de impressão) não desce inteiro. */
+function logoOtimizada(src: string): string {
+  return `/_next/image?url=${encodeURIComponent(src)}&w=640&q=75`;
+}
 
 /** Corpo que cabe na largura: nomes longos diminuem em vez de passar da margem. */
 function corpoQueCabe(base: number, texto: string, caracteres: number) {
@@ -89,6 +101,9 @@ export function BookCover({
   live = false,
   turn,
   marca,
+  logo,
+  assinatura = "Livro de memórias",
+  filete = "var(--dourado)",
   className,
 }: BookCoverProps) {
   const capa = CAPAS[color];
@@ -114,7 +129,7 @@ export function BookCover({
       data-escura={capa.escura || undefined}
       style={estilo}
       role="img"
-      aria-label={`Livro de capa dura ${capa.nome}: “${title}”${author ? `, de ${author}` : ""}${marca ? `, com a marca de ${marca}` : ""}`}
+      aria-label={`Livro de capa dura ${capa.nome}: “${title}”${author ? `, de ${author}` : ""}${marca && !logo ? `, com a marca de ${marca}` : ""}`}
     >
       <div className={s.palco}>
         <div className={s.corpo}>
@@ -256,7 +271,7 @@ export function BookCover({
                     fontSize={SELO}
                     style={{ fontVariationSettings: '"opsz" 12' }}
                   >
-                    Livro de memórias
+                    {assinatura}
                   </text>
                   <text
                     y={yUltimaLinha - (linhas.length - 1) * ENTRELINHA}
@@ -293,9 +308,18 @@ export function BookCover({
                   width={13}
                   height={0.55}
                   rx={0.15}
-                  fill="var(--dourado)"
+                  fill={filete}
                 />
-                {marca ? (
+                {logo ? (
+                  <image
+                    href={logoOtimizada(logo.src)}
+                    x={100 - 7 - LOGO_LARGURA}
+                    y={ALTURA - 6.4 - (LOGO_LARGURA * logo.height) / logo.width}
+                    width={LOGO_LARGURA}
+                    height={(LOGO_LARGURA * logo.height) / logo.width}
+                    preserveAspectRatio="xMidYMid meet"
+                  />
+                ) : marca ? (
                   <text
                     x={100 - 7}
                     y={ALTURA - 7.6}

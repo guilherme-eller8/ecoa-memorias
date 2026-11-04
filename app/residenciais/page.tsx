@@ -9,31 +9,41 @@ import { QuemFaz } from "@/components/residenciais/QuemFaz";
 import { Rodape } from "@/components/residenciais/Rodape";
 import { VisitaCasa } from "@/components/residenciais/VisitaCasa";
 import { MARCA } from "@/lib/config";
+import { resolverCasa } from "@/lib/residenciais";
 
 const TITULO = `${MARCA} para residenciais`;
 const DESCRICAO =
   "O livro de memórias de cada morador, contado por áudio no WhatsApp e entregue com a marca da sua casa. A Ecoa cuida do resto.";
 
 // Página das casas: fora do Google e sem link a partir do site das famílias. Vai por link direto.
-export const metadata: Metadata = {
-  title: TITULO,
-  description: DESCRICAO,
-  robots: { index: false, follow: false },
-  alternates: { canonical: "/residenciais" },
-  openGraph: {
-    type: "website",
-    locale: "pt_BR",
-    url: "/residenciais",
-    siteName: MARCA,
-    title: TITULO,
+// O título do preview no WhatsApp leva o nome da casa do link; a imagem de OG é a mesma para todas.
+export async function generateMetadata({
+  searchParams,
+}: PageProps<"/residenciais">): Promise<Metadata> {
+  const casa = resolverCasa((await searchParams).casa);
+  const titulo = casa
+    ? `${MARCA} · proposta para ${casa.cadastro ? `${casa.cadastro.artigo} ` : ""}${casa.nome}`
+    : TITULO;
+  return {
+    title: titulo,
     description: DESCRICAO,
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: TITULO,
-    description: DESCRICAO,
-  },
-};
+    robots: { index: false, follow: false },
+    alternates: { canonical: "/residenciais" },
+    openGraph: {
+      type: "website",
+      locale: "pt_BR",
+      url: "/residenciais",
+      siteName: MARCA,
+      title: titulo,
+      description: DESCRICAO,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: titulo,
+      description: DESCRICAO,
+    },
+  };
+}
 
 // /residenciais?casa=Residencial%20X: o nome vai para a capa, o grupo da família e o WhatsApp.
 // Sem ele, "Sua casa". Só as peças com o nome esperam o link; o resto sai pronto do build.
@@ -58,7 +68,7 @@ export default function Residenciais({
       </main>
       <Rodape busca={searchParams} />
       <ComCasa busca={searchParams}>
-        {(casa) => (casa ? <VisitaCasa casa={casa} /> : null)}
+        {(casa) => (casa ? <VisitaCasa casa={casa.nome} /> : null)}
       </ComCasa>
     </div>
   );

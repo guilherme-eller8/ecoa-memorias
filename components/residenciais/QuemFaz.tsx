@@ -33,7 +33,7 @@ export function QuemFaz({ busca }: { busca: BuscaCasa }) {
         style={ordem(3)}
       >
         <ComCasa busca={busca}>
-          {(casa) => <GrupoDaFamilia nomeCasa={casa ?? "Sua casa"} />}
+          {(casa) => <GrupoDaFamilia nomeCasa={casa?.nome ?? "Sua casa"} />}
         </ComCasa>
       </div>
 

@@ -3,6 +3,19 @@
 Página: `/residenciais` (fora do Google, sem link a partir do site das famílias). Vai por link direto, 1:1.
 Link personalizado: `/residenciais?casa=Residencial%20Ipê` põe o nome da casa no pé da capa, no grupo da família de exemplo e na mensagem do WhatsApp. Cada abertura com nome conta o evento `residenciais_visita` (Vercel Analytics), com a casa.
 
+## Casa com a logo real (`?casa=<slug>`)
+Para prospects escolhidos, a página mostra a logo da casa: uma linha "Preparado para a [logo]" abaixo do CTA, a capa do hero com a logo no pé, o título "Memórias de <morador>", e a legenda "Simulação: como ficaria o livro de um morador da <casa>." O título do preview no WhatsApp vira "Ecoa Memórias · proposta para a <casa>".
+
+Cadastrar uma casa nova:
+1. Liberar o domínio do site da casa na rede do ambiente (Network access → Allowed domains).
+2. Baixar a logo de melhor resolução. Fundo transparente sem halo; se vier em fundo branco chapado, tirar o fundo por cor (sem redesenhar nem recolorir). Trim nas margens. Salvar em `public/logos/<slug>.png`.
+3. Nova entrada em `lib/casas.ts`: nome, nomeCompleto, artigo, logo (dimensões reais do PNG), corMarca (cor dominante da logo), capa (tecido que sustenta a logo: logo escura em névoa ou rosa-antigo, clara em floresta, vinho ou petróleo) e morador fictício.
+4. Conferir screenshots em 390 e 1440 e publicar. Link: `https://ecoa-memorias.com.br/residenciais?casa=<slug>`.
+
+O slug e o nome (com ou sem acento) levam à mesma casa: `?casa=sante` e `?casa=Santé` mostram a logo. Qualquer outro texto continua só com o nome, como antes.
+
+Casas cadastradas: Santé Residencial Sênior (`sante`), logo de 1018 × 891 px.
+
 ## Decisões (04/11/2026)
 - White label: marca da casa na capa, no grupo e nos convites; Ecoa só na ficha técnica do livro.
 - Quem paga: em aberto. A página diz "a casa, a família ou as duas"; o modelo sai da conversa.
