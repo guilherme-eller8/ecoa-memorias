@@ -1,16 +1,16 @@
 import { Suspense, type ReactNode } from "react";
-import { nomeDaCasa } from "@/lib/residenciais";
+import { resolverCasa, type CasaDoLink } from "@/lib/residenciais";
 
 /** Os parâmetros do link (/residenciais?casa=...), ainda por resolver. */
 export type BuscaCasa = Promise<Record<string, string | string[] | undefined>>;
 
 type Props = {
   busca: BuscaCasa;
-  children: (casa?: string) => ReactNode;
+  children: (casa?: CasaDoLink) => ReactNode;
 };
 
 async function Resolvida({ busca, children }: Props) {
-  return children(nomeDaCasa((await busca).casa));
+  return children(resolverCasa((await busca).casa));
 }
 
 /**

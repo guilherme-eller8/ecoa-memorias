@@ -37,7 +37,7 @@ export function Rodape({ busca }: { busca: BuscaCasa }) {
                   {(casa) => (
                     <Button
                       variant="link"
-                      href={linkConversaResidencial(casa)}
+                      href={linkConversaResidencial(casa?.nome)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className={ALVO}

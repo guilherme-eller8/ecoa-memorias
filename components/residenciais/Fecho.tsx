@@ -40,6 +40,8 @@ const CAPAS: {
   },
 ];
 
+const TECIDOS_CLAROS: CorCapa[] = ["rosa-antigo", "nevoa"];
+
 // O fecho: o único momento centralizado, no campo floresta.
 export function Fecho({ busca }: { busca: BuscaCasa }) {
   return (
@@ -64,7 +66,7 @@ export function Fecho({ busca }: { busca: BuscaCasa }) {
         <ComCasa busca={busca}>
           {(casa) => (
             <BotaoConversa
-              casa={casa}
+              casa={casa?.nome}
               posicao="residenciais-fecho"
               variant="invertido"
             />
@@ -79,14 +81,17 @@ export function Fecho({ busca }: { busca: BuscaCasa }) {
       >
         <ComCasa busca={busca}>
           {(casa) =>
-            CAPAS.map((c) => (
+            CAPAS.map((c, i) => (
               <li key={c.color} className="w-[30%]">
                 <BookCover
-                  color={c.color}
+                  // Com a logo real, tecidos claros: a logo de uma casa pode sumir no escuro
+                  color={casa?.cadastro ? TECIDOS_CLAROS[i % 2] : c.color}
                   title={c.title}
                   author={c.author}
                   photo={existeEmPublic(c.photo) ? c.photo : undefined}
-                  marca={casa ?? "Sua casa"}
+                  marca={casa?.nome ?? "Sua casa"}
+                  logo={casa?.cadastro?.logo}
+                  filete={casa?.cadastro?.corMarca}
                   turn={c.turn}
                   size="md"
                 />

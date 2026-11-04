@@ -1,8 +1,10 @@
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { LiveCover } from "@/components/ui/LiveCover";
 import { BalaoAudio } from "@/components/ui/WhatsAppChat";
 import { IMAGES, PILOTO_MORADORES } from "@/lib/config";
 import { existeEmPublic } from "@/lib/imagens";
+import { daCasa } from "@/lib/residenciais";
 import { BotaoConversa } from "./BotaoConversa";
 import { ComCasa, type BuscaCasa } from "./ComCasa";
 
@@ -39,7 +41,7 @@ export function Hero({ busca }: { busca: BuscaCasa }) {
           <div className="mt-8 flex flex-wrap items-center gap-x-7 gap-y-4">
             <ComCasa busca={busca}>
               {(casa) => (
-                <BotaoConversa casa={casa} posicao="residenciais-hero" />
+                <BotaoConversa casa={casa?.nome} posicao="residenciais-hero" />
               )}
             </ComCasa>
           </div>
@@ -56,6 +58,25 @@ export function Hero({ busca }: { busca: BuscaCasa }) {
               </li>
             ))}
           </ul>
+
+          {/* Só para casas cadastradas: a logo real, pequena, abaixo do CTA (não compete com ele) */}
+          <ComCasa busca={busca}>
+            {(casa) =>
+              casa?.cadastro ? (
+                <p className="text-pequeno mt-6 flex items-center gap-3">
+                  Preparado para {casa.cadastro.artigo}
+                  <Image
+                    src={casa.cadastro.logo.src}
+                    width={casa.cadastro.logo.width}
+                    height={casa.cadastro.logo.height}
+                    alt={`Logo ${casa.cadastro.nomeCompleto}`}
+                    className="h-9 w-auto"
+                    sizes="48px"
+                  />
+                </p>
+              ) : null
+            }
+          </ComCasa>
         </div>
 
         <div className="col-span-12 mt-6 lg:contents">
@@ -65,7 +86,17 @@ export function Hero({ busca }: { busca: BuscaCasa }) {
                 className="lg:contents!"
                 objetoClassName="lg:col-span-5 lg:col-start-8 lg:row-span-3 lg:row-start-1 lg:justify-self-end lg:self-start lg:pt-2"
                 foto={existeEmPublic(FOTO_CAPA) ? FOTO_CAPA : undefined}
-                marca={casa ?? "Sua casa"}
+                marca={casa?.nome ?? "Sua casa"}
+                {...(casa?.cadastro
+                  ? {
+                      cor: casa.cadastro.capa,
+                      titulo: `Memórias de ${casa.cadastro.morador}`,
+                      logo: casa.cadastro.logo,
+                      assinatura: `Edição ${casa.cadastro.nome}`,
+                      filete: casa.cadastro.corMarca,
+                      legenda: `Simulação: como ficaria o livro de um morador ${daCasa(casa)}.`,
+                    }
+                  : {})}
                 aparte={
                   <BalaoAudio
                     duracao="3:41"
