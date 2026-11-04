@@ -255,6 +255,12 @@
   font-family: var(--font-newsreader), Georgia, serif;
 }
 
+/* White label: o nome da casa, em hot stamping dourado, no pé da capa */
+.marca {
+  font-family: var(--font-newsreader), Georgia, serif;
+  font-weight: 500;
+}
+
 /* ── Sombra de contato: plano no chão, sob a base do livro ─────────── */
 .chao {
   top: 100%;

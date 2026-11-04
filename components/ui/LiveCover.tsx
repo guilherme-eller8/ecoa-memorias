@@ -11,6 +11,8 @@ type LiveCoverProps = {
   className?: string;
   /** Posição da capa quando a raiz vira `contents` no grid do hero. */
   objetoClassName?: string;
+  /** White label: o nome da casa no pé da capa, no lugar do monograma. */
+  marca?: string;
 };
 
 /** A capa do hero, em floresta: entreabre ao passar o mouse e mostra a borda das páginas. */
@@ -19,6 +21,7 @@ export function LiveCover({
   aparte,
   className,
   objetoClassName,
+  marca,
 }: LiveCoverProps) {
   return (
     <div className={[s.live, className].filter(Boolean).join(" ")}>
@@ -27,6 +30,7 @@ export function LiveCover({
           color={CAPA_PADRAO.cor}
           title={CAPA_PADRAO.title}
           photo={foto}
+          marca={marca}
           size="xl"
           open
           live
