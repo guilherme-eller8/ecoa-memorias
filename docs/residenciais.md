@@ -14,7 +14,11 @@ Cadastrar uma casa nova:
 
 O slug e o nome (com ou sem acento) levam à mesma casa: `?casa=sante` e `?casa=Santé` mostram a logo. Qualquer outro texto continua só com o nome, como antes.
 
-Casas cadastradas: Santé Residencial Sênior (`sante`), logo de 1018 × 891 px.
+Casas cadastradas:
+- Santé Residencial Sênior (`sante`): logo de 1018 × 891 px, tirada do site.
+- Residencial Alegria Sênior (`alegria`): logo de 760 × 1448 px, enviada pelo Guilherme. O arquivo original traz restos de marca d'água de banco de imagens nas folhas; mantidos, sem retoque.
+
+Logos altas e de traço fino: use `alturaNaLinha` (px da logo na linha "Preparado para") e `nomeCapa` (nome curto para a assinatura da capa). Na capa, a logo respeita um teto de altura e encolhe pela proporção.
 
 ## Decisões (04/11/2026)
 - White label: marca da casa na capa, no grupo e nos convites; Ecoa só na ficha técnica do livro.

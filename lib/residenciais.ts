@@ -50,7 +50,8 @@ export function resolverCasa(
     if (
       k === chave(slug) ||
       k === chave(casa.nome) ||
-      k === chave(casa.nomeCompleto)
+      k === chave(casa.nomeCompleto) ||
+      (casa.nomeCapa !== undefined && k === chave(casa.nomeCapa))
     ) {
       return { nome: casa.nome, cadastro: casa };
     }
