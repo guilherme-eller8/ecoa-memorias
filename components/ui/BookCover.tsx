@@ -60,6 +60,16 @@ const SELO = 3.6;
 const LOMBADA = 2.9;
 const MARCA_CASA = 3.4;
 const LOGO_LARGURA = 27; // logo da casa no pé da capa, em % da largura
+const LOGO_ALTURA = 38; // teto de altura: logos altas encolhem pela altura, não passam disso
+
+/** Tamanho da logo no pé da capa, mantendo a proporção do arquivo. */
+function tamanhoDaLogo(logo: { width: number; height: number }) {
+  const largura = Math.min(
+    LOGO_LARGURA,
+    (LOGO_ALTURA * logo.width) / logo.height,
+  );
+  return { largura, altura: (largura * logo.height) / logo.width };
+}
 
 /** A logo vai pelo otimizador de imagens: o PNG original (de impressão) não desce inteiro. */
 function logoOtimizada(src: string): string {
@@ -313,10 +323,10 @@ export function BookCover({
                 {logo ? (
                   <image
                     href={logoOtimizada(logo.src)}
-                    x={100 - 7 - LOGO_LARGURA}
-                    y={ALTURA - 6.4 - (LOGO_LARGURA * logo.height) / logo.width}
-                    width={LOGO_LARGURA}
-                    height={(LOGO_LARGURA * logo.height) / logo.width}
+                    x={100 - 7 - tamanhoDaLogo(logo).largura}
+                    y={ALTURA - 6.4 - tamanhoDaLogo(logo).altura}
+                    width={tamanhoDaLogo(logo).largura}
+                    height={tamanhoDaLogo(logo).altura}
                     preserveAspectRatio="xMidYMid meet"
                   />
                 ) : marca ? (

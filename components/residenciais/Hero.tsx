@@ -70,8 +70,9 @@ export function Hero({ busca }: { busca: BuscaCasa }) {
                     width={casa.cadastro.logo.width}
                     height={casa.cadastro.logo.height}
                     alt={`Logo ${casa.cadastro.nomeCompleto}`}
-                    className="h-9 w-auto"
-                    sizes="48px"
+                    className="w-auto"
+                    style={{ height: casa.cadastro.alturaNaLinha ?? 36 }}
+                    sizes="96px"
                   />
                 </p>
               ) : null
@@ -92,7 +93,7 @@ export function Hero({ busca }: { busca: BuscaCasa }) {
                       cor: casa.cadastro.capa,
                       titulo: `Memórias de ${casa.cadastro.morador}`,
                       logo: casa.cadastro.logo,
-                      assinatura: `Edição ${casa.cadastro.nome}`,
+                      assinatura: `Edição ${casa.cadastro.nomeCapa ?? casa.cadastro.nome}`,
                       filete: casa.cadastro.corMarca,
                       legenda: `Simulação: como ficaria o livro de um morador ${daCasa(casa)}.`,
                     }
