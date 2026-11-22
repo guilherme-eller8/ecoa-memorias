@@ -56,6 +56,8 @@ DATA_PRIMEIRA_PAGINA = "2026-12-26" // exibir como "26 de dezembro"
 CTA_TEXTO = "Quero começar"        // texto de todo botão de interesse
 PRAZO_LIVRO = "cerca de 2 meses"   // do "gostei" ao livro pronto
 PRECO_LIVRO = 467                  // exibir como "R$ 467"
+PRECO_DEPOIS = 697                 // preço real a partir de janeiro; só no colofão
+PRECO_DEPOIS_A_PARTIR = "janeiro"
 DEVOLUCAO_SEM_IMPRESSAO = 149      // quem conta parou e a família preferiu o PDF
 PARCELAS_MAX = 12
 FORMATO_LIVRO = "21 × 21 cm"       // placeholder
@@ -136,7 +138,7 @@ Leia a tabela "House rules" em `.claude/skills/design-taste-frontend/SKILL.md`. 
 
 ### As desta marca (texto; o lint não pega em português)
 - Emojis só dentro das simulações de WhatsApp, com moderação.
-- Contador regressivo, barra de urgência, "ÚLTIMAS VAGAS", pop-up, barra fixa de CTA no mobile, preço riscado, selos de "100% seguro", setas apontando para botões.
+- Contador regressivo, barra de urgência, "ÚLTIMAS VAGAS", pop-up, barra fixa de CTA no mobile, preço riscado, "de R$ X por R$ Y" com um preço anterior que nunca foi cobrado, selos de "100% seguro", setas apontando para botões. O preço de depois (`PRECO_DEPOIS`) só aparece se for o preço que vai ser cobrado de verdade.
 - Palavras: "transforme", "eternize", "inesquecível", "momentos únicos", "descubra", "revolucione", "incrível", "mágico", "jornada", "experiência".
 - "Não é só X, é Y"; trios rítmicos em todo parágrafo; mais de 3 travessões na página.
 - Depoimentos, números de clientes, avaliações, selos ou logos de imprensa inventados.
