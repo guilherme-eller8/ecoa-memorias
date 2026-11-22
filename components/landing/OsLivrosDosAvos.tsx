@@ -18,26 +18,31 @@ const LIVROS: Livro[] = [
   {
     src: IMAGES.livroAvoNelma,
     legenda: "O livro da minha avó Nelma.",
-    alt: "Mão segurando o livro de memórias da avó Nelma",
+    alt: "Capa do livro de memórias da avó Nelma: retrato dela jovem, em sépia, com o nome escrito à mão em vermelho",
   },
 ];
 
-// Por que a Ecoa existe, contado por quem faz: os livros dos dois avós e o que foi preciso para eles existirem.
+// Por que a Ecoa existe, contado por quem faz: os livros dos dois avós, e o desejo de que mais famílias tenham o seu.
 export function OsLivrosDosAvos() {
   const livros = LIVROS.filter((l) => existeEmPublic(l.src));
   const dois = livros.length > 1;
+  // Com os dois livros, as fotos ganham uma coluna a mais e o texto vai uma para a direita
+  const colTexto = dois
+    ? "lg:col-span-5! lg:col-start-8!"
+    : "lg:col-span-6! lg:col-start-7!";
 
   return (
     <Section
       id="origem"
-      title="Nem toda família tem uma tia jornalista."
+      title="Os livros dos meus avós."
       grid
-      titleClassName="lg:col-span-6! lg:col-start-7! lg:row-start-1 lg:self-end"
+      titleClassName={`${colTexto} lg:row-start-1 lg:self-end`}
     >
-      <div className="col-span-12 mt-8 md:mt-10 lg:col-span-6 lg:col-start-7 lg:row-start-2 lg:self-start">
+      <div
+        className={`col-span-12 row-start-3 mt-10 ${colTexto} lg:row-start-2 lg:mt-10 lg:self-start`}
+      >
         <p className="text-destaque max-w-[30ch]" data-entra style={ordem(1)}>
-          Tenho em casa os livros dos meus dois avós. Já li os dois, inteiros,
-          duas vezes.
+          Tenho os dois em casa e já li cada um, inteiro, duas vezes.
         </p>
         <div
           className="mt-6 max-w-[48ch] space-y-5"
@@ -45,17 +50,13 @@ export function OsLivrosDosAvos() {
           style={ordem(2)}
         >
           <p>
-            O da minha avó Nelma saiu porque temos na família uma tia
-            jornalista, e das experientes. O do meu avô Jair saiu porque ele era
-            disciplinado, detalhista e decidido: resolveu que ia fazer, e fez.
+            Na maioria das famílias, esse livro nunca sai. Não por falta de
+            história: falta quem pergunte, quem grave e quem passe a conversa
+            para o papel. E as histórias vão ficando para depois.
           </p>
           <p>
-            A maioria das famílias não tem nem uma coisa nem outra. E as
-            histórias vão ficando para depois.
-          </p>
-          <p>
-            A Ecoa faz o papel da tia jornalista: pergunta, lembra, ouve e
-            edita. Quem conta só precisa falar.
+            Criei a Ecoa para que muito mais famílias tenham o seu. Quem conta
+            só precisa falar.
           </p>
         </div>
         <p className="mt-6" data-entra style={ordem(3)}>
@@ -65,10 +66,10 @@ export function OsLivrosDosAvos() {
 
       {livros.length > 0 && (
         <div
-          className={`col-span-12 mt-12 grid gap-6 lg:col-span-5 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:mt-0 lg:w-full lg:self-center lg:justify-self-end ${
+          className={`col-span-12 row-start-2 mt-8 grid gap-6 md:mt-10 lg:row-span-2 lg:row-start-1 lg:mt-0 lg:w-full lg:self-center lg:justify-self-end ${
             dois
-              ? "grid-cols-2 lg:max-w-[calc((100svh-240px)*1.5)]"
-              : "max-w-[300px] sm:max-w-[360px] lg:max-w-[calc((100svh-240px)*0.75)]"
+              ? "grid-cols-2 lg:col-span-6 lg:col-start-1 lg:max-w-[calc((100svh-340px)*1.5)]"
+              : "max-w-[300px] sm:max-w-[360px] lg:col-span-5 lg:col-start-1 lg:max-w-[calc((100svh-240px)*0.75)]"
           }`}
           data-entra
           style={ordem(4)}
@@ -79,7 +80,7 @@ export function OsLivrosDosAvos() {
                 src={l.src}
                 tipo="cena"
                 proporcao="3 / 4"
-                sizes="(min-width: 1024px) 380px, 80vw"
+                sizes="(min-width: 1024px) 300px, 45vw"
                 alt={l.alt}
               />
               <figcaption className="text-pequeno mt-3">{l.legenda}</figcaption>

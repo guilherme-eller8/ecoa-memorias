@@ -109,22 +109,21 @@ Duas colunas no desktop: título e texto à esquerda, a capa à direita já na a
 - Visual: LiveCover grande, entreaberta, com o áudio de WhatsApp encostado. Fundo polen liso, com o grão de papel. Sem gradiente.
 
 ## 2b. O valor (#valor)
-- Fundo papel. Título no tamanho display: "Para os netos dos seus netos."
+- Fundo papel. Título no tamanho display (22/11, **[aprovar]**): "Seus filhos vão ouvir o avô contar." Fala com quem compra (o filho de 30 a 60 anos), não com quem conta. Antes: "Para os netos dos seus netos."
 - Destaque: "Daqui a cinquenta anos, alguém vai abrir este livro e ouvir a voz de um bisavô que nunca conheceu."
 - Corpo: "As histórias que a família pede para repetir no almoço de domingo ficam no papel. E a voz de quem contou continua ali, para quem vier depois."
 - Com a foto `antiga-praia`, ela entra à direita como cópia impressa; sem ela, o texto desce em diagonal para a direita.
 
 ## 2c. Os livros dos avós (#origem) **[aprovar]** (22/11)
-Prova de origem: não é depoimento de cliente (ainda não há), é por que a Ecoa existe, com fotos reais.
-- Fundo polen. Composição espelhada em relação à 2b: foto(s) à esquerda (5/12), título e texto à direita (6/12).
-- H2: "Nem toda família tem uma tia jornalista."
-- Destaque: "Tenho em casa os livros dos meus dois avós. Já li os dois, inteiros, duas vezes."
+Prova de origem: não é depoimento de cliente (ainda não há), é por que a Ecoa existe, com fotos reais. Sem mencionar quem fez os livros: o ponto é que poucas famílias chegam a ter o seu.
+- Fundo polen. Composição espelhada em relação à 2b: fotos à esquerda (6/12), título e texto à direita (5/12). No celular, as fotos vêm logo depois do título.
+- H2: "Os livros dos meus avós."
+- Destaque: "Tenho os dois em casa e já li cada um, inteiro, duas vezes."
 - Corpo:
-  - "O da minha avó Nelma saiu porque temos na família uma tia jornalista, e das experientes. O do meu avô Jair saiu porque ele era disciplinado, detalhista e decidido: resolveu que ia fazer, e fez."
-  - "A maioria das famílias não tem nem uma coisa nem outra. E as histórias vão ficando para depois."
-  - "A Ecoa faz o papel da tia jornalista: pergunta, lembra, ouve e edita. Quem conta só precisa falar."
+  - "Na maioria das famílias, esse livro nunca sai. Não por falta de história: falta quem pergunte, quem grave e quem passe a conversa para o papel. E as histórias vão ficando para depois."
+  - "Criei a Ecoa para que muito mais famílias tenham o seu. Quem conta só precisa falar."
 - Assinatura: "*Guilherme Eller*, neto da Nelma e do Jair" (`ASSINATURA_FUNDADOR`).
-- Fotos reais, 3:4, `.photo`, com legenda: "O livro do meu avô Jair." (`livro-avo-jair`) e, quando existir, "O livro da minha avó Nelma." (`livro-avo-nelma`, mesma moldura: o livro na mão). Com as duas, ficam lado a lado, a segunda 64px mais baixa. Sem o arquivo, o quadro some.
+- Fotos reais, 3:4, `.photo`, lado a lado, a segunda 64px mais baixa: "O livro do meu avô Jair." (`livro-avo-jair`, o livro na mão) e "O livro da minha avó Nelma." (`livro-avo-nelma`, a capa). Sem o arquivo, o quadro some.
 - Única exceção à regra "fotos não recebem nomes": estas não são ilustrativas.
 
 ## 3. O que você recebe (#livro)

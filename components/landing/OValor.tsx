@@ -12,10 +12,10 @@ export function OValor() {
   return (
     <Section
       id="valor"
-      title="Para os netos dos seus netos."
+      title="Seus filhos vão ouvir o avô contar."
       tone="papel"
       grid
-      titleClassName={`text-display! max-w-[16ch]! ${temFoto ? "lg:col-span-6! lg:row-start-1" : "lg:col-span-8!"}`}
+      titleClassName={`text-display! max-w-[19ch]! ${temFoto ? "lg:col-span-6! lg:row-start-1" : "lg:col-span-8!"}`}
     >
       <p
         className={`text-destaque col-span-12 mt-8 max-w-[34ch] md:mt-10 ${

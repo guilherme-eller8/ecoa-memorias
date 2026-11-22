@@ -95,4 +95,4 @@ IMAGES = {
 
 ## Fotos reais (não geradas)
 - `livro-avo-jair.webp` · 3:4 · seção 2c. O livro do avô Jair na mão do fundador, recortado da foto original (900×1200).
-- `livro-avo-nelma.webp` · 3:4 · seção 2c. **Falta.** Mesma moldura: o livro na mão, luz de janela, fundo de madeira. Salvar com ~900×1200.
+- `livro-avo-nelma.webp` · 3:4 · seção 2c. A capa do livro da avó Nelma (arquivo digital, 768×1024). Se um dia houver foto do livro na mão, como a do Jair, troque: o par fica mais coerente.
