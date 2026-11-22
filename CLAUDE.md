@@ -150,7 +150,7 @@ Leia a tabela "House rules" em `.claude/skills/design-taste-frontend/SKILL.md`. 
 - Português brasileiro, caloroso, frases curtas.
 - Para se referir de forma genérica a quem conta as histórias, use "quem conta".
 - O trocadilho com "ecoar" aparece no máximo uma vez na página.
-- Fotos são ilustrativas: nunca recebem nomes nem citações atribuídas.
+- Fotos são ilustrativas: nunca recebem nomes nem citações atribuídas. Exceção: as fotos reais dos livros dos avós do fundador (seção 2c), que não são ilustrativas.
 - Copy entre aspas na spec é final. Se quebrar a regra das 2 linhas, proponha o corte e pergunte; não reescreva sozinho.
 
 ## Como trabalhar

@@ -18,6 +18,8 @@ export const EMAIL_CONTATO = "contato@ecoa-memorias.com.br"; // placeholder: a c
 export const CNPJ = "00.000.000/0001-00"; // placeholder
 export const CIDADE = "Belo Horizonte";
 export const RESPONSAVEL = "Guilherme Rocha Eller Miranda";
+// Como o fundador assina a seção dos livros dos avós (nome curto, em itálico)
+export const ASSINATURA_FUNDADOR = "Guilherme Eller";
 export const LINKEDIN_URL =
   "https://www.linkedin.com/in/guilherme-eller-940ab583/";
 
@@ -50,6 +52,9 @@ export const IMAGES = {
   // Fotos das páginas "Mensagens da família" (ilustrativas)
   mensagemNeta: "/images/mensagem-neta.webp",
   mensagemFilho: "/images/mensagem-filho.webp",
+  // Fotos reais (não ilustrativas) dos livros dos avós do fundador. Sem o arquivo, o quadro some.
+  livroAvoJair: "/images/livro-avo-jair.webp",
+  livroAvoNelma: "/images/livro-avo-nelma.webp",
 } as const;
 
 export type ImagemChave = keyof typeof IMAGES;

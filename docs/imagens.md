@@ -90,3 +90,9 @@ IMAGES = {
   antigaPraia: "/images/antiga-praia.webp",
 }
 ```
+
+---
+
+## Fotos reais (não geradas)
+- `livro-avo-jair.webp` · 3:4 · seção 2c. O livro do avô Jair na mão do fundador, recortado da foto original (900×1200).
+- `livro-avo-nelma.webp` · 3:4 · seção 2c. **Falta.** Mesma moldura: o livro na mão, luz de janela, fundo de madeira. Salvar com ~900×1200.

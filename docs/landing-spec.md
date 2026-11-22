@@ -114,6 +114,19 @@ Duas colunas no desktop: título e texto à esquerda, a capa à direita já na a
 - Corpo: "As histórias que a família pede para repetir no almoço de domingo ficam no papel. E a voz de quem contou continua ali, para quem vier depois."
 - Com a foto `antiga-praia`, ela entra à direita como cópia impressa; sem ela, o texto desce em diagonal para a direita.
 
+## 2c. Os livros dos avós (#origem) **[aprovar]** (22/11)
+Prova de origem: não é depoimento de cliente (ainda não há), é por que a Ecoa existe, com fotos reais.
+- Fundo polen. Composição espelhada em relação à 2b: foto(s) à esquerda (5/12), título e texto à direita (6/12).
+- H2: "Nem toda família tem uma tia jornalista."
+- Destaque: "Tenho em casa os livros dos meus dois avós. Já li os dois, inteiros, duas vezes."
+- Corpo:
+  - "O da minha avó Nelma saiu porque temos na família uma tia jornalista, e das experientes. O do meu avô Jair saiu porque ele era disciplinado, detalhista e decidido: resolveu que ia fazer, e fez."
+  - "A maioria das famílias não tem nem uma coisa nem outra. E as histórias vão ficando para depois."
+  - "A Ecoa faz o papel da tia jornalista: pergunta, lembra, ouve e edita. Quem conta só precisa falar."
+- Assinatura: "*Guilherme Eller*, neto da Nelma e do Jair" (`ASSINATURA_FUNDADOR`).
+- Fotos reais, 3:4, `.photo`, com legenda: "O livro do meu avô Jair." (`livro-avo-jair`) e, quando existir, "O livro da minha avó Nelma." (`livro-avo-nelma`, mesma moldura: o livro na mão). Com as duas, ficam lado a lado, a segunda 64px mais baixa. Sem o arquivo, o quadro some.
+- Única exceção à regra "fotos não recebem nomes": estas não são ilustrativas.
+
 ## 3. O que você recebe (#livro)
 - H2: "Um livro para segurar. E vozes para ouvir sempre."
 - A capa ao centro, com quatro anotações em volta (duas de cada lado, com setas desenhadas à mão apontando para ela); no celular, a capa e a lista abaixo.
