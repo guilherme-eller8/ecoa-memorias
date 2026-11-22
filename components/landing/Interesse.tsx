@@ -4,6 +4,7 @@ import {
   formatarData,
   formatarParcela,
   formatarPreco,
+  FORMATO_LIVRO,
   INSCRICOES_ATE,
   LIVROS_NA_EDICAO,
   PARCELAS_MAX,
@@ -62,9 +63,10 @@ export function Interesse() {
           O começo é por nossa conta. Você só paga se gostar da primeira página.
           Se não gostar, ela fica com vocês.
         </p>
-        <p className="text-pequeno mt-3 max-w-[46ch]">
-          Depois de pagar, ainda tem 7 dias para desistir, com devolução
-          integral.
+        {/* A ficha do livro, como num colofão de verdade */}
+        <p className="text-pequeno mt-8 max-w-[46ch]">
+          Capa dura, {FORMATO_LIVRO}, numa das cinco cores. De 10 a 20
+          histórias, com fotos, QR codes e as mensagens da família.
         </p>
       </div>
 

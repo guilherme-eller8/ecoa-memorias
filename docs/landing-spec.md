@@ -103,18 +103,14 @@ Cartão de papel branco com uma pergunta em Newsreader de 26–30px, alinhada à
 Duas colunas no desktop: título e texto à esquerda, a capa à direita já na altura do título, limitada pela altura da tela. No mobile: título, frase, botão, fatos, capa.
 
 - H1 (22/11, aprovado): "O livro do seu pai, na voz dele." Quebra depois da vírgula (2 linhas em 390 e 1440). A pessoa e o pronome trocam juntos: do seu pai / dele, da sua mãe / dela, do seu avô / dele, da sua avó / dela, do seu tio / dele, da sua tia / dela (a cada 2,2 s, duas voltas, para em "do seu pai"; as opções ficam empilhadas na mesma célula, então nada reflui; leitor de tela ouve a lista inteira; sem JS fica "do seu pai, na voz dele."; com movimento reduzido, só o esmaecer). Antes: "As histórias da sua família num livro, com fotos e a voz de quem viveu."
-- Frase de apoio (22/11, aprovado): "As histórias, as fotos e a voz de quem conta, num livro de capa dura. Quem conta só responde por áudio no WhatsApp, do jeito que fala. Sem escrever, sem instalar nada. A Ecoa cuida do resto." (A troca da pessoa saiu daqui: foi para o título.)
+- Frase de apoio (24/11, aprovado): "Quem conta só responde por áudio no WhatsApp, sem instalar nada. As histórias, as fotos e a voz viram um livro de capa dura." (A troca da pessoa fica no título.)
 - Botão (22/11, aprovado): "Quero começar na ceia" (`CTA_TEXTO`) → wa.me em nova aba com "Oi! Vi o site da Ecoa e quero começar o livro na ceia de Natal."
-- Fatos (22/11), numa linha só em tamanho pequeno abaixo do botão (no celular, um por linha, sem o ponto): "Inscrições até 19 de dezembro · A primeira página é por nossa conta" (`INSCRICOES_ATE`). O preço e as vagas ficam só no colofão (seção 8).
+- Fatos (22/11), numa linha só em tamanho pequeno abaixo do botão (no celular, um por linha, sem o ponto): "A primeira página é por nossa conta · Inscrições até 19 de dezembro" (`INSCRICOES_ATE`; o grátis vem primeiro). O preço e as vagas ficam só no colofão (seção 8).
 - Visual: LiveCover grande, entreaberta, com o áudio de WhatsApp encostado. Fundo polen liso, com o grão de papel. Sem gradiente.
 
-## 2b. O valor (#valor)
-- Fundo papel. Título no tamanho display (22/11, aprovado): "Seus filhos vão ouvir o avô contar." Fala com quem compra (o filho de 30 a 60 anos), não com quem conta. Antes: "Para os netos dos seus netos."
-- Destaque: "Daqui a cinquenta anos, alguém vai abrir este livro e ouvir a voz de um bisavô que nunca conheceu."
-- Corpo: "As histórias que a família pede para repetir no almoço de domingo ficam no papel. E a voz de quem contou continua ali, para quem vier depois."
-- Com a foto `antiga-praia`, ela entra à direita como cópia impressa; sem ela, o texto desce em diagonal para a direita.
+> **Enxugamento de 24/11 (aprovado):** saíram a seção 2b "O valor" (o título foi para a seção 5) e a seção 3 "O que você recebe" (a capa anotada repetia o hero e as seções 5 e 6; a ficha do livro foi para o colofão). Ordem atual: hero → 2c origem → 4 como funciona → 5 a voz → 6 surpresa → 7 perguntas → 8 colofão → 9 FAQ → 10 fecho. No celular, de 13,2 para 10 telas; o preço aparece na 6ª.
 
-## 2c. Os livros dos avós (#origem) (22/11, aprovado)
+## 2c. Os livros dos avós (#origem) (22/11, aprovado; fundo papel desde 24/11)
 Prova de origem: não é depoimento de cliente (ainda não há), é por que a Ecoa existe, com fotos reais. Sem mencionar quem fez os livros: o ponto é que poucas famílias chegam a ter o seu.
 - Fundo polen. Composição espelhada em relação à 2b: fotos à esquerda (6/12), título e texto à direita (5/12). No celular, as fotos vêm logo depois do título.
 - H2: "Os livros dos meus avós."
@@ -126,36 +122,27 @@ Prova de origem: não é depoimento de cliente (ainda não há), é por que a Ec
 - Fotos reais, 3:4, `.photo`, lado a lado, a segunda 64px mais baixa: "O livro do meu avô Jair." (`livro-avo-jair`, o livro na mão) e "O livro da minha avó Nelma." (`livro-avo-nelma`, a capa). Sem o arquivo, o quadro some.
 - Única exceção à regra "fotos não recebem nomes": estas não são ilustrativas.
 
-## 3. O que você recebe (#livro)
-- H2: "Um livro para segurar. E vozes para ouvir sempre."
-- A capa ao centro, com quatro anotações em volta (duas de cada lado, com setas desenhadas à mão apontando para ela); no celular, a capa e a lista abaixo.
-  - "Capa dura com a foto de quem conta" · "Numa das cinco cores, com o título que a família escolher."
-  - "As histórias, sem perder o jeito de falar" · "Editadas com as fotos da família ao longo dos capítulos."
-  - "Um QR code em cada história" · "Aponte o celular e ouça a voz original."
-  - "No fim, as mensagens da família" · "Filhos, netos e amigos, em áudio ou por escrito, guardadas em segredo."
-- Linha pequena no pé: "Formato 21 × 21 cm. Os áudios originais ficam com a família, para sempre."
-
 ## 4. Como funciona (#como-funciona)
 - H2 (3/11): "Começa na ceia de Natal."
 - Abaixo do título, uma barra de 6px em tom suave com três marcas de texto: "Antes do Natal", "26 de dezembro", "O livro" (no celular, em tamanho pequeno).
 - Os quatro momentos em `<ol>` (a ordem vem da lista e das palavras; sem "PASSO N", sem números grandes).
 - Desktop: quatro colunas; em cada uma, título em Newsreader (tamanho h3 = destaque), parágrafo curto, depois um espaço que varia de coluna para coluna (80, 140, 100, 120px), depois a imagem 4:3. As imagens sobem e descem ao longo da fileira, para não virar fileira de cards.
-- Mobile: rolagem horizontal com scroll-snap, colunas de 78vw, o próximo momento aparecendo pela borda; a barra de 6px vira indicador de progresso.
+- Mobile (24/11): lista vertical só com o texto dos quatro momentos, sem rolagem lateral e sem as imagens; a barra de 6px fica parada, com as três marcas.
 
 | Título | Texto | Visual |
 |---|---|---|
-| "Antes do Natal, três perguntas." | "Você nos conta quem vai contar as histórias. Antes da ceia, você recebe três perguntas simples no WhatsApp, da nossa seleção ou suas." | QuestionCard "Como era a casa onde o senhor cresceu?" sobre a foto `antiga-casa` (sem a foto, só o cartão) |
-| "Na ceia, a primeira história." | "Alguém da mesa faz uma das perguntas. Quem conta responde e puxa os causos que quiser. Quem estiver ao lado grava no celular e manda para a gente, ou a própria pessoa responde por áudio no WhatsApp." | WhatsAppChat `individual` "Ecoa Memórias": separador "24 de dezembro", áudio meu de 4:07 às 23:41 e "gravei o vô contando como conheceu a vó" |
-| "No dia 26, a primeira página." | "Editada por uma pessoa, com foto e o QR code que toca a voz de quem contou. Chega no seu WhatsApp, em PDF, com a família ainda junta. É por nossa conta." | WhatsAppChat `individual` "Ecoa Memórias": separador "26 de dezembro", "Bom dia! A primeira página do livro está pronta. Aponte a câmera para o QR e ouçam juntos." e a resposta "ouvimos todos na mesa do café. pode seguir!" |
-| "Gostou? O livro continua." | "Aí vem uma pergunta por dia útil, por 4 semanas, no ritmo de quem conta. Cada história chega a um grupo só da família, e você revisa a prova antes de imprimir. O livro fica pronto cerca de 2 meses depois." | BookCover vinho "Caminhos que percorri", fechada |
+| "Antes do Natal, três perguntas." | "Você nos diz quem vai contar. Antes da ceia, chegam três perguntas no WhatsApp, nossas ou suas." | QuestionCard "Como era a casa onde o senhor cresceu?" sobre a foto `antiga-casa` (sem a foto, só o cartão) |
+| "Na ceia, a primeira história." | "Alguém da mesa pergunta, quem conta responde, e quem estiver ao lado grava e manda para a gente." | WhatsAppChat `individual` "Ecoa Memórias": separador "24 de dezembro", áudio meu de 4:07 às 23:41 e "gravei o vô contando como conheceu a vó" |
+| "No dia 26, a primeira página." | "Editada por uma pessoa, com o QR code que toca a voz. Chega em PDF no seu WhatsApp, por nossa conta." | WhatsAppChat `individual` "Ecoa Memórias": separador "26 de dezembro", "Bom dia! A primeira página do livro está pronta. Aponte a câmera para o QR e ouçam juntos." e a resposta "ouvimos todos na mesa do café. pode seguir!" |
+| "Gostou? O livro continua." | "Uma pergunta por dia útil, por 4 semanas. Cada história chega a um grupo só da família, e o livro fica pronto cerca de 2 meses depois." | BookCover vinho "Caminhos que percorri", fechada |
 
 - Linha abaixo (Newsreader 19px, tinta):
   "Você escolhe as perguntas e conta a novidade. Os envios, os lembretes e a edição ficam com a gente."
 
-## 5. A voz em cada página
+## 5. A voz em cada página (#livro, alvo do link "O livro" do cabeçalho)
 - Fundo papel (um degrau mais claro que o polen).
 - Layout: título e texto juntos à esquerda (5/12); composição à direita (7/12), começando na altura do título e limitada pela altura da tela, para o livro aberto aparecer inteiro junto com o título.
-- H2: "As histórias no papel. A voz, a um toque."
+- H2 (24/11): "Seus filhos vão ouvir o avô contar." (veio da antiga seção 2b; antes: "As histórias no papel. A voz, a um toque.")
 - Texto: "Cada capítulo traz um QR code. Basta apontar o celular para ouvir a história contada por quem viveu, com o riso, as pausas e o sotaque de sempre."
 - Composição:
   - OpenBookSpread com foto `antiga-casa` à esquerda.
@@ -174,7 +161,7 @@ Prova de origem: não é depoimento de cliente (ainda não há), é por que a Ec
 - Texto: "Duas partes fazem o livro. Uma delas, quem conta só conhece quando o livro chega: cada mensagem da família ganha uma página, com QR code para ouvir."
 - Layout espelhado em relação à seção 5 (vizinhas não repetem composição): o livro aberto à esquerda (7/12), título e texto à direita (5/12).
 - O livro aberto mostra as páginas "Mensagens da família". Em cada página: a foto de quem escreveu com quem é homenageado (`mensagem-neta`: avô e neta na oficina; `mensagem-filho`: pai e filho no macarrão), o bilhete escrito à mão (Caveat), assinado só com o papel ("sua neta", "seu filho"), e um QR pequeno com "ouça a mensagem".
-- Faixa larga (21:9; 4:5 no celular) com a família recebendo o livro: foto `surpresa-ceia` e, por cima, o loop mudo `video/surpresa.mp4` (3,9 s, só a cena da mesa). Legenda pequena: "Imagem ilustrativa." Com movimento reduzido ou sem JS, fica a foto.
+- (24/11) A faixa larga com a foto `surpresa-ceia` e o vídeo saiu: era ilustrativa ("Imagem ilustrativa." no momento mais emocional) e era o arquivo mais pesado da página. Volta quando houver foto real de uma família com o livro. A foto e o vídeo continuam em uso em /residenciais.
 
 ## 7. Perguntas que abrem histórias (#perguntas)
 - Campo floresta com textura de tecido; textos em polen.
@@ -194,7 +181,8 @@ Prova de origem: não é depoimento de cliente (ainda não há), é por que a Ec
 - (2/11) Sem linha de exemplares extras: quem pedir recebe o contato da gráfica e encomenda direto, sem cobrança da Ecoa.
 - Em destaque, a escassez (dita só aqui), uma frase por linha (3/11): "Só 10 vagas nesta edição." / "Quando acabarem, a edição fecha."
 - Logo abaixo, em tamanho pequeno (22/11, aprovado): "São poucas porque cada história é ouvida e editada por uma pessoa. Para começar na ceia, as inscrições vão até 19 de dezembro."
-- A garantia, no fim da folha (3/11): "O começo é por nossa conta. Você só paga se gostar da primeira página. Se não gostar, ela fica com vocês." Abaixo, em tamanho pequeno: "Depois de pagar, ainda tem 7 dias para desistir, com devolução integral."
+- A garantia, no fim da folha (3/11): "O começo é por nossa conta. Você só paga se gostar da primeira página. Se não gostar, ela fica com vocês."
+- No pé da folha, em tamanho pequeno (24/11), a ficha do livro: "Capa dura, 21 × 21 cm, numa das cinco cores. De 10 a 20 histórias, com fotos, QR codes e as mensagens da família." (`FORMATO_LIVRO`). Os 7 dias para desistir ficam no FAQ "Quando e como eu pago?".
 
 À direita, o formulário:
 - Título (2/11): "Vamos conversar"
@@ -208,7 +196,7 @@ Prova de origem: não é depoimento de cliente (ainda não há), é por que a Ec
 - Sucesso: o formulário é substituído por "Recebemos. Em breve falamos com você pelo WhatsApp." e um link secundário "Prefere falar agora? Abrir WhatsApp" (wa.me com a mensagem pré-preenchida abaixo).
 - Mensagem wa.me: "Olá! Quero começar o livro da Ecoa Memórias na ceia de Natal. Meu nome é [nome]."
 
-## 9. Perguntas frequentes
+## 9. Perguntas frequentes (9 desde 24/11: saíram tamanho, grupo, prazo e novo volume, que já estão em outras seções; mensagens foi para "trabalho", e áudios e QR viraram uma)
 - H2: "Perguntas frequentes"
 - Lista simples, duas colunas no desktop: a pergunta é um botão com uma seta pequena; a aberta sobe um degrau de tom (papel). Uma aberta por vez; a primeira aberta ao carregar. Sem linhas, sem cores de capa. (A coluna "Aba" abaixo é só a chave interna.)
 
@@ -221,16 +209,10 @@ Ordem: as objeções mais fortes primeiro (pagamento, desistência, tempo).
 | Tempo | Quanto tempo leva por dia? | Alguns minutos. Cada áudio costuma ter entre 2 e 5 minutos, e dá para responder quando quiser. |
 | WhatsApp | Quem conta as histórias precisa saber mexer no celular? | Se manda áudio no WhatsApp, já sabe tudo o que precisa. Se preferir, também é possível gravar por uma ligação. |
 | O presente | Como a pessoa fica sabendo do presente? | Quem dá a notícia é você, do seu jeito. Para a ceia, mandamos um cartão em PDF com o nome de quem vai contar, para você imprimir ou mostrar na mesa (`scripts/cartao-ceia.mjs`). Depois, enviamos uma mensagem de boas-vindas explicando como serão as próximas semanas, e começamos quando a pessoa disser que topa. |
-| Seu trabalho | Vai dar trabalho para mim? | Não. Você escolhe as perguntas (ou deixa com a gente) e envia algumas fotos. Do resto cuidamos nós, inclusive de reunir as mensagens da família. |
+| Seu trabalho | Vai dar trabalho para mim? | Não. Você escolhe as perguntas (ou deixa com a gente) e envia algumas fotos. Do resto cuidamos nós, inclusive das mensagens da família: você nos passa os contatos, e os convites e os lembretes ficam com a gente. |
 | Edição | Quem edita as histórias? Fica fiel ao que foi contado? | Uma pessoa ouve e edita cada história, sem perder o jeito de falar de quem conta. Nada é inventado: o livro só traz o que quem conta disse. A família lê tudo e pode pedir ajustes antes da impressão. |
-| Tamanho | Quantas histórias cabem no livro? | Em geral, de 10 a 20. Mas o livro se ajusta ao que a família quiser contar. |
-| O grupo | Quem conta as histórias participa do grupo da família? | Não. O grupo é só da família, para que o livro final continue sendo surpresa. |
-| Mensagens | Como são reunidas as mensagens da família? | Você nos passa os contatos e nós cuidamos dos convites e dos lembretes. |
-| Prazo | Quando o livro fica pronto? | A primeira página chega no dia 26 de dezembro. Se vocês decidirem seguir, o livro inteiro fica pronto cerca de 2 meses depois. |
 | Frete | Entregam em todo o Brasil? O frete está incluso? | Entregamos em todo o Brasil. O frete é à parte e calculado para o seu CEP. |
-| Os áudios | Com quem ficam os áudios? | Com a família, para sempre. Usamos apenas para produzir o livro e para tocar nos QR codes. |
-| QR codes | Os QR codes vão parar de funcionar? | Não. Guardamos os áudios do livro enquanto a família quiser, só para os QR codes tocarem. E os originais ficam com a família desde o primeiro dia. |
-| Novo volume | E depois do primeiro livro? | Quem quiser pode continuar contando histórias e criar um novo volume. É opcional, sem renovação automática. |
+| Os áudios | Com quem ficam os áudios? E os QR codes? | Os áudios originais são da família desde o primeiro dia. Usamos só para produzir o livro e guardamos enquanto a família quiser, para os QR codes continuarem tocando. |
 
 ## 10. Fecho
 - Seção curta em floresta. O único momento centralizado da página.

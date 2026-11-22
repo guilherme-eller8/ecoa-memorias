@@ -1,6 +1,4 @@
-"use client";
-
-import { useEffect, useRef, type ReactNode } from "react";
+import type { ReactNode } from "react";
 
 type TrilhaProps = {
   marcas: string[];
@@ -8,52 +6,15 @@ type TrilhaProps = {
 };
 
 /**
- * A barra de 6px "Antes do Natal → 26 de dezembro → O livro" e a fileira dos quatro momentos.
- * No celular a fileira rola na horizontal e a barra mostra quanto já se viu; do tablet para cima
- * os momentos ficam em grade, sem nada cortado pela borda.
- * Sem JS, a barra fica parada num quarto, e a fileira rola do mesmo jeito.
+ * A barra de 6px "Antes do Natal → 26 de dezembro → O livro" e os quatro momentos.
+ * No celular os momentos descem em lista, só com o texto; do tablet para cima ficam em grade.
+ * Nada rola de lado: quem lê pelo celular vê os quatro sem precisar deslizar.
  */
 export function Trilha({ marcas, children }: TrilhaProps) {
-  const fileira = useRef<HTMLDivElement>(null);
-  const preenchida = useRef<HTMLSpanElement>(null);
-
-  useEffect(() => {
-    const el = fileira.current;
-    const barra = preenchida.current;
-    if (!el || !barra) return;
-    let quadro = 0;
-    const medir = () => {
-      quadro = 0;
-      const visto = el.scrollWidth
-        ? (el.scrollLeft + el.clientWidth) / el.scrollWidth
-        : 1;
-      barra.style.transform = `scaleX(${Math.min(1, visto)})`;
-      // Só é parada de Tab quando há o que rolar pelo teclado
-      el.tabIndex = el.scrollWidth > el.clientWidth ? 0 : -1;
-    };
-    const pedir = () => {
-      if (!quadro) quadro = requestAnimationFrame(medir);
-    };
-    medir();
-    el.addEventListener("scroll", pedir, { passive: true });
-    addEventListener("resize", pedir);
-    return () => {
-      el.removeEventListener("scroll", pedir);
-      removeEventListener("resize", pedir);
-      cancelAnimationFrame(quadro);
-    };
-  }, []);
-
   return (
     <>
       <div className="col-span-12 mt-8 md:mt-10" aria-hidden>
-        <span className="rounded-ed relative block h-1.5 overflow-hidden bg-[color-mix(in_oklab,var(--tinta)_12%,var(--polen))]">
-          <span
-            ref={preenchida}
-            className="bg-floresta absolute inset-0 origin-left md:hidden"
-            style={{ transform: "scaleX(0.25)" }}
-          />
-        </span>
+        <span className="rounded-ed block h-1.5 bg-[color-mix(in_oklab,var(--tinta)_12%,var(--polen))]" />
         {/* No celular as marcas descem ao tamanho pequeno: as três cabem em 390px sem cortar */}
         <span className="text-pequeno md:text-corpo mt-3 flex justify-between gap-4">
           {marcas.map((m) => (
@@ -61,15 +22,7 @@ export function Trilha({ marcas, children }: TrilhaProps) {
           ))}
         </span>
       </div>
-      <div
-        ref={fileira}
-        role="region"
-        aria-label="Os quatro momentos"
-        tabIndex={0}
-        className="col-span-12 mt-10 snap-x snap-mandatory [scrollbar-width:none] overflow-x-auto pb-12 md:mt-14 md:overflow-visible md:pb-0 [&::-webkit-scrollbar]:hidden"
-      >
-        {children}
-      </div>
+      <div className="col-span-12 mt-8 md:mt-14">{children}</div>
     </>
   );
 }

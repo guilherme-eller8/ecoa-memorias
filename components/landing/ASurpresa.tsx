@@ -3,8 +3,7 @@ import { Foto } from "@/components/ui/Foto";
 import { OpenBookSpread } from "@/components/ui/OpenBookSpread";
 import { QrCode } from "@/components/ui/QrCode";
 import { Section } from "@/components/ui/Section";
-import { VideoLoop } from "@/components/ui/VideoLoop";
-import { IMAGES, VIDEOS } from "@/lib/config";
+import { IMAGES } from "@/lib/config";
 import { existeEmPublic } from "@/lib/imagens";
 
 const ordem = (n: number) => ({ "--ordem": n }) as CSSProperties;
@@ -88,8 +87,6 @@ const MIOLO = {
 };
 
 export function ASurpresa() {
-  const temFoto = existeEmPublic(IMAGES.surpresa);
-  const temVideo = temFoto && existeEmPublic(VIDEOS.surpresa);
   return (
     <Section
       title="No final, quem contou recebe uma surpresa."
@@ -117,36 +114,6 @@ export function ASurpresa() {
           <OpenBookSpread miolo={MIOLO} pagina={113} />
         </div>
       </div>
-
-      {temFoto ? (
-        <figure
-          className="col-span-12 m-0 mt-14 lg:mt-20"
-          data-entra="foto"
-          style={ordem(3)}
-        >
-          <div className="relative">
-            <Foto
-              src={IMAGES.surpresa}
-              tipo="cena"
-              proporcao="21 / 9"
-              objectPosition="50% 38%"
-              sizes="(min-width: 1280px) 1280px, 100vw"
-              alt="Almoço de família: o avô, sentado à mesa, sorri com o livro de capa verde aberto nas mãos, enquanto a filha e os netos riem ao redor"
-              className="max-md:aspect-[4/5]!"
-            />
-            {temVideo ? (
-              <VideoLoop
-                src={VIDEOS.surpresa}
-                poster={IMAGES.surpresa}
-                className="rounded-ed [filter:saturate(.86)_contrast(.96)_sepia(.06)]"
-              />
-            ) : null}
-          </div>
-          <figcaption className="text-pequeno text-tinta-2 mt-3">
-            Imagem ilustrativa.
-          </figcaption>
-        </figure>
-      ) : null}
     </Section>
   );
 }

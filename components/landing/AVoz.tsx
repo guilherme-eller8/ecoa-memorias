@@ -16,13 +16,14 @@ const PARAGRAFOS = [
 
 const ordem = (n: number) => ({ "--ordem": n }) as CSSProperties;
 
-// Uma página dupla do livro, com o celular tocando a voz do capítulo.
+// Uma página dupla do livro, com o celular tocando a voz do capítulo. O título fala com quem compra.
 export function AVoz() {
   const src = existeEmPublic(AMOSTRA) ? AMOSTRA : undefined;
 
   return (
     <Section
-      title="As histórias no papel. A voz, a um toque."
+      id="livro"
+      title="Seus filhos vão ouvir o avô contar."
       tone="papel"
       grid
       className="overflow-x-clip"

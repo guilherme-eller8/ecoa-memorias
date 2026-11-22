@@ -40,7 +40,7 @@ const DIA_PRIMEIRA_PAGINA = PRIMEIRA_PAGINA.split(" ")[0];
 const MOMENTOS: Momento[] = [
   {
     titulo: `Antes do Natal, ${PERGUNTAS} perguntas.`,
-    texto: `Você nos conta quem vai contar as histórias. Antes da ceia, você recebe ${PERGUNTAS} perguntas simples no WhatsApp, da nossa seleção ou suas.`,
+    texto: `Você nos diz quem vai contar. Antes da ceia, chegam ${PERGUNTAS} perguntas no WhatsApp, nossas ou suas.`,
     respiro: "lg:h-20",
     visual: temCasa ? (
       <div className="relative" style={{ aspectRatio: PROPORCAO }}>
@@ -70,7 +70,7 @@ const MOMENTOS: Momento[] = [
   {
     titulo: "Na ceia, a primeira história.",
     texto:
-      "Alguém da mesa faz uma das perguntas. Quem conta responde e puxa os causos que quiser. Quem estiver ao lado grava no celular e manda para a gente, ou a própria pessoa responde por áudio no WhatsApp.",
+      "Alguém da mesa pergunta, quem conta responde, e quem estiver ao lado grava e manda para a gente.",
     respiro: "lg:h-[140px]",
     visual: (
       <div>
@@ -95,7 +95,7 @@ const MOMENTOS: Momento[] = [
   {
     titulo: `No dia ${DIA_PRIMEIRA_PAGINA}, a primeira página.`,
     texto:
-      "Editada por uma pessoa, com foto e o QR code que toca a voz de quem contou. Chega no seu WhatsApp, em PDF, com a família ainda junta. É por nossa conta.",
+      "Editada por uma pessoa, com o QR code que toca a voz. Chega em PDF no seu WhatsApp, por nossa conta.",
     respiro: "lg:h-[100px]",
     visual: (
       <div>
@@ -124,7 +124,7 @@ const MOMENTOS: Momento[] = [
   },
   {
     titulo: "Gostou? O livro continua.",
-    texto: `Aí vem uma pergunta por dia útil, por ${SEMANAS_DE_PERGUNTAS} semanas, no ritmo de quem conta. Cada história chega a um grupo só da família, e você revisa a prova antes de imprimir. O livro fica pronto ${PRAZO_LIVRO} depois.`,
+    texto: `Uma pergunta por dia útil, por ${SEMANAS_DE_PERGUNTAS} semanas. Cada história chega a um grupo só da família, e o livro fica pronto ${PRAZO_LIVRO} depois.`,
     respiro: "lg:h-[120px]",
     visual: (
       <div className="pt-2 pl-[6%]">
@@ -146,18 +146,21 @@ export function ComoFunciona() {
   return (
     <Section id="como-funciona" title="Começa na ceia de Natal." grid>
       <Trilha marcas={["Antes do Natal", PRIMEIRA_PAGINA, "O livro"]}>
-        <ol className="flex w-max gap-5 md:grid md:w-auto md:grid-cols-2 md:gap-x-8 md:gap-y-16 lg:grid-cols-4 lg:gap-8">
+        <ol className="grid gap-8 md:grid-cols-2 md:gap-x-8 md:gap-y-16 lg:grid-cols-4 lg:gap-8">
           {MOMENTOS.map((m, i) => (
             <li
               key={m.titulo}
-              className="w-[78vw] max-w-[360px] shrink-0 snap-start md:w-auto md:max-w-none"
+
               data-entra
               style={ordem(1 + i)}
             >
               <h3 className="text-destaque max-w-[16ch]">{m.titulo}</h3>
               <p className="mt-3 max-w-[30ch]">{m.texto}</p>
-              <div className={`h-6 ${m.respiro}`} aria-hidden />
-              {m.visual}
+              {/* No celular, só o texto: os quatro momentos cabem numa tela, sem rolar de lado */}
+              <div className="hidden md:block">
+                <div className={`h-6 ${m.respiro}`} aria-hidden />
+                {m.visual}
+              </div>
             </li>
           ))}
         </ol>
