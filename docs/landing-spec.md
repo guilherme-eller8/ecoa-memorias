@@ -10,7 +10,7 @@ O visitante sai com três certezas:
 2. É leve para quem presenteia: a Ecoa cuida das perguntas, dos lembretes e da edição.
 3. O resultado é um objeto bonito, que a família inteira vai guardar.
 
-**Teste dos 5 segundos (celular, primeira tela):** é um livro de capa dura com a voz de quem conta; tudo acontece pelo WhatsApp; começa na ceia, com inscrições até 19 de dezembro; a primeira página é por nossa conta; o botão está à vista. (O preço fica no colofão desde 3/11.)
+**Teste dos 5 segundos (celular, primeira tela):** é um livro de capa dura com a voz de quem conta; tudo acontece pelo WhatsApp; começa na ceia de Natal; a primeira página é por nossa conta; o botão está à vista. (O preço fica no colofão desde 3/11.)
 
 ---
 
@@ -104,8 +104,8 @@ Duas colunas no desktop: título e texto à esquerda, a capa à direita já na a
 
 - H1 (22/11, aprovado): "O livro do seu pai, na voz dele." Quebra depois da vírgula (2 linhas em 390 e 1440). A pessoa e o pronome trocam juntos: do seu pai / dele, da sua mãe / dela, do seu avô / dele, da sua avó / dela, do seu tio / dele, da sua tia / dela (a cada 2,2 s, duas voltas, para em "do seu pai"; as opções ficam empilhadas na mesma célula, então nada reflui; leitor de tela ouve a lista inteira; sem JS fica "do seu pai, na voz dele."; com movimento reduzido, só o esmaecer). Antes: "As histórias da sua família num livro, com fotos e a voz de quem viveu."
 - Frase de apoio (24/11, aprovado): "Quem conta só responde por áudio no WhatsApp, sem instalar nada. As histórias, as fotos e a voz viram um livro de capa dura." (A troca da pessoa fica no título.)
-- Botão (22/11, aprovado): "Quero começar na ceia" (`CTA_TEXTO`) → wa.me em nova aba com "Oi! Vi o site da Ecoa e quero começar o livro na ceia de Natal."
-- Fatos (22/11), numa linha só em tamanho pequeno abaixo do botão (no celular, um por linha, sem o ponto): "A primeira página é por nossa conta · Inscrições até 19 de dezembro" (`INSCRICOES_ATE`; o grátis vem primeiro). O preço e as vagas ficam só no colofão (seção 8).
+- Botão (24/11): "Quero começar" (`CTA_TEXTO`) → wa.me em nova aba com "Oi! Vi o site da Ecoa e quero começar o livro."
+- Fatos (24/11), numa linha só em tamanho pequeno abaixo do botão (no celular, um por linha, sem o ponto): "Começa na ceia de Natal · A primeira página é por nossa conta". Sem prazo de inscrição. O preço fica só no colofão (seção 8).
 - Visual: LiveCover grande, entreaberta, com o áudio de WhatsApp encostado. Fundo polen liso, com o grão de papel. Sem gradiente.
 
 > **Enxugamento de 24/11 (aprovado):** saíram a seção 2b "O valor" (o título foi para a seção 5) e a seção 3 "O que você recebe" (a capa anotada repetia o hero e as seções 5 e 6; a ficha do livro foi para o colofão). Ordem atual: hero → 2c origem → 4 como funciona → 5 a voz → 6 surpresa → 7 perguntas → 8 colofão → 9 FAQ → 10 fecho. No celular, de 13,2 para 10 telas; o preço aparece na 6ª.
@@ -122,22 +122,17 @@ Prova de origem: não é depoimento de cliente (ainda não há), é por que a Ec
 - Fotos reais, 3:4, `.photo`, lado a lado, a segunda 64px mais baixa: "O livro do meu avô Jair." (`livro-avo-jair`, o livro na mão) e "O livro da minha avó Nelma." (`livro-avo-nelma`, a capa). Sem o arquivo, o quadro some.
 - Única exceção à regra "fotos não recebem nomes": estas não são ilustrativas.
 
-## 4. Como funciona (#como-funciona)
-- H2 (3/11): "Começa na ceia de Natal."
-- Abaixo do título, uma barra de 6px em tom suave com três marcas de texto: "Antes do Natal", "26 de dezembro", "O livro" (no celular, em tamanho pequeno).
-- Os quatro momentos em `<ol>` (a ordem vem da lista e das palavras; sem "PASSO N", sem números grandes).
-- Desktop: quatro colunas; em cada uma, título em Newsreader (tamanho h3 = destaque), parágrafo curto, depois um espaço que varia de coluna para coluna (80, 140, 100, 120px), depois a imagem 4:3. As imagens sobem e descem ao longo da fileira, para não virar fileira de cards.
-- Mobile (24/11): lista vertical só com o texto dos quatro momentos, sem rolagem lateral e sem as imagens; a barra de 6px fica parada, com as três marcas.
+## 4. Como funciona (#como-funciona) (refeita em 24/11)
+- H2: "Começa na ceia de Natal."
+- Abaixo do título, a barra de 6px com três marcas, cada uma em cima do seu passo (do tablet para cima): "Na ceia", "26 de dezembro", "O livro".
+- Três passos em `<ol>`, sem "PASSO N". O caso gravado na mesa vira a primeira página, e a primeira página vira o livro. As três perguntas são ajuda opcional, não um passo.
+- Desktop: três colunas; título (destaque), texto, um espaço que varia (40, 72, 120px), o objeto. Mobile: lista vertical; o terceiro objeto (a capa) some, porque o hero já mostra uma.
 
 | Título | Texto | Visual |
 |---|---|---|
-| "Antes do Natal, três perguntas." | "Você nos diz quem vai contar. Antes da ceia, chegam três perguntas no WhatsApp, nossas ou suas." | QuestionCard "Como era a casa onde o senhor cresceu?" sobre a foto `antiga-casa` (sem a foto, só o cartão) |
-| "Na ceia, a primeira história." | "Alguém da mesa pergunta, quem conta responde, e quem estiver ao lado grava e manda para a gente." | WhatsAppChat `individual` "Ecoa Memórias": separador "24 de dezembro", áudio meu de 4:07 às 23:41 e "gravei o vô contando como conheceu a vó" |
-| "No dia 26, a primeira página." | "Editada por uma pessoa, com o QR code que toca a voz. Chega em PDF no seu WhatsApp, por nossa conta." | WhatsAppChat `individual` "Ecoa Memórias": separador "26 de dezembro", "Bom dia! A primeira página do livro está pronta. Aponte a câmera para o QR e ouçam juntos." e a resposta "ouvimos todos na mesa do café. pode seguir!" |
-| "Gostou? O livro continua." | "Uma pergunta por dia útil, por 4 semanas. Cada história chega a um grupo só da família, e o livro fica pronto cerca de 2 meses depois." | BookCover vinho "Caminhos que percorri", fechada |
-
-- Linha abaixo (Newsreader 19px, tinta):
-  "Você escolhe as perguntas e conta a novidade. Os envios, os lembretes e a edição ficam com a gente."
+| "Na ceia, grave um caso." | "Peça para quem conta lembrar uma história e grave no celular. Se precisar, mandamos três perguntas para puxar a conversa. Depois, mande o áudio no nosso WhatsApp." | WhatsAppChat `individual` "Ecoa Memórias": separador "24 de dezembro", áudio meu de 4:07 às 23:41 e "gravei o vô contando como conheceu a vó" |
+| "No dia 26, vira a primeira página." | "O áudio volta editado por uma pessoa, com foto e o QR code que toca a voz. Chega em PDF no seu WhatsApp, por nossa conta." | `PaginaSolta`: folha papel com a foto `antiga-casamento`, o QR com "ouça a voz", "Como conheci a sua avó", "1961" e "Foi num baile em Divinópolis. Ela estava de vestido azul e eu não sabia dançar. Pedi para ela me ensinar." |
+| "Gostou? O livro continua." | "Uma pergunta por dia útil, por 4 semanas. Cada história chega a um grupo só da família, e o livro de capa dura fica pronto cerca de 2 meses depois." | BookCover vinho "Caminhos que percorri", fechada (só do tablet para cima) |
 
 ## 5. A voz em cada página (#livro, alvo do link "O livro" do cabeçalho)
 - Fundo papel (um degrau mais claro que o polen).
@@ -179,8 +174,7 @@ Prova de origem: não é depoimento de cliente (ainda não há), é por que a Ec
 - "12x de R$ 38,92" no tamanho display (parcela de `PRECO_LIVRO` / `PARCELAS_MAX`); abaixo, "sem juros no cartão, ou R$ 467 no Pix. Frete à parte."
 - Logo abaixo, em tamanho pequeno (22/11): "Entre três irmãos, fica em cerca de R$ 156 para cada um." (`PRECO_LIVRO` / 3, arredondado)
 - (2/11) Sem linha de exemplares extras: quem pedir recebe o contato da gráfica e encomenda direto, sem cobrança da Ecoa.
-- Em destaque, a escassez (dita só aqui), uma frase por linha (3/11): "Só 10 vagas nesta edição." / "Quando acabarem, a edição fecha."
-- Logo abaixo, em tamanho pequeno (22/11, aprovado): "São poucas porque cada história é ouvida e editada por uma pessoa. Para começar na ceia, as inscrições vão até 19 de dezembro."
+- (24/11) Sem escassez e sem prazo: "Só 10 vagas nesta edição…" e "São poucas porque…" saíram a pedido do fundador.
 - A garantia, no fim da folha (3/11): "O começo é por nossa conta. Você só paga se gostar da primeira página. Se não gostar, ela fica com vocês."
 - No pé da folha, em tamanho pequeno (24/11), a ficha do livro: "Capa dura, 21 × 21 cm, numa das cinco cores. De 10 a 20 histórias, com fotos, QR codes e as mensagens da família." (`FORMATO_LIVRO`). Os 7 dias para desistir ficam no FAQ "Quando e como eu pago?".
 
@@ -191,10 +185,10 @@ Prova de origem: não é depoimento de cliente (ainda não há), é por que a Ec
   - "Seu WhatsApp" (máscara brasileira)
   - Caixa de aceite obrigatória (2/11): "Li e aceito os Termos de Uso e a Política de Privacidade." (links para /termos e /privacidade em nova aba). Erro: "Para continuar, aceite os Termos e a Política de Privacidade." O lead grava a versão dos Termos (`TERMOS_VERSAO`) e a hora do aceite.
   - Honeypot invisível contra spam.
-- Botão (22/11): "Quero começar na ceia" (`CTA_TEXTO`)
+- Botão (24/11): "Quero começar" (`CTA_TEXTO`)
 - Microcopy (2/11): "Nada é cobrado agora. Falamos com você só pelo WhatsApp, e você só paga se gostar da primeira página."
 - Sucesso: o formulário é substituído por "Recebemos. Em breve falamos com você pelo WhatsApp." e um link secundário "Prefere falar agora? Abrir WhatsApp" (wa.me com a mensagem pré-preenchida abaixo).
-- Mensagem wa.me: "Olá! Quero começar o livro da Ecoa Memórias na ceia de Natal. Meu nome é [nome]."
+- Mensagem wa.me: "Olá! Quero começar o livro da Ecoa Memórias. Meu nome é [nome]."
 
 ## 9. Perguntas frequentes (9 desde 24/11: saíram tamanho, grupo, prazo e novo volume, que já estão em outras seções; mensagens foi para "trabalho", e áudios e QR viraram uma)
 - H2: "Perguntas frequentes"
@@ -218,7 +212,7 @@ Ordem: as objeções mais fortes primeiro (pagamento, desistência, tempo).
 - Seção curta em floresta. O único momento centralizado da página.
 - H2: "Algumas histórias só uma pessoa pode contar. Que elas continuem ecoando." (único uso do trocadilho)
   - Se passar de 2 linhas em 390px, reduzir a medida antes da fonte; se ainda assim quebrar, perguntar.
-- Botão polen com texto floresta: "Quero começar na ceia" → wa.me em nova aba com "Oi! Quero começar o livro da Ecoa na ceia de Natal. Pode me contar mais?".
+- Botão polen com texto floresta: "Quero começar" → wa.me em nova aba com "Oi! Quero começar o livro da Ecoa. Pode me contar mais?".
 - Abaixo, as 5 capas como lombadas, em pé numa estante, com o título na lombada (nunca nome de pessoa).
 - Legenda pequena abaixo da estante: "Cinco cores de tecido. A próxima pode ser a da sua família."
 

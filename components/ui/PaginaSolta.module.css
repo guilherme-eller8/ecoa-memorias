@@ -1,0 +1,77 @@
+/*
+ * PaginaSolta: a primeira página do livro, como chega no PDF. Uma folha papel sobre o fundo pólen
+ * (degrau de tom, sem sombra), com a foto, o título do capítulo, um trecho e o QR que toca a voz.
+ * Medidas em cqi da própria folha, para o texto acompanhar a escala.
+ */
+
+/* A moldura é a referência das medidas em cqi; a folha, dentro dela, usa essas medidas */
+.moldura {
+  container-type: inline-size;
+}
+
+.folha {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  background-color: var(--papel);
+  border-radius: var(--raio);
+  padding: 8cqi 8cqi 10cqi;
+  display: flex;
+  flex-direction: column;
+}
+
+.cabeca {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 4cqi;
+}
+
+.foto {
+  width: 46cqi;
+}
+
+.qr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5cqi;
+  width: 24cqi;
+  font-size: max(13px, 4.2cqi);
+  line-height: 1.1;
+  text-align: center;
+}
+
+.qr svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.titulo {
+  margin-top: 7cqi;
+  font-size: max(19px, 8.2cqi);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.ano {
+  margin-top: 1.5cqi;
+  font-family: var(--font-italico);
+  font-style: italic;
+  font-size: max(13px, 5cqi);
+}
+
+.texto {
+  margin-top: 3.5cqi;
+  font-size: max(13px, 5cqi);
+  line-height: 1.42;
+}
+
+.folio {
+  position: absolute;
+  right: 8cqi;
+  bottom: 4cqi;
+  font-size: max(13px, 4cqi);
+  font-variant-numeric: oldstyle-nums;
+}

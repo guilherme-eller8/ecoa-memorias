@@ -1,7 +1,6 @@
 import type { CSSProperties, ReactNode } from "react";
 import { BookCover } from "@/components/ui/BookCover";
-import { Foto } from "@/components/ui/Foto";
-import { QuestionCard } from "@/components/ui/QuestionCard";
+import { PaginaSolta } from "@/components/ui/PaginaSolta";
 import { Section } from "@/components/ui/Section";
 import { WhatsAppChat } from "@/components/ui/WhatsAppChat";
 import {
@@ -16,9 +15,6 @@ import {
 import { existeEmPublic } from "@/lib/imagens";
 import { Trilha } from "./Trilha";
 
-const SIZES = "(min-width: 1024px) 300px, 78vw";
-const PROPORCAO = "4 / 3";
-
 type Momento = {
   titulo: string;
   texto: string;
@@ -27,8 +23,8 @@ type Momento = {
   visual: ReactNode;
 };
 
-// Sem o arquivo, o momento fica só com o objeto desenhado: nunca um quadro vazio
-const temCasa = existeEmPublic(IMAGES.antigaCasa);
+// Sem o arquivo, o objeto fica sem a foto: nunca um quadro vazio
+const temFotoPagina = existeEmPublic(IMAGES.antigaCasamento);
 const temFotoLivro = existeEmPublic(IMAGES.antigaFazenda);
 
 const PRIMEIRA_PAGINA = formatarData(DATA_PRIMEIRA_PAGINA);
@@ -36,98 +32,61 @@ const PERGUNTAS = porExtenso(PERGUNTAS_DE_NATAL);
 // "26 de dezembro" → "26": o título fala do dia, a trilha diz o mês
 const DIA_PRIMEIRA_PAGINA = PRIMEIRA_PAGINA.split(" ")[0];
 
-// O começo é na ceia: as perguntas antes do Natal, a gravação na mesa, a primeira página no dia 26
+// Três passos, um embaixo de cada marca da trilha: o caso gravado na mesa vira a primeira página,
+// e a primeira página vira o livro. As perguntas são ajuda opcional, não um passo.
 const MOMENTOS: Momento[] = [
   {
-    titulo: `Antes do Natal, ${PERGUNTAS} perguntas.`,
-    texto: `Você nos diz quem vai contar. Antes da ceia, chegam ${PERGUNTAS} perguntas no WhatsApp, nossas ou suas.`,
-    respiro: "lg:h-20",
-    visual: temCasa ? (
-      <div className="relative" style={{ aspectRatio: PROPORCAO }}>
-        <Foto
-          src={IMAGES.antigaCasa}
-          tipo="antiga"
-          proporcao={PROPORCAO}
-          objectPosition="50% 62%"
-          sizes={SIZES}
-          alt="Foto antiga em preto e branco de uma família numerosa reunida no quintal, ao lado de uma casa pequena e de uma árvore grande"
-          className="h-full w-full"
-        />
-        <QuestionCard
-          pergunta="Como era a casa onde o senhor cresceu?"
-          rotate={-3}
-          className="absolute right-[-3%] bottom-[-14%] w-[94%]"
-        />
-      </div>
-    ) : (
-      <QuestionCard
-        pergunta="Como era a casa onde o senhor cresceu?"
-        rotate={-3}
-        className="w-[94%]"
+    titulo: "Na ceia, grave um caso.",
+    texto: `Peça para quem conta lembrar uma história e grave no celular. Se precisar, mandamos ${PERGUNTAS} perguntas para puxar a conversa. Depois, mande o áudio no nosso WhatsApp.`,
+    respiro: "lg:h-10",
+    visual: (
+      <WhatsAppChat
+        variant="individual"
+        titulo="Ecoa Memórias"
+        subtitulo="online"
+        mensagens={[
+          { tipo: "dia", dia: "24 de dezembro" },
+          { tipo: "audio", minha: true, duracao: "4:07", hora: "23:41" },
+          {
+            tipo: "texto",
+            minha: true,
+            texto: "gravei o vô contando como conheceu a vó",
+            hora: "23:42",
+          },
+        ]}
       />
     ),
   },
   {
-    titulo: "Na ceia, a primeira história.",
+    titulo: `No dia ${DIA_PRIMEIRA_PAGINA}, vira a primeira página.`,
     texto:
-      "Alguém da mesa pergunta, quem conta responde, e quem estiver ao lado grava e manda para a gente.",
-    respiro: "lg:h-[140px]",
+      "O áudio volta editado por uma pessoa, com foto e o QR code que toca a voz. Chega em PDF no seu WhatsApp, por nossa conta.",
+    respiro: "lg:h-[72px]",
     visual: (
-      <div>
-        <WhatsAppChat
-          variant="individual"
-          titulo="Ecoa Memórias"
-          subtitulo="online"
-          mensagens={[
-            { tipo: "dia", dia: "24 de dezembro" },
-            { tipo: "audio", minha: true, duracao: "4:07", hora: "23:41" },
-            {
-              tipo: "texto",
-              minha: true,
-              texto: "gravei o vô contando como conheceu a vó",
-              hora: "23:42",
-            },
-          ]}
-        />
-      </div>
-    ),
-  },
-  {
-    titulo: `No dia ${DIA_PRIMEIRA_PAGINA}, a primeira página.`,
-    texto:
-      "Editada por uma pessoa, com o QR code que toca a voz. Chega em PDF no seu WhatsApp, por nossa conta.",
-    respiro: "lg:h-[100px]",
-    visual: (
-      <div>
-        <WhatsAppChat
-          variant="individual"
-          titulo="Ecoa Memórias"
-          subtitulo="online"
-          mensagens={[
-            { tipo: "dia", dia: PRIMEIRA_PAGINA },
-            {
-              tipo: "texto",
-              texto:
-                "Bom dia! A primeira página do livro está pronta. Aponte a câmera para o QR e ouçam juntos.",
-              hora: "09:30",
-            },
-            {
-              tipo: "texto",
-              minha: true,
-              texto: "ouvimos todos na mesa do café. pode seguir!",
-              hora: "10:12",
-            },
-          ]}
-        />
-      </div>
+      <PaginaSolta
+        foto={
+          temFotoPagina
+            ? {
+                src: IMAGES.antigaCasamento,
+                alt: "Foto antiga de casamento, em preto e branco, de um casal jovem na porta de uma igreja",
+              }
+            : undefined
+        }
+        titulo="Como conheci a sua avó"
+        ano="1961"
+        texto="Foi num baile em Divinópolis. Ela estava de vestido azul e eu não sabia dançar. Pedi para ela me ensinar."
+        pagina={1}
+        className="mx-auto w-[86%] max-w-[340px] rotate-[1.5deg] md:mx-0"
+      />
     ),
   },
   {
     titulo: "Gostou? O livro continua.",
-    texto: `Uma pergunta por dia útil, por ${SEMANAS_DE_PERGUNTAS} semanas. Cada história chega a um grupo só da família, e o livro fica pronto ${PRAZO_LIVRO} depois.`,
+    texto: `Uma pergunta por dia útil, por ${SEMANAS_DE_PERGUNTAS} semanas. Cada história chega a um grupo só da família, e o livro de capa dura fica pronto ${PRAZO_LIVRO} depois.`,
     respiro: "lg:h-[120px]",
     visual: (
-      <div className="pt-2 pl-[6%]">
+      // No celular a capa sai: o topo da página já mostra uma
+      <div className="hidden pt-2 pl-[6%] md:block">
         <BookCover
           color="vinho"
           title="Caminhos que percorri"
@@ -145,31 +104,18 @@ const ordem = (n: number) => ({ "--ordem": n }) as CSSProperties;
 export function ComoFunciona() {
   return (
     <Section id="como-funciona" title="Começa na ceia de Natal." grid>
-      <Trilha marcas={["Antes do Natal", PRIMEIRA_PAGINA, "O livro"]}>
-        <ol className="grid gap-8 md:grid-cols-2 md:gap-x-8 md:gap-y-16 lg:grid-cols-4 lg:gap-8">
+      <Trilha marcas={["Na ceia", PRIMEIRA_PAGINA, "O livro"]}>
+        <ol className="grid gap-14 md:grid-cols-3 md:gap-8 lg:gap-12">
           {MOMENTOS.map((m, i) => (
-            <li
-              key={m.titulo}
-
-              data-entra
-              style={ordem(1 + i)}
-            >
-              <h3 className="text-destaque max-w-[16ch]">{m.titulo}</h3>
-              <p className="mt-3 max-w-[30ch]">{m.texto}</p>
-              {/* No celular, só o texto: os quatro momentos cabem numa tela, sem rolar de lado */}
-              <div className="hidden md:block">
-                <div className={`h-6 ${m.respiro}`} aria-hidden />
-                {m.visual}
-              </div>
+            <li key={m.titulo} data-entra style={ordem(1 + i)}>
+              <h3 className="text-destaque max-w-[18ch]">{m.titulo}</h3>
+              <p className="mt-3 max-w-[34ch]">{m.texto}</p>
+              <div className={`h-8 ${m.respiro}`} aria-hidden />
+              <div className="max-w-[360px]">{m.visual}</div>
             </li>
           ))}
         </ol>
       </Trilha>
-
-      <p className="col-span-12 mt-6 max-w-[62ch] md:mt-16 lg:mt-24" data-entra>
-        Você escolhe as perguntas e conta a novidade. Os envios, os lembretes e
-        a edição ficam com a gente.
-      </p>
     </Section>
   );
 }

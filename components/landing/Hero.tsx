@@ -2,7 +2,7 @@ import { BotaoInteresse } from "@/components/ui/BotaoInteresse";
 import { Container } from "@/components/ui/Container";
 import { LiveCover } from "@/components/ui/LiveCover";
 import { BalaoAudio } from "@/components/ui/WhatsAppChat";
-import { formatarData, IMAGES, INSCRICOES_ATE } from "@/lib/config";
+import { IMAGES } from "@/lib/config";
 import { existeEmPublic } from "@/lib/imagens";
 import { TituloHero } from "./TituloHero";
 
@@ -10,11 +10,10 @@ import { TituloHero } from "./TituloHero";
 const FOTO_CAPA = IMAGES.antigaCasamento;
 
 export function Hero() {
-  // O preço e as vagas ficam para o colofão, perto do fim: aqui o prazo e o que é grátis.
-  // "Começa na ceia" já está no botão.
+  // O preço fica para o colofão, perto do fim: aqui quando começa e o que é grátis
   const fatos = [
+    "Começa na ceia de Natal",
     "A primeira página é por nossa conta",
-    `Inscrições até ${formatarData(INSCRICOES_ATE)}`,
   ];
 
   return (

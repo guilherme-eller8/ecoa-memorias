@@ -21,7 +21,7 @@ Edição de Natal 2026:
 
 ## Fase atual: captação de interesse
 - NÃO existe checkout.
-- O CTA "Quero começar na ceia" (`CTA_TEXTO`) grava um lead; o fechamento é manual, por WhatsApp e Pix.
+- O CTA "Quero começar" (`CTA_TEXTO`) grava um lead; o fechamento é manual, por WhatsApp e Pix.
 - Não construa pagamento, cadastro pós-compra, login de cliente nem área do cliente sem pedido explícito.
 
 ## Stack
@@ -53,8 +53,7 @@ EDICAO = "natal-2026"
 LIVROS_NA_EDICAO = 10
 PERGUNTAS_DE_NATAL = 3            // exibir por extenso: "três perguntas"
 DATA_PRIMEIRA_PAGINA = "2026-12-26" // exibir como "26 de dezembro"
-INSCRICOES_ATE = "2026-12-19"      // exibir como "19 de dezembro"
-CTA_TEXTO = "Quero começar na ceia" // texto de todo botão de interesse
+CTA_TEXTO = "Quero começar"        // texto de todo botão de interesse
 PRAZO_LIVRO = "cerca de 2 meses"   // do "gostei" ao livro pronto
 PRECO_LIVRO = 467                  // exibir como "R$ 467"
 DEVOLUCAO_SEM_IMPRESSAO = 149      // quem conta parou e a família preferiu o PDF
@@ -145,7 +144,7 @@ Leia a tabela "House rules" em `.claude/skills/design-taste-frontend/SKILL.md`. 
 
 ### Obrigatório
 - Tipografia grande como protagonista, conteúdo completo em cada seção.
-- Escassez dita uma única vez, com serenidade, no colofão (seção 8): "Só 10 vagas nesta edição. Quando acabarem, a edição fecha."
+- Sem escassez nem prazo na página (decisão do fundador, 24/11): as vagas e a data-limite saíram do colofão e do hero. As 10 vagas continuam só nos Termos.
 - Parecer o site de uma pequena editora cuidadosa, não uma página de vendas.
 
 ## Copy
