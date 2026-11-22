@@ -2,16 +2,20 @@ import { BotaoInteresse } from "@/components/ui/BotaoInteresse";
 import { Container } from "@/components/ui/Container";
 import { LiveCover } from "@/components/ui/LiveCover";
 import { BalaoAudio } from "@/components/ui/WhatsAppChat";
-import { IMAGES } from "@/lib/config";
+import { formatarData, IMAGES, INSCRICOES_ATE } from "@/lib/config";
 import { existeEmPublic } from "@/lib/imagens";
-import { QuemConta } from "./QuemConta";
+import { TituloHero } from "./TituloHero";
 
 // Foto ilustrativa da capa: sem nome, como toda foto da página. Sem o arquivo, a capa fica só com o título.
 const FOTO_CAPA = IMAGES.antigaCasamento;
 
 export function Hero() {
-  // O preço e as vagas ficam para o colofão, perto do fim: aqui só quando começa e o que é grátis
-  const fatos = ["Começa neste Natal", "A primeira página é por nossa conta"];
+  // O preço e as vagas ficam para o colofão, perto do fim: aqui o prazo e o que é grátis.
+  // "Começa na ceia" já está no botão.
+  const fatos = [
+    `Inscrições até ${formatarData(INSCRICOES_ATE)}`,
+    "A primeira página é por nossa conta",
+  ];
 
   return (
     <section id="topo" aria-labelledby="hero-titulo">
@@ -19,33 +23,30 @@ export function Hero() {
         grid
         className="gap-y-6 pt-8 pb-[clamp(48px,5vw,72px)] md:pt-12 lg:gap-y-0 lg:pt-14"
       >
-        <h1
+        <TituloHero
           id="hero-titulo"
           className="text-display col-span-12 lg:col-span-7 lg:col-start-1 lg:row-start-1"
-        >
-          As histórias da sua família num livro, com fotos e a voz de quem
-          viveu.
-        </h1>
+        />
 
         <div className="col-span-12 lg:col-span-6 lg:col-start-1 lg:row-start-2 lg:pt-10">
-          {/* "conta." fecha a linha: a troca da pessoa não reflui o resto da frase */}
+          {/* A pessoa troca no título; aqui, "quem conta" serve para todas */}
           <p className="max-w-[46ch]">
-            <QuemConta /> conta.
-            <br />
-            Só responde por áudio no WhatsApp, do jeito que fala. Sem escrever,
-            sem instalar nada. A Ecoa cuida do resto.
+            As histórias, as fotos e a voz de quem conta, num livro de capa
+            dura. Quem conta só responde por áudio no WhatsApp, do jeito que
+            fala. Sem escrever, sem instalar nada. A Ecoa cuida do resto.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-x-7 gap-y-4">
             <BotaoInteresse posicao="hero" />
           </div>
 
-          <ul className="text-pequeno mt-7 flex flex-wrap gap-x-2 gap-y-1">
+          {/* No celular, um fato por linha: o ponto não fica sozinho no fim da linha */}
+          <ul className="text-pequeno mt-7 flex flex-col gap-y-1 sm:flex-row sm:flex-wrap sm:gap-x-2">
             {fatos.map((f, i) => (
               <li key={f} className="whitespace-nowrap">
                 {f}
                 {i < fatos.length - 1 && (
-                  <span aria-hidden className="pl-2">
+                  <span aria-hidden className="hidden pl-2 sm:inline">
                     ·
                   </span>
                 )}

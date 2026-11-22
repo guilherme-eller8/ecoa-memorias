@@ -1,27 +1,24 @@
-/* Só a palavra ativa ocupa espaço: "conta." encosta nela. As outras ficam por cima, invisíveis. */
+/* As opções ficam empilhadas na mesma célula: a pilha tem a largura da maior e nada reflui na troca.
+   Só a ativa aparece. */
 .pilha {
-  position: relative;
-  display: inline-block;
+  display: inline-grid;
   white-space: nowrap;
 }
 
 .palavra {
-  position: absolute;
-  top: 0;
-  left: 0;
+  grid-area: 1 / 1;
   opacity: 0;
   transition: opacity 420ms var(--ease-out);
 }
 
 .palavra[data-ativa] {
-  position: static;
   opacity: 1;
 }
 
 /* Com movimento permitido, a que sai sobe e a que entra vem de baixo */
 @media (prefers-reduced-motion: no-preference) {
   .palavra {
-    transform: translateY(0.4em);
+    transform: translateY(0.25em);
     transition:
       opacity 420ms var(--ease-out),
       transform 520ms var(--ease-out);
@@ -32,6 +29,6 @@
   }
 
   .palavra[data-saiu] {
-    transform: translateY(-0.4em);
+    transform: translateY(-0.25em);
   }
 }

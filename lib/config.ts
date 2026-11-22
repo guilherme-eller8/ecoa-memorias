@@ -5,6 +5,10 @@ export const LIVROS_NA_EDICAO = 10;
 // O começo acontece na ceia: perguntas antes do Natal e a primeira página, grátis, no dia 26
 export const PERGUNTAS_DE_NATAL = 3; // exibir por extenso: "três perguntas"
 export const DATA_PRIMEIRA_PAGINA = "2026-12-26"; // exibir como "26 de dezembro"
+// Último dia para entrar e ainda receber as perguntas antes da ceia. Passou a data, atualize ou tire da página.
+export const INSCRICOES_ATE = "2026-12-19"; // exibir como "19 de dezembro"
+// O texto de todo botão de interesse (hero, formulário, fecho): diz o próximo passo
+export const CTA_TEXTO = "Quero começar na ceia";
 // Do "gostei" da primeira página ao livro pronto (perguntas, edição, prova, gráfica e frete)
 export const PRAZO_LIVRO = "cerca de 2 meses";
 export const PRECO_LIVRO = 467; // exibir como "R$ 467"

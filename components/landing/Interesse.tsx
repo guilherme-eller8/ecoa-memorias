@@ -1,8 +1,10 @@
 import type { CSSProperties } from "react";
 import { Section } from "@/components/ui/Section";
 import {
+  formatarData,
   formatarParcela,
   formatarPreco,
+  INSCRICOES_ATE,
   LIVROS_NA_EDICAO,
   PARCELAS_MAX,
 } from "@/lib/config";
@@ -36,6 +38,15 @@ export function Interesse() {
             Só {LIVROS_NA_EDICAO} vagas nesta edição.
           </span>
           <span className="block">Quando acabarem, a edição fecha.</span>
+        </p>
+        {/* Por que são poucas, e até quando dá para começar na ceia */}
+        <p className="text-pequeno mt-3 max-w-[46ch]">
+          São poucas porque cada história é ouvida e editada por uma pessoa.
+          Para começar na ceia, as inscrições vão até{" "}
+          <span className="whitespace-nowrap">
+            {formatarData(INSCRICOES_ATE)}
+          </span>
+          .
         </p>
 
         <p className="mt-8 max-w-[46ch]">
