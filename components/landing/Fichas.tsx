@@ -47,7 +47,7 @@ const FICHAS: Ficha[] = [
     aba: "O presente",
     pergunta: "Como a pessoa fica sabendo do presente?",
     resposta:
-      "Quem dá a notícia é você, do seu jeito. Depois, enviamos uma mensagem de boas-vindas explicando como serão as próximas semanas, e começamos quando ela disser que topa.",
+      "Quem dá a notícia é você, do seu jeito. Para a ceia, mandamos um cartão em PDF com o nome de quem vai contar, para você imprimir ou mostrar na mesa. Depois, enviamos uma mensagem de boas-vindas explicando como serão as próximas semanas, e começamos quando a pessoa disser que topa.",
   },
   {
     aba: "Seu trabalho",
@@ -57,9 +57,9 @@ const FICHAS: Ficha[] = [
   },
   {
     aba: "Edição",
-    pergunta: "Quem edita as histórias?",
+    pergunta: "Quem edita as histórias? Fica fiel ao que foi contado?",
     resposta:
-      "Uma pessoa da nossa equipe ouve e edita cada história, sem perder o jeito de falar de quem conta. A família lê tudo e pode pedir ajustes antes da impressão.",
+      "Uma pessoa ouve e edita cada história, sem perder o jeito de falar de quem conta. Nada é inventado: o livro só traz o que quem conta disse. A família lê tudo e pode pedir ajustes antes da impressão.",
   },
   {
     aba: "Tamanho",

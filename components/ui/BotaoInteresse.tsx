@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/Button";
+import { CTA_TEXTO } from "@/lib/config";
 import {
   linkWhatsApp,
   MENSAGENS_INTERESSE,
@@ -12,7 +13,7 @@ type Props = {
 };
 
 /**
- * "Tenho interesse": abre o WhatsApp numa aba nova com a mensagem da posição.
+ * O botão de interesse (CTA_TEXTO): abre o WhatsApp numa aba nova com a mensagem da posição.
  * O data-posicao dispara o evento cta_interesse (ver CliquesCta).
  */
 export function BotaoInteresse({ posicao, variant, className }: Props) {
@@ -26,7 +27,7 @@ export function BotaoInteresse({ posicao, variant, className }: Props) {
       data-cta={posicao}
       data-posicao={posicao}
     >
-      Tenho interesse
+      {CTA_TEXTO}
     </Button>
   );
 }

@@ -21,7 +21,7 @@ export function mascararWhatsApp(valor: string): string {
 export function mensagemWhatsApp(
   lead: Pick<Lead, "nome" | "capa_cor">,
 ): string {
-  let texto = `Olá! Tenho interesse no livro da ${MARCA}. Meu nome é ${lead.nome}.`;
+  let texto = `Olá! Quero começar o livro da ${MARCA} na ceia de Natal. Meu nome é ${lead.nome}.`;
   if (lead.capa_cor) texto += ` Gostei da capa ${CAPAS[lead.capa_cor].nome}.`;
   return texto;
 }
@@ -35,10 +35,11 @@ export function mensagemPrimeiroContato(lead: Pick<Lead, "nome">): string {
 /** Para quem prefere chamar direto, sem o formulário. */
 export const MENSAGEM_CONVERSA = `Olá! Quero saber mais sobre o livro da ${MARCA}.`;
 
-/** Uma mensagem por posição do botão "Tenho interesse": diz de onde veio o lead. */
+/** Uma mensagem por posição do botão de interesse (CTA_TEXTO): diz de onde veio o lead. */
 export const MENSAGENS_INTERESSE = {
-  hero: "Oi! Vi o site da Ecoa e tenho interesse no livro.",
-  final: "Oi! Tenho interesse no livro da Ecoa, pode me contar mais?",
+  hero: "Oi! Vi o site da Ecoa e quero começar o livro na ceia de Natal.",
+  final:
+    "Oi! Quero começar o livro da Ecoa na ceia de Natal. Pode me contar mais?",
 } as const;
 
 export type PosicaoInteresse = keyof typeof MENSAGENS_INTERESSE;

@@ -43,6 +43,15 @@ Enquanto `WHATSAPP_NUMERO` e `CNPJ` forem placeholders, eles não aparecem na p�
 
 Depois de mudar uma variável, faça um Redeploy: a página é gerada no build.
 
+## Cartão da ceia
+O PDF que a família entrega no dia 24 (metade capa do livro, metade bilhete), e uma imagem igual para mandar no WhatsApp:
+
+```bash
+node scripts/cartao-ceia.mjs --para "Vô Jair" --titulo "O livro do vô Jair" --de "Ana, Pedro e Luísa" --saida assets/cartoes/cartao-vo-jair.pdf
+```
+
+A data da primeira página e o número de perguntas saem de `lib/config.ts`. Exemplo pronto em `assets/cartoes/`.
+
 ## Banco de dados
 A tabela está em `supabase/migrations/`. Para criar: Supabase → SQL Editor → New query → cole o conteúdo do arquivo `.sql` → Run.
 

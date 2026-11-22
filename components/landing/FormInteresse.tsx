@@ -3,6 +3,7 @@
 import { track } from "@vercel/analytics";
 import { useId, useRef, useState, type FormEvent } from "react";
 import { Button } from "@/components/ui/Button";
+import { CTA_TEXTO } from "@/lib/config";
 import { mascararWhatsApp, submitLead } from "@/lib/leads";
 
 // O zod só chega quando alguém começa a preencher: fora do bundle da primeira tela
@@ -218,7 +219,7 @@ export function FormInteresse() {
         data-cta="formulario"
         disabled={estado.fase === "enviando"}
       >
-        Tenho interesse
+        {CTA_TEXTO}
       </Button>
       <p className="text-pequeno mt-4 max-w-[44ch]">
         Nada é cobrado agora. Falamos com você só pelo WhatsApp, e você só paga

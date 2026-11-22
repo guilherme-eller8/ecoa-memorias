@@ -14,7 +14,7 @@ export function CliquesCta() {
       const alvo = (e.target as Element | null)?.closest<HTMLElement>(
         "[data-cta]",
       );
-      // Botões "Tenho interesse" (hero, preco, final) têm evento próprio
+      // Botões de interesse (CTA_TEXTO: hero, preco, final) têm evento próprio
       const posicao = alvo?.dataset.posicao;
       if (posicao) return track("cta_interesse", { posicao });
       const cta = alvo?.dataset.cta;

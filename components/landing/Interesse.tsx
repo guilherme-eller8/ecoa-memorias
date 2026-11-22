@@ -1,10 +1,13 @@
 import type { CSSProperties } from "react";
 import { Section } from "@/components/ui/Section";
 import {
+  formatarData,
   formatarParcela,
   formatarPreco,
+  INSCRICOES_ATE,
   LIVROS_NA_EDICAO,
   PARCELAS_MAX,
+  PRECO_LIVRO,
 } from "@/lib/config";
 import { FormInteresse } from "./FormInteresse";
 
@@ -29,6 +32,14 @@ export function Interesse() {
           <span className="whitespace-nowrap">{formatarPreco()} no Pix</span>.
           Frete à parte.
         </p>
+        {/* Presente de irmãos: o valor dividido, sem desconto e sem preço riscado */}
+        <p className="text-pequeno mt-2">
+          Entre três irmãos, fica em cerca de{" "}
+          <span className="whitespace-nowrap">
+            {formatarPreco(Math.round(PRECO_LIVRO / 3))}
+          </span>{" "}
+          para cada um.
+        </p>
 
         {/* Uma frase por linha: as vagas, depois o que acontece quando acabam */}
         <p className="text-destaque mt-8 font-medium">
@@ -36,6 +47,15 @@ export function Interesse() {
             Só {LIVROS_NA_EDICAO} vagas nesta edição.
           </span>
           <span className="block">Quando acabarem, a edição fecha.</span>
+        </p>
+        {/* Por que são poucas, e até quando dá para começar na ceia */}
+        <p className="text-pequeno mt-3 max-w-[46ch]">
+          São poucas porque cada história é ouvida e editada por uma pessoa.
+          Para começar na ceia, as inscrições vão até{" "}
+          <span className="whitespace-nowrap">
+            {formatarData(INSCRICOES_ATE)}
+          </span>
+          .
         </p>
 
         <p className="mt-8 max-w-[46ch]">

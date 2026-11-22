@@ -21,7 +21,7 @@ Edição de Natal 2026:
 
 ## Fase atual: captação de interesse
 - NÃO existe checkout.
-- O CTA "Tenho interesse" grava um lead; o fechamento é manual, por WhatsApp e Pix.
+- O CTA "Quero começar na ceia" (`CTA_TEXTO`) grava um lead; o fechamento é manual, por WhatsApp e Pix.
 - Não construa pagamento, cadastro pós-compra, login de cliente nem área do cliente sem pedido explícito.
 
 ## Stack
@@ -53,6 +53,8 @@ EDICAO = "natal-2026"
 LIVROS_NA_EDICAO = 10
 PERGUNTAS_DE_NATAL = 3            // exibir por extenso: "três perguntas"
 DATA_PRIMEIRA_PAGINA = "2026-12-26" // exibir como "26 de dezembro"
+INSCRICOES_ATE = "2026-12-19"      // exibir como "19 de dezembro"
+CTA_TEXTO = "Quero começar na ceia" // texto de todo botão de interesse
 PRAZO_LIVRO = "cerca de 2 meses"   // do "gostei" ao livro pronto
 PRECO_LIVRO = 467                  // exibir como "R$ 467"
 DEVOLUCAO_SEM_IMPRESSAO = 149      // quem conta parou e a família preferiu o PDF
@@ -150,7 +152,7 @@ Leia a tabela "House rules" em `.claude/skills/design-taste-frontend/SKILL.md`. 
 - Português brasileiro, caloroso, frases curtas.
 - Para se referir de forma genérica a quem conta as histórias, use "quem conta".
 - O trocadilho com "ecoar" aparece no máximo uma vez na página.
-- Fotos são ilustrativas: nunca recebem nomes nem citações atribuídas.
+- Fotos são ilustrativas: nunca recebem nomes nem citações atribuídas. Exceção: as fotos reais dos livros dos avós do fundador (seção 2c), que não são ilustrativas.
 - Copy entre aspas na spec é final. Se quebrar a regra das 2 linhas, proponha o corte e pergunte; não reescreva sozinho.
 
 ## Como trabalhar

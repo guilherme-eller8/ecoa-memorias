@@ -5,6 +5,10 @@ export const LIVROS_NA_EDICAO = 10;
 // O começo acontece na ceia: perguntas antes do Natal e a primeira página, grátis, no dia 26
 export const PERGUNTAS_DE_NATAL = 3; // exibir por extenso: "três perguntas"
 export const DATA_PRIMEIRA_PAGINA = "2026-12-26"; // exibir como "26 de dezembro"
+// Último dia para entrar e ainda receber as perguntas antes da ceia. Passou a data, atualize ou tire da página.
+export const INSCRICOES_ATE = "2026-12-19"; // exibir como "19 de dezembro"
+// O texto de todo botão de interesse (hero, formulário, fecho): diz o próximo passo
+export const CTA_TEXTO = "Quero começar na ceia";
 // Do "gostei" da primeira página ao livro pronto (perguntas, edição, prova, gráfica e frete)
 export const PRAZO_LIVRO = "cerca de 2 meses";
 export const PRECO_LIVRO = 467; // exibir como "R$ 467"
@@ -18,6 +22,8 @@ export const EMAIL_CONTATO = "contato@ecoa-memorias.com.br"; // placeholder: a c
 export const CNPJ = "00.000.000/0001-00"; // placeholder
 export const CIDADE = "Belo Horizonte";
 export const RESPONSAVEL = "Guilherme Rocha Eller Miranda";
+// Como o fundador assina a seção dos livros dos avós (nome curto, em itálico)
+export const ASSINATURA_FUNDADOR = "Guilherme Eller";
 export const LINKEDIN_URL =
   "https://www.linkedin.com/in/guilherme-eller-940ab583/";
 
@@ -50,6 +56,9 @@ export const IMAGES = {
   // Fotos das páginas "Mensagens da família" (ilustrativas)
   mensagemNeta: "/images/mensagem-neta.webp",
   mensagemFilho: "/images/mensagem-filho.webp",
+  // Fotos reais (não ilustrativas) dos livros dos avós do fundador. Sem o arquivo, o quadro some.
+  livroAvoJair: "/images/livro-avo-jair.webp",
+  livroAvoNelma: "/images/livro-avo-nelma.webp",
 } as const;
 
 export type ImagemChave = keyof typeof IMAGES;

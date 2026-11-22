@@ -10,7 +10,7 @@ O visitante sai com três certezas:
 2. É leve para quem presenteia: a Ecoa cuida das perguntas, dos lembretes e da edição.
 3. O resultado é um objeto bonito, que a família inteira vai guardar.
 
-**Teste dos 5 segundos (celular, primeira tela):** é um livro de capa dura; tudo acontece pelo WhatsApp; custa R$ 467; começa neste Natal e a primeira página é por nossa conta; o botão está à vista.
+**Teste dos 5 segundos (celular, primeira tela):** é um livro de capa dura com a voz de quem conta; tudo acontece pelo WhatsApp; começa na ceia, com inscrições até 19 de dezembro; a primeira página é por nossa conta; o botão está à vista. (O preço fica no colofão desde 3/11.)
 
 ---
 
@@ -102,17 +102,29 @@ Cartão de papel branco com uma pergunta em Newsreader de 26–30px, alinhada à
 ## 2. Hero
 Duas colunas no desktop: título e texto à esquerda, a capa à direita já na altura do título, limitada pela altura da tela. No mobile: título, frase, botão, fatos, capa.
 
-- H1 (31/10): "As histórias da sua família num livro, com fotos e a voz de quem viveu." (quebra em 4 linhas em 390px e 1440px: exceção consciente à regra das 2 linhas, decidida pelo fundador)
-- Frase de apoio (2/11): "[Seu pai] conta. Só responde por áudio no WhatsApp, do jeito que fala. Sem escrever, sem instalar nada. A Ecoa cuida do resto." (quebra de linha depois de "conta.") A pessoa alterna: Seu pai, Sua mãe, Seu tio, Sua tia, Sua avó, Seu avô (troca a cada 2,2 s, duas voltas e para em "Seu pai"; leitor de tela ouve a lista inteira; sem JS fica "Seu pai"; com movimento reduzido, só o esmaecer, sem deslocamento).
-- Botão: "Tenho interesse" → wa.me em nova aba com "Oi! Vi o site da Ecoa e tenho interesse no livro." (sem link secundário: o botão já abre o WhatsApp).
-- Fatos (3/11), numa linha só em tamanho pequeno, abaixo do botão: "Começa neste Natal · A primeira página é por nossa conta". O preço e as vagas ficam só no colofão (seção 8).
+- H1 (22/11, aprovado): "O livro do seu pai, na voz dele." Quebra depois da vírgula (2 linhas em 390 e 1440). A pessoa e o pronome trocam juntos: do seu pai / dele, da sua mãe / dela, do seu avô / dele, da sua avó / dela, do seu tio / dele, da sua tia / dela (a cada 2,2 s, duas voltas, para em "do seu pai"; as opções ficam empilhadas na mesma célula, então nada reflui; leitor de tela ouve a lista inteira; sem JS fica "do seu pai, na voz dele."; com movimento reduzido, só o esmaecer). Antes: "As histórias da sua família num livro, com fotos e a voz de quem viveu."
+- Frase de apoio (22/11, aprovado): "As histórias, as fotos e a voz de quem conta, num livro de capa dura. Quem conta só responde por áudio no WhatsApp, do jeito que fala. Sem escrever, sem instalar nada. A Ecoa cuida do resto." (A troca da pessoa saiu daqui: foi para o título.)
+- Botão (22/11, aprovado): "Quero começar na ceia" (`CTA_TEXTO`) → wa.me em nova aba com "Oi! Vi o site da Ecoa e quero começar o livro na ceia de Natal."
+- Fatos (22/11), numa linha só em tamanho pequeno abaixo do botão (no celular, um por linha, sem o ponto): "Inscrições até 19 de dezembro · A primeira página é por nossa conta" (`INSCRICOES_ATE`). O preço e as vagas ficam só no colofão (seção 8).
 - Visual: LiveCover grande, entreaberta, com o áudio de WhatsApp encostado. Fundo polen liso, com o grão de papel. Sem gradiente.
 
 ## 2b. O valor (#valor)
-- Fundo papel. Título no tamanho display: "Para os netos dos seus netos."
+- Fundo papel. Título no tamanho display (22/11, aprovado): "Seus filhos vão ouvir o avô contar." Fala com quem compra (o filho de 30 a 60 anos), não com quem conta. Antes: "Para os netos dos seus netos."
 - Destaque: "Daqui a cinquenta anos, alguém vai abrir este livro e ouvir a voz de um bisavô que nunca conheceu."
 - Corpo: "As histórias que a família pede para repetir no almoço de domingo ficam no papel. E a voz de quem contou continua ali, para quem vier depois."
 - Com a foto `antiga-praia`, ela entra à direita como cópia impressa; sem ela, o texto desce em diagonal para a direita.
+
+## 2c. Os livros dos avós (#origem) (22/11, aprovado)
+Prova de origem: não é depoimento de cliente (ainda não há), é por que a Ecoa existe, com fotos reais. Sem mencionar quem fez os livros: o ponto é que poucas famílias chegam a ter o seu.
+- Fundo polen. Composição espelhada em relação à 2b: fotos à esquerda (6/12), título e texto à direita (5/12). No celular, as fotos vêm logo depois do título.
+- H2: "Os livros dos meus avós."
+- Destaque: "Tenho os dois em casa e já li cada um, inteiro, duas vezes."
+- Corpo:
+  - "Na maioria das famílias, esse livro nunca sai. Não por falta de história: falta quem pergunte, quem grave e quem passe a conversa para o papel. E as histórias vão ficando para depois."
+  - "Criei a Ecoa para que muito mais famílias tenham o seu. Quem conta só precisa falar."
+- Assinatura: "*Guilherme Eller*, neto da Nelma e do Jair" (`ASSINATURA_FUNDADOR`).
+- Fotos reais, 3:4, `.photo`, lado a lado, a segunda 64px mais baixa: "O livro do meu avô Jair." (`livro-avo-jair`, o livro na mão) e "O livro da minha avó Nelma." (`livro-avo-nelma`, a capa). Sem o arquivo, o quadro some.
+- Única exceção à regra "fotos não recebem nomes": estas não são ilustrativas.
 
 ## 3. O que você recebe (#livro)
 - H2: "Um livro para segurar. E vozes para ouvir sempre."
@@ -178,8 +190,10 @@ Duas colunas no desktop: título e texto à esquerda, a capa à direita já na a
 
 À esquerda, o **colofão** (folha papel, recortada como as outras peças, sem linhas e sem caixa colorida), enxuto:
 - "12x de R$ 38,92" no tamanho display (parcela de `PRECO_LIVRO` / `PARCELAS_MAX`); abaixo, "sem juros no cartão, ou R$ 467 no Pix. Frete à parte."
+- Logo abaixo, em tamanho pequeno (22/11): "Entre três irmãos, fica em cerca de R$ 156 para cada um." (`PRECO_LIVRO` / 3, arredondado)
 - (2/11) Sem linha de exemplares extras: quem pedir recebe o contato da gráfica e encomenda direto, sem cobrança da Ecoa.
 - Em destaque, a escassez (dita só aqui), uma frase por linha (3/11): "Só 10 vagas nesta edição." / "Quando acabarem, a edição fecha."
+- Logo abaixo, em tamanho pequeno (22/11, aprovado): "São poucas porque cada história é ouvida e editada por uma pessoa. Para começar na ceia, as inscrições vão até 19 de dezembro."
 - A garantia, no fim da folha (3/11): "O começo é por nossa conta. Você só paga se gostar da primeira página. Se não gostar, ela fica com vocês." Abaixo, em tamanho pequeno: "Depois de pagar, ainda tem 7 dias para desistir, com devolução integral."
 
 À direita, o formulário:
@@ -189,10 +203,10 @@ Duas colunas no desktop: título e texto à esquerda, a capa à direita já na a
   - "Seu WhatsApp" (máscara brasileira)
   - Caixa de aceite obrigatória (2/11): "Li e aceito os Termos de Uso e a Política de Privacidade." (links para /termos e /privacidade em nova aba). Erro: "Para continuar, aceite os Termos e a Política de Privacidade." O lead grava a versão dos Termos (`TERMOS_VERSAO`) e a hora do aceite.
   - Honeypot invisível contra spam.
-- Botão (2/11): "Tenho interesse"
+- Botão (22/11): "Quero começar na ceia" (`CTA_TEXTO`)
 - Microcopy (2/11): "Nada é cobrado agora. Falamos com você só pelo WhatsApp, e você só paga se gostar da primeira página."
 - Sucesso: o formulário é substituído por "Recebemos. Em breve falamos com você pelo WhatsApp." e um link secundário "Prefere falar agora? Abrir WhatsApp" (wa.me com a mensagem pré-preenchida abaixo).
-- Mensagem wa.me: "Olá! Tenho interesse no livro da Ecoa Memórias. Meu nome é [nome]."
+- Mensagem wa.me: "Olá! Quero começar o livro da Ecoa Memórias na ceia de Natal. Meu nome é [nome]."
 
 ## 9. Perguntas frequentes
 - H2: "Perguntas frequentes"
@@ -206,9 +220,9 @@ Ordem: as objeções mais fortes primeiro (pagamento, desistência, tempo).
 | Desistência | E se a pessoa não quiser participar, ou parar no meio? | Se não quiser participar, você não paga nada. Se parar no meio, o livro sai com as histórias já gravadas. Se preferir não imprimir, você recebe o livro em PDF, com os áudios, e devolvemos R$ 149 (`DEVOLUCAO_SEM_IMPRESSAO`). |
 | Tempo | Quanto tempo leva por dia? | Alguns minutos. Cada áudio costuma ter entre 2 e 5 minutos, e dá para responder quando quiser. |
 | WhatsApp | Quem conta as histórias precisa saber mexer no celular? | Se manda áudio no WhatsApp, já sabe tudo o que precisa. Se preferir, também é possível gravar por uma ligação. |
-| O presente | Como a pessoa fica sabendo do presente? | Quem dá a notícia é você, do seu jeito. Depois, enviamos uma mensagem de boas-vindas explicando como serão as próximas semanas, e começamos quando ela disser que topa. |
+| O presente | Como a pessoa fica sabendo do presente? | Quem dá a notícia é você, do seu jeito. Para a ceia, mandamos um cartão em PDF com o nome de quem vai contar, para você imprimir ou mostrar na mesa (`scripts/cartao-ceia.mjs`). Depois, enviamos uma mensagem de boas-vindas explicando como serão as próximas semanas, e começamos quando a pessoa disser que topa. |
 | Seu trabalho | Vai dar trabalho para mim? | Não. Você escolhe as perguntas (ou deixa com a gente) e envia algumas fotos. Do resto cuidamos nós, inclusive de reunir as mensagens da família. |
-| Edição | Quem edita as histórias? | Uma pessoa da nossa equipe ouve e edita cada história, sem perder o jeito de falar de quem conta. A família lê tudo e pode pedir ajustes antes da impressão. |
+| Edição | Quem edita as histórias? Fica fiel ao que foi contado? | Uma pessoa ouve e edita cada história, sem perder o jeito de falar de quem conta. Nada é inventado: o livro só traz o que quem conta disse. A família lê tudo e pode pedir ajustes antes da impressão. |
 | Tamanho | Quantas histórias cabem no livro? | Em geral, de 10 a 20. Mas o livro se ajusta ao que a família quiser contar. |
 | O grupo | Quem conta as histórias participa do grupo da família? | Não. O grupo é só da família, para que o livro final continue sendo surpresa. |
 | Mensagens | Como são reunidas as mensagens da família? | Você nos passa os contatos e nós cuidamos dos convites e dos lembretes. |
@@ -222,7 +236,7 @@ Ordem: as objeções mais fortes primeiro (pagamento, desistência, tempo).
 - Seção curta em floresta. O único momento centralizado da página.
 - H2: "Algumas histórias só uma pessoa pode contar. Que elas continuem ecoando." (único uso do trocadilho)
   - Se passar de 2 linhas em 390px, reduzir a medida antes da fonte; se ainda assim quebrar, perguntar.
-- Botão polen com texto floresta: "Tenho interesse" → wa.me em nova aba com "Oi! Tenho interesse no livro da Ecoa, pode me contar mais?".
+- Botão polen com texto floresta: "Quero começar na ceia" → wa.me em nova aba com "Oi! Quero começar o livro da Ecoa na ceia de Natal. Pode me contar mais?".
 - Abaixo, as 5 capas como lombadas, em pé numa estante, com o título na lombada (nunca nome de pessoa).
 - Legenda pequena abaixo da estante: "Cinco cores de tecido. A próxima pode ser a da sua família."
 
@@ -254,6 +268,6 @@ Política LGPD simples e clara:
 ## Analytics
 - Vercel Analytics.
 - Todos os botões de interesse com `data-cta` único (hero, final, formulario, rodape-whatsapp).
-- Os botões "Tenho interesse" que abrem o WhatsApp (`data-posicao`: hero | final) disparam `cta_interesse` com a propriedade `posicao`, no lugar de `cta_clicado`.
+- Os botões de interesse (`CTA_TEXTO`) que abrem o WhatsApp (`data-posicao`: hero | final) disparam `cta_interesse` com a propriedade `posicao`, no lugar de `cta_clicado`.
 - Mensagens por posição e número: `MENSAGENS_INTERESSE` em `lib/leads.ts` e `WHATSAPP_NUMERO` em `lib/config.ts`.
 - Evento `lead_enviado` no sucesso do formulário, com a propriedade `status` (`gravado` ou `fallback`).
