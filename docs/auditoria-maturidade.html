@@ -1,0 +1,354 @@
+<title>Maturidade da Landing Ecoa</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: uma coluna de leitura (o relatório é um caderno da própria editora), tabelas em folhas "papel" um degrau acima do pólen */
+:root{
+  --bg:#F5EFE4; --surface:#FFFDF8; --ink:#26211D; --muted:#6E6259; --line:#E6DDCD;
+  --accent:#1F3D33; --accent-soft:#E3ECE6;
+  --p0:#7A2E2A; --p0-soft:#F4E3DF; --p1:#7A5A22; --p1-soft:#F3EAD7; --p2:#2F6475; --p2-soft:#E0ECEF;
+  --ok:#2F6B4F;
+  --serif:"Newsreader",Georgia,serif; --sans:"Source Sans 3",system-ui,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#191714; --surface:#221F1B; --ink:#EEE7DA; --muted:#B2A797; --line:#38322B;
+  --accent:#86BDA3; --accent-soft:#22322B;
+  --p0:#E39A90; --p0-soft:#3A2522; --p1:#D9B677; --p1-soft:#352C1C; --p2:#8FC3D3; --p2-soft:#1F3036; --ok:#86BDA3; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#191714; --surface:#221F1B; --ink:#EEE7DA; --muted:#B2A797; --line:#38322B;
+  --accent:#86BDA3; --accent-soft:#22322B;
+  --p0:#E39A90; --p0-soft:#3A2522; --p1:#D9B677; --p1-soft:#352C1C; --p2:#8FC3D3; --p2-soft:#1F3036; --ok:#86BDA3; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;margin:0}
+.wrap{max-width:980px;margin:0 auto;padding-block:48px 96px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.1;text-wrap:balance;margin:0}
+h1{font-size:clamp(2.1rem,5vw,3.4rem);letter-spacing:-.02em}
+h2{font-size:clamp(1.6rem,3vw,2.2rem);margin-top:72px}
+h3{font-size:1.3rem;margin-top:32px}
+p{max-width:68ch;margin:12px 0}
+.lede{font-size:1.15rem;color:var(--muted)}
+.meta{color:var(--muted);font-size:.95rem}
+strong{font-weight:600}
+code{font-size:.88em;background:var(--accent-soft);padding:1px 5px;border-radius:2px}
+a{color:var(--accent)}
+.sheet{background:var(--surface);border-radius:2px;padding:24px;margin-top:20px}
+/* veredito */
+.verdict{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;margin-top:32px}
+@media(min-width:760px){.verdict{grid-template-columns:220px minmax(0,1fr)}}
+.big{font-family:var(--serif);font-size:5.2rem;line-height:.9;font-weight:500;letter-spacing:-.03em}
+.big small{font-size:1.6rem;color:var(--muted)}
+.scores{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:28px}
+.score{background:var(--surface);padding:18px 20px;border-radius:2px}
+.score .n{font-family:var(--serif);font-size:2rem;line-height:1}
+.score .l{font-weight:600;margin-top:6px}
+.score .d{color:var(--muted);font-size:.92rem;margin-top:4px;line-height:1.45}
+.bar{height:6px;background:var(--line);border-radius:2px;margin-top:10px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent)}
+/* alerta */
+.alert{background:var(--p0-soft);border-left:4px solid var(--p0);padding:20px 24px;margin-top:28px;border-radius:2px}
+.alert h3{margin-top:0;color:var(--p0)}
+/* plano */
+.plan{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:12px;counter-reset:item}
+.plan li{background:var(--surface);border-radius:2px;padding:18px 20px 18px 20px;display:grid;grid-template-columns:28px minmax(0,1fr);gap:4px 14px;counter-increment:item}
+.plan input{width:20px;height:20px;margin-top:4px;accent-color:var(--accent);cursor:pointer}
+.plan input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.plan .t{font-family:var(--serif);font-size:1.22rem;font-weight:500;line-height:1.25}
+.plan .t::before{content:counter(item) ". ";color:var(--muted)}
+.plan li.done .t{text-decoration:line-through;color:var(--muted)}
+.plan .body{grid-column:2}
+.plan .body p{margin:6px 0;font-size:.98rem}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.tag{font-size:.8rem;font-weight:600;padding:2px 8px;border-radius:2px;background:var(--line);color:var(--ink)}
+.tag.p0{background:var(--p0-soft);color:var(--p0)} .tag.p1{background:var(--p1-soft);color:var(--p1)} .tag.p2{background:var(--p2-soft);color:var(--p2)}
+.group{display:flex;align-items:baseline;gap:12px;margin-top:40px;flex-wrap:wrap}
+.group h3{margin:0}
+.group span{color:var(--muted);font-size:.95rem}
+.progress{font-size:.95rem;color:var(--muted);margin-top:8px}
+/* tabelas */
+.tbl{overflow-x:auto;margin-top:16px;background:var(--surface);border-radius:2px}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:.95rem}
+th,td{text-align:left;vertical-align:top;padding:11px 14px;border-bottom:1px solid var(--line)}
+th{font-weight:600;color:var(--muted);font-size:.85rem}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+.st{font-weight:600;white-space:nowrap}
+.st.ok{color:var(--ok)} .st.no{color:var(--p0)} .st.mid{color:var(--p1)}
+.two{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;margin-top:16px}
+@media(min-width:760px){.two{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+.two .sheet{margin-top:0}
+.two h3{margin-top:0;font-size:1.15rem}
+ul.clean{padding-left:20px;margin:8px 0}
+ul.clean li{margin:4px 0}
+pre.crit{white-space:pre-wrap;font-size:.9rem;line-height:1.55;background:var(--surface);padding:20px;border-radius:2px;overflow-x:auto;font-family:ui-monospace,Menlo,monospace}
+footer{margin-top:72px;color:var(--muted);font-size:.9rem}
+@media (prefers-reduced-motion:no-preference){.bar i{transition:width .4s ease}}
+</style>
+
+<div class="wrap">
+
+<header>
+  <p class="meta">Ecoa Memórias · Edição de Natal 2026 · auditoria de 22 de novembro de 2026</p>
+  <h1>Maturidade da landing</h1>
+  <p class="lede">Nota final e plano em ordem de prioridade. Cruzei oito skills de vendas e marketing, as regras de design da taste-skill e do kit anterior, e as referências do PDF (Remento, Minha História, Mneme, Artifact Uprising, Flavia Nasser, Stripe Press).</p>
+  <p class="meta">Base: código em <code>main</code> (commit 61e21ed), build de produção rodado local, inspetor da taste-skill em 1440, 768 e 390px (0 FAIL, 4 WARN), e consulta ao projeto na Vercel.</p>
+</header>
+
+<section aria-labelledby="veredito">
+  <h2 id="veredito">Veredito</h2>
+  <div class="verdict">
+    <div class="big">7,8<small> /10</small></div>
+    <div>
+      <p><strong>A página já está pronta para vender e já parece de editora, não de infoproduto.</strong> A ideia "a página é o próprio livro" vai do hero à contracapa, o título é específico e a garantia (primeira página grátis, que fica com a família) é melhor do que a de qualquer concorrente do PDF.</p>
+      <p>O que falta para chegar a "best in class" quase não é design nem código. Faltam <strong>quatro provas</strong>: a voz real tocando, o objeto real fotografado, a empresa real (CNPJ e e-mail) e os números reais (o analytics está desligado). Os concorrentes premium ganham da Ecoa nesses quatro pontos, não no visual.</p>
+    </div>
+  </div>
+
+  <div class="scores">
+    <div class="score"><div class="n">7,6</div><div class="l">Design e direção de arte</div><div class="d">Crítica da taste-skill: design 7,5 · usabilidade 8 · criatividade 8 · conteúdo 7,5</div><div class="bar"><i style="width:76%"></i></div></div>
+    <div class="score"><div class="n">83 · B</div><div class="l">Conversão</div><div class="d">Rubrica do roast-my-landing-page (0–100). A confiança puxa para baixo: 43.</div><div class="bar"><i style="width:83%"></i></div></div>
+    <div class="score"><div class="n">4/7</div><div class="l">Gatilhos de Cialdini</div><div class="d">Presentes: reciprocidade, compromisso, afinidade, unidade. Fraca: autoridade. Ausentes: prova social e escassez.</div><div class="bar"><i style="width:57%"></i></div></div>
+    <div class="score"><div class="n">5/7</div><div class="l">Recursos das referências</div><div class="d">Pela matriz do PDF. Faltam a demo de áudio na página; o ofício (tecido e papel) aparece só pela metade.</div><div class="bar"><i style="width:71%"></i></div></div>
+  </div>
+  <p class="meta">Projeção depois dos itens P0 e P1: design por volta de 8,3 e conversão entre 86 e 88 (B+). A confiança só passa de 65 depois do Natal, com os primeiros clientes reais.</p>
+
+  <div class="alert">
+    <h3>Antes de mexer na página: você está voando às cegas</h3>
+    <p>O código dispara <code>cta_interesse</code> e <code>lead_enviado</code>, mas a Vercel responde <strong>"Web Analytics is not enabled for this project"</strong> no projeto <code>ecoa-memorias</code>. Nenhuma visita e nenhum clique estão sendo contados. Qualquer mudança deste plano fica sem como ser avaliada.</p>
+    <p><strong>Hipótese</strong>: a página converte tráfego quente (sua rede, Instagram e WhatsApp) em conversa. <strong>Evidência hoje</strong>: só os leads no Supabase e as conversas no seu WhatsApp. <strong>Usuário</strong>: quem são os 10 compradores prováveis, com nome e sobrenome? Se a lista do Prompt 0 tem menos de 20 nomes, o gargalo é distribuição, e mais uma rodada de design é o seu padrão de construir antes de validar.</p>
+    <p><strong>Critério de corte sugerido</strong> (até 6 de dezembro, com o analytics ligado): visita → clique no botão ≥ 8%, e clique → conversa iniciada ≥ 50%. Se der abaixo disso com mais de 300 visitas, o problema está na página. Se der acima e as vendas não vierem, está na conversa do WhatsApp ou no preço, não no site.</p>
+  </div>
+</section>
+
+<section aria-labelledby="plano">
+  <h2 id="plano">Plano em ordem de prioridade</h2>
+  <p>Ordenei por impacto em confiança e conversão, dividido pelo esforço, olhando a data: faltam 32 dias para a ceia. Marque o que for fazendo; a marcação fica salva só neste navegador.</p>
+  <p class="progress" id="progresso">0 de 15 feitos</p>
+
+  <div class="group"><h3>P0 · esta semana</h3><span>Sem isso, o resto não se mede ou não convence</span></div>
+  <ol class="plan" data-start="0">
+    <li><input type="checkbox" id="i1" aria-labelledby="t1"><div><div class="t" id="t1">Ligar o Web Analytics na Vercel</div></div><div class="body">
+      <p>Project → Analytics → Enable. O código já está pronto. Depois, confirme que <code>cta_interesse</code> aparece com a propriedade <code>posicao</code>.</p>
+      <div class="tags"><span class="tag p0">P0</span><span class="tag">5 min · você</span><span class="tag">awesome-copilot G · medição</span></div></div></li>
+    <li><input type="checkbox" id="i2" aria-labelledby="t2"><div><div class="t" id="t2">Pôr uma voz real para tocar</div></div><div class="body">
+      <p>Hoje o diferencial da marca ("na voz dele") nunca é ouvido: o balão do hero tem um play que não toca, e o celular do capítulo VI fica parado em 0:47. Isso é uma affordance falsa numa página premium. Grave 20 a 40 segundos de alguém da sua família contando um caso, com autorização, e salve em <code>public/audio/amostra.mp3</code>. O <code>PhoneAudioPlayer</code> já aceita o arquivo.</p>
+      <p>Para virar o seu signature move: aponte o QR do livro aberto para uma rota <code>/ouvir</code> com o mesmo áudio. Quem está no computador aponta o celular para a tela e ouve; "aponte e ouça" deixa de ser ilustração. Remento (1:12) e Minha História (24 s, com −5/+5 s) fazem isso, e nenhum concorrente brasileiro faz.</p>
+      <div class="tags"><span class="tag p0">P0</span><span class="tag">1 gravação + PR pequeno</span><span class="tag">PDF: Remento, Minha História · scroll-craft</span></div></div></li>
+    <li><input type="checkbox" id="i3" aria-labelledby="t3"><div><div class="t" id="t3">Preço com cara de editora, não de parcelado</div></div><div class="body">
+      <p>"12x de R$ 38,92" em tamanho display é o recurso mais "vendedor de curso" da página: liderar pela parcela é tática de varejo. Inverta: "R$ 467" grande, e embaixo, pequeno, "ou 12x de R$ 38,92 sem juros no cartão. Frete à parte." O preço cheio ancora melhor ao lado de Mneme (R$ 595 a R$ 1.190) e Flavia Nasser (R$ 470 a R$ 2.480). A linha dos três irmãos fica: é utilidade para quem organiza o presente, não desconto.</p>
+      <div class="tags"><span class="tag p0">P0</span><span class="tag">15 min · Claude Code</span><span class="tag">PDF: âncoras de preço · copywriting</span></div></div></li>
+    <li><input type="checkbox" id="i4" aria-labelledby="t4"><div><div class="t" id="t4">Mostrar a empresa de verdade: CNPJ e e-mail que funcione</div></div><div class="body">
+      <p>Os dois ainda são placeholders (<code>CNPJ_PRONTO</code> é falso, e a caixa de e-mail não existe). Quem não conhece você vai fazer um Pix de R$ 467 sem checkout. CNPJ no rodapé e um e-mail que responde são o mínimo, como na Lá Na Villa (CNPJ e endereço do ateliê). O LinkedIn no rodapé já ajuda bastante.</p>
+      <div class="tags"><span class="tag p0">P0</span><span class="tag">depende de você</span><span class="tag">cro: sinais de confiança · PDF: Lá Na Villa</span></div></div></li>
+  </ol>
+
+  <div class="group"><h3>P1 · próximas duas semanas</h3><span>O salto de "bonito" para "premium e tangível"</span></div>
+  <ol class="plan" style="counter-reset:item 4">
+    <li><input type="checkbox" id="i5" aria-labelledby="t5"><div><div class="t" id="t5">Fotografar o objeto real</div></div><div class="body">
+      <p>Todo produto Ecoa na página é desenho em CSS. A própria <code>direcao.md</code> declara esse risco. Para um presente de R$ 467, o que vende a percepção de luxo é a fórmula da Artifact Uprising: detalhe do tecido, o dourado do hot stamping, o papel, mãos folheando, e uma ficha técnica verdadeira (formato confirmado, papel, costura). Hoje o formato <code>21 × 21 cm</code> ainda é placeholder.</p>
+      <p>Se a gráfica não entregar uma prova antes do Natal, faça a versão rápida: imprima a "primeira página" em papel bom e grave 10 segundos de um celular lendo o QR e tocando a voz. Isso também resolve o aviso <code>no-footage</code> do inspetor.</p>
+      <div class="tags"><span class="tag p1">P1</span><span class="tag">1 sessão de fotos</span><span class="tag">taste-skill · PDF: Artifact Uprising, MACK</span></div></div></li>
+    <li><input type="checkbox" id="i6" aria-labelledby="t6"><div><div class="t" id="t6">Mostrar o que o comprador entrega na ceia</div></div><div class="body">
+      <p>Quem compra é o filho ou o neto, e a dúvida dele é "o que eu entrego no dia 24?". O cartão da ceia existe (<code>scripts/cartao-ceia.mjs</code>), mas aparece só no FAQ. Ponha o cartão desenhado no primeiro passo do "Começa na ceia de Natal". É o padrão de entrega imediata do Meminto e do Remento, e é o momento mais emocional para quem compra.</p>
+      <div class="tags"><span class="tag p1">P1</span><span class="tag">meio dia · Claude Code</span><span class="tag">PDF: entrega imediata · JTBD de quem presenteia</span></div></div></li>
+    <li><input type="checkbox" id="i7" aria-labelledby="t7"><div><div class="t" id="t7">Um compromisso concreto sobre os áudios</div></div><div class="body">
+      <p>"Guardamos enquanto a família quiser" é vago para um presente que deve durar gerações. A Minha História promete 10 anos de hospedagem e entrega os arquivos originais. Algo como "Você recebe todos os áudios originais, e os QR codes ficam no ar por pelo menos 10 anos" vale mais do que qualquer adjetivo. Antes, decida se consegue sustentar essa promessa.</p>
+      <div class="tags"><span class="tag p1">P1</span><span class="tag">decisão sua + 1 linha</span><span class="tag">PDF: posse dos dados · cro: objeções</span></div></div></li>
+    <li><input type="checkbox" id="i8" aria-labelledby="t8"><div><div class="t" id="t8">Dar nome ao ofício (autoridade, hoje fraca)</div></div><div class="body">
+      <p>"Uma pessoa ouve e edita cada história" não diz quem é essa pessoa. Uma frase sobre quem edita e como (escuta inteira, revisão da família, nada inventado), perto do livro aberto, sobe autoridade sem inventar prova. A Mneme cita a metodologia da Oral History Association. Você tem algo mais forte: os livros dos seus avós e o seu nome assinando.</p>
+      <div class="tags"><span class="tag p1">P1</span><span class="tag">copy · aprovar</span><span class="tag">Cialdini: autoridade WEAK · PDF: Mneme</span></div></div></li>
+    <li><input type="checkbox" id="i9" aria-labelledby="t9"><div><div class="t" id="t9">Quatro acabamentos que um olho treinado nota</div></div><div class="body">
+      <ul class="clean">
+        <li>Em 390px, os títulos das lombadas da estante saem cortados ("O que a vida me ensi", "Caminhos que perco").</li>
+        <li>A foto <code>antiga-casamento</code> aparece duas vezes: na capa do hero e na página solta do passo 2. É a mesma falha de repetição que a auditoria anterior apontou com outra foto.</li>
+        <li>No celular, o player cobre parte do terceiro parágrafo do capítulo VI.</li>
+        <li>No hero mobile, o balão de áudio encosta no filete dourado e no título da capa.</li>
+      </ul>
+      <div class="tags"><span class="tag p1">P1</span><span class="tag">1 PR · Claude Code</span><span class="tag">taste-skill: colisões e repetição</span></div></div></li>
+  </ol>
+
+  <div class="group"><h3>P2 · depois do dia 26 ou quando houver dados</h3><span>Testes e refinamentos; nada disso salva uma venda agora</span></div>
+  <ol class="plan" style="counter-reset:item 9">
+    <li><input type="checkbox" id="i10" aria-labelledby="t10"><div><div class="t" id="t10">Prova social real, nunca inventada</div></div><div class="body">
+      <p>A partir de 26 de dezembro, com autorização: uma primeira página real e a reação, em áudio, de quem recebeu. É o único ponto em que a página fica atrás de todos os concorrentes, e só tempo resolve.</p>
+      <div class="tags"><span class="tag p2">P2</span><span class="tag">depois do Natal</span><span class="tag">Cialdini: prova social MISSING</span></div></div></li>
+    <li><input type="checkbox" id="i11" aria-labelledby="t11"><div><div class="t" id="t11">O mesmo botão faz duas coisas diferentes</div></div><div class="body">
+      <p>"Quero começar" no hero e no fecho abre o WhatsApp; no formulário, grava um lead. Quem chega pelo WhatsApp não leva as UTMs. Antes de testar outro texto (por exemplo "Quero a primeira página"), decida um caminho principal. Teste de texto só com mais de mil sessões ou 30 conversões; abaixo disso é ruído.</p>
+      <div class="tags"><span class="tag p2">P2</span><span class="tag">decisão + teste</span><span class="tag">awesome-copilot B, D · roast: CTA</span></div></div></li>
+    <li><input type="checkbox" id="i12" aria-labelledby="t12"><div><div class="t" id="t12">Botão discreto no cabeçalho, só no desktop</div></div><div class="body">
+      <p>O PDF recomenda um único CTA sólido no hero, no cabeçalho fixo e no fecho. Isso reabre a decisão de 30/10, então trate como teste: um link-botão pequeno, sem barra fixa no celular.</p>
+      <div class="tags"><span class="tag p2">P2</span><span class="tag">teste</span><span class="tag">PDF: hibridismo calibrado</span></div></div></li>
+    <li><input type="checkbox" id="i13" aria-labelledby="t13"><div><div class="t" id="t13">Apertar a escala tipográfica</div></div><div class="body">
+      <p>O inspetor mediu 11 tamanhos (13 a 128px). A regra da casa é cinco. Fica mais "editora" com menos.</p>
+      <div class="tags"><span class="tag p2">P2</span><span class="tag">1 PR</span><span class="tag">taste-skill WARN size-count</span></div></div></li>
+    <li><input type="checkbox" id="i14" aria-labelledby="t14"><div><div class="t" id="t14">A tiragem como dado de colofão, se quiser</div></div><div class="body">
+      <p>Você tirou a escassez em 24/11, e a decisão é sua. Só registro: "Tiragem desta edição: 10 livros", em tamanho pequeno no colofão, é como editoras independentes falam. É informação de ofício, não contador nem "últimas vagas".</p>
+      <div class="tags"><span class="tag p2">P2</span><span class="tag">opcional</span><span class="tag">Cialdini: escassez · direcao.md original</span></div></div></li>
+    <li><input type="checkbox" id="i15" aria-labelledby="t15"><div><div class="t" id="t15">Atualizar o Next.js de 16.4.3 para 16.4.6</div></div><div class="body">
+      <p><code>npm audit</code> aponta 7 avisos moderados (a maioria em cache e na otimização de imagens). O risco é baixo numa landing estática, mas a atualização é rápida.</p>
+      <div class="tags"><span class="tag p2">P2</span><span class="tag">15 min</span><span class="tag">higiene</span></div></div></li>
+  </ol>
+
+  <h3>O que não fazer agora</h3>
+  <ul class="clean">
+    <li><strong>Pinned Stage</strong> nos passos (item sc-3 do kit anterior): a maioria chega pelo celular, e o PDF lembra que scroll sofisticado em página comercial tem custo. Ganho baixo e risco real.</li>
+    <li><strong>Quiz, abas "para mim / para presentear", mais seções</strong>: a página acabou de sair de 13 para 10 telas. Cada seção nova tem que tirar outra.</li>
+    <li><strong>Depoimentos, números ou selos inventados</strong>: proibidos pelo CLAUDE.md e pela skill de Cialdini. Uma página premium perde mais com uma prova falsa do que com nenhuma.</li>
+  </ul>
+</section>
+
+<section aria-labelledby="checklist">
+  <h2 id="checklist">Checklist por lente</h2>
+
+  <h3>Conversão: rubrica do roast-my-landing-page</h3>
+  <p>Pesos e critérios da própria skill. As notas são minhas, sobre a página atual.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Categoria (peso)</th><th>Nota</th><th>O que pesou</th></tr></thead>
+    <tbody>
+      <tr><td>Primeira impressão (20%)</td><td class="num">86</td><td>Proposta clara na primeira tela, capa como objeto, botão visível. Ainda não aparece o objeto real.</td></tr>
+      <tr><td>Copy (20%)</td><td class="num">88</td><td>Título específico e falsificável, frases curtas, nada de "transforme" ou "eternize". O fecho e o título das perguntas são genéricos.</td></tr>
+      <tr><td>CTA (15%)</td><td class="num">87</td><td>Contraste forte, alvo ≥ 48px, acima da dobra. "Quero começar" não diz o que se recebe, e o mesmo rótulo leva a dois destinos.</td></tr>
+      <tr><td>Confiança (15%)</td><td class="num">43</td><td>A reversão de risco é a melhor do mercado (19/20) e o FAQ cobre as objeções. Sem depoimentos, números, CNPJ nem foto do produto.</td></tr>
+      <tr><td>Mobile e acessibilidade (15%)</td><td class="num">95</td><td>Pular para o conteúdo, aria correto, FAQ renderizado no servidor, corpo de 19px. Perde pelas lombadas cortadas e pela sobreposição do player.</td></tr>
+      <tr><td>Performance e técnica (15%)</td><td class="num">94</td><td>Estático, fontes sem bloquear o carregamento, metadados e OG completos. Não medi o LCP em rede real.</td></tr>
+      <tr><td><strong>Total ponderado</strong></td><td class="num"><strong>83 · B</strong></td><td>O teto até o Natal é cerca de 88, porque a confiança depende de clientes.</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="two">
+    <div class="sheet">
+      <h3>Cialdini: o que está ativo</h3>
+      <div class="tbl" style="margin-top:8px;background:transparent"><table style="min-width:0">
+        <tbody>
+          <tr><td>Reciprocidade</td><td class="st ok">Presente</td></tr>
+          <tr><td>Compromisso</td><td class="st ok">Presente</td></tr>
+          <tr><td>Afinidade</td><td class="st ok">Presente</td></tr>
+          <tr><td>Unidade</td><td class="st ok">Presente</td></tr>
+          <tr><td>Autoridade</td><td class="st mid">Fraca</td></tr>
+          <tr><td>Prova social</td><td class="st no">Ausente</td></tr>
+          <tr><td>Escassez</td><td class="st no">Ausente (decisão)</td></tr>
+        </tbody></table></div>
+      <p class="meta">A primeira página grátis é reciprocidade e compromisso (o "sim" pequeno na ceia) ao mesmo tempo. Os avós e "neto da Nelma e do Jair" fazem afinidade e unidade sem forçar. Com quatro princípios fortes não há excesso: a página está contida, como você quer.</p>
+    </div>
+    <div class="sheet">
+      <h3>Teste de copy linha a linha</h3>
+      <p class="meta" style="margin-top:0">Os três testes do conversion-copywriter: dá para visualizar? dá para provar falso? só a Ecoa diria?</p>
+      <ul class="clean">
+        <li>"O livro do seu pai, na voz dele." <strong>3/3</strong></li>
+        <li>"Seus filhos vão ouvir o avô contar." <strong>3/3</strong></li>
+        <li>"Tenho os dois em casa e já li cada um, inteiro, duas vezes." <strong>3/3</strong></li>
+        <li>"No final, quem contou recebe uma surpresa." <strong>2/3</strong></li>
+        <li>"As perguntas certas abrem histórias." <strong>1/3</strong></li>
+        <li>"Algumas histórias só uma pessoa pode contar." <strong>1/3</strong></li>
+        <li>"Vamos conversar" (título do formulário) <strong>0/3</strong></li>
+      </ul>
+      <p class="meta">As linhas fracas estão no fim da página, longe do que decide. Reescrever é P2 e precisa da sua aprovação, como manda a spec.</p>
+    </div>
+  </div>
+
+  <h3>Design: crítica da taste-skill (formato §4)</h3>
+<pre class="crit">ROUND 1 (screenshots em .taste-skill/inspect/, build de produção)
+Seen in one second: a capa floresta com o retrato do casal, e o título.
+Idea: a página é o próprio livro (capa, página solta, livro aberto, colofão, estante, contracapa).
+Live thing: título que troca a pessoa; conversa de WhatsApp que anda; capa que entreabre.
+            O ao vivo que importa (a voz) é falso: o play não toca.
+Layout words: hero=split / origem=split espelhado / como-funciona=fileira de 3 /
+              voz=split com objeto / surpresa=split espelhado / perguntas=split em campo /
+              colofão=split / faq=lista em 2 colunas / fecho=statement / rodapé=wordmark
+Scores: design 7,5 · usability 8 · creativity 8 · content 7,5 → overall 7,6
+Caps applied: nenhum. Inspetor com 0 FAIL; WARNs defensáveis, exceto no-footage.
+Top three problems:
+1. A voz não toca (desktop-page-01, mobile-page-01). Fix: amostra.mp3 + QR → /ouvir.
+2. Seis splits em dez seções: o espelhamento disfarça, mas o padrão aparece no squint.
+   Fix: quando entrar a foto real do livro, use uma faixa de largura total (full-bleed).
+3. Nenhuma foto do produto Ecoa, só desenho (desktop-fold, todas as telas).
+   Fix: prova física fotografada (item 5).</pre>
+</section>
+
+<section aria-labelledby="refs">
+  <h2 id="refs">Contra as referências do PDF</h2>
+  <p>A matriz de sete mecanismos do PDF, com a Ecoa acrescentada.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Mecanismo</th><th>Ecoa hoje</th><th>Quem faz melhor</th><th>O que pegar</th></tr></thead>
+    <tbody>
+      <tr><td>WhatsApp nativo</td><td class="st ok">Sim</td><td>Mneme, Minha História</td><td>Já está no nível deles.</td></tr>
+      <tr><td>Demo de áudio na página</td><td class="st no">Não (só visual)</td><td>Remento, Minha História</td><td>Player real de 20 a 40 s e QR na tela que toca no celular (item 2).</td></tr>
+      <tr><td>QR code com a voz</td><td class="st ok">Sim (desenho)</td><td>Remento</td><td>Fazer o QR desenhado funcionar.</td></tr>
+      <tr><td>Ofício: tecido e papel</td><td class="st mid">Pela metade</td><td>Artifact Uprising, Lá Na Villa</td><td>Cinco camadas: frase de valor, subtítulo técnico, foto macro, processo, ficha técnica (item 5).</td></tr>
+      <tr><td>Revisão pela família</td><td class="st ok">Sim (FAQ)</td><td>Flavia Nasser (prévia em 5 a 7 dias)</td><td>Dizer o prazo da prévia.</td></tr>
+      <tr><td>Pagamento único</td><td class="st ok">Sim</td><td>Meminto, Minha História</td><td>Escrever "pagamento único, sem assinatura": a Storyworth cobra plano anual.</td></tr>
+      <tr><td>Garantia ou teste grátis</td><td class="st ok">Melhor do mercado</td><td>A Ecoa</td><td>Primeira página grátis, e ela fica com vocês. Ninguém no PDF oferece isso.</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="two">
+    <div class="sheet">
+      <h3>Onde a Ecoa já está à frente</h3>
+      <ul class="clean">
+        <li>Contenção visual de Stripe Press e Aesop <strong>com</strong> botão sólido. É o "hibridismo calibrado" que o PDF recomenda.</li>
+        <li>História de origem com fotos reais dos livros dos avós. Nenhum concorrente tem uma carta de fundador tão concreta (a da Storyworth é texto).</li>
+        <li>Começar na ceia resolve o prazo do presente. Os outros entregam o livro em meses e precisam de um cartão para compensar.</li>
+        <li>Zero escassez, zero pop-up, zero preço riscado: nada do "compre 3, leve 1" da Flavia Nasser.</li>
+      </ul>
+    </div>
+    <div class="sheet">
+      <h3>Régua do premium sem apelação</h3>
+      <ul class="clean">
+        <li><strong>Fica</strong>: preço cheio à vista, ficha técnica, nome de quem faz, foto de mãos com o livro, a voz tocando por escolha de quem visita.</li>
+        <li><strong>Sai</strong>: parcela em destaque, play que não toca, adjetivos no lugar de especificação.</li>
+        <li><strong>Emoção</strong>: vem da voz e do bilhete da família, nunca de urgência. O pico da página é a seção da voz; o resto sustenta.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="anterior">
+  <h2 id="anterior">Status do kit de auditoria anterior</h2>
+  <p>Seis dos dez itens já foram resolvidos nas últimas rodadas. O kit também supunha um preço de R$ 497 que nunca existiu: o preço é R$ 467, numa fonte única em <code>lib/config.ts</code>.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Item</th><th>Status</th><th>Nota</th></tr></thead>
+    <tbody>
+      <tr><td>CTA no card de preço</td><td class="st ok">Resolvido</td><td>Formulário ao lado do colofão.</td></tr>
+      <tr><td>Títulos do FAQ vazios no SSR</td><td class="st ok">Resolvido</td><td>Conferido no HTML: os 9 títulos vêm do servidor, em <code>h3 &gt; button</code>.</td></tr>
+      <tr><td>Preço e fonte única</td><td class="st ok">Resolvido</td><td>R$ 467, em <code>lib/config.ts</code>.</td></tr>
+      <tr><td>"Imagem ilustrativa" e mockups</td><td class="st mid">Metade</td><td>A legenda saiu; o produto continua só em desenho (item 5).</td></tr>
+      <tr><td>Imagem repetida</td><td class="st mid">Mudou de lugar</td><td>Agora é a <code>antiga-casamento</code> que se repete (item 9).</td></tr>
+      <tr><td>Enxugar redundância</td><td class="st ok">Resolvido</td><td>De 13 para 10 telas no celular.</td></tr>
+      <tr><td>Áudio real (signature move)</td><td class="st no">Aberto</td><td>Item 2. Continua sendo o maior gap.</td></tr>
+      <tr><td>Curva emocional com um pico</td><td class="st ok">Resolvido</td><td>A voz e depois a surpresa formam um pico só, seguido do colofão.</td></tr>
+      <tr><td>Pinned Stage nos passos</td><td class="st ok">Descartar</td><td>Ver "O que não fazer".</td></tr>
+      <tr><td>Grid de cards e vídeo no iOS</td><td class="st ok">Resolvido</td><td>O grid e o vídeo ilustrativo saíram.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<footer>
+  <p>Fontes: coreyhaines31/marketingskills (cro, copywriting, marketing-psychology), github/awesome-copilot landing-page-conversion-audit, thalesholleben/copy-thief, leadmagic/gtm-skills landing-pages, nexscope-ai ecommerce-landing-page, johnericforte cialdini-influence-audit, mikefutia conversion-copywriter-skill, FuzulsFriend roast-my-landing-page, taste-skill v2 (inspetor e critique.md), o kit de auditoria editorial anterior e o PDF "Referências de Landing Pages Editoriais". As notas são julgamento sobre a página atual; nenhuma vem de dado de conversão, porque esse dado ainda não existe.</p>
+</footer>
+</div>
+
+<script>
+(function(){
+  var KEY='ecoa-auditoria-feitos';
+  var boxes=[].slice.call(document.querySelectorAll('.plan input[type=checkbox]'));
+  var saved={};
+  try{saved=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){saved={}}
+  var out=document.getElementById('progresso');
+  function update(){
+    var n=0;
+    boxes.forEach(function(b){var li=b.closest('li');if(b.checked){n++;li.classList.add('done')}else{li.classList.remove('done')}});
+    out.textContent=n+' de '+boxes.length+' feitos';
+  }
+  boxes.forEach(function(b){
+    if(saved[b.id])b.checked=true;
+    b.addEventListener('change',function(){
+      saved[b.id]=b.checked;
+      try{localStorage.setItem(KEY,JSON.stringify(saved))}catch(e){}
+      update();
+    });
+  });
+  update();
+})();
+</script>
