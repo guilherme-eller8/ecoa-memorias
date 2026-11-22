@@ -10,6 +10,10 @@ export const CTA_TEXTO = "Quero começar";
 // Do "gostei" da primeira página ao livro pronto (perguntas, edição, prova, gráfica e frete)
 export const PRAZO_LIVRO = "cerca de 2 meses";
 export const PRECO_LIVRO = 467; // exibir como "R$ 467"
+// O preço que vale depois desta primeira edição. Só no colofão. Tem que ser o preço cobrado de verdade:
+// anunciar um preço futuro que não acontece é propaganda enganosa.
+export const PRECO_DEPOIS = 697; // exibir como "R$ 697"
+export const PRECO_DEPOIS_A_PARTIR = "janeiro"; // "A partir de janeiro, o livro passa a custar R$ 697."
 // Devolvido quando quem conta para no meio e a família prefere o livro em PDF, sem impressão
 export const DEVOLUCAO_SEM_IMPRESSAO = 149;
 export const PARCELAS_MAX = 12;

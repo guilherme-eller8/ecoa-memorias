@@ -178,6 +178,23 @@ Prova de origem: não é depoimento de cliente (ainda não há), é por que a Ec
 - A garantia, no fim da folha (3/11): "O começo é por nossa conta. Você só paga se gostar da primeira página. Se não gostar, ela fica com vocês."
 - No pé da folha, em tamanho pequeno (24/11), a ficha do livro: "Capa dura, 21 × 21 cm, numa das cinco cores. De 10 a 20 histórias, com fotos, QR codes e as mensagens da família." (`FORMATO_LIVRO`). Os 7 dias para desistir ficam no FAQ "Quando e como eu pago?".
 
+
+**Atualização de 24/11 (aprovada), o colofão em ordem:**
+1. "12x de R$ 38,92" (display) e "sem juros no cartão, ou R$ 467 no Pix. Frete à parte."
+2. "Este é o preço da primeira edição. A partir de janeiro, o livro passa a custar R$ 697." (`PRECO_DEPOIS`, `PRECO_DEPOIS_A_PARTIR`; sem preço riscado e sem "de/por")
+3. "Entre três irmãos, fica em cerca de R$ 156 para cada um." (pequeno)
+4. "Neste valor, vocês recebem:" e a lista, com marcador simples:
+   - "O cartão para entregar na ceia e a primeira página no dia 26, em PDF."
+   - "Quatro semanas de perguntas pelo WhatsApp, uma por dia útil, com lembretes."
+   - "Cada história editada por uma pessoa, sem perder o jeito de falar."
+   - "Um grupo só da família, onde cada história chega no mesmo dia."
+   - "As mensagens secretas da família, cada uma numa página, com QR code."
+   - "O livro de capa dura, 21 × 21 cm, numa das cinco cores: de 10 a 20 histórias, com fotos e um QR code que toca a voz."
+   - "Os áudios originais, para a família guardar."
+5. A garantia: "O começo é por nossa conta. Você só paga se gostar da primeira página. Se não gostar, ela fica com vocês."
+- A linha da ficha do livro saiu: virou o item do livro na lista.
+- No desktop, o formulário fica preso ao lado da folha (sticky) enquanto se lê a lista.
+
 À direita, o formulário:
 - Título (2/11): "Vamos conversar"
 - Campos:
