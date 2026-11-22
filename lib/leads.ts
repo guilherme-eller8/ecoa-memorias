@@ -21,7 +21,7 @@ export function mascararWhatsApp(valor: string): string {
 export function mensagemWhatsApp(
   lead: Pick<Lead, "nome" | "capa_cor">,
 ): string {
-  let texto = `Olá! Quero começar o livro da ${MARCA} na ceia de Natal. Meu nome é ${lead.nome}.`;
+  let texto = `Olá! Quero começar o livro da ${MARCA}. Meu nome é ${lead.nome}.`;
   if (lead.capa_cor) texto += ` Gostei da capa ${CAPAS[lead.capa_cor].nome}.`;
   return texto;
 }
@@ -37,9 +37,8 @@ export const MENSAGEM_CONVERSA = `Olá! Quero saber mais sobre o livro da ${MARC
 
 /** Uma mensagem por posição do botão de interesse (CTA_TEXTO): diz de onde veio o lead. */
 export const MENSAGENS_INTERESSE = {
-  hero: "Oi! Vi o site da Ecoa e quero começar o livro na ceia de Natal.",
-  final:
-    "Oi! Quero começar o livro da Ecoa na ceia de Natal. Pode me contar mais?",
+  hero: "Oi! Vi o site da Ecoa e quero começar o livro.",
+  final: "Oi! Quero começar o livro da Ecoa. Pode me contar mais?",
 } as const;
 
 export type PosicaoInteresse = keyof typeof MENSAGENS_INTERESSE;
