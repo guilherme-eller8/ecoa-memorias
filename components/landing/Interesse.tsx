@@ -7,6 +7,7 @@ import {
   INSCRICOES_ATE,
   LIVROS_NA_EDICAO,
   PARCELAS_MAX,
+  PRECO_LIVRO,
 } from "@/lib/config";
 import { FormInteresse } from "./FormInteresse";
 
@@ -30,6 +31,14 @@ export function Interesse() {
           sem juros no cartão, ou{" "}
           <span className="whitespace-nowrap">{formatarPreco()} no Pix</span>.
           Frete à parte.
+        </p>
+        {/* Presente de irmãos: o valor dividido, sem desconto e sem preço riscado */}
+        <p className="text-pequeno mt-2">
+          Entre três irmãos, fica em cerca de{" "}
+          <span className="whitespace-nowrap">
+            {formatarPreco(Math.round(PRECO_LIVRO / 3))}
+          </span>{" "}
+          para cada um.
         </p>
 
         {/* Uma frase por linha: as vagas, depois o que acontece quando acabam */}

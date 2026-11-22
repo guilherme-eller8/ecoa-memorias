@@ -103,7 +103,7 @@ Cartão de papel branco com uma pergunta em Newsreader de 26–30px, alinhada à
 Duas colunas no desktop: título e texto à esquerda, a capa à direita já na altura do título, limitada pela altura da tela. No mobile: título, frase, botão, fatos, capa.
 
 - H1 (22/11, aprovado): "O livro do seu pai, na voz dele." Quebra depois da vírgula (2 linhas em 390 e 1440). A pessoa e o pronome trocam juntos: do seu pai / dele, da sua mãe / dela, do seu avô / dele, da sua avó / dela, do seu tio / dele, da sua tia / dela (a cada 2,2 s, duas voltas, para em "do seu pai"; as opções ficam empilhadas na mesma célula, então nada reflui; leitor de tela ouve a lista inteira; sem JS fica "do seu pai, na voz dele."; com movimento reduzido, só o esmaecer). Antes: "As histórias da sua família num livro, com fotos e a voz de quem viveu."
-- Frase de apoio (22/11, **[aprovar]**): "As histórias, as fotos e a voz de quem conta, num livro de capa dura. Quem conta só responde por áudio no WhatsApp, do jeito que fala. Sem escrever, sem instalar nada. A Ecoa cuida do resto." (A troca da pessoa saiu daqui: foi para o título.)
+- Frase de apoio (22/11, aprovado): "As histórias, as fotos e a voz de quem conta, num livro de capa dura. Quem conta só responde por áudio no WhatsApp, do jeito que fala. Sem escrever, sem instalar nada. A Ecoa cuida do resto." (A troca da pessoa saiu daqui: foi para o título.)
 - Botão (22/11, aprovado): "Quero começar na ceia" (`CTA_TEXTO`) → wa.me em nova aba com "Oi! Vi o site da Ecoa e quero começar o livro na ceia de Natal."
 - Fatos (22/11), numa linha só em tamanho pequeno abaixo do botão (no celular, um por linha, sem o ponto): "Inscrições até 19 de dezembro · A primeira página é por nossa conta" (`INSCRICOES_ATE`). O preço e as vagas ficam só no colofão (seção 8).
 - Visual: LiveCover grande, entreaberta, com o áudio de WhatsApp encostado. Fundo polen liso, com o grão de papel. Sem gradiente.
@@ -190,6 +190,7 @@ Prova de origem: não é depoimento de cliente (ainda não há), é por que a Ec
 
 À esquerda, o **colofão** (folha papel, recortada como as outras peças, sem linhas e sem caixa colorida), enxuto:
 - "12x de R$ 38,92" no tamanho display (parcela de `PRECO_LIVRO` / `PARCELAS_MAX`); abaixo, "sem juros no cartão, ou R$ 467 no Pix. Frete à parte."
+- Logo abaixo, em tamanho pequeno (22/11): "Entre três irmãos, fica em cerca de R$ 156 para cada um." (`PRECO_LIVRO` / 3, arredondado)
 - (2/11) Sem linha de exemplares extras: quem pedir recebe o contato da gráfica e encomenda direto, sem cobrança da Ecoa.
 - Em destaque, a escassez (dita só aqui), uma frase por linha (3/11): "Só 10 vagas nesta edição." / "Quando acabarem, a edição fecha."
 - Logo abaixo, em tamanho pequeno (22/11, aprovado): "São poucas porque cada história é ouvida e editada por uma pessoa. Para começar na ceia, as inscrições vão até 19 de dezembro."
@@ -219,9 +220,9 @@ Ordem: as objeções mais fortes primeiro (pagamento, desistência, tempo).
 | Desistência | E se a pessoa não quiser participar, ou parar no meio? | Se não quiser participar, você não paga nada. Se parar no meio, o livro sai com as histórias já gravadas. Se preferir não imprimir, você recebe o livro em PDF, com os áudios, e devolvemos R$ 149 (`DEVOLUCAO_SEM_IMPRESSAO`). |
 | Tempo | Quanto tempo leva por dia? | Alguns minutos. Cada áudio costuma ter entre 2 e 5 minutos, e dá para responder quando quiser. |
 | WhatsApp | Quem conta as histórias precisa saber mexer no celular? | Se manda áudio no WhatsApp, já sabe tudo o que precisa. Se preferir, também é possível gravar por uma ligação. |
-| O presente | Como a pessoa fica sabendo do presente? | Quem dá a notícia é você, do seu jeito. Depois, enviamos uma mensagem de boas-vindas explicando como serão as próximas semanas, e começamos quando ela disser que topa. |
+| O presente | Como a pessoa fica sabendo do presente? | Quem dá a notícia é você, do seu jeito. Para a ceia, mandamos um cartão em PDF com o nome de quem vai contar, para você imprimir ou mostrar na mesa (`scripts/cartao-ceia.mjs`). Depois, enviamos uma mensagem de boas-vindas explicando como serão as próximas semanas, e começamos quando a pessoa disser que topa. |
 | Seu trabalho | Vai dar trabalho para mim? | Não. Você escolhe as perguntas (ou deixa com a gente) e envia algumas fotos. Do resto cuidamos nós, inclusive de reunir as mensagens da família. |
-| Edição | Quem edita as histórias? | Uma pessoa da nossa equipe ouve e edita cada história, sem perder o jeito de falar de quem conta. A família lê tudo e pode pedir ajustes antes da impressão. |
+| Edição | Quem edita as histórias? Fica fiel ao que foi contado? | Uma pessoa ouve e edita cada história, sem perder o jeito de falar de quem conta. Nada é inventado: o livro só traz o que quem conta disse. A família lê tudo e pode pedir ajustes antes da impressão. |
 | Tamanho | Quantas histórias cabem no livro? | Em geral, de 10 a 20. Mas o livro se ajusta ao que a família quiser contar. |
 | O grupo | Quem conta as histórias participa do grupo da família? | Não. O grupo é só da família, para que o livro final continue sendo surpresa. |
 | Mensagens | Como são reunidas as mensagens da família? | Você nos passa os contatos e nós cuidamos dos convites e dos lembretes. |
