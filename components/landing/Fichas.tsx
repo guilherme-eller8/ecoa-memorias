@@ -13,7 +13,6 @@ import {
   formatarData,
   formatarPreco,
   PARCELAS_MAX,
-  PRAZO_LIVRO,
 } from "@/lib/config";
 import s from "./Fichas.module.css";
 
@@ -53,36 +52,13 @@ const FICHAS: Ficha[] = [
     aba: "Seu trabalho",
     pergunta: "Vai dar trabalho para mim?",
     resposta:
-      "Não. Você escolhe as perguntas (ou deixa com a gente) e envia algumas fotos. Do resto cuidamos nós, inclusive de reunir as mensagens da família.",
+      "Não. Você escolhe as perguntas (ou deixa com a gente) e envia algumas fotos. Do resto cuidamos nós, inclusive das mensagens da família: você nos passa os contatos, e os convites e os lembretes ficam com a gente.",
   },
   {
     aba: "Edição",
     pergunta: "Quem edita as histórias? Fica fiel ao que foi contado?",
     resposta:
       "Uma pessoa ouve e edita cada história, sem perder o jeito de falar de quem conta. Nada é inventado: o livro só traz o que quem conta disse. A família lê tudo e pode pedir ajustes antes da impressão.",
-  },
-  {
-    aba: "Tamanho",
-    pergunta: "Quantas histórias cabem no livro?",
-    resposta:
-      "Em geral, de 10 a 20. Mas o livro se ajusta ao que a família quiser contar.",
-  },
-  {
-    aba: "O grupo",
-    pergunta: "Quem conta as histórias participa do grupo da família?",
-    resposta:
-      "Não. O grupo é só da família, para que o livro final continue sendo surpresa.",
-  },
-  {
-    aba: "Mensagens",
-    pergunta: "Como são reunidas as mensagens da família?",
-    resposta:
-      "Você nos passa os contatos e nós cuidamos dos convites e dos lembretes.",
-  },
-  {
-    aba: "Prazo",
-    pergunta: "Quando o livro fica pronto?",
-    resposta: `A primeira página chega no dia ${formatarData(DATA_PRIMEIRA_PAGINA)}. Se vocês decidirem seguir, o livro inteiro fica pronto ${PRAZO_LIVRO} depois.`,
   },
   {
     aba: "Frete",
@@ -92,21 +68,9 @@ const FICHAS: Ficha[] = [
   },
   {
     aba: "Os áudios",
-    pergunta: "Com quem ficam os áudios?",
+    pergunta: "Com quem ficam os áudios? E os QR codes?",
     resposta:
-      "Com a família, para sempre. Usamos apenas para produzir o livro e para tocar nos QR codes.",
-  },
-  {
-    aba: "QR codes",
-    pergunta: "Os QR codes vão parar de funcionar?",
-    resposta:
-      "Não. Guardamos os áudios do livro enquanto a família quiser, só para os QR codes tocarem. E os originais ficam com a família desde o primeiro dia.",
-  },
-  {
-    aba: "Novo volume",
-    pergunta: "E depois do primeiro livro?",
-    resposta:
-      "Quem quiser pode continuar contando histórias e criar um novo volume. É opcional, sem renovação automática.",
+      "Os áudios originais são da família desde o primeiro dia. Usamos só para produzir o livro e guardamos enquanto a família quiser, para os QR codes continuarem tocando.",
   },
 ];
 
@@ -133,7 +97,7 @@ export function Fichas() {
       {colunas.map((coluna, c) => (
         <ul
           key={c}
-          className={`col-span-12 grid gap-1 lg:col-span-6 ${c === 0 ? "mt-10 md:mt-12" : "mt-1 lg:mt-12"}`}
+          className={`col-span-12 grid content-start gap-1 lg:col-span-6 ${c === 0 ? "mt-10 md:mt-12" : "mt-1 lg:mt-12"}`}
           data-entra="lista"
           style={{ "--ordem": 1 + c } as CSSProperties}
         >

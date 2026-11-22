@@ -56,3 +56,5 @@ Atualização de 30/10 (rodada 3, feedback do fundador): a ficha técnica virou 
 - Sombra de contato da capa: faz parte do desenho do objeto. Se o inspetor marcar `shadow`, desenhe a sombra dentro do SVG/pseudo-elemento da capa antes de pedir exceção.
 
 Atualização de 31/10: logo novo (opção 03 do fundador): "ecoa" em caixa-baixa, com uma árvore nascendo do "o", e "MEMÓRIAS" espaçado embaixo, numa cor só. A árvore sozinha, em dourado, é o monograma (pé da capa e favicon). Gerado por `scripts/gerar-logo.py`.
+
+Atualização de 24/11 (enxugamento, aprovado pelo fundador): saíram a capa anotada (seção 3, repetia o hero e as seções 5 e 6) e a seção de valor 2b; a faixa de foto e vídeo ilustrativos da surpresa também saiu. A ficha técnica virou uma linha no pé do colofão. No celular, o "Como funciona" é uma lista vertical só com texto.

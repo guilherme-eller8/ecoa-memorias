@@ -13,8 +13,8 @@ export function Hero() {
   // O preço e as vagas ficam para o colofão, perto do fim: aqui o prazo e o que é grátis.
   // "Começa na ceia" já está no botão.
   const fatos = [
-    `Inscrições até ${formatarData(INSCRICOES_ATE)}`,
     "A primeira página é por nossa conta",
+    `Inscrições até ${formatarData(INSCRICOES_ATE)}`,
   ];
 
   return (
@@ -31,9 +31,8 @@ export function Hero() {
         <div className="col-span-12 lg:col-span-6 lg:col-start-1 lg:row-start-2 lg:pt-10">
           {/* A pessoa troca no título; aqui, "quem conta" serve para todas */}
           <p className="max-w-[46ch]">
-            As histórias, as fotos e a voz de quem conta, num livro de capa
-            dura. Quem conta só responde por áudio no WhatsApp, do jeito que
-            fala. Sem escrever, sem instalar nada. A Ecoa cuida do resto.
+            Quem conta só responde por áudio no WhatsApp, sem instalar nada. As
+            histórias, as fotos e a voz viram um livro de capa dura.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-x-7 gap-y-4">

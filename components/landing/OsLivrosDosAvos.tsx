@@ -34,6 +34,7 @@ export function OsLivrosDosAvos() {
   return (
     <Section
       id="origem"
+      tone="papel"
       title="Os livros dos meus avós."
       grid
       titleClassName={`${colTexto} lg:row-start-1 lg:self-end`}
