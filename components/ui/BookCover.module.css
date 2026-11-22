@@ -57,7 +57,8 @@
 }
 .livro[data-size="xl"] {
   /* Também cabe na altura da tela: a capa inteira acima da dobra, mesmo em notebook baixo */
-  --w: clamp(260px, min(28vw, 100svh - 250px), 400px);
+  /* A altura da capa (largura × --alto) cabe na tela, com o título e o cabeçalho */
+  --w: clamp(240px, min(28vw, (100svh - 250px) / var(--alto, 1)), 400px);
 }
 
 .livro[data-open] {

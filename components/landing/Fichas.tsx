@@ -46,7 +46,7 @@ const FICHAS: Ficha[] = [
     aba: "O presente",
     pergunta: "Como a pessoa fica sabendo do presente?",
     resposta:
-      "Quem dá a notícia é você, do seu jeito. Para a ceia, mandamos um cartão em PDF com o nome de quem vai contar, para você imprimir ou mostrar na mesa. Depois, enviamos uma mensagem de boas-vindas explicando como serão as próximas semanas, e começamos quando a pessoa disser que topa.",
+      "Quem dá a notícia é você, do seu jeito. Para a ceia, mandamos um cartão em PDF com o nome de quem vai contar, para você imprimir ou mostrar na mesa. Depois, enviamos uma mensagem de boas-vindas explicando como serão os próximos meses, e começamos quando a pessoa disser que topa.",
   },
   {
     aba: "Seu trabalho",

@@ -1,22 +1,74 @@
 /*
- * PaginaSolta: a primeira página do livro, como chega no PDF. Uma folha papel sobre o fundo pólen
- * (degrau de tom, sem sombra), com a foto, o título do capítulo, um trecho e o QR que toca a voz.
- * Medidas em cqi da própria folha, para o texto acompanhar a escala.
+ * PaginaSolta: a primeira página do livro, como chega no PDF. Folhas papel A5 sobre o fundo pólen
+ * (degrau de tom, sem sombra). Do tablet para cima, duas folhas lado a lado: a foto e a história.
+ * No celular, só a folha da história, com a foto dentro dela.
+ * Medidas em cqi de cada folha (a moldura é a referência), para o texto acompanhar a escala.
  */
 
-/* A moldura é a referência das medidas em cqi; a folha, dentro dela, usa essas medidas */
+.par {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 768px) {
+  .par {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 0;
+  }
+}
+
 .moldura {
   container-type: inline-size;
 }
 
+/* A folha da foto só existe do tablet para cima; levemente girada, encostada na da história */
+.ladoFoto {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .ladoFoto {
+    display: block;
+    transform: rotate(-2deg) translateX(3%);
+  }
+
+  .ladoTexto {
+    transform: rotate(1.2deg);
+  }
+}
+
 .folha {
   position: relative;
-  aspect-ratio: 4 / 5;
+  /* A5: 14,8 × 21 cm. Se o texto precisar, a folha cresce em vez de cortar */
+  aspect-ratio: 148 / 210;
   background-color: var(--papel);
   border-radius: var(--raio);
-  padding: 8cqi 8cqi 10cqi;
+  padding: 8cqi 8cqi 11cqi;
   display: flex;
   flex-direction: column;
+}
+
+.folhaFoto {
+  justify-content: center;
+  align-items: center;
+}
+
+.foto {
+  width: 78cqi;
+}
+
+.fotoCelular {
+  margin-top: 5cqi;
+}
+
+.fotoCelular .foto {
+  width: 52cqi;
+}
+
+@media (min-width: 768px) {
+  .fotoCelular {
+    display: none;
+  }
 }
 
 .cabeca {
@@ -26,8 +78,9 @@
   gap: 4cqi;
 }
 
-.foto {
-  width: 46cqi;
+.numeral {
+  font-size: max(13px, 5cqi);
+  font-weight: 500;
 }
 
 .qr {
@@ -35,8 +88,8 @@
   flex-direction: column;
   align-items: center;
   gap: 1.5cqi;
-  width: 24cqi;
-  font-size: max(13px, 4.2cqi);
+  width: 20cqi;
+  font-size: 13px;
   line-height: 1.1;
   text-align: center;
 }
@@ -48,8 +101,8 @@
 }
 
 .titulo {
-  margin-top: 7cqi;
-  font-size: max(19px, 8.2cqi);
+  margin-top: 5cqi;
+  font-size: max(19px, 8cqi);
   line-height: 1.05;
   letter-spacing: -0.01em;
   text-wrap: balance;
@@ -59,19 +112,29 @@
   margin-top: 1.5cqi;
   font-family: var(--font-italico);
   font-style: italic;
-  font-size: max(13px, 5cqi);
+  font-size: max(13px, 4.6cqi);
 }
 
 .texto {
-  margin-top: 3.5cqi;
-  font-size: max(13px, 5cqi);
-  line-height: 1.42;
+  margin-top: 4cqi;
+  font-size: max(13px, 4.6cqi);
+  line-height: 1.45;
+}
+
+/* Parágrafos como num livro: recuo na primeira linha, sem espaço entre eles */
+.texto p + p {
+  text-indent: 1.4em;
 }
 
 .folio {
   position: absolute;
   right: 8cqi;
   bottom: 4cqi;
-  font-size: max(13px, 4cqi);
+  font-size: 13px;
   font-variant-numeric: oldstyle-nums;
+}
+
+.folioEsquerda {
+  right: auto;
+  left: 8cqi;
 }

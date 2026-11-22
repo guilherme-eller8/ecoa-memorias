@@ -7,8 +7,6 @@ export const PERGUNTAS_DE_NATAL = 3; // exibir por extenso: "três perguntas"
 export const DATA_PRIMEIRA_PAGINA = "2026-12-26"; // exibir como "26 de dezembro"
 // O texto de todo botão de interesse (hero, formulário, fecho): diz o próximo passo
 export const CTA_TEXTO = "Quero começar";
-// Do "gostei" da primeira página ao livro pronto (perguntas, edição, prova, gráfica e frete)
-export const PRAZO_LIVRO = "cerca de 2 meses";
 export const PRECO_LIVRO = 467; // exibir como "R$ 467"
 // O preço que vale depois desta primeira edição. Só no colofão. Tem que ser o preço cobrado de verdade:
 // anunciar um preço futuro que não acontece é propaganda enganosa.
@@ -17,8 +15,12 @@ export const PRECO_DEPOIS_A_PARTIR = "janeiro"; // "A partir de janeiro, o livro
 // Devolvido quando quem conta para no meio e a família prefere o livro em PDF, sem impressão
 export const DEVOLUCAO_SEM_IMPRESSAO = 149;
 export const PARCELAS_MAX = 12;
-export const FORMATO_LIVRO = "21 × 21 cm"; // placeholder
-export const PAGINAS_LIVRO = 80; // máximo, com fotos e histórias; referência interna, não aparece na página
+// Ficha da gráfica (24/11): capa dura vertical A5, capa 4x0 com laminação fosca na frente,
+// miolo de 80 páginas 4x4 em couché fosco 115 g. Os desenhos de livro tiram a proporção daqui.
+export const FORMATO_LIVRO = "14,8 × 21 cm"; // A5 vertical
+export const FORMATO_NOME = "A5 vertical";
+export const PAGINAS_LIVRO = 80;
+export const PAPEL_LIVRO = "papel couché fosco"; // CF 115 g
 export const WHATSAPP_NUMERO = "5531971454494";
 export const EMAIL_CONTATO = "contato@ecoa-memorias.com.br"; // placeholder: a caixa ainda não existe
 export const CNPJ = "00.000.000/0001-00"; // placeholder
@@ -41,11 +43,13 @@ export const SITE_URL =
 // Enquanto o dado real não chega, o placeholder não aparece na página (nem link quebrado, nem CNPJ falso)
 export const WHATSAPP_PRONTO = /^55\d{10,11}$/.test(WHATSAPP_NUMERO);
 export const CNPJ_PRONTO = !CNPJ.startsWith("00.000.000");
-export const SEMANAS_DE_PERGUNTAS = 4;
+// Depois do "gostei": até um ano para contar, no ritmo de quem conta. A família decide quando fechar
+// e imprimir. Sem renovação automática.
+export const PRAZO_PARA_CONTAR = "um ano"; // exibir como "até um ano"
 // Residenciais (/residenciais): o piloto proposto na conversa presencial. Sem preço na página.
 export const PILOTO_MORADORES = { min: 3, max: 5 } as const;
 // Versão dos Termos de Uso aceitos no formulário (gravada no lead). Mudou o texto, muda a data.
-export const TERMOS_VERSAO = "2026-11-03";
+export const TERMOS_VERSAO = "2026-11-24";
 
 export const IMAGES = {
   surpresa: "/images/surpresa-ceia.webp",

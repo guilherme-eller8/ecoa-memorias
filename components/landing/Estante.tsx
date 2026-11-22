@@ -43,7 +43,7 @@ export function Estante() {
       </ul>
       <div className={s.prateleira} aria-hidden />
       <p className="text-pequeno mt-6">
-        Cinco cores de tecido. A próxima pode ser a da sua família.
+        Cinco cores de capa. A próxima pode ser a da sua família.
       </p>
     </div>
   );
