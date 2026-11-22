@@ -6,7 +6,7 @@ Este arquivo carrega sozinho. Antes de qualquer tarefa de UI, leia também `docs
 A Ecoa Memórias produz livros de memórias de capa dura a partir de histórias contadas por áudio no WhatsApp.
 
 1. A família escolhe as perguntas (ou usa as nossas).
-2. A Ecoa envia uma pergunta por dia útil, pelo WhatsApp, a quem vai contar as histórias (pai, mãe, avô, avó, tio, tia, um amigo).
+2. A Ecoa envia as perguntas pelo WhatsApp, no ritmo de quem conta, a quem vai contar as histórias (pai, mãe, avô, avó, tio, tia, um amigo).
 3. Quem conta responde por áudio, no próprio ritmo.
 4. Cada história gravada chega no mesmo dia a um grupo de WhatsApp só da família. Quem conta NÃO está nesse grupo.
 5. Em segredo, filhos, netos e amigos enviam mensagens em áudio ou texto.
@@ -16,7 +16,7 @@ Edição de Natal 2026:
 - 10 livros. Inscrições abertas enquanto houver vaga.
 - Começa na ceia: 3 perguntas no WhatsApp antes do Natal; quem conta responde na ceia (alguém da mesa grava, ou a própria pessoa pelo WhatsApp).
 - No dia 26 de dezembro, a primeira página do livro em PDF, com o QR que toca a voz. É grátis; se a família não gostar, não paga e a página fica com ela.
-- Se seguir: 4 semanas de perguntas, uma por dia útil, e o livro pronto cerca de 2 meses depois.
+- Se seguir: até 1 ano para contar as histórias, no ritmo de quem conta; a família decide quando fechar e imprimir. Sem renovação automática.
 - R$ 467 por livro. Exemplares extras: a família encomenda direto com a gráfica, sem cobrança da Ecoa.
 
 ## Fase atual: captação de interesse
@@ -54,14 +54,16 @@ LIVROS_NA_EDICAO = 10
 PERGUNTAS_DE_NATAL = 3            // exibir por extenso: "três perguntas"
 DATA_PRIMEIRA_PAGINA = "2026-12-26" // exibir como "26 de dezembro"
 CTA_TEXTO = "Quero começar"        // texto de todo botão de interesse
-PRAZO_LIVRO = "cerca de 2 meses"   // do "gostei" ao livro pronto
 PRECO_LIVRO = 467                  // exibir como "R$ 467"
 PRECO_DEPOIS = 697                 // preço real a partir de janeiro; só no colofão
 PRECO_DEPOIS_A_PARTIR = "janeiro"
 DEVOLUCAO_SEM_IMPRESSAO = 149      // quem conta parou e a família preferiu o PDF
 PARCELAS_MAX = 12
-FORMATO_LIVRO = "21 × 21 cm"       // placeholder
-PAGINAS_LIVRO = 60                 // placeholder
+FORMATO_LIVRO = "14,8 × 21 cm"     // A5 vertical; os desenhos de livro tiram a proporção daqui
+FORMATO_NOME = "A5 vertical"
+PAGINAS_LIVRO = 80                 // capa 4x0 laminação fosca; miolo 4x4 couché fosco 115 g
+PAPEL_LIVRO = "papel couché fosco"
+PRAZO_PARA_CONTAR = "um ano"       // "até um ano"; sem renovação automática
 WHATSAPP_NUMERO = "55XXXXXXXXXXX"  // placeholder
 EMAIL_CONTATO = "contato@ecoamemorias.com.br" // placeholder
 IMAGES = { ... }                   // todos os caminhos de imagem

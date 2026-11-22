@@ -122,17 +122,16 @@ Prova de origem: não é depoimento de cliente (ainda não há), é por que a Ec
 - Fotos reais, 3:4, `.photo`, lado a lado, a segunda 64px mais baixa: "O livro do meu avô Jair." (`livro-avo-jair`, o livro na mão) e "O livro da minha avó Nelma." (`livro-avo-nelma`, a capa). Sem o arquivo, o quadro some.
 - Única exceção à regra "fotos não recebem nomes": estas não são ilustrativas.
 
-## 4. Como funciona (#como-funciona) (refeita em 24/11)
+## 4. Como funciona (#como-funciona) (refeita em 24/11; página dupla em 24/11)
 - H2: "Começa na ceia de Natal."
-- Abaixo do título, a barra de 6px com três marcas, cada uma em cima do seu passo (do tablet para cima): "Na ceia", "26 de dezembro", "O livro".
-- Três passos em `<ol>`, sem "PASSO N". O caso gravado na mesa vira a primeira página, e a primeira página vira o livro. As três perguntas são ajuda opcional, não um passo.
-- Desktop: três colunas; título (destaque), texto, um espaço que varia (40, 72, 120px), o objeto. Mobile: lista vertical; o terceiro objeto (a capa) some, porque o hero já mostra uma.
+- A barra de 6px com três marcas, cada uma em cima do seu passo (desktop): "Na ceia", "26 de dezembro", "O livro".
+- Três passos em `<ol>`. No desktop, 3 + 6 + 3 colunas: o do meio é mais largo para a página dupla ser legível. No celular, lista vertical; a capa do terceiro passo some.
 
 | Título | Texto | Visual |
 |---|---|---|
-| "Na ceia, grave um caso." | "Peça para quem conta lembrar uma história e grave no celular. Se precisar, mandamos três perguntas para puxar a conversa. Depois, mande o áudio no nosso WhatsApp." | WhatsAppChat `individual` "Ecoa Memórias": separador "24 de dezembro", áudio meu de 4:07 às 23:41 e "gravei o vô contando como conheceu a vó" |
-| "No dia 26, vira a primeira página." | "O áudio volta editado por uma pessoa, com foto e o QR code que toca a voz. Chega em PDF no seu WhatsApp, por nossa conta." | `PaginaSolta`: folha papel com a foto `antiga-casamento`, o QR com "ouça a voz", "Como conheci a sua avó", "1961" e "Foi num baile em Divinópolis. Ela estava de vestido azul e eu não sabia dançar. Pedi para ela me ensinar." |
-| "Gostou? O livro continua." | "Uma pergunta por dia útil, por 4 semanas. Cada história chega a um grupo só da família, e o livro de capa dura fica pronto cerca de 2 meses depois." | BookCover vinho "Caminhos que percorri", fechada (só do tablet para cima) |
+| "Na ceia, grave um caso." | "Peça para quem conta lembrar uma história e grave no celular. Se precisar, mandamos três perguntas para puxar a conversa. Depois, mande o áudio no nosso WhatsApp." | WhatsAppChat: "24 de dezembro", áudio de 4:07 e "gravei o vô contando como conheceu a vó" |
+| "No dia 26, vira a primeira página." | "O áudio volta editado por uma pessoa: a história inteira, com foto e o QR code que toca a voz. Chega em PDF no seu WhatsApp, por nossa conta." | `PaginaSolta`, duas folhas A5: à esquerda a foto `antiga-casamento`; à direita "I", o QR "ouça a voz", "Como conheci a sua avó", "1961" e três parágrafos (o baile em Divinópolis, os pés pisados, os sábados até o casamento). No celular, uma folha só com a foto dentro. |
+| "Gostou? O livro continua." | "Vocês têm até um ano para contar mais histórias, no ritmo de quem conta. Cada uma chega a um grupo só da família, e vocês decidem quando fechar o livro." | BookCover vinho "Caminhos que percorri" (só do tablet para cima) |
 
 ## 5. A voz em cada página (#livro, alvo do link "O livro" do cabeçalho)
 - Fundo papel (um degrau mais claro que o polen).
@@ -176,24 +175,18 @@ Prova de origem: não é depoimento de cliente (ainda não há), é por que a Ec
 - (2/11) Sem linha de exemplares extras: quem pedir recebe o contato da gráfica e encomenda direto, sem cobrança da Ecoa.
 - (24/11) Sem escassez e sem prazo: "Só 10 vagas nesta edição…" e "São poucas porque…" saíram a pedido do fundador.
 - A garantia, no fim da folha (3/11): "O começo é por nossa conta. Você só paga se gostar da primeira página. Se não gostar, ela fica com vocês."
-- No pé da folha, em tamanho pequeno (24/11), a ficha do livro: "Capa dura, 21 × 21 cm, numa das cinco cores. De 10 a 20 histórias, com fotos, QR codes e as mensagens da família." (`FORMATO_LIVRO`). Os 7 dias para desistir ficam no FAQ "Quando e como eu pago?".
 
 
-**Atualização de 24/11 (aprovada), o colofão em ordem:**
-1. "12x de R$ 38,92" (display) e "sem juros no cartão, ou R$ 467 no Pix. Frete à parte."
-2. "Este é o preço da primeira edição. A partir de janeiro, o livro passa a custar R$ 697." (`PRECO_DEPOIS`, `PRECO_DEPOIS_A_PARTIR`; sem preço riscado e sem "de/por")
-3. "Entre três irmãos, fica em cerca de R$ 156 para cada um." (pequeno)
-4. "Neste valor, vocês recebem:" e a lista, com marcador simples:
-   - "O cartão para entregar na ceia e a primeira página no dia 26, em PDF."
-   - "Quatro semanas de perguntas pelo WhatsApp, uma por dia útil, com lembretes."
-   - "Cada história editada por uma pessoa, sem perder o jeito de falar."
-   - "Um grupo só da família, onde cada história chega no mesmo dia."
-   - "As mensagens secretas da família, cada uma numa página, com QR code."
-   - "O livro de capa dura, 21 × 21 cm, numa das cinco cores: de 10 a 20 histórias, com fotos e um QR code que toca a voz."
-   - "Os áudios originais, para a família guardar."
-5. A garantia: "O começo é por nossa conta. Você só paga se gostar da primeira página. Se não gostar, ela fica com vocês."
-- A linha da ficha do livro saiu: virou o item do livro na lista.
-- No desktop, o formulário fica preso ao lado da folha (sticky) enquanto se lê a lista.
+**Colofão (24/11, versão atual).** No desktop, a folha ocupa 8 colunas e o formulário 4, sem sticky: tudo cabe numa tela de 1440×900. Na folha, o preço em cima ("12x de R$ 38,92" e "sem juros no cartão, ou R$ 467 no Pix. Frete à parte."); embaixo, duas colunas:
+- Esquerda: "Este é o preço da primeira edição. A partir de janeiro, o livro passa a custar R$ 697." · "Entre três irmãos, fica em cerca de R$ 156 para cada um." (pequeno) · a garantia "O começo é por nossa conta…".
+- Direita, em tamanho pequeno: "Neste valor, vocês recebem:"
+  - "O cartão para entregar na ceia e a primeira página no dia 26, em PDF."
+  - "Até um ano para contar as histórias, no ritmo de quem conta."
+  - "Cada história editada por uma pessoa, sem perder o jeito de falar."
+  - "Um grupo só da família, onde cada história chega no mesmo dia."
+  - "As mensagens secretas da família, cada uma numa página, com QR code."
+  - "O livro de capa dura A5 vertical, com 80 páginas coloridas em papel couché fosco: de 10 a 20 histórias, com fotos e um QR code que toca a voz."
+  - "Os áudios originais, para a família guardar."
 
 À direita, o formulário:
 - Título (2/11): "Vamos conversar"
@@ -219,7 +212,7 @@ Ordem: as objeções mais fortes primeiro (pagamento, desistência, tempo).
 | Desistência | E se a pessoa não quiser participar, ou parar no meio? | Se não quiser participar, você não paga nada. Se parar no meio, o livro sai com as histórias já gravadas. Se preferir não imprimir, você recebe o livro em PDF, com os áudios, e devolvemos R$ 149 (`DEVOLUCAO_SEM_IMPRESSAO`). |
 | Tempo | Quanto tempo leva por dia? | Alguns minutos. Cada áudio costuma ter entre 2 e 5 minutos, e dá para responder quando quiser. |
 | WhatsApp | Quem conta as histórias precisa saber mexer no celular? | Se manda áudio no WhatsApp, já sabe tudo o que precisa. Se preferir, também é possível gravar por uma ligação. |
-| O presente | Como a pessoa fica sabendo do presente? | Quem dá a notícia é você, do seu jeito. Para a ceia, mandamos um cartão em PDF com o nome de quem vai contar, para você imprimir ou mostrar na mesa (`scripts/cartao-ceia.mjs`). Depois, enviamos uma mensagem de boas-vindas explicando como serão as próximas semanas, e começamos quando a pessoa disser que topa. |
+| O presente | Como a pessoa fica sabendo do presente? | Quem dá a notícia é você, do seu jeito. Para a ceia, mandamos um cartão em PDF com o nome de quem vai contar, para você imprimir ou mostrar na mesa (`scripts/cartao-ceia.mjs`). Depois, enviamos uma mensagem de boas-vindas explicando como serão os próximos meses, e começamos quando a pessoa disser que topa. |
 | Seu trabalho | Vai dar trabalho para mim? | Não. Você escolhe as perguntas (ou deixa com a gente) e envia algumas fotos. Do resto cuidamos nós, inclusive das mensagens da família: você nos passa os contatos, e os convites e os lembretes ficam com a gente. |
 | Edição | Quem edita as histórias? Fica fiel ao que foi contado? | Uma pessoa ouve e edita cada história, sem perder o jeito de falar de quem conta. Nada é inventado: o livro só traz o que quem conta disse. A família lê tudo e pode pedir ajustes antes da impressão. |
 | Frete | Entregam em todo o Brasil? O frete está incluso? | Entregamos em todo o Brasil. O frete é à parte e calculado para o seu CEP. |
@@ -231,7 +224,7 @@ Ordem: as objeções mais fortes primeiro (pagamento, desistência, tempo).
   - Se passar de 2 linhas em 390px, reduzir a medida antes da fonte; se ainda assim quebrar, perguntar.
 - Botão polen com texto floresta: "Quero começar" → wa.me em nova aba com "Oi! Quero começar o livro da Ecoa. Pode me contar mais?".
 - Abaixo, as 5 capas como lombadas, em pé numa estante, com o título na lombada (nunca nome de pessoa).
-- Legenda pequena abaixo da estante: "Cinco cores de tecido. A próxima pode ser a da sua família."
+- Legenda pequena abaixo da estante: "Cinco cores de capa. A próxima pode ser a da sua família."
 
 ## 11. Rodapé
 - "Ecoa Memórias" em tamanho grande, na largura toda (a contracapa).

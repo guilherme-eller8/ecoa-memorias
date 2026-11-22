@@ -16,9 +16,8 @@ import {
   PARCELAS_MAX,
   PERGUNTAS_DE_NATAL,
   porExtenso,
-  PRAZO_LIVRO,
+  PRAZO_PARA_CONTAR,
   RESPONSAVEL,
-  SEMANAS_DE_PERGUNTAS,
   TERMOS_VERSAO,
   WHATSAPP_PRONTO,
 } from "@/lib/config";
@@ -90,9 +89,11 @@ export default function Termos() {
         </p>
         <p>
           Se vocês decidirem seguir, mandamos as boas-vindas a quem conta e só
-          continuamos quando a pessoa disser que topa. A partir daí, enviamos
-          uma pergunta por dia útil, durante {SEMANAS_DE_PERGUNTAS} semanas, e
-          ela responde por áudio quando puder.
+          continuamos quando a pessoa disser que topa. A partir daí, vocês têm
+          até {PRAZO_PARA_CONTAR} para contar as histórias: as perguntas seguem
+          no ritmo de quem conta, e ela responde por áudio quando puder. A
+          família decide quando fechar o livro e mandar para a impressão, dentro
+          desse prazo. Não há renovação automática.
         </p>
       </Bloco>
 
@@ -169,7 +170,9 @@ export default function Termos() {
         <p>
           A primeira página chega no dia {primeiraPagina}. Se as respostas
           chegarem depois da ceia, ela chega logo depois delas. Se vocês
-          decidirem seguir, o livro fica pronto {PRAZO_LIVRO} depois. Entregamos
+          decidirem seguir, têm até {PRAZO_PARA_CONTAR} para contar as
+          histórias. Quando a família fechar o livro, combinamos a data de
+          entrega, com tempo para a revisão da prova e a impressão. Entregamos
           em todo o Brasil. Se a transportadora atrasar, acompanhamos até a
           entrega e mantemos você informado.
         </p>

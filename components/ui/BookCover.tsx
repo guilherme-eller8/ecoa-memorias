@@ -37,7 +37,7 @@ export type BookCoverProps = {
   className?: string;
 };
 
-// "21 × 21 cm" → largura e altura da capa no desenho (a largura vale 100)
+// "14,8 × 21 cm" → largura e altura da capa no desenho (a largura vale 100)
 const [larguraCm, alturaCm] = (
   FORMATO_LIVRO.match(/\d+(?:[.,]\d+)?/g) ?? ["1", "1"]
 ).map((n) => Number(n.replace(",", ".")));
@@ -121,6 +121,8 @@ export function BookCover({
   const estilo = {
     "--tecido": capa.tecido,
     "--proporcao": `${larguraCm} / ${alturaCm}`,
+    // Altura sobre largura: o tamanho xl usa para caber na altura da tela (A5 vertical ≈ 1,42)
+    "--alto": (alturaCm / larguraCm).toFixed(3),
     ...(turn !== undefined ? { "--giro": `${turn}deg` } : {}),
   } as CSSProperties;
 
